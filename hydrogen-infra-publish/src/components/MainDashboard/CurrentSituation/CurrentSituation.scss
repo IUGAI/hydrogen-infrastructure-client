@@ -1,0 +1,52 @@
+.current-content {
+  display: flex;
+  height: 100%;
+  background-color: #1c2641;
+  position: relative;
+  flex-direction: column;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 40px;
+    width: 20px;
+  }
+
+  .top {
+    height: 90px;
+    border: 1px solid #253255;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+    align-items: center;
+
+    .left {
+      .title-text {
+        font-size: 20px;
+        margin-left: 50px;
+        color: #5e76ba;
+        font-family: "gothic 12";
+      }
+    }
+    .right {
+      .button-outline {
+        margin: 10px;
+        border: 1px solid #253255;
+        padding: 0 30px;
+        border-radius: 20px;
+        font-family: "gothic 12";
+        color: #5e76ba;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .bottom {
+    display: grid;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 30px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}

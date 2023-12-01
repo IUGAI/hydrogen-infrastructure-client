@@ -1,0 +1,45 @@
+.production-value-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #212c4b;
+  border-radius: 5px;
+  margin: 5px;
+  border: 1px solid #253255;
+
+  .prod-item {
+    display: flex;
+    padding: 20px 0;
+    justify-content: center;
+    align-items: center;
+
+    .prod-text-name {
+      color: #8faadc;
+      font-family: "gothic 12";
+      font-size: 15px;
+    }
+
+    .prod-text-value {
+      font-family: "gothic M";
+      font-size: 19px;
+
+      &.production {
+        color: #00b0f0;
+      }
+
+      &.storaging {
+        color: #ffc000;
+      }
+      &.charging {
+        color: #92d050;
+      }
+    }
+    .prod-text-percentage {
+        color: #8faadc;
+        font-family: "gothic 12";
+        font-size: 17px;
+    }
+  }
+  .prod-item:not(:last-child) {
+    border-bottom: 1px solid #253255;
+  }
+}

@@ -1,0 +1,17 @@
+.map-container{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-direction: column;
+    height: 100%;
+    // border: 1px solid white;
+
+    .title{
+        color: #5E76BA;
+        font-size: 40px;
+        font-family: "gothic 16";
+    }
+    img {
+        width: 900px;
+    }
+}

@@ -1,0 +1,65 @@
+import './AttentionState.scss'
+import GraphAttention from './GraphAttention/GraphAttention'
+
+const graphItems = [
+  {
+    id: 1,
+    name: "가동",
+    type: 10001,
+    percentage: 75,
+    color_active: "#1681df",
+    color_stroke: "#1f3c74",
+    color_disactive: "#9dc3e6",
+    title: "가동 상태"
+  },
+  {
+    id: 2,
+    name: "생산",
+    type: 10001,
+    percentage: 75,
+    color_active: "#1681df",
+    color_disactive: "#9dc3e6",
+    color_stroke: "#1f3c74",
+    title: "가동률"
+  },
+  {
+    id: 3,
+    name: "충전소",
+    percentage: 40,
+    type: 10001,
+    color_active: "#8fcc4f",
+    color_disactive: "#c5e0b4",
+    color_stroke: "#50773d",
+    title: "시설물  종류"
+  },
+  {
+    id: 4,
+    name: "양호",
+    percentage: 30,
+    type: 10001,
+    color_active: "#8fcc4f",
+    color_disactive: "#c5e0b4",
+    title: "건전도"
+  }
+]
+
+
+function AttentionState() {
+    return (
+        <div className='state-content'>
+                  <img src="./img/marker.png" className="" />
+                  <div className="top">
+                    <span className="title-text">주요 상태</span>
+                  </div>
+                  <div className="bottom">
+                {
+                  graphItems.map((graphItem) => (
+                    <GraphAttention key={graphItems.id} items={graphItem} />
+                  ))
+                }
+                  </div>
+        </div>
+    )
+}
+
+export default AttentionState

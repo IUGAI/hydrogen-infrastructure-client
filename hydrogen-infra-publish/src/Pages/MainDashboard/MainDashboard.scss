@@ -1,0 +1,32 @@
+.mainDashboard {
+  background-color: #030629;
+  height: 100%;
+  padding: 10px;
+
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 4fr 4fr 4fr;
+  grid-template-rows: 4fr 3fr 7fr;
+  color: white;
+
+.item {
+    // border: solid 1px ;
+    margin: 10px;
+}
+
+.item-2 {
+    grid-row-start: 1;
+    grid-row-end: 5;
+    grid-column-start: 2;
+}
+
+.item-3{
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 3;
+}
+
+.item-6 , .item-5{
+    margin-bottom: 30px;
+}
+}
