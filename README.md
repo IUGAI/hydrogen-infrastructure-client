@@ -1,1 +1,1 @@
-# hydrogen-infra-public
+# hydrogen-infrastructure
