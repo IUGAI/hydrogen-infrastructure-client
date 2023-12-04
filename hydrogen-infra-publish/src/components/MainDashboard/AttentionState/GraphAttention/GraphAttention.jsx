@@ -4,10 +4,10 @@ import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
 function GraphAttention({ items }) {
 
 
-  const {name, color_active,color_disactive,title, color_stroke} = items;
+  const {name, color_active,color_disactive,title, percentage,color_stroke} = items;
   const data = [
-    { name: "Group A", value: 400 },
-    { name: "Group B", value: 800 },
+    { name: "Group A", value: 500 },
+    { name: "Group B", value: 500 },
   ];
   const COLORS = [color_disactive, color_active];
 
@@ -16,12 +16,12 @@ function GraphAttention({ items }) {
       <div className="graph-item">
         <div className="graph-value">
           <span className="text-value">{name}</span>
-          <span className="text-percentage">75%</span>
+          <span className="text-percentage">{percentage}%</span>
         </div>
 
         <PieChart width={200} height={200}>
           <Pie
-            data={data}
+            data={items.data}
             cx={93}
             cy={92}
             stroke={color_stroke}

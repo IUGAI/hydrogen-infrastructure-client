@@ -1,6 +1,7 @@
 import "./CurrentSituation.scss";
 import CurentSitutationValue from "./CurentSituationValues/CurentSitutationValue";
 import Button from "@mui/material/Button";
+import ButtonOutline from "../../Buttons/ButtonOutline";
 
 const items = [
   {
@@ -34,14 +35,14 @@ function CurrentSituation() {
           <span className="title-text">현황</span>
         </div>
         <div className="right">
-          <Button variant="outlined" className="button-outline">
-            전국
-          </Button>
+            <ButtonOutline>
+              전국
+            </ButtonOutline>
         </div>
       </div>
       <div className="bottom no-border-top">
         {items.map((item) => (
-          <CurentSitutationValue key={items.id} item={item} />
+          <CurentSitutationValue key={item.id} item={item} />
         ))}
       </div>
     </div>
