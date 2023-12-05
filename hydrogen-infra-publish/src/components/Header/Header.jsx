@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import "./Header.scss";
-import { IoMenuSharp } from "react-icons/io5";
+import { HiOutlineMenu } from "react-icons/hi";
+import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import { CiBellOn } from "react-icons/ci";
 import { FiUser } from "react-icons/fi";
 import { IoPower } from "react-icons/io5";
+import { useMyContext } from "../../context/menucontext";
+
 function Header() {
   const [currentTime, setCurrentTime] = useState();
+  const { state, dispatch } = useMyContext();
 
   useEffect(() => {
     const updateTime = () => {
@@ -26,15 +30,23 @@ function Header() {
     return () => clearInterval(intervalId);
   });
 
+  const handletClick = () => {
+    dispatch({ type: "toggle" });
+  };
+
   return (
     <div className="header-content">
       <div className="left">
         <div className="icon">
-          <IoMenuSharp size={26} />
+          {state.showSide ? (
+            <HiOutlineMenu size={26} onClick={handletClick} />
+          ) : (
+            <HiOutlineMenuAlt1 size={26} onClick={handletClick} />
+          )}
         </div>
         <img src="./img/logo.png" alt="logo" />
-          <span className="title-hydrogen">수소 </span>
-          <span className="title-hydrogen-fx">인프라 관리 시스템</span>
+        <span className="title-hydrogen">수소 </span>
+        <span className="title-hydrogen-fx">인프라 관리 시스템</span>
       </div>
       <div className="right">
         <div className="dateTime">

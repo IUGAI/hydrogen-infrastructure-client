@@ -27,6 +27,13 @@ const rows = [
   createData("일반", "서울 A 사업소",0, "가동중단", "확인"),
   createData("중요", "광주 A 사업소",0, "설비 온도 이상", "확인"),
   createData("일반", "나주 A 사업소",1, "점검 알림", "확인"),
+  createData("일반", "서울 A 사업소",0, "가동중단", "확인"),
+  createData("중요", "광주 A 사업소",0, "설비 온도 이상", "확인"),
+  createData("일반", "나주 A 사업소",1, "점검 알림", "확인"),
+  createData("중요", "부산 A 사업소",1, "압력 이상", "확인"),
+  createData("일반", "서울 A 사업소",0, "가동중단", "확인"),
+  createData("중요", "광주 A 사업소",0, "설비 온도 이상", "확인"),
+  createData("일반", "나주 A 사업소",1, "점검 알림", "확인"),
 
 ];
 
@@ -46,12 +53,18 @@ const StyledTableCellHeader = styled(TableCell)`
   font-family: "gothic 12";
   color: #8faadc;
   border: 0;
+  @media (max-width: 1536px) {
+    font-size: 12px;
+  }
 `;
 
 const StyledTableCellContent = styled(TableCell)`
   font-family: "gothic 12";
   border-bottom: 1px solid #253255;
   color: white;
+  @media (max-width: 1536px) {
+    font-size: 12px;
+  }
 `;
 
 const CellType = styled(TableCell)`
@@ -61,6 +74,9 @@ const CellType = styled(TableCell)`
       ? "#00B0F0 "
       : "#fff  "};
   border-bottom: 1px solid #253255;
+  @media (max-width: 1536px) {
+    font-size: 12px;
+  }
 `;
 
 
@@ -71,6 +87,9 @@ const CellTypeContent = styled(TableCell)`
       ? "#FE609A "
       : "#fff  "};
   border-bottom: 1px solid #253255;
+  @media (max-width: 1536px) {
+    font-size: 12px;
+  }
 `;
 
 
@@ -81,6 +100,9 @@ color: ${(props) =>
     ? "#92D050 "
     : "#FFC000  "};
 border-bottom: 1px solid #253255;
+@media (max-width: 1536px) {
+  font-size: 12px;
+}
 `
 
 

@@ -9,6 +9,10 @@ const ButtonOutlineStyled = styled(Button)`
   font-family: "gothic 12";
   color: #5e76ba;
   font-weight: bold;
+
+  @media (max-width: 1536px) {
+    padding: 0 20px;
+  }
 `;
 
 function ButtonOutline({ children }) {

@@ -6,19 +6,27 @@
   }
 
   .main {
+     height: 100vh;
 
-    height:100vh; /* Оставшаяся высота за вычетом высоты Header */
-    overflow: hidden;
+     @media (max-width: 1536px) {
+      height: 100vh;
+    }
 
     .inner-container{
-      overflow: hidden;
       display: flex;
-      height:100vh; 
+      height:100%;
       .sidebar {
         width: 250px;
-        height: 100vh;
         background-color: #1c2641;
         overflow: auto;
+        transition: width 0.3s ease; 
+
+        &.hide {
+          width: 70px;
+          transition: width 0.3s ease; 
+          display: flex;
+        }
+
         &::-webkit-scrollbar {
           width: 1px; /* Ширина полосы прокрутки */
         }
@@ -31,11 +39,15 @@
           &::-webkit-scrollbar-track {
             background-color: #1c2641; /* Цвет фона полосы прокрутки */
           }
+          @media (max-width: 1620px) {
+            width: 220px;
+          }
+          @media (max-width: 1300px) {
+           display: none;
+          }
         }
         
-        .contents {
-          flex: 1; /* Занимать оставшееся пространство */
-        }
+        
       }
   }
 }

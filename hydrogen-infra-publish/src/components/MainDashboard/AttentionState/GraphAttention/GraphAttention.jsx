@@ -1,9 +1,10 @@
 import "./GraphAttention.scss";
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
+import { useMediaQuery } from 'react-responsive';
 
 function GraphAttention({ items }) {
 
-
+  const isLargeScreen = useMediaQuery({ maxWidth: 1536 });
   const {name, color_active,color_disactive,title, percentage,color_stroke} = items;
   const data = [
     { name: "Group A", value: 500 },
@@ -19,14 +20,14 @@ function GraphAttention({ items }) {
           <span className="text-percentage">{percentage}%</span>
         </div>
 
-        <PieChart width={200} height={200}>
+        <PieChart width={isLargeScreen ?  150 : 200} height={isLargeScreen ? 150 : 200}>
           <Pie
             data={items.data}
-            cx={93}
-            cy={92}
+            cx={isLargeScreen ? 68 : 93}
+            cy={isLargeScreen ? 73 :  92}
             stroke={color_stroke}
-            innerRadius={55}
-            outerRadius={80}
+            innerRadius={ isLargeScreen ? 40 : 55}
+            outerRadius={isLargeScreen ? 55 : 80}
             dataKey="value"
           >
             {data.map((entry, index) => (

@@ -38,6 +38,7 @@ const rows = [
   createData("남양주", "충전", "남양주 C 사업소", "3/4", "중단"),
 ];
 
+
 const StyledTableHeader = styled(TableRow)`
   background-color: #212c4b;
 `;
@@ -54,12 +55,19 @@ const StyledTableCellHeader = styled(TableCell)`
 font-family: "gothic 12";
   color: #8faadc;
   border: 0;
+  @media (max-width: 1536px) {
+    font-size: 10px;
+  }
 `;
 
 const StyledTableCellContent = styled(TableCell)`
   font-family: "gothic 12";
   border-bottom: 1px solid #253255;
   color: white;
+
+  @media (max-width: 1536px) {
+    font-size: 12px;
+  }
 `;
 
 const CellType = styled(TableCell)`
@@ -71,6 +79,9 @@ const CellType = styled(TableCell)`
       ? "#92D050 "
       : "#FFC000  "};
   border-bottom: 1px solid #253255;
+  @media (max-width: 1536px) {
+    font-size: 12px;
+  }
 `;
 
 const CellState = styled(TableCell)`
@@ -82,11 +93,15 @@ const CellState = styled(TableCell)`
       ? "#8497B0"
       : "#fff"};
   border-bottom: 1px solid #253255;
+  @media (max-width: 1536px) {
+    font-size: 12px;
+  }
 `;
 
 const ScrollableContainer = styled(Paper)({
   maxHeight: "450px",
   overflowY: "auto",
+  overflowX: "auto",
   "&::-webkit-scrollbar": {
     width: "5px",
   },

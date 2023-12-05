@@ -8,7 +8,7 @@ const mapdata = [
   {
     id: 2,
     src: "./img/alarm-map-icon.png",
-    top: "58%",
+    top: "38%",
     right: "30%",
   },
   {
@@ -20,7 +20,7 @@ const mapdata = [
   {
     id: 4,
     src: "./img/storaging-map-icon.png",
-    top: "52%",
+    top: "32%",
     right: "55%",
   },
   {
@@ -32,7 +32,7 @@ const mapdata = [
   {
     id: 6,
     src: "./img/storaging-map-icon.png",
-    top: "46%",
+    top: "36%",
     right: "31%",
   },
   {
@@ -50,7 +50,7 @@ const mapdata = [
   {
     id: 9,
     src: "./img/alarm-map-icon.png",
-    top: "44%",
+    top: "34%",
     right: "47%",
   },
   {
@@ -65,12 +65,7 @@ const mapdata = [
     top: "30%",
     right: "42%",
   },
-  {
-    id: 12,
-    src: "./img/production-map-icon.png",
-    top: "55%",
-    right: "30%",
-  },
+
   {
     id: 13,
     src: "./img/production-map-icon.png",
@@ -92,19 +87,14 @@ const mapdata = [
   {
     id: 16,
     src: "./img/storaging-map-icon.png",
-    top: "51%",
+    top: "31%",
     right: "26%",
   },
-  {
-    id: 17,
-    src: "./img/alarm-map-icon.png",
-    top: "57%",
-    right: "32%",
-  },
+
   {
     id: 18,
     src: "./img/production-map-icon.png",
-    top: "47%",
+    top: "37%",
     right: "60%",
   },
   {
@@ -116,7 +106,7 @@ const mapdata = [
   {
     id: 20,
     src: "./img/charging-map-icon.png",
-    top: "55%",
+    top: "35%",
     right: "32%",
   },
   {
@@ -142,6 +132,30 @@ const mapdata = [
     src: "./img/charging-map-icon.png",
     top: "22%",
     right: "50%",
+  },
+  {
+    id: 25,
+    src: "./img/production-map-icon.png",
+    top: "33%",
+    right: "23%",
+  },
+  {
+    id: 26,
+    src: "./img/storaging-map-icon.png",
+    top: "32%",
+    right: "22%",
+  },
+  {
+    id: 27,
+    src: "./img/production-map-icon.png",
+    top: "34%",
+    right: "24%",
+  },
+  {
+    id: 28,
+    src: "./img/storaging-map-icon.png",
+    top: "35%",
+    right: "20%",
   },
 ];
 
