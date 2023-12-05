@@ -1,32 +1,53 @@
 .mainDashboard {
   background-color: #030629;
-  height: 100%;
   padding: 10px;
-
-  display: grid;
-  justify-content: center;
-  grid-template-columns: 4fr 4fr 4fr;
-  grid-template-rows: 4fr 3fr 7fr;
+  overflow: auto;
+  width: 100%;
   color: white;
 
-.item {
-    // border: solid 1px ;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: #1c2641;
+  }
+
+  .item {
     margin: 10px;
-}
+  }
 
-.item-2 {
-    grid-row-start: 1;
-    grid-row-end: 5;
-    grid-column-start: 2;
-}
+  .item-2 {
+    grid-row: span 5;
+    grid-column: 2;
+  }
 
-.item-3{
-    grid-row-start: 1;
-    grid-row-end: 3;
-    grid-column-start: 3;
-}
+  .item-3 {
+    grid-row: span 2;
+    grid-column: 3;
+  }
 
-.item-6 , .item-5{
-    margin-bottom: 30px;
-}
+  .item-5,
+  .item-6 {
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 1312px) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    grid-template-columns: none;
+    grid-template-rows: none;
+
+    .item {
+      margin: 10px 0;
+    }
+
+    .item-2,
+    .item-3 {
+      grid-row: auto;
+      grid-column: auto;
+    }
+  }
 }

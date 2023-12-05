@@ -1,0 +1,37 @@
+.alarm-widgets {
+  border: 1px solid #253255;
+  margin: 0px 10px;
+  display: flex;
+  padding: 7px 12px;
+  align-items: center;
+  background-color: #212c4b;
+  justify-content: space-between;
+  .left {
+    .title-text {
+        color: #8faadc;
+        font-family: "gothic 12";
+        font-size: 19px;
+        @media (max-width: 1536px) {
+          font-size: 15px;
+        }
+    
+        
+    }
+  }
+
+  .right {
+    .title-text-value {
+        font-family: "gothic M";
+        font-size: 23px;
+        color: white;
+
+        @media (max-width: 1536px) {
+          font-size: 20px;
+        }
+
+        &.active {
+            color: #00b0f0;
+        }
+    }
+  }
+}

@@ -1,17 +1,76 @@
-.map-container{
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    flex-direction: column;
-    height: 100%;
-    // border: 1px solid white;
+.map-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 30px;
+  flex-direction: column;
+  height: 100%;
+  // border: 1px solid white;
 
-    .title{
-        color: #5E76BA;
-        font-size: 40px;
-        font-family: "gothic 16";
+  @media (max-width: 1312px) {
+    display: none;
+    position: static;
+    margin-top: 100px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-map {
+    position: absolute;
+    width: 3%;
+  }
+
+  .title {
+    color: #5e76ba;
+    font-size: 40px;
+    font-family: "gothic 16";
+  }
+  img {
+    width: 600px;
+    margin-top: 50px;
+
+    @media (max-width: 1989px) {
+      width: 600px;
     }
-    img {
-        width: 900px;
+    @media (max-width: 1536px) {
+      width: 400px;
     }
+    @media (max-width: 1312px) {
+      width: 100px;
+    }
+  }
+
+  .map-filter {
+    background-color: #1c2641;
+    border: 1px solid #253255;
+    padding: 10px;
+    bottom: 120px;
+    right: 0;
+    position: absolute;
+
+    @media (max-width: 1536px) {
+      bottom: 200px;
+      padding: 10px;
+    }
+
+    @media (max-width: 1312px) {
+      top: 0;
+      right: auto;
+    }
+
+    .check-container {
+      display: flex;
+      align-items: center;
+
+      .check-text {
+        font-size: 16px;
+        color: #8faadc;
+        font-family: "gothic 12";
+
+        @media (max-width: 1536px) {
+          font-size: 12px;
+        }
+      }
+    }
+  }
 }

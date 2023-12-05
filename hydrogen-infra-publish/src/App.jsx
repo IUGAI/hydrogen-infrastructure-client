@@ -1,12 +1,11 @@
-import {RouterProvider, createBrowserRouter } from "react-router-dom"; // eslint-disable-line no-unused-vars
+import { RouterProvider, createBrowserRouter } from "react-router-dom"; // eslint-disable-line no-unused-vars
 import MainDashboard from "./Pages/MainDashboard/MainDashboard";
 import DetailDashboard from "./Pages/DetailDashboard/DetailDashboard";
 import "./App.scss";
 import AppLayout from "./components/AppLayout/AppLayout";
+import { MyProvider } from "./context/menucontext";
 
 export default function App() {
-
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -14,22 +13,21 @@ export default function App() {
       children: [
         {
           path: "/",
-          element: <MainDashboard />
+          element: <MainDashboard />,
         },
         {
           path: "/dashboard",
-          element: <DetailDashboard />
-        }
-  
-      ]
-    }
-  ])
+          element: <DetailDashboard />,
+        },
+      ],
+    },
+  ]);
 
   return (
     <div>
-      <RouterProvider router={router} />
+      <MyProvider>
+        <RouterProvider router={router} />
+      </MyProvider>
     </div>
   );
 }
-
-
