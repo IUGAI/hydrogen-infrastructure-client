@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Sidebar.scss";
 import { useState } from "react";
 import { useMyContext } from "../../context/menucontext";
 
 function Sidebar() {
-  const [selectedItem, setSelectedItem] = useState(1);
+  const start = useLocation();
+  const [selectedItem, setSelectedItem] = useState(start.pathname);
   // const {state} = useMyContext();
 
   const handleClickItem = (item) => {
@@ -24,16 +25,16 @@ function Sidebar() {
       </div>
       <div className="menu-bar">
         <ul>
-          <li onClick={() => handleClickItem(1)}>
+          <li onClick={() => handleClickItem("/")}>
             <Link
               to="/"
-              className={`link-item ${selectedItem === 1 ? "active" : ""} ${
+              className={`link-item ${selectedItem === "/" ? "active" : ""} ${
                 state.showSide ? "" : "hide"
               }`}
             >
               <img
                 src={
-                  selectedItem === 1
+                  selectedItem === "/"
                     ? "./img/icon-dash-active.png"
                     : "./img/icon-dash.png"
                 }
@@ -44,15 +45,19 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li onClick={() => handleClickItem(2)}>
+          <li onClick={() => handleClickItem("/dashboard")}>
             <Link
               to="/dashboard"
-              className={`link-item ${selectedItem === 2 ? "active" : ""} ${
-                state.showSide ? "" : "hide"
-              }`}
+              className={`link-item ${
+                selectedItem === "/dashboard" ? "active" : ""
+              } ${state.showSide ? "" : "hide"}`}
             >
               <img
-                src="./img/icon-dash-detail.png"
+                src={
+                  selectedItem === "/dashboard"
+                    ? "./img/active-icon-dash-detail.png"
+                    : "./img/icon-dash-detail.png"
+                }
                 className={state.showSide ? "icon-menu" : "icon-menu"}
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -72,7 +77,7 @@ function Sidebar() {
       </div>
       <div className="menu-bar">
         <ul>
-          <li>
+          <li onClick={() => handleClickItem("/")}>
             <Link
               to="/"
               className={`link-item ${selectedItem === 3 ? "active" : ""} ${
@@ -88,7 +93,7 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li>
+          <li onClick={() => handleClickItem("/")}>
             <Link
               to="/"
               className={`link-item ${selectedItem === 4 ? "active" : ""} ${
@@ -104,7 +109,7 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li>
+          <li onClick={() => handleClickItem("/")}>
             <Link
               to="/"
               className={`link-item ${selectedItem === 4 ? "active" : ""} ${
@@ -132,7 +137,7 @@ function Sidebar() {
       </div>
       <div className="menu-bar">
         <ul>
-          <li>
+          <li onClick={() => handleClickItem("/")}>
             <Link
               to="/"
               className={`link-item ${selectedItem === 5 ? "active" : ""} ${
@@ -148,7 +153,7 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li>
+          <li onClick={() => handleClickItem("/")}>
             <Link
               to="/"
               className={`link-item ${selectedItem === 6 ? "active" : ""} ${
@@ -164,7 +169,7 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li>
+          <li onClick={() => handleClickItem("/")}>
             <Link
               to="/"
               className={`link-item ${selectedItem === 7 ? "active" : ""} ${
@@ -192,7 +197,7 @@ function Sidebar() {
       </div>
       <div className="menu-bar">
         <ul>
-          <li>
+          <li onClick={() => handleClickItem("/")}>
             <Link
               to="/"
               className={`link-item ${selectedItem === 8 ? "active" : ""} ${
@@ -208,7 +213,7 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li>
+          <li onClick={() => handleClickItem("/")}>
             <Link
               to="/"
               className={`link-item ${selectedItem === 9 ? "active" : ""} ${
@@ -224,7 +229,7 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li>
+          <li onClick={() => handleClickItem("/")}>
             <Link
               to="/"
               className={`link-item ${selectedItem === 9 ? "active" : ""} ${
@@ -237,7 +242,7 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li>
+          <li onClick={() => handleClickItem("/")}>
             <Link
               to="/"
               className={`link-item ${selectedItem === 9 ? "active" : ""} ${
@@ -265,7 +270,7 @@ function Sidebar() {
       </div>
       <div className="menu-bar">
         <ul>
-          <li>
+          <li onClick={() => handleClickItem("/")}>
             <Link
               to="/"
               className={`link-item ${selectedItem === 9 ? "active" : ""} ${
@@ -281,7 +286,7 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li>
+          <li onClick={() => handleClickItem("/")}>
             <Link
               to="/"
               className={`link-item ${selectedItem === 9 ? "active" : ""} ${
@@ -309,7 +314,7 @@ function Sidebar() {
       </div>
       <div className="menu-bar">
         <ul>
-          <li>
+          <li onClick={() => handleClickItem("/")}>
             <Link
               to="/"
               className={`link-item ${selectedItem === 9 ? "active" : ""} ${
@@ -325,7 +330,7 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li>
+          <li onClick={() => handleClickItem("/")}>
             <Link
               to="/"
               className={`link-item ${selectedItem === 9 ? "active" : ""} ${

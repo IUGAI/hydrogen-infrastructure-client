@@ -1,0 +1,74 @@
+.operation-state-content {
+  display: flex;
+  height: 100%;
+  position: relative;
+  flex-direction: column;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 13px;
+    @media (max-width: 1536px) {
+      width: 10px;
+    }
+  }
+  .top {
+    height: 70px;
+    border: 1px solid #253255;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+
+    @media (max-width: 1536px) {
+      height: 50px;
+    }
+
+    .title-text {
+      font-size: 20px;
+      margin-left: 40px;
+      color: #5e76ba;
+      font-family: "gothic 12";
+      @media (max-width: 1536px) {
+        font-size: 15px;
+      }
+    }
+  }
+  .bottom {
+    display: flex;
+    height: 100%;
+
+    .left {
+      .graph-item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .text-percentage {
+            color: white;
+            position: absolute;
+            top: 100px;
+            font-family: "gothic M";
+            font-size: 28px;
+            
+            @media (max-width: 1536px) {
+              font-size: 20px;
+              top: 65px
+            }
+          }
+      }
+    }
+    .right {
+        display: grid;
+        height: 100%;
+        width: 100%;
+        justify-content: space-around;
+        margin-right: 10px;
+        align-items: center;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}

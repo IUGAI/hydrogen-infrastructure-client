@@ -1,0 +1,43 @@
+.cctv-situation-content {
+  height: 100%;
+  width: 100%;
+  margin: 0 10px;
+  display: flex;
+
+  .cctv-item {
+    border-bottom: 1px solid #253255;
+    background-color: #212c4b;
+    margin: 20px 10px;
+    height: 170px;
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+
+    .top {
+      border: 1px solid #253255;
+      display: flex ;
+      flex: 3;
+      align-items: center;
+      justify-content: center;
+
+      .img-icon {
+        width: 100%;
+        height: 100%;
+
+        &.default{
+            width: 40%;
+            height: 40%;
+        }
+      }
+    }
+
+    .bottom {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      color: #8faadc;
+      font-family: "gothic 12";
+    }
+  }
+}

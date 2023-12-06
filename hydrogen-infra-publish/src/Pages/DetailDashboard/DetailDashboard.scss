@@ -1,9 +1,50 @@
-.detail-dashboard{
-    color:  white;
+.detail-dashboard {
+  color: white;
+  width: 100%;
+  overflow: auto;
+  background-color: var(--main-backround);
+  display: flex;
+  margin: 10px;
+  flex-direction: column;
+
+  .detail-dashboard-conetent {
+    display: grid;
+    grid-template-columns: 1.5fr 1.5fr 0.5fr 0.7fr;
+    grid-template-rows: 1fr 3.5fr 0.7fr;
     height: 100%;
-    width: 100%;
-    background-color: #030629 ;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      background-color: #1c2641;
+    }
+
+    @media (max-width: 1312px) {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      grid-template-columns: none;
+      grid-template-rows: none;
+
+      .item {
+        margin: 10px 0;
+      }
+    }
+  }
+
+  .item {
+    background-color: var(--portlet);
+    margin: 10px;
+  }
+
+  .item-1 {
+    grid-column: span 1;
+  }
+  .item-2,
+  .item-4,
+  .item-5,
+  .item-6,
+  .item-7 {
+    grid-column: span 2;
+  }
 }
