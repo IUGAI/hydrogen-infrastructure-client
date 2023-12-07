@@ -37,9 +37,9 @@
   }
   .bottom {
     display: grid;
-    height: 100%;
-    padding: 5px 10px;
-    grid-template-columns: 1fr 1fr 0.8fr;
+    height: 600px;
+    padding: 0 10px;
+    grid-template-columns: 1fr 1fr 1fr;
 
     .item-center {
       display: flex;

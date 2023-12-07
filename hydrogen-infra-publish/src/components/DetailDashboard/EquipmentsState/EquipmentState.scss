@@ -3,8 +3,7 @@
   height: 100%;
   position: relative;
   flex-direction: column;
-  min-width: 100%; /* Добавлено, чтобы убедиться, что контент не схлопывается по ширине */
-  /* Остальные ваши стили */
+  min-width: 100%; 
 
   img {
     position: absolute;
@@ -35,38 +34,45 @@
       @media (max-width: 1536px) {
         font-size: 15px;
       }
+
     }
+    .icons-left {
+        display: flex;
+        gap: 20px;
+      }
   }
+
   .bottom {
-    width: 100%; /* Ширина контейнера */
-    overflow-x: auto; /* Добавление боковой прокрутки, если содержимое не помещается */
+    width: 100%; 
     height: 100%;
     display: flex;
 
     align-items: center;
 
     &::-webkit-scrollbar {
-        width: 5px; /* Ширина скроллбара */
-      }
-      
-      /* Стилизация ползунка скроллбара */
-      &::-webkit-scrollbar-thumb {
-        background-color: #253255; /* Цвет ползунка */
-        border-radius: 50px;
-      }
-      
+      width: 5px; 
+    }
 
-
+    &::-webkit-scrollbar-thumb {
+      background-color: #253255; 
+      border-radius: 50px;
+    }
 
     .flex-container {
-      display: flex; /* Используем flexbox */
+      display: grid;
+      width: 100%;
+      padding: 0 10px;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
+
+      @media (max-width: 1536px) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
 
       .item {
-        flex: 0 0 auto; /* Отключаем у элементов изменение размера */
-        padding: 5px;
-        margin: 0 20px;
-        height: 450px;
-        width: 250px;
+        flex: 0 0 auto; 
+        border-radius: 5px;
+        margin: 20px 10px;
+        height: 400px;
         border: 1px solid #253255;
         background-color: #212c4b;
         margin-right: 5px;
