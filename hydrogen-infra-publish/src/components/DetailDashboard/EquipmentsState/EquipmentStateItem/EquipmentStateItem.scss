@@ -3,8 +3,13 @@
   display: flex;
   flex-direction: column;
 
+  &.clicked-item {
+    width: 800px;
+  }
+
   .top {
     flex: 1;
+    display: flex;
     border-bottom: 1px solid #253255;
 
     .title-name {
@@ -12,77 +17,107 @@
       align-items: center;
       color: #8faadc;
       font-family: "gothic 12";
-      font-size: 18px;
+      font-size: 15px;
+    }
+
+    .switch-soundess {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
-  .mid {
-    flex: 6;
-    border-bottom: 1px solid #253255;
+
+  .items-mid {
+    padding: 30px 0;
     display: flex;
-    flex-direction: column;
+    flex: 6;
     align-items: center;
     justify-content: center;
-    gap: 30px;
 
-    // img {
-    //   width: 40px;
-    //   position: absolute;
-    //   top: 50%;
-    //   left: 50%;
-    //   transform: translate(-50%, -50%);
-    //   z-index: 1;
-    //   animation: moveAndFade 3s ease infinite;
-
-    //   @keyframes moveAndFade {
-    //     0% {
-    //       top: 40px;
-    //       opacity: 1;
-    //     }
-    //     100% {
-    //       top: 10px;
-    //       opacity: 0;
-    //     }
-    //   }
-    // }
-
-    .middle-values {
-      display: flex;
-      gap: 5px;
-
-      .text-current {
-        font-size: 23px;
-        font-family: "gothic M";
+    &.clicked-item {
+      justify-content: space-between;
+      .mid {
+        flex: 1;
+        align-items: center;
       }
-      .text-unit {
-        font-size: 18px;
-        font-family: "gothic 12";
-      }
-
-      .bottom-text {
-        flex: 2;
+      .mid-values-graph {
+        flex: 2.5;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-family: "gothic M";
-        font-size: 24px;
+        height: 100%;
 
-        &.production {
-          color: var(--production);
-        }
+        .mid-values-chart {
+          display: flex;
+          align-items: center;
+          justify-content: center;
 
-        &.storaging {
-          color: #ffc000;
-        }
+          .mid-vlues-chart-one {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
 
-        &.charging {
-          color: #92d050;
+            .graph-text-value {
+              font-family: 'gothic M';
+              font-size: 23px;
+              .graph-text-unit {
+                font-family: 'gothic 12';
+                font-size: 14px;
+              }
+            }
+          }
         }
       }
+    }
 
-      .vertical-line {
-        height: 25px; /* Высота линии равна высоте иконки */
-        border-left: 1px solid #35477b; /* Стиль вертикальной линии */
-        margin: 0 10px; /* Отступы вокруг линии */
+    .mid {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+
+      .middle-values {
+        display: flex;
+        gap: 5px;
+
+        .text-current {
+          font-size: 23px;
+          font-family: "gothic M";
+        }
+        .text-unit {
+          font-size: 18px;
+          font-family: "gothic 12";
+        }
+
+        .bottom-text {
+          flex: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "gothic M";
+          font-size: 24px;
+
+          &.production {
+            color: var(--production);
+          }
+
+          &.storaging {
+            color: #ffc000;
+          }
+
+          &.charging {
+            color: #92d050;
+          }
+        }
+
+        .vertical-line {
+          height: 25px; /* Высота линии равна высоте иконки */
+          border-left: 1px solid #35477b; /* Стиль вертикальной линии */
+          margin: 0 10px; /* Отступы вокруг линии */
+        }
       }
     }
   }
@@ -96,6 +131,7 @@
     .header-values {
       flex: 1;
       border-bottom: 1px solid #253255;
+      border-top: 1px solid #253255;
       width: 100%;
       display: flex;
 
@@ -113,12 +149,13 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        border: 1px solid #253255;
+        border-right: 1px solid #253255;
         justify-content: center;
       }
 
       .left-value {
         flex: 1;
+
         display: flex;
         align-items: center;
         gap: 10px;

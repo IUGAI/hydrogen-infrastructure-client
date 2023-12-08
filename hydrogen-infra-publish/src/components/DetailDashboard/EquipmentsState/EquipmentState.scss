@@ -2,6 +2,7 @@
   display: flex;
   height: 100%;
   position: relative;
+  overflow-y: auto;
   flex-direction: column;
   min-width: 100%; 
 
@@ -49,20 +50,17 @@
 
     align-items: center;
 
-    &::-webkit-scrollbar {
-      width: 5px; 
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: #253255; 
-      border-radius: 50px;
-    }
 
     .flex-container {
       display: grid;
       width: 100%;
       padding: 0 10px;
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
+
+      @media (max-width: 1876px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+
 
       @media (max-width: 1536px) {
         grid-template-columns: 1fr 1fr 1fr;
@@ -71,11 +69,15 @@
       .item {
         flex: 0 0 auto; 
         border-radius: 5px;
-        margin: 20px 10px;
-        height: 400px;
+        margin: 0 10px;
+        height: 550px;
         border: 1px solid #253255;
         background-color: #212c4b;
         margin-right: 5px;
+
+        @media (max-width: 1536px) {
+            height: 400px;
+          }
       }
     }
   }
