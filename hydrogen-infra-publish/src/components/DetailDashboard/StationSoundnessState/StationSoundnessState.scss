@@ -1,0 +1,119 @@
+.station-soundness-state-content {
+  display: flex;
+  height: 100%;
+  position: relative;
+  flex-direction: column;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 13px;
+    @media (max-width: 1536px) {
+      width: 10px;
+    }
+  }
+  .top {
+    height: 70px;
+    border: 1px solid #253255;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+
+    @media (max-width: 1536px) {
+      height: 50px;
+    }
+
+    .title-text {
+      font-size: 20px;
+      margin-left: 40px;
+      color: #5e76ba;
+      font-family: "gothic 12";
+      @media (max-width: 1536px) {
+        font-size: 15px;
+      }
+    }
+  }
+  .bottom {
+    display: grid;
+    height: 600px;
+    padding: 0 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    .item-center {
+      display: flex;
+      font-family: "gothic M";
+      color: #8faadc;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .item-left {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      padding: 0 10px;
+    }
+
+    .item {
+      background-color: #212c4b;
+      border-radius: 5px;
+      border: 1px solid #253255;
+
+      .text-current {
+        font-size: 23px;
+        font-family: "gothic M";
+      }
+      .text-unit {
+        font-size: 18px;
+        font-family: "gothic 12";
+      }
+
+      .text-max {
+        font-size: 23px;
+        font-family: "gothic M";
+        color: #8faadc;
+      }
+    }
+
+    .item-3-state,
+    .item-8-state,
+    .item-13-state {
+      grid-row: span 2;
+      display: flex;
+      flex-direction: column;
+
+      .top-text {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #253255;
+        justify-content: center;
+        font-family: "gothic 12";
+        color: #8faadc;
+      }
+
+      .bottom-text {
+        flex: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "gothic M";
+        font-size: 24px;
+
+        &.production {
+            color: var(--production);
+        }
+
+        &.storaging {
+            color: #FFC000;
+        }
+
+        &.charging{
+            color: #92D050;
+        }
+      }
+    }
+  }
+}

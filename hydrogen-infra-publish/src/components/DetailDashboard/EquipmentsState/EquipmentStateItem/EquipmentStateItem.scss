@@ -1,0 +1,179 @@
+.equipment-item-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &.clicked-item {
+    width: 800px;
+  }
+
+  .top {
+    flex: 1;
+    display: flex;
+    border-bottom: 1px solid #253255;
+
+    .title-name {
+      display: flex;
+      align-items: center;
+      color: #8faadc;
+      font-family: "gothic 12";
+      font-size: 15px;
+    }
+
+    .switch-soundess {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .items-mid {
+    padding: 30px 0;
+    display: flex;
+    flex: 6;
+    align-items: center;
+    justify-content: center;
+
+    &.clicked-item {
+      justify-content: space-between;
+      .mid {
+        flex: 1;
+        align-items: center;
+      }
+      .mid-values-graph {
+        flex: 2.5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+
+        .mid-values-chart {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .mid-vlues-chart-one {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+
+            .graph-text-value {
+              font-family: 'gothic M';
+              font-size: 23px;
+              .graph-text-unit {
+                font-family: 'gothic 12';
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .mid {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+
+      .middle-values {
+        display: flex;
+        gap: 5px;
+
+        .text-current {
+          font-size: 23px;
+          font-family: "gothic M";
+        }
+        .text-unit {
+          font-size: 18px;
+          font-family: "gothic 12";
+        }
+
+        .bottom-text {
+          flex: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "gothic M";
+          font-size: 24px;
+
+          &.production {
+            color: var(--production);
+          }
+
+          &.storaging {
+            color: #ffc000;
+          }
+
+          &.charging {
+            color: #92d050;
+          }
+        }
+
+        .vertical-line {
+          height: 25px; /* Высота линии равна высоте иконки */
+          border-left: 1px solid #35477b; /* Стиль вертикальной линии */
+          margin: 0 10px; /* Отступы вокруг линии */
+        }
+      }
+    }
+  }
+
+  .bottom-values {
+    flex: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .header-values {
+      flex: 1;
+      border-bottom: 1px solid #253255;
+      border-top: 1px solid #253255;
+      width: 100%;
+      display: flex;
+
+      span {
+        font-family: "gothic L";
+      }
+
+      .item-value-cnt {
+        color: #8faadc;
+        font-size: 19px;
+      }
+
+      .right-value {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-right: 1px solid #253255;
+        justify-content: center;
+      }
+
+      .left-value {
+        flex: 1;
+
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+      }
+    }
+    .title-name {
+      flex: 1.3;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      color: #8faadc;
+      font-family: "gothic 12";
+      @media (max-width: 1536px) {
+        font-size: 15px;
+      }
+    }
+  }
+}

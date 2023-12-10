@@ -55,6 +55,7 @@ const graphItems = [
     type: 10001,
     color_active: "#8fcc4f",
     color_disactive: "#c5e0b4",
+    color_stroke: "#50773d",
     title: "건전도",
   },
 ];

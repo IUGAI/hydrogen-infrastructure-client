@@ -1,35 +1,57 @@
+:root {
+  --main-backround: #030629;
+  --portlet: #1c2641;
+  --map: #253255 
+  --border-line: #253255; 
+  --readonly:#2B3A63;
+  --select-box: #35477B ;
+  --main-menu:#435A9B ;
+  --modal-header:#5E76BA ;
+  --button:#5E76BA ;
+  --cancel-button:#8497B0 ;
+  --graph-disactive:#9DC3E6 ;
+  --graph-success: #7CB953 ;
+  --graph: #C5E0B4 
+  --fail: #FE609A;
+  --default-font: #5E76BA;
+  --default-font-2: #8FAADC;
+  --production:#00B0F0;
+  --charging:#92D050 
+  --storage: #FFC000 
+
+}
+
 @font-face {
-    font-family: "gothic 12";
-    font-style: normal;
-    font-weight: 100;
-    src: url("../public/fonts/a고딕12.ttf") format("woff");
-  }
+  font-family: "gothic 12";
+  font-style: normal;
+  font-weight: 100;
+  src: url("../public/fonts/a고딕12.ttf") format("woff");
+}
 
-  @font-face {
-    font-family: "gothic 14";
-    font-style: normal;
-    font-weight: 100;
-    src: url("../public/fonts/a고딕14.ttf") format("woff");
-  }
+@font-face {
+  font-family: "gothic 14";
+  font-style: normal;
+  font-weight: 100;
+  src: url("../public/fonts/a고딕14.ttf") format("woff");
+}
 
-  @font-face {
-    font-family: "gothic L";
-    font-style: normal;
-    font-weight: 100;
-    src: url("../public/fonts/a각헤드L.ttf") format("woff");
-  }
+@font-face {
+  font-family: "gothic L";
+  font-style: normal;
+  font-weight: 100;
+  src: url("../public/fonts/a각헤드L.ttf") format("woff");
+}
 
-  
-  @font-face {
-    font-family: "gothic M";
-    font-style: bold;
-    font-weight: 900;
-    src: url("../public/fonts/a각헤드M.ttf") format("woff");
-  }
+@font-face {
+  font-family: "gothic M";
+  font-style: bold;
+  font-weight: 900;
+  src: url("../public/fonts/a각헤드M.ttf") format("woff");
+}
 
-  @font-face {
-    font-family: "gothic 16";
-    font-style: bold;
-    font-weight: 900;
-    src: url("../public/fonts/a고딕16.ttf") format("woff");
-  }
+@font-face {
+  font-family: "gothic 16";
+  font-style: bold;
+  font-weight: 900;
+  src: url("../public/fonts/a고딕16.ttf") format("woff");
+}
