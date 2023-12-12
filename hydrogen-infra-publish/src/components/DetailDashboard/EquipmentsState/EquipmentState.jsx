@@ -2,101 +2,74 @@ import "./EquipmentState.scss";
 import { useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import { BsArrows } from "react-icons/bs";
+import { styled, keyframes } from "styled-components";
 import EquipmentStateItem from "./EquipmentStateItem/EquipmentStateItem";
+import { equipmenst } from "../../../data/statisticData";
+import { useMediaQuery } from "react-responsive";
 
 function EquipmentState() {
-  const equipmenst = [
-    {
-      id: 10001,
-      type: 1,
-      failure: false,
-      max_capacity: 350,
-      procentage: 73.5,
-      soundness: 100,
-      temperature: 730,
-      equipment_name: "생산 1호기",
-      current_weight: 220,
-    },
-    {
-      id: 10002,
-      type: 1,
-      failure: true,
-      max_capacity: 300,
-      procentage: 58.7,
-      soundness: 10,
-      temperature: 755,
-      equipment_name: "생산 2호기",
-      current_weight: 176,
-    },
-    {
-      id: 10003,
-      type: 2,
-      failure: false,
-      max_capacity: 50,
-      procentage: 91.7,
-      soundness: 87,
-      temperature: -253,
-      equipment_name: "저장 1호기",
-      current_weight: 486,
-    },
-    {
-      id: 10004,
-      type: 3,
-      failure: false,
-      max_capacity: 900,
-      procentage: 34.5,
-      soundness: 74,
-      temperature: -253,
-      equipment_name: "충전 1호기",
-      current_weight: 528,
-    },
-    {
-      id: 100005,
-      type: 1,
-      failure: true,
-      max_capacity: 350,
-      procentage: 73.5,
-      soundness: 1,
-      temperature: 730,
-      equipment_name: "생산 1호기",
-      current_weight: 220,
-    },
-    // {
-    //   id: 100006,
-    //   type: 3,
-    //   failure: false,
-    //   max_capacity: 900,
-    //   procentage: 34.5,
-    //   soundness: 74,
-    //   temperature: -253,
-    //   equipment_name: "충전 1호기",
-    //   current_weight: 528,
-    // },
-    // {
-    //   id: 100007,
-    //   type: 1,
-    //   failure: true,
-    //   max_capacity: 350,
-    //   procentage: 73.5,
-    //   soundness: 1,
-    //   temperature: 730,
-    //   equipment_name: "생산 1호기",
-    //   current_weight: 220,
-    // },
-  ];
+  const isSmallScreen = useMediaQuery({ maxWidth: 1536 });
 
-  const [selectedItemId, setSelectedItemId] = useState('default');
- const [defaultvalue, setdefaultvalue] = useState('');
+  const FlexContainer = styled.div`
+    display: flex;
+    width: 100%;
+    padding: 0 10px;
+    flex-wrap: wrap;
+    heigh:100%;
+    @media (max-width: 1876px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
 
-  const handleItemClick = (clickedItemId) => {
+    @media (max-width: 1536px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  `;
+
+  const Item = styled.div`
+    flex: 0 0 auto;
+    border-radius: 5px;
+    margin: 5px 10px;
+    width: ${({ selected, defaultvalue, index, startReduce, endReduce }) => {
+      if (selected) {
+        return isSmallScreen ? "570px" : "940px";
+      } else if (
+        defaultvalue === "reduce" &&
+        index >= startReduce &&
+        index <= endReduce
+      ) {
+        return isSmallScreen ? "75px" : "140px"; // Ширина для первых четырех элементов
+      }
+      return isSmallScreen ? "160px" : "300px"; // Ширина по умолчанию для остальных элементов
+    }};
+
+    border: 1px solid #253255;
+    background-color: #212c4b;
+    margin-right: 5px;
+    height: 550px;
+
+    @media (max-width: 1536px) {
+      height: 380px;
+    }
+  `;
+
+  const [selectedItemId, setSelectedItemId] = useState("default");
+  const [defaultvalue, setdefaultvalue] = useState("");
+  const [startReduce, setStartReduce] = useState();
+  const [endReduce, setEndReduce] = useState();
+
+  const handleItemClick = (clickedItemId, index) => {
     setSelectedItemId(clickedItemId); // Установка ID выбранного элемента
-    setdefaultvalue('reduce');
+    setdefaultvalue("reduce");
+    const startreduce = Math.floor(index / 5) * 5;
+    const endreduce = startreduce + 4;
+    setStartReduce(startreduce);
+    setEndReduce(endreduce);
   };
 
   const reset = () => {
-     setSelectedItemId('default');
-     setdefaultvalue('');
-  }
+    setSelectedItemId("default");
+    setdefaultvalue("");
+  };
 
   return (
     <div className="equipments-state-content">
@@ -104,21 +77,38 @@ function EquipmentState() {
       <div className="top">
         <span className="title-text">시설물 상태</span>
         <div className="icons-left">
-          <BsArrows size={28} color="#00B0F0"  onClick={reset}/>
+          <BsArrows size={28} color="#00B0F0" onClick={reset} />
           <FiPlus size={28} color="#00B0F0" />
         </div>
       </div>
       <div className="bottom">
-        <div className="flex-container">
+        <FlexContainer>
           {equipmenst.map((item, index) => (
-            <div className="item" key={index}>
-              <EquipmentStateItem item={item}
-              onClick={handleItemClick}
-              isSelected={selectedItemId === item.id ? 'clicked'  : defaultvalue === 'reduce' ?  "reduce" : 'default'}
+            <Item
+              selected={selectedItemId === item.id}
+              defaultvalue={defaultvalue}
+              index={index}
+              startReduce={startReduce}
+              endReduce={endReduce}
+              key={index}
+            >
+              <EquipmentStateItem
+                item={item}
+                index={index}
+                onClick={handleItemClick}
+                isSelected={
+                  selectedItemId === item.id
+                    ? "clicked"
+                    : defaultvalue === "reduce" &&
+                      index >= startReduce &&
+                      index <= endReduce
+                    ? "reduce"
+                    : "default"
+                }
               />
-            </div>
+            </Item>
           ))}
-        </div>
+        </FlexContainer>
       </div>
     </div>
   );

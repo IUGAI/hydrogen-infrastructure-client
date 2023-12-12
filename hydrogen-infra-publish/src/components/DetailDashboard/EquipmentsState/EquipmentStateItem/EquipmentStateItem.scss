@@ -3,13 +3,14 @@
   display: flex;
   flex-direction: column;
 
-  &.clicked-item {
-    width: 800px;
-  }
+  // &.clicked-item {
+  //   width: 900px;
+  // }
 
   .top {
     flex: 1;
     display: flex;
+    justify-content: space-between;
     border-bottom: 1px solid #253255;
 
     .title-name {
@@ -18,6 +19,9 @@
       color: #8faadc;
       font-family: "gothic 12";
       font-size: 15px;
+      @media (max-width: 1536px) {
+        font-size: 13px;
+      }
     }
 
     .switch-soundess {
@@ -28,7 +32,6 @@
   }
 
   .items-mid {
-    padding: 30px 0;
     display: flex;
     flex: 6;
     align-items: center;
@@ -37,18 +40,98 @@
     &.clicked-item {
       justify-content: space-between;
       .mid {
-        flex: 1;
         align-items: center;
       }
       .mid-values-graph {
-        flex: 2.5;
+        flex: 1.5;
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100%;
+        @media (max-width: 1536px) {
+          height: 100%;
+          flex: 3;
+          align-items: start;
+        }
+        .mid-vlues-chart-one-bar {
+          width: 580px;
+          position: relative;
+          margin-right: 10px;
+          height: 90%;
+
+          @media (max-width: 1536px) {
+            width: 400px;
+            height: 100%;
+          }
+
+          .graphs-value-item {
+            position: absolute;
+            bottom: 0;
+            top: 10px;
+            left: 40px;
+            display: flex;
+            right: 20px;
+            height: 100%;
+
+            .item-value {
+              align-items: flex-end;
+              height: 100%;
+              opacity: 1;
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+
+              .time-graph-text {
+                transform: rotate(-35deg);
+                color: #8faadc;
+                font-family: "gothic l";
+                font-size: 13px;
+                margin-right: 10px;
+
+                @media (max-width: 1536px) {
+                  font-size: 10px;
+                }
+              }
+            }
+          }
+
+          .wrap-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: right;
+            align-items: center;
+            margin-bottom: -10px;
+
+            @media (max-width: 1536px) {
+              gap: 5px;
+            }
+
+            .text-container {
+              text-align: right;
+              width: 30px;
+              p {
+                color: #8faadc;
+                font-size: 12px;
+                font-family: "gothic l";
+
+                @media (max-width: 1536px) {
+                  font-size: 10px;
+                }
+              }
+            }
+
+            .vertical-line-s {
+              border: 1px solid #2f3f6c; /* Change color by modifying the hex code */
+              width: 90%; /* Adjust the width as needed */
+              margin: 20px 0; /* Adjust top and bottom margins as needed */
+            }
+          }
+        }
 
         .mid-values-chart {
           display: flex;
+          border: 1px;
           align-items: center;
           justify-content: center;
 
@@ -58,12 +141,22 @@
             justify-content: space-around;
             align-items: center;
 
+            @media (max-width: 1536px) {
+              justify-content: space-around;
+            }
             .graph-text-value {
-              font-family: 'gothic M';
+              font-family: "gothic M";
               font-size: 23px;
-              .graph-text-unit {
-                font-family: 'gothic 12';
+
+              @media (max-width: 1536px) {
                 font-size: 14px;
+              }
+              .graph-text-unit {
+                font-family: "gothic 12";
+                font-size: 14px;
+                @media (max-width: 1536px) {
+                  font-size: 11px;
+                }
               }
             }
           }
@@ -81,15 +174,22 @@
 
       .middle-values {
         display: flex;
+        align-items: center;
         gap: 5px;
 
         .text-current {
           font-size: 23px;
           font-family: "gothic M";
+          @media (max-width: 1536px) {
+            font-size: 15px;
+          }
         }
         .text-unit {
           font-size: 18px;
           font-family: "gothic 12";
+          @media (max-width: 1536px) {
+            font-size: 15px;
+          }
         }
 
         .bottom-text {
@@ -99,6 +199,9 @@
           justify-content: center;
           font-family: "gothic M";
           font-size: 24px;
+          @media (max-width: 1536px) {
+            font-size: 15px;
+          }
 
           &.production {
             color: var(--production);
@@ -134,14 +237,23 @@
       border-top: 1px solid #253255;
       width: 100%;
       display: flex;
+      justify-content: space-evenly;
 
       span {
         font-family: "gothic L";
+
+        @media (max-width: 1536px) {
+          font-size: 14px;
+        }
       }
 
       .item-value-cnt {
         color: #8faadc;
         font-size: 19px;
+
+        @media (max-width: 1536px) {
+          font-size: 14px;
+        }
       }
 
       .right-value {
@@ -151,15 +263,20 @@
         gap: 10px;
         border-right: 1px solid #253255;
         justify-content: center;
+        @media (max-width: 1536px) {
+          gap: 3px;
+        }
       }
 
       .left-value {
         flex: 1;
-
         display: flex;
         align-items: center;
         gap: 10px;
         justify-content: center;
+        @media (max-width: 1536px) {
+          gap: 3px;
+        }
       }
     }
     .title-name {
@@ -172,7 +289,7 @@
       color: #8faadc;
       font-family: "gothic 12";
       @media (max-width: 1536px) {
-        font-size: 15px;
+        font-size: 13px;
       }
     }
   }

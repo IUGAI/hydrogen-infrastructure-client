@@ -15,7 +15,7 @@
     }
   }
   .top {
-    height: 70px;
+    height: 50px;
     border: 1px solid #253255;
     display: flex;
     justify-content: space-between;
@@ -55,12 +55,17 @@
   }
 
   .bottom {
-    flex: 3;
+    flex: 1;
     display: grid;
     justify-content: space-around;
-    grid-template-columns: 1fr 1fr 1fr;
-    padding: 0 10px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 5px 15px;
     align-items: center;
+
+    @media (max-width: 1536px) {
+      height: 50px;
+      padding: 10px 15px;
+    }
 
     &.no-border-top {
       border: 1px solid #253255;
