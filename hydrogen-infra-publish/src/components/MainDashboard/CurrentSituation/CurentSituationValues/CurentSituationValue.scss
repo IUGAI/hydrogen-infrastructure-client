@@ -1,7 +1,8 @@
 .curent-situation-value {
   border: 1px solid #253255;
-  margin: 0px 10px;
   display: flex;
+  margin: 7px;
+  height: 100%;
   align-items: center;
   border-radius: 10px;
   background-color: #212c4b;
@@ -29,7 +30,10 @@
   }
 
   .bottom-value {
-    padding: 35px 0;
+    padding: 25px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex: 3;
 
     @media (max-width: 1536px) {
@@ -38,7 +42,7 @@
 
     .curent-text-quantity {
       font-family: "gothic M";
-      font-size: 29px;
+      font-size: 19px;
       color: white;
 
       @media (max-width: 1636px) {

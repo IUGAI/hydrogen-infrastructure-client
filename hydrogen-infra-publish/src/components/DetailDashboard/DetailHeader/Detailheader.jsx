@@ -2,30 +2,12 @@ import ButtonCustum from "../../Buttons/ButtonCustum";
 import { IoPartlySunnyOutline } from "react-icons/io5";
 import Select from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
-
+import { useMediaQuery } from "react-responsive";
 import MenuItem from "@mui/material/MenuItem";
 import "./Detailheader.scss";
 import { useState } from "react";
 
-const CustomSelect = styled(Select)({
-  width: "240px",
-  backgroundColor: "#212c4b",
-  border: "1px solid #253255",
-  height: "70%",
-  color: "#8faadc",
-  fontFamily: "ghotic 12",
-  fontSize: "16px",
-  '&:focus': {
-    backgroundColor: '#212c4b', // Цвет фона при фокусе
-    '& .MuiSelect-icon': {
-      color: 'red', // Цвет иконки при фокусе
-    },
-  },
-  '& .MuiSelect-icon': {
-    color: '#8faadc', // Цвет иконки
-    backgroundColor: '#253255'
-  },
-});
+
 
 const listStyle = {
   backgroundColor: "#212c4b",
@@ -38,6 +20,37 @@ const itemStyle = {
 
 function Detailheader() {
   const [selecteditem, setSelectedItem] = useState(1);
+  const isSmallScreen = useMediaQuery({ maxWidth: 1536 });
+
+  const CustomSelect = styled(Select)({
+    width: isSmallScreen ? "205px": "240px",
+    backgroundColor: "#212c4b",
+    border: "1px solid #253255",
+    height: "60%",
+    color: "#8faadc",
+    fontFamily: "ghotic 12",
+    fontSize: "16px",
+    '&:focus': {
+      backgroundColor: '#212c4b', // Цвет фона при фокусе
+      '& .MuiSelect-icon': {
+        color: 'red', // Цвет иконки при фокусе
+      },
+    },
+    '& .MuiSelect-icon': {
+      color: '#8faadc', // Цвет иконки
+      backgroundColor: '#253255'
+    },
+  });
+
+  const listStyle = {
+    backgroundColor: "#212c4b",
+    color: "white",
+  };
+  
+  const itemStyle = {
+    fontSize: "14px",
+  };
+  
 
   const handlechange = (event) => {
     setSelectedItem(event.target.value);
@@ -53,12 +66,6 @@ function Detailheader() {
         <IoPartlySunnyOutline size={27} color="#8FAADC" />
         <div className="vertical-line"></div>
         <span className="detail-header-celcious">12.6℃ </span>
-        {/* <select id="cars" name="cars" className="header-select">
-          <option selected disabled>
-            사업소 선택
-          </option>
-          <option value="volvo">Volvo</option>
-        </select> */}
         <CustomSelect
           displayEmpty
           inputProps={{ "aria-label": "Without label" }}

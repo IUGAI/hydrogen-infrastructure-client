@@ -12,14 +12,14 @@ function Graph({items}) {
     const COLORS = [color_disactive, color_active];
     return (
         <div>
-             <PieChart width={isLargeScreen ?  150 : 200} height={isLargeScreen ? 150 : 220}>
+             <PieChart width={isLargeScreen ?  150 : 210} height={isLargeScreen ? 150 : 230}>
           <Pie
             data={items.data}
-            cx={isLargeScreen ? 68 : 93}
+            cx={isLargeScreen ? 68 : 98}
             cy={isLargeScreen ? 70 :  110}
             stroke={color_stroke}
-            innerRadius={ isLargeScreen ? 40 : 55}
-            outerRadius={isLargeScreen ? 55 : 78}
+            innerRadius={ isLargeScreen ? 35 : 60}
+            outerRadius={isLargeScreen ? 55 : 88}
             dataKey="value"
           >
             {data.map((entry, index) => (

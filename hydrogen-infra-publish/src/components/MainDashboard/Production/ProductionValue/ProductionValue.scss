@@ -1,13 +1,16 @@
 .production-value-content {
   display: flex;
   flex-direction: column;
+  height: 95%;
   background-color: #212c4b;
   border-radius: 5px;
+  justify-content: center;
   margin: 5px;
   border: 1px solid #253255;
 
   .prod-item {
     display: flex;
+    flex: 1;
     padding: 20px 0;
     justify-content: center;
     align-items: center;
@@ -23,6 +26,7 @@
     }
 
     .prod-text-value {
+
       font-family: "gothic M";
       font-size: 19px;
 

@@ -6,41 +6,40 @@ import MenuItem from "@mui/material/MenuItem";
 import { useState } from "react";
 
 function StationSoundnessState() {
+  const [selecteditem, setSelectedItem] = useState(1);
 
-    const [selecteditem, setSelectedItem] = useState(1);
+  const handlechange = (event) => {
+    setSelectedItem(event.target.value);
+  };
 
-    const handlechange = (event) => {
-      setSelectedItem(event.target.value);
-    };
+  const CustomSelect = styled(Select)({
+    width: "150px",
+    backgroundColor: "#212c4b",
+    border: "1px solid #253255",
+    height: "70%",
+    color: "#8faadc",
+    fontFamily: "ghotic 12",
+    fontSize: "16px",
+    "&:focus": {
+      backgroundColor: "#212c4b", 
+      "& .MuiSelect-icon": {
+        color: "red", 
+      },
+    },
+    "& .MuiSelect-icon": {
+      color: "#8faadc", 
+      backgroundColor: "#253255",
+    },
+  });
 
-    const CustomSelect = styled(Select)({
-        width: "150px",
-        backgroundColor: "#212c4b",
-        border: "1px solid #253255",
-        height: "70%",
-        color: "#8faadc",
-        fontFamily: "ghotic 12",
-        fontSize: "16px",
-        '&:focus': {
-          backgroundColor: '#212c4b', // Цвет фона при фокусе
-          '& .MuiSelect-icon': {
-            color: 'red', // Цвет иконки при фокусе
-          },
-        },
-        '& .MuiSelect-icon': {
-          color: '#8faadc', // Цвет иконки
-          backgroundColor: '#253255'
-        },
-      });
-      
-      const listStyle = {
-        backgroundColor: "#212c4b",
-        color: "white",
-      };
-      
-      const itemStyle = {
-        fontSize: "14px",
-      };
+  const listStyle = {
+    backgroundColor: "#212c4b",
+    color: "white",
+  };
+
+  const itemStyle = {
+    fontSize: "14px",
+  };
 
   return (
     <div className="station-soundness-state-content">
@@ -54,14 +53,18 @@ function StationSoundnessState() {
           MenuProps={{ PaperProps: { style: listStyle } }}
           onChange={handlechange}
         >
-          <MenuItem value={1}  style={itemStyle}>
-          금일
+          <MenuItem value={1} style={itemStyle}>
+            <span>금일</span>
           </MenuItem>
           <MenuItem value={10} style={itemStyle}>
-            금주
+            <span>금주</span>
           </MenuItem>
-          <MenuItem value={20} style={itemStyle}>금월</MenuItem>
-          <MenuItem value={30} style={itemStyle}>금년</MenuItem>
+          <MenuItem value={20} style={itemStyle}>
+            <span>금월</span>
+          </MenuItem>
+          <MenuItem value={30} style={itemStyle}>
+            <span>금년</span>
+          </MenuItem>
         </CustomSelect>
       </div>
       <div className="bottom">
@@ -74,8 +77,8 @@ function StationSoundnessState() {
           </span>
         </div>
         <div className="item item-3-state">
-               <div className="top-text">가동률</div>
-               <div className="bottom-text production">66.1%</div>
+          <div className="top-text">가동률</div>
+          <div className="bottom-text production">66.1%</div>
         </div>
         <div className="item item-center">
           <span>최대 생산량</span>
@@ -94,8 +97,8 @@ function StationSoundnessState() {
           </span>
         </div>
         <div className="item item-8-state">
-        <div className="top-text">저장률</div>
-               <div className="bottom-text storaging">91.7%</div>
+          <div className="top-text">저장률</div>
+          <div className="bottom-text storaging">91.7%</div>
         </div>
         <div className="item item-center">
           <span>최대 저장량</span>
@@ -114,8 +117,8 @@ function StationSoundnessState() {
           </span>
         </div>
         <div className="item item-13-state">
-        <div className="top-text">사용률</div>
-               <div className="bottom-text charging">75.5%</div>
+          <div className="top-text">사용률</div>
+          <div className="bottom-text charging">75.5%</div>
         </div>
         <div className="item item-center">
           <span>최대 충전량</span>

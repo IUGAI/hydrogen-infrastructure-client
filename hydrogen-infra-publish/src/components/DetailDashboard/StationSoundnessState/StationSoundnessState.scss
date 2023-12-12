@@ -34,12 +34,20 @@
         font-size: 15px;
       }
     }
+    span {
+      @media (max-width: 1536px) {
+        font-size: 12px;
+      }
+    }
   }
   .bottom {
     display: grid;
-    height: 600px;
-    padding: 0 10px;
+    height: 500px;
+    padding: 5px 10px;
     grid-template-columns: 1fr 1fr 1fr;
+    @media (max-width: 1536px) {
+      height: 400px;
+    }
 
     .item-center {
       display: flex;
@@ -47,6 +55,13 @@
       color: #8faadc;
       align-items: center;
       justify-content: center;
+  
+      span {
+        @media (max-width: 1536px) {
+          font-size: 12px;
+        }
+      }
+  
     }
 
     .item-left {
@@ -64,16 +79,26 @@
       .text-current {
         font-size: 23px;
         font-family: "gothic M";
+        @media (max-width: 1536px) {
+          font-size: 14px;
+        }
+        
       }
       .text-unit {
-        font-size: 18px;
+        font-size: 23px;
         font-family: "gothic 12";
+        @media (max-width: 1536px) {
+          font-size: 14px;
+        }
       }
 
       .text-max {
         font-size: 23px;
         font-family: "gothic M";
         color: #8faadc;
+        @media (max-width: 1536px) {
+          font-size: 14px;
+        }
       }
     }
 
@@ -92,6 +117,9 @@
         justify-content: center;
         font-family: "gothic 12";
         color: #8faadc;
+        @media (max-width: 1536px) {
+          font-size: 14px;
+        }
       }
 
       .bottom-text {
@@ -101,6 +129,10 @@
         justify-content: center;
         font-family: "gothic M";
         font-size: 24px;
+
+        @media (max-width: 1536px) {
+          font-size: 14px;
+        }
 
         &.production {
             color: var(--production);

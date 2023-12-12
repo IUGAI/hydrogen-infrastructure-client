@@ -3,6 +3,9 @@
     height:250px;
     position: relative;
     flex-direction: column;
+    @media (max-width: 1536px) {
+      height:200px;
+    }
   
     img {
       position: absolute;
@@ -42,6 +45,7 @@
       padding: 10px 0;
       grid-template-columns: 1fr 1fr;
       grid-template-rows:  1fr 1fr;
+
      
   
       .item-work{
@@ -52,14 +56,23 @@
         align-items: center;
         padding: 0 10px;
         background-color: #212c4b;
+        @media (max-width: 1536px) {
+          margin: 10px 20px;
+        }
 
         .item-work-title{
             color: #8faadc;
+            @media (max-width: 1536px) {
+              font-size: 13px;
+            }
         }
 
         .item-work-value{
             font-family: 'gothic M';
             font-size: 25px;
+            @media (max-width: 1536px) {
+              font-size: 17px;
+            }
         }
       }
     }

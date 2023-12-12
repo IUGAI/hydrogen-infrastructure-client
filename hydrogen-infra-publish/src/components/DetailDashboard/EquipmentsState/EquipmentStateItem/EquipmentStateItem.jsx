@@ -2,89 +2,31 @@
 import "./EquipmentStateItem.scss";
 import { RxDotFilled } from "react-icons/rx";
 import { styled, keyframes } from "styled-components";
-import { BsBorder, BsSpeedometer } from "react-icons/bs";
+import { BsSpeedometer } from "react-icons/bs";
 import Switch from "@mui/material/Switch";
 import { FaTemperatureThreeQuarters } from "react-icons/fa6";
-import { useState, PureComponent } from "react";
+import { useState } from "react";
 const label = { inputProps: { "aria-label": "Switch demo" } };
 import { PieChart, Pie, Cell } from "recharts";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-} from "recharts";
+import { statisticbyhours } from "../../../../data/statisticData";
+import { useMediaQuery } from "react-responsive";
 
-function EquipmentStateItem({ item, onClick, isSelected }) {
+function EquipmentStateItem({ item, index, onClick, isSelected }) {
   const [detail, setDetail] = useState(false);
+  const isSmallScreen = useMediaQuery({ maxWidth: 1536 });
 
   const RADIAN = Math.PI / 180;
   const data = [
-    { name: "A", value: 30, color: "#2194b2" },
-    { name: "B", value: 25, color: "#68c77f" },
-    { name: "C", value: 35, color: "#f49e00" },
+    { name: "A", value: 200, dip: 100 },
+    { name: "B", value: 200, dip: 300 },
+    { name: "C", value: 200, dip: 500 },
+    { name: "D", value: 200, dip: 700 },
   ];
 
-  const data_Plot = [
-    {
-      name: "1월",
-      pv: 2400,
-    },
-    {
-      name: "2월",
-      pv: 1398,
-    },
-    {
-      name: "3월",
-      pv: 9800,
-
-    },
-    {
-      name: "4월",
-      pv: 3908,
-    },
-    {
-      name: "5월",
-      pv: 4800,
-    },
-    {
-      name: "6월",
-      pv: 3800,
-    },
-    {
-      name: "7월",
-      pv: 4300,
-    },
-    {
-      name: "8월",
-      pv: 4300,
-    },
-    {
-      name: "9월",
-      pv: 4800,
-    },
-    {
-      name: "10월",
-      pv: 4300,
-    },
-    {
-      name: "11월",
-      pv: 4300,
-    },
-    {
-      name: "12월",
-      pv: 4300,
-    },
-    
-  ];
-  const cx = 145;
-  const cy = 130;
-  const iR = 70;
-  const oR = 100;
-  const value = 23;
+  const cx = isSmallScreen ? 90 : 145;
+  const cy = isSmallScreen ? 130 : 130;
+  const iR = isSmallScreen ? 50 : 70;
+  const oR = isSmallScreen ? 70 : 100;
 
   const needle = (value, data, cx, cy, iR, oR, color) => {
     let total = 0;
@@ -105,6 +47,9 @@ function EquipmentStateItem({ item, onClick, isSelected }) {
     const xp = x0 + length * cos;
     const yp = y0 + length * sin;
 
+    const textX = x0;
+    const textY = y0 + r + 13;
+
     return [
       <circle cx={x0} cy={y0} r={r} fill={color} stroke="none" />, // eslint-disable-next-line react/jsx-key
       <path
@@ -112,10 +57,62 @@ function EquipmentStateItem({ item, onClick, isSelected }) {
         stroke="#none"
         fill={color}
       />,
+      <text
+        key="text"
+        x={textX}
+        y={textY}
+        textAnchor="middle"
+        fill="#fff"
+        style={{ fontSize: isSmallScreen ? "10px" : "14px" }}
+      >
+        bar
+      </text>,
+    ];
+  };
+
+  const needle_temperature = (value, data, cx, cy, iR, oR, color) => {
+    let total = 0;
+    data.forEach((v) => {
+      total += v.value;
+    });
+    const ang = 180.0 * (1 - value / total);
+    const length = (iR + 2 * oR) / 3;
+    const sin = Math.sin(-RADIAN * ang);
+    const cos = Math.cos(-RADIAN * ang);
+    const r = 5;
+    const x0 = cx + 5;
+    const y0 = cy + 5;
+    const xba = x0 + r * sin;
+    const yba = y0 - r * cos;
+    const xbb = x0 - r * sin;
+    const ybb = y0 + r * cos;
+    const xp = x0 + length * cos;
+    const yp = y0 + length * sin;
+
+    const textX = x0;
+    const textY = y0 + r + 15;
+
+    return [
+      <circle cx={x0} cy={y0} r={r} fill={color} stroke="none" />, // eslint-disable-next-line react/jsx-key
+      <path
+        d={`M${xba} ${yba}L${xbb} ${ybb} L${xp} ${yp} L${xba} ${yba}`} // eslint-disable-next-line react/jsx-key
+        stroke="#none"
+        fill={color}
+      />,
+      <text
+        key="text"
+        x={textX}
+        y={textY}
+        textAnchor="middle"
+        fill="#fff"
+        style={{ fontSize: isSmallScreen ? "10px" : "14px" }}
+      >
+        ℃
+      </text>,
     ];
   };
   const handleClick = () => {
-    onClick(item.id);
+    onClick(item.id, index);
   };
 
   let backgroundColor =
@@ -148,8 +145,8 @@ function EquipmentStateItem({ item, onClick, isSelected }) {
 `;
 
   const StyledSoundness = styled.div`
-    height: 18px;
-    width: 75px;
+    height: ${isSmallScreen ? "15px" : "18px"};
+    width: ${isSmallScreen ? "40px" : "75px"};
     border-radius: 10px;
     border: 1px solid #35477b;
     background: linear-gradient(to left, #92d050 0%, #212c4b ${soundness}%);
@@ -169,12 +166,6 @@ function EquipmentStateItem({ item, onClick, isSelected }) {
         ? "linear-gradient(to top, #ffc926 20%, #ffe594 91%)"
         : "linear-gradient(to top, #62943b 20% , #92d050 91%)"};
     transition: 0.3s;
-    box-shadow: ${(props) =>
-      props.x === 1
-        ? "0 0 10px 5px rgba(17, 139, 227, 0.5)"
-        : props.x === 2
-        ? "0 0 10px 5px rgba(115,98,47,255)"
-        : "0 0 10px 5px rgba(77,109,77,25)"};
 
     img {
       width: 40px;
@@ -189,10 +180,21 @@ function EquipmentStateItem({ item, onClick, isSelected }) {
 
   const BatteryPill = styled.div`
     position: relative;
-    width: ${(props) => (props.isSelected === "reduce" ? "60px" : "160px")};
-    height: 180px;
-    border-radius: 3rem;
+    width: ${(props) =>
+      props.isSelected === "reduce"
+        ? "30px"
+        : isSmallScreen
+        ? "100px"
+        : " 160px"};
+    height: ${isSmallScreen ? "120px" : "180px"};
+    border-radius: ${isSmallScreen ? "2rem" : "3rem"};
     background: #1c2641;
+    box-shadow: ${(props) =>
+      props.x === 1
+        ? "0 0 10px 5px rgba(17, 139, 227, 0.5)"
+        : props.x === 2
+        ? "0 0 10px 5px rgba(115,98,47,255)"
+        : "0 0 10px 5px rgba(77,109,77,25)"};
     border: 1px solid #253255;
     justify-self: flex-end;
   `;
@@ -200,12 +202,80 @@ function EquipmentStateItem({ item, onClick, isSelected }) {
   const BatteryLevel = styled.div`
     position: absolute;
     inset: 0;
-    padding: 30px;
-    border-radius: 3rem;
+    border-radius: ${isSmallScreen ? "2rem" : "3rem"};
     overflow: hidden;
   `;
 
+  const StyledItem = styled.div`
+    height: 80%;
+    border-radius: 3rem;
+    background-color: #2b3a63;
+    width: ${isSmallScreen ? "10px" : "23px"};
+    ${(props) => (props.x === 0 ? "opacity: 0.8;" : "")}
+    margin: 0 7px;
+    padding: 1px;
+    position: relative;
+
+    .battery__level {
+      position: absolute;
+      inset: 0;
+      border-radius: 3rem;
+      border: none;
+      overflow: hidden;
+
+      .battery__liquid {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        ${(props) => (props.x === 0 ? "" : "border-top: 2px solid;")}
+
+        right: 0;
+        height: ${(props) => props.x}%;
+        background: linear-gradient(
+          to top,
+          #206cd5 20%,
+          #0796cf 61%,
+          #127aaf 91%
+        );
+        ${(props) => (props.x === 0 ? "" : "box-shadow:  0 0 10px 1px #fff;")}
+      }
+    }
+  `;
+
   const colorFailure = failure ? "#fe609a" : "#00B0F0";
+
+  const renderCustomizedLabel = ({
+    cx,
+    cy,
+    midAngle,
+    innerRadius,
+    outerRadius,
+    dip,
+  }) => {
+    const RADIAN = Math.PI / 180;
+    const radius = innerRadius + (outerRadius - innerRadius) * 1.5;
+
+    // Угол для середины сегмента
+    const mainAngle = midAngle > 180 ? midAngle - 360 : midAngle;
+    const sinMain = Math.sin(-mainAngle * RADIAN);
+    const cosMain = Math.cos(-mainAngle * RADIAN);
+
+    const labelX = cx + radius * cosMain;
+    const labelY = cy + radius * sinMain;
+
+    return (
+      <text
+        x={labelX}
+        y={labelY}
+        fill="#fff"
+        textAnchor={cosMain > 0 ? "start" : "end"}
+        dominantBaseline="central"
+        style={{ fontSize: isSmallScreen ? "10px" : "14px" }}
+      >
+        {dip}
+      </text>
+    );
+  };
 
   return (
     <div
@@ -242,7 +312,7 @@ function EquipmentStateItem({ item, onClick, isSelected }) {
 
       <div className={`items-mid ${backgroundColor}`}>
         <div className={`mid`}>
-          <BatteryPill isSelected={isSelected}>
+          <BatteryPill isSelected={isSelected} x={type}>
             <BatteryLevel x={type}>
               <BatteryLiquid x={type} procentage={procentage}>
                 {type === 1 ? (
@@ -289,8 +359,58 @@ function EquipmentStateItem({ item, onClick, isSelected }) {
             {!detail ? (
               <div className="mid-values-chart">
                 <div className="mid-vlues-chart-one">
-                  <PieChart width={290} height={200}>
+                  <PieChart
+                    width={isSmallScreen ? 200 : 295}
+                    height={isSmallScreen ? 160 : 200}
+                  >
+                    <defs>
+                      <linearGradient
+                        id="gradient1"
+                        x1="1"
+                        y1="0"
+                        x2="1"
+                        y2="1"
+                      >
+                        <stop offset="30%" stopColor="#35aaa8" />
+                        <stop offset="60%" stopColor="#1b8eb4" />
+                        <stop offset="90%" stopColor="#0778bd" />
+                      </linearGradient>
+                      <linearGradient
+                        id="gradient2"
+                        x1="0"
+                        y1="1"
+                        x2="1"
+                        y2="1"
+                      >
+                        <stop offset="30%" stopColor="#39afa7" />
+                        <stop offset="60%" stopColor="#53c295" />
+                        <stop offset="90%" stopColor="#73c973" />
+                      </linearGradient>
+                      <linearGradient
+                        id="gradient3"
+                        x1="0"
+                        y1="1"
+                        x2="1"
+                        y2="1"
+                      >
+                        <stop offset="30%" stopColor="#81cc62" />
+                        <stop offset="60%" stopColor="#b1cb38" />
+                        <stop offset="90%" stopColor="#d5c61f" />
+                      </linearGradient>
+                      <linearGradient
+                        id="gradient4"
+                        x1="0"
+                        y1="1"
+                        x2="1"
+                        y2="1"
+                      >
+                        <stop offset="30%" stopColor="#f49e00" />
+                        <stop offset="60%" stopColor="#dd5900" />
+                        <stop offset="90%" stopColor="#c12305" />
+                      </linearGradient>
+                    </defs>
                     <Pie
+                      labelLine={false}
                       dataKey="value"
                       startAngle={180}
                       endAngle={0}
@@ -299,14 +419,25 @@ function EquipmentStateItem({ item, onClick, isSelected }) {
                       cy={cy}
                       innerRadius={iR}
                       outerRadius={oR}
-                      fill="#8884d8"
-                      stroke="none"
+                      stroke="#5e76ba"
+                      label={renderCustomizedLabel}
                     >
                       {data.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={`url(#${
+                            index % 4 === 0
+                              ? "gradient1"
+                              : index % 4 === 1
+                              ? "gradient2"
+                              : index % 4 === 2
+                              ? "gradient3"
+                              : "gradient4"
+                          })`}
+                        />
                       ))}
                     </Pie>
-                    {needle(value, data, cx, cy, iR, oR, "#d0d000")}
+                    {needle(350, data, cx, cy, iR, oR, "#5e76ba")}
                   </PieChart>
                   <div className="text-graph-container">
                     <span className="graph-text-value">350</span>
@@ -315,7 +446,56 @@ function EquipmentStateItem({ item, onClick, isSelected }) {
                 </div>
 
                 <div className="mid-vlues-chart-one">
-                  <PieChart width={290} height={200}>
+                  <PieChart
+                    width={isSmallScreen ? 190 : 295}
+                    height={isSmallScreen ? 160 : 200}
+                  >
+                    <defs>
+                      <linearGradient
+                        id="gradient-1"
+                        x1="0"
+                        y1="1"
+                        x2="1"
+                        y2="1"
+                      >
+                        <stop offset="30%" stopColor="#2889a2" />
+                        <stop offset="60%" stopColor="#49a088" />
+                        <stop offset="90%" stopColor="#60af76" />
+                      </linearGradient>
+                      <linearGradient
+                        id="gradient-2"
+                        x1="0"
+                        y1="1"
+                        x2="1"
+                        y2="1"
+                      >
+                        <stop offset="30%" stopColor="#8dcd54" />
+                        <stop offset="60%" stopColor="#c2c92c" />
+                        <stop offset="90%" stopColor="#d4c61f" />
+                      </linearGradient>
+                      <linearGradient
+                        id="gradient-3"
+                        x1="0"
+                        y1="1"
+                        x2="1"
+                        y2="1"
+                      >
+                        <stop offset="30%" stopColor="#fcb600" />
+                        <stop offset="60%" stopColor="#f5a400" />
+                        <stop offset="90%" stopColor="#e36d00" />
+                      </linearGradient>
+                      <linearGradient
+                        id="gradient-4"
+                        x1="0"
+                        y1="1"
+                        x2="1"
+                        y2="1"
+                      >
+                        <stop offset="30%" stopColor="#dd5a00" />
+                        <stop offset="60%" stopColor="#d13500" />
+                        <stop offset="90%" stopColor="#c51000" />
+                      </linearGradient>
+                    </defs>
                     <Pie
                       dataKey="value"
                       startAngle={180}
@@ -323,45 +503,111 @@ function EquipmentStateItem({ item, onClick, isSelected }) {
                       data={data}
                       cx={cx}
                       cy={cy}
+                      label={renderCustomizedLabel}
                       innerRadius={iR}
+                      labelLine={false}
                       outerRadius={oR}
                       fill="#8884d8"
-                      stroke="none"
+                      stroke="#5e76ba"
                     >
                       {data.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={`url(#${
+                            index % 4 === 0
+                              ? "gradient-1"
+                              : index % 4 === 1
+                              ? "gradient-2"
+                              : index % 4 === 2
+                              ? "gradient-3"
+                              : "gradient-4"
+                          })`}
+                        />
                       ))}
                     </Pie>
-                    {needle(value, data, cx, cy, iR, oR, "#d0d000")}
+                    {needle_temperature(730, data, cx, cy, iR, oR, "#5e76ba")}
                   </PieChart>
                   <div className="text-graph-container">
                     <span className="graph-text-value">730</span>
-                    <span className="grapht-text-unit"> ℃</span>
+                    <span className="graph-text-unit"> ℃</span>
                   </div>
                 </div>
               </div>
             ) : (
-              <div className="mid-vlues-chart-one">
-              <BarChart
-                width={500}
-                height={300}
-                data={data_Plot}
-                margin={{
-                  top: 5,
-                  right: 20,
-                  left: 20,
-                  bottom: 5,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="pv" fill="#00B0F0" 
-                width={10}
-                />
-              </BarChart>
+              <div className="mid-vlues-chart-one-bar">
+                <div className="wrap-container">
+                  <div className="text-container">
+                    <p>32kg</p>
+                  </div>
+                  <div className="vertical-line-s"></div>
+                </div>
+                <div className="wrap-container">
+                  <div className="text-container">
+                    <p>28kg</p>
+                  </div>
+                  <div className="vertical-line-s"></div>
+                </div>
+                <div className="wrap-container">
+                  <div className="text-container">
+                    <p>24kg</p>
+                  </div>
+                  <div className="vertical-line-s"></div>
+                </div>
+                <div className="wrap-container">
+                  <div className="text-container">
+                    <p>20kg</p>
+                  </div>
+                  <div className="vertical-line-s"></div>
+                </div>
+
+                <div className="wrap-container">
+                  <div className="text-container">
+                    <p>16kg</p>
+                  </div>
+                  <div className="vertical-line-s"></div>
+                </div>
+                { isSmallScreen ? "" :
+                  <div className="wrap-container">
+                    <div className="text-container">
+                      <p>12kg</p>
+                    </div>
+                    <div className="vertical-line-s"></div>
+                  </div>
+                }
+                <div className="wrap-container">
+                  <div className="text-container">
+                    <p>8kg</p>
+                  </div>
+                  <div className="vertical-line-s"></div>
+                </div>
+                {isSmallScreen ? (
+                  ""
+                ) : (
+                  <div className="wrap-container">
+                    <div className="text-container">
+                      <p>4kg</p>
+                    </div>
+                    <div className="vertical-line-s"></div>
+                  </div>
+                )}
+                <div className="wrap-container">
+                  <div className="text-container">
+                    <p className="none-text">0kg</p>
+                  </div>
+                  <div className="vertical-line-s"></div>
+                </div>
+                <div className="graphs-value-item">
+                  {statisticbyhours.map((item, index) => (
+                    <div className="item-value">
+                      <StyledItem x={item.quantity}>
+                        <div className="battery__level">
+                          <div className="battery__liquid" />
+                        </div>
+                      </StyledItem>
+                      <span className="time-graph-text">{item.time}h</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </div>
