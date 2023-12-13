@@ -11,10 +11,12 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { useMediaQuery } from "react-responsive";
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
+
 
 const rows = [
   createData("사울", "생산", "서울 B 사업소", "1/1", "중단"),
@@ -98,26 +100,31 @@ const CellState = styled(TableCell)`
   }
 `;
 
-const ScrollableContainer = styled(Paper)({
-  maxHeight: "450px",
-  overflowY: "auto",
-  overflowX: "auto",
-  "&::-webkit-scrollbar": {
-    width: "5px",
-  },
-  "&::-webkit-scrollbar-track": {
-    background: "#1c2641",
-  },
-  "&::-webkit-scrollbar-thumb": {
-    background: "#253255",
-    borderRadius: "1px",
-  },
-  "&::-webkit-scrollbar-thumb:hover": {
-    background: "#1c2641",
-  },
-});
+
 
 function StationList() {
+
+  const isSmallScreen = useMediaQuery({ maxWidth: 1536 });
+
+  const ScrollableContainer = styled(Paper)({
+  
+    maxHeight: isSmallScreen ? "450px"  : "490px",
+    overflowY: "auto",
+    overflowX: "auto",
+    "&::-webkit-scrollbar": {
+      width: "5px",
+    },
+    "&::-webkit-scrollbar-track": {
+      background: "#1c2641",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      background: "#253255",
+      borderRadius: "1px",
+    },
+    "&::-webkit-scrollbar-thumb:hover": {
+      background: "#1c2641",
+    },
+  });
   return (
     <div className="station-list-content">
       <div className="top">
@@ -136,7 +143,7 @@ function StationList() {
             초기화
           </Button>
           <input type="text" placeholder="검색" className="input-search" />
-          <IoIosSearch size={24} color="#00B0F0" className="search-icon" />
+          {/* <IoIosSearch size={24} color="#00B0F0" className="search-icon" /> */}
         </div>
         <div className="station-table">
           <ScrollableContainer>

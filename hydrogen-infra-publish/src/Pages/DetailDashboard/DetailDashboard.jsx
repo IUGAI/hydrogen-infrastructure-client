@@ -26,6 +26,7 @@ function DetailDashboard() {
                 <div className="item-5 item"><StationSoundnessState/></div>
                 <div className="item-6 item"><CctvSituation/></div>
                 <div className="item-7 item"><WorkSituation/></div>
+                {/* <div className="item-8 item"><EquipmentStateTest/></div> */}
             </div>
         </div>
     )

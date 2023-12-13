@@ -25,8 +25,8 @@ function EquipmentStateItem({ item, index, onClick, isSelected }) {
 
   const cx = isSmallScreen ? 90 : 145;
   const cy = isSmallScreen ? 130 : 130;
-  const iR = isSmallScreen ? 50 : 70;
-  const oR = isSmallScreen ? 70 : 100;
+  const iR = isSmallScreen ? 50 : 60;
+  const oR = isSmallScreen ? 70 : 90;
 
   const needle = (value, data, cx, cy, iR, oR, color) => {
     let total = 0;
@@ -182,7 +182,7 @@ function EquipmentStateItem({ item, index, onClick, isSelected }) {
     position: relative;
     width: ${(props) =>
       props.isSelected === "reduce"
-        ? "30px"
+        ? "40px"
         : isSmallScreen
         ? "100px"
         : " 160px"};
@@ -242,7 +242,7 @@ function EquipmentStateItem({ item, index, onClick, isSelected }) {
     }
   `;
 
-  const colorFailure = failure ? "#fe609a" : "#00B0F0";
+  const colorFailure = failure ? "#fe609a" : item.type === null ? "#35477b" :  "#00B0F0";
 
   const renderCustomizedLabel = ({
     cx,
@@ -289,8 +289,10 @@ function EquipmentStateItem({ item, index, onClick, isSelected }) {
             <span>생산</span>
           ) : type === 2 ? (
             <span>저장</span>
-          ) : (
+          ) : type === 3 ? (
             <span>충전</span>
+          ) : (
+            <span></span>
           )}
         </div>
         {isSelected === "reduce" ? (
@@ -312,46 +314,60 @@ function EquipmentStateItem({ item, index, onClick, isSelected }) {
 
       <div className={`items-mid ${backgroundColor}`}>
         <div className={`mid`}>
-          <BatteryPill isSelected={isSelected} x={type}>
-            <BatteryLevel x={type}>
-              <BatteryLiquid x={type} procentage={procentage}>
-                {type === 1 ? (
-                  <img src="./img/buble_big.png" alt="img" />
-                ) : type === 2 ? (
-                  <img src="./img/buble_big_2.png" alt="img" />
-                ) : (
-                  <img src="./img/buble_big_3.png" alt="img" />
-                )}
-              </BatteryLiquid>
-            </BatteryLevel>
-          </BatteryPill>
-          <div className="middle-values">
-            {isSelected === "reduce" ? (
-              <></>
-            ) : (
-              <span className="text-current">
-                {current_weight}
-                <span className="text-unit">kg</span>
-              </span>
-            )}
-
-            {isSelected === "reduce" ? (
-              <></>
-            ) : (
-              <div className="vertical-line"></div>
-            )}
-            <div
-              className={
-                type === 1
-                  ? "bottom-text production"
-                  : type == 2
-                  ? "bottom-text storaging"
-                  : "bottom-text charging"
-              }
-            >
-              {procentage}%
+          {item.type === null ? (
+            <div className="imgs">
+              <img
+                src="./img/equipment-empty.png"
+                alt="empty"
+                className="empty-img"
+              />
             </div>
-          </div>
+          ) : (
+            <BatteryPill isSelected={isSelected} x={type}>
+              <BatteryLevel x={type}>
+                <BatteryLiquid x={type} procentage={procentage}>
+                  {type === 1 ? (
+                    <img src="./img/buble_big.png" alt="img" />
+                  ) : type === 2 ? (
+                    <img src="./img/buble_big_2.png" alt="img" />
+                  ) : (
+                    <img src="./img/buble_big_3.png" alt="img" />
+                  )}
+                </BatteryLiquid>
+              </BatteryLevel>
+            </BatteryPill>
+          )}
+          {item.type === null ? (
+            " "
+          ) : (
+            <div className="middle-values">
+              {isSelected === "reduce" ? (
+                <></>
+              ) : (
+                <span className="text-current">
+                  {current_weight}
+                  <span className="text-unit">kg</span>
+                </span>
+              )}
+
+              {isSelected === "reduce" ? (
+                <></>
+              ) : (
+                <div className="vertical-line"></div>
+              )}
+              <div
+                className={
+                  type === 1
+                    ? "bottom-text production"
+                    : type == 2
+                    ? "bottom-text storaging"
+                    : "bottom-text charging"
+                }
+              >
+                {procentage}%
+              </div>
+            </div>
+          )}
         </div>
 
         {isSelected === "clicked" ? (
@@ -566,14 +582,16 @@ function EquipmentStateItem({ item, index, onClick, isSelected }) {
                   </div>
                   <div className="vertical-line-s"></div>
                 </div>
-                { isSmallScreen ? "" :
+                {isSmallScreen ? (
+                  ""
+                ) : (
                   <div className="wrap-container">
                     <div className="text-container">
                       <p>12kg</p>
                     </div>
                     <div className="vertical-line-s"></div>
                   </div>
-                }
+                )}
                 <div className="wrap-container">
                   <div className="text-container">
                     <p>8kg</p>

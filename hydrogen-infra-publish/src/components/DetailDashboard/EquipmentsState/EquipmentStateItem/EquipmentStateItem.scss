@@ -15,11 +15,13 @@
 
     .title-name {
       display: flex;
+      width: 100%;
       align-items: center;
       color: #8faadc;
       font-family: "gothic 12";
       font-size: 15px;
       @media (max-width: 1536px) {
+        align-items: center;
         font-size: 13px;
       }
     }
@@ -37,6 +39,18 @@
     align-items: center;
     justify-content: center;
 
+    .imgs {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 80%;
+
+        @media (max-width: 1536px) {
+          width: 60%;
+        }
+      }
+    }
     &.clicked-item {
       justify-content: space-between;
       .mid {
@@ -60,7 +74,7 @@
           height: 90%;
 
           @media (max-width: 1536px) {
-            width: 400px;
+            width: 370px;
             height: 100%;
           }
 
@@ -79,14 +93,14 @@
               opacity: 1;
               display: flex;
               flex-direction: column;
-              gap: 10px;
+              gap: 5px;
 
               .time-graph-text {
                 transform: rotate(-35deg);
                 color: #8faadc;
                 font-family: "gothic l";
                 font-size: 13px;
-                margin-right: 10px;
+                margin-right: 5px;
 
                 @media (max-width: 1536px) {
                   font-size: 10px;

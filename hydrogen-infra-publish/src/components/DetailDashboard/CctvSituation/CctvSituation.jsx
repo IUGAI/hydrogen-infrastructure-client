@@ -7,10 +7,10 @@ function CctvSituation() {
       <div className="cctv-sitauation-inner">
       <div className="cctv-item">
         <div className="top">
-          <img src="./img/cctv-img.png" alt="cctv" className="img-icon " />
+        <img src="./img/cctv2.png" alt="cctv" className="img-icon default" />
         </div>
         <div className="bottom">
-          <span>A - 1 구역</span>
+          <span>not connected</span>
         </div>
       </div>
       

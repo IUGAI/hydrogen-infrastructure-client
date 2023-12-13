@@ -6,23 +6,17 @@
   display: flex;
 
   .cctv-sitauation-inner {
-    display: grid;
-    padding: 0 15px;
+    display: flex;
+    padding: 0 10px;
     width: 100%;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
-    @media (max-width: 2135px) {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-
-    @media (max-width: 1536px) {
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    }
     .cctv-item {
       border-bottom: 1px solid #253255;
       background-color: #212c4b;
-      margin: 0 7px;
+      margin: 0.8%;
+      width: 18.2%;;
       display: flex;
+      height: 150px;
       flex-direction: column;
       @media (max-width: 1536px) {
         height: 120px;
@@ -36,12 +30,11 @@
         justify-content: center;
 
         .img-icon {
-          width: 80%;
-          height: 100%;
+          // width: 80%;
+          // height: 100%;
 
           &.default {
             width: 30%;
-            height: 40%;
           }
         }
       }

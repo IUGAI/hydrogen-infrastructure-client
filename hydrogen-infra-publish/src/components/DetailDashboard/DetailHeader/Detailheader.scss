@@ -1,38 +1,50 @@
 .detail-header-content {
   background-color: var(--background);
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.5fr 2fr 0.7fr;
   margin: 0 10px;
 
   justify-content: space-between;
+
+      
+  @media (max-width: 1536px) {
+    grid-template-columns: 1.8fr 2.6fr 0.7fr;
+  }
 
   .left {
     display: flex;
     gap: 20px;
     align-items: center;
 
-    .detail-header-title{
-        font-family: "gothic 12";
-        font-size: 20px;
+    .detail-header-title {
+      font-family: "gothic 12";
+      font-size: 20px;
+    }
+  }
+  .mid {
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    .vertical-line {
+      height: 17px; /* Высота линии равна высоте иконки */
+      border-left: 1px solid var(--default-font-2); /* Стиль вертикальной линии */
+      margin: 0 10px; /* Отступы вокруг линии */
     }
 
-    
+    .detail-header-celcious {
+      font-family: "gothic L";
+      color: var(--default-font-2);
+      font-size: 18px;
+    }
   }
 
   .right {
+    margin: 0 10px;
     display: flex;
+
+    justify-content: end;
     align-items: center;
     gap: 10px;
-
-    .vertical-line {
-        height: 17px; /* Высота линии равна высоте иконки */
-        border-left: 1px solid var( --default-font-2); /* Стиль вертикальной линии */
-        margin: 0 10px; /* Отступы вокруг линии */
-      }
-
-      .detail-header-celcious{
-        font-family: "gothic L";
-        color: var( --default-font-2);
-        font-size: 18px
-      }
   }
 }

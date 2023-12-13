@@ -23,13 +23,13 @@ function Detailheader() {
   const isSmallScreen = useMediaQuery({ maxWidth: 1536 });
 
   const CustomSelect = styled(Select)({
-    width: isSmallScreen ? "205px": "240px",
+    width: isSmallScreen ?  "100%" : "100%",
     backgroundColor: "#212c4b",
     border: "1px solid #253255",
     height: "60%",
     color: "#8faadc",
     fontFamily: "ghotic 12",
-    fontSize: "16px",
+    fontSize: isSmallScreen  ? "13px" : "16px",
     '&:focus': {
       backgroundColor: '#212c4b', // Цвет фона при фокусе
       '& .MuiSelect-icon': {
@@ -62,10 +62,12 @@ function Detailheader() {
         <span className="detail-header-title">부산 A 사업소</span>
         <ButtonCustum>정보</ButtonCustum>
       </div>
-      <div className="right">
-        <IoPartlySunnyOutline size={27} color="#8FAADC" />
+      <div className="mid">
+      <IoPartlySunnyOutline size={27} color="#8FAADC" />
         <div className="vertical-line"></div>
         <span className="detail-header-celcious">12.6℃ </span>
+      </div>
+      <div className="right">
         <CustomSelect
           displayEmpty
           inputProps={{ "aria-label": "Without label" }}

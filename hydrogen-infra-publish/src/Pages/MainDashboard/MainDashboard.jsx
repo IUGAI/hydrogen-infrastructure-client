@@ -19,10 +19,10 @@ function MainDashboard() {
 
         <Map />
       </div>
-      <div className="item item-3">
-        <AttentionState />
+      <div className="item item-7">
+        <AttentionState/>
       </div>
-      <div className="item item-4">
+      <div className="item item-3">
         <CurrentSituation />
       </div>
       <div className="item item-5">

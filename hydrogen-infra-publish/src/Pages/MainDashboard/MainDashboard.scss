@@ -4,13 +4,13 @@
   overflow: auto;
   width: 100%;
   color: white;
-
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: 1fr 1.1fr 1fr;
+    grid-template-rows: 1fr 1.5fr 1.5fr  1fr;
 
   @media (max-width: 1536px) {
     grid-template-columns: 1fr 1.1fr 1fr;
+    grid-template-rows: 1fr 1.5fr 1.5fr  1fr;
   }
 
   &::-webkit-scrollbar {
@@ -27,12 +27,18 @@
     grid-column: 2;
   }
 
-  .item-3 {
-    grid-row: span 2;
+  .item-3{
+    
+  }
+  .item-7 {
+    grid-row: span 3;
     grid-column: 3;
   }
 
-  .item-5,
+  .item-5 {
+    margin-bottom: 10px;
+    grid-row: span 3;
+  }
   .item-6 {
     margin-bottom: 10px;
   }

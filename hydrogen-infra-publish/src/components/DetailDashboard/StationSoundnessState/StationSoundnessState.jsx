@@ -1,5 +1,6 @@
 import CurentSitutationValue from "../../MainDashboard/CurrentSituation/CurentSituationValues/CurentSitutationValue";
 import "./StationSoundnessState.scss";
+import { useMediaQuery } from "react-responsive";
 import { styled } from "@mui/material/styles";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,13 +8,14 @@ import { useState } from "react";
 
 function StationSoundnessState() {
   const [selecteditem, setSelectedItem] = useState(1);
+  const isLargeScreen = useMediaQuery({ maxWidth: 1536 });
 
   const handlechange = (event) => {
     setSelectedItem(event.target.value);
   };
 
   const CustomSelect = styled(Select)({
-    width: "150px",
+    width: isLargeScreen ? "90px" : "150px",
     backgroundColor: "#212c4b",
     border: "1px solid #253255",
     height: "70%",
@@ -21,13 +23,13 @@ function StationSoundnessState() {
     fontFamily: "ghotic 12",
     fontSize: "16px",
     "&:focus": {
-      backgroundColor: "#212c4b", 
+      backgroundColor: "#212c4b",
       "& .MuiSelect-icon": {
-        color: "red", 
+        color: "red",
       },
     },
     "& .MuiSelect-icon": {
-      color: "#8faadc", 
+      color: "#8faadc",
       backgroundColor: "#253255",
     },
   });
