@@ -21,7 +21,7 @@ function AlarmState() {
       ];
     return (
         <div className="alarm-state-content">
-        <img src="./img/marker.png" className="" />
+        <img src="/img/marker.png" className="" />
         <div className="top">
           <span className="title-text">알람</span>
           <TfiMenuAlt size={28} color="#00B0F0" />

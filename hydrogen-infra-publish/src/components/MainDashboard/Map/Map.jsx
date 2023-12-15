@@ -1,12 +1,26 @@
-import Icon from "./Icon";
 import "./Map.scss";
-import mapdata from "../../../data/Mapdata";
+import React from "react";
+import { GoogleMap, InfoWindow, Marker } from "@react-google-maps/api";
 import Checkbox from "@mui/material/Checkbox";
 import { useEffect, useState } from "react";
+import { mapOptions } from "../../../data/Optionsformap";
+import { stations } from "../../../data/Mapdata";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
+const containerStyle = {
+  width: "100%",
+  height: "100%",
+};
+
+const center = {
+  lat: 37.5665,
+  lng: 126.978,
+};
+
 function Map() {
+  const [markers, setMarkers] = useState([]);
+  const [selectedMarker, setSelectedMarker] = useState(null);
   const [checkedstate, setProduction] = useState({
     production: true,
     storaging: true,
@@ -14,54 +28,108 @@ function Map() {
     alarm: true,
   });
 
-  const [filteredDatas, setFilteredDatas] = useState(mapdata);
+  const mapRef = React.useRef(undefined);
+
+  const onLoad = React.useCallback(function callback(map) {
+    mapRef.current = map;
+  }, []);
+
+  const onUnmount = React.useCallback(function callback(map) {
+    mapRef.current = undefined;
+  }, []);
+
+  useEffect(() => {
+    const savedMarkers = JSON.parse(localStorage.getItem("savedMarkers"));
+    if (savedMarkers) {
+      setMarkers(savedMarkers);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("savedMarkers", JSON.stringify(markers));
+  }, [markers]);
+
+  useEffect(() => {
+    if (markers.length === 0 && checkedstate.production) {
+      const defaultMarkers = stations;
+      setMarkers(defaultMarkers);
+    }
+  }, [markers]);
+
+  useEffect(() => {
+    filterMapData();
+  }, [checkedstate]);
 
   const handleCheck = (event) => {
     const { name, checked } = event.target;
     setProduction({ ...checkedstate, [name]: checked });
   };
 
-  useEffect(() => {
-    filterMapData();
-  }, [checkedstate]);
-
   const filterMapData = () => {
-    const filteredData = mapdata.filter((item) => {
-      if (
-        !checkedstate.production &&
-        item.src === "./img/production-map-icon.png"
-      ) {
+    const filteredData = stations.filter((item) => {
+      if (!checkedstate.production && item.type === 1) {
         return false;
       }
-      if (
-        !checkedstate.storaging &&
-        item.src === "./img/storaging-map-icon.png"
-      ) {
+      if (!checkedstate.storaging && item.type === 2) {
         return false;
       }
-      if (
-        !checkedstate.charging &&
-        item.src === "./img/charging-map-icon.png"
-      ) {
+      if (!checkedstate.charging && item.type === 3) {
         return false;
       }
 
-      if (!checkedstate.alarm && item.src === "./img/alarm-map-icon.png") {
+      if (!checkedstate.alarm && item.type === 4) {
         return false;
       }
 
       return true;
     });
-    setFilteredDatas(filteredData);
+    setMarkers(filteredData);
   };
 
   return (
     <div className="map-container">
       <span className="title">수소 인프라 현황</span>
-      <img src="./img/korea_map_black.png" alt="map" />
-      {filteredDatas.map((item) => (
-        <Icon key={item.id} data={item} />
-      ))}
+      <div className="map-content">
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          options={mapOptions}
+          center={center}
+          zoom={10}
+          onLoad={onLoad}
+          onUnmount={onUnmount}
+        >
+          {markers.map((marker, index) => (
+            <Marker
+              key={index}
+              onClick={() => {
+                setSelectedMarker(marker);
+              }}
+              icon={
+                marker.type === 1
+                  ? "./img/production-map-icon.png"
+                  : marker.type === 2
+                  ? "./img/storaging-map-icon.png/"
+                  : "./img/charging-map-icon.png"
+              }
+              position={{ lat: marker.lat, lng: marker.lng }}
+              title={marker.title}
+            />
+          ))}
+          {selectedMarker && (
+            <InfoWindow
+              onCloseClick={() => {
+                setSelectedMarker(null);
+              }}
+              position={{ lat: selectedMarker.lat, lng: selectedMarker.lng }}
+            >
+              <div className="info-station">
+                <span>{selectedMarker.district}</span>
+
+              </div>
+            </InfoWindow>
+          )}
+        </GoogleMap>
+      </div>
       <div className="map-filter">
         <div className="production-check check-container">
           <Checkbox

@@ -14,6 +14,7 @@ import { useMediaQuery } from "react-responsive";
 function EquipmentStateItem({ item, index, onClick, isSelected }) {
   const [detail, setDetail] = useState(false);
   const isSmallScreen = useMediaQuery({ maxWidth: 1536 });
+  const isMediumScreen = useMediaQuery({maxWidth: 1987});
 
   const RADIAN = Math.PI / 180;
   const data = [
@@ -23,10 +24,10 @@ function EquipmentStateItem({ item, index, onClick, isSelected }) {
     { name: "D", value: 200, dip: 700 },
   ];
 
-  const cx = isSmallScreen ? 90 : 145;
+  const cx = isSmallScreen ? 90 : 90;
   const cy = isSmallScreen ? 130 : 130;
-  const iR = isSmallScreen ? 50 : 60;
-  const oR = isSmallScreen ? 70 : 90;
+  const iR = isSmallScreen ? 50 : 50;
+  const oR = isSmallScreen ? 70 : 70;
 
   const needle = (value, data, cx, cy, iR, oR, color) => {
     let total = 0;
@@ -207,13 +208,12 @@ function EquipmentStateItem({ item, index, onClick, isSelected }) {
   `;
 
   const StyledItem = styled.div`
-    height: 80%;
+    height:  75%;
     border-radius: 3rem;
     background-color: #2b3a63;
-    width: ${isSmallScreen ? "10px" : "23px"};
+    width: 60%;
     ${(props) => (props.x === 0 ? "opacity: 0.8;" : "")}
-    margin: 0 7px;
-    padding: 1px;
+    margin-right: 5%;
     position: relative;
 
     .battery__level {
@@ -280,7 +280,7 @@ function EquipmentStateItem({ item, index, onClick, isSelected }) {
   return (
     <div
       className={`equipment-item-content ${backgroundColor}`}
-      onClick={handleClick}
+      onClick={item.type === null ? () => {} : handleClick}
     >
       <div className={`top ${backgroundColor}`}>
         <div className="title-name">
@@ -317,7 +317,7 @@ function EquipmentStateItem({ item, index, onClick, isSelected }) {
           {item.type === null ? (
             <div className="imgs">
               <img
-                src="./img/equipment-empty.png"
+                src="/img/equipment-empty.png"
                 alt="empty"
                 className="empty-img"
               />
@@ -327,11 +327,11 @@ function EquipmentStateItem({ item, index, onClick, isSelected }) {
               <BatteryLevel x={type}>
                 <BatteryLiquid x={type} procentage={procentage}>
                   {type === 1 ? (
-                    <img src="./img/buble_big.png" alt="img" />
+                    <img src="/img/buble_big.png" alt="img" />
                   ) : type === 2 ? (
-                    <img src="./img/buble_big_2.png" alt="img" />
+                    <img src="/img/buble_big_2.png" alt="img" />
                   ) : (
-                    <img src="./img/buble_big_3.png" alt="img" />
+                    <img src="/img/buble_big_3.png" alt="img" />
                   )}
                 </BatteryLiquid>
               </BatteryLevel>
@@ -376,7 +376,7 @@ function EquipmentStateItem({ item, index, onClick, isSelected }) {
               <div className="mid-values-chart">
                 <div className="mid-vlues-chart-one">
                   <PieChart
-                    width={isSmallScreen ? 200 : 295}
+                    width={isSmallScreen ? 200 : 210}
                     height={isSmallScreen ? 160 : 200}
                   >
                     <defs>
@@ -463,7 +463,7 @@ function EquipmentStateItem({ item, index, onClick, isSelected }) {
 
                 <div className="mid-vlues-chart-one">
                   <PieChart
-                    width={isSmallScreen ? 190 : 295}
+                    width={isSmallScreen ? 190 : 200}
                     height={isSmallScreen ? 160 : 200}
                   >
                     <defs>
@@ -559,7 +559,7 @@ function EquipmentStateItem({ item, index, onClick, isSelected }) {
                 </div>
                 <div className="wrap-container">
                   <div className="text-container">
-                    <p>28kg</p>
+                    <p>{isSmallScreen ? "28kg"  : "28kg"}</p>
                   </div>
                   <div className="vertical-line-s"></div>
                 </div>
@@ -571,14 +571,14 @@ function EquipmentStateItem({ item, index, onClick, isSelected }) {
                 </div>
                 <div className="wrap-container">
                   <div className="text-container">
-                    <p>20kg</p>
+                    <p>{isSmallScreen ? "18kg"  : "20kg"}</p>
                   </div>
                   <div className="vertical-line-s"></div>
                 </div>
 
                 <div className="wrap-container">
                   <div className="text-container">
-                    <p>16kg</p>
+                    <p>{isSmallScreen ? "12kg"  : "16kg"}</p>
                   </div>
                   <div className="vertical-line-s"></div>
                 </div>
@@ -594,7 +594,7 @@ function EquipmentStateItem({ item, index, onClick, isSelected }) {
                 )}
                 <div className="wrap-container">
                   <div className="text-container">
-                    <p>8kg</p>
+                    <p>{isSmallScreen ? "6kg"  : "8kg"}</p>
                   </div>
                   <div className="vertical-line-s"></div>
                 </div>

@@ -6,6 +6,7 @@ import { IoIosSearch } from "react-icons/io";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
+import {stations} from '../../../data/Mapdata';
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
@@ -39,6 +40,8 @@ const rows = [
   createData("사울", "충전", "서울 C 사업소", "4/4", "가동중"),
   createData("남양주", "충전", "남양주 C 사업소", "3/4", "중단"),
 ];
+
+console.log(stations);
 
 
 const StyledTableHeader = styled(TableRow)`
@@ -75,9 +78,9 @@ const StyledTableCellContent = styled(TableCell)`
 const CellType = styled(TableCell)`
   font-family: "gothic 12";
   color: ${(props) =>
-    props.type === "생산"
+    props.type === 1
       ? "#00B0F0 "
-      : props.type === "충전"
+      : props.type === 3
       ? "#92D050 "
       : "#FFC000  "};
   border-bottom: 1px solid #253255;
@@ -89,9 +92,9 @@ const CellType = styled(TableCell)`
 const CellState = styled(TableCell)`
   font-family: "gothic 12";
   color: ${(props) =>
-    props.state === "중단"
+    props.state === 0
       ? "#FE609A"
-      : props.state === "점검중"
+      : props.state === 2
       ? "#8497B0"
       : "#fff"};
   border-bottom: 1px solid #253255;
@@ -167,22 +170,22 @@ function StationList() {
                   </StyledTableHeader>
                 </TableHead>
                 <TableBody>
-                  {rows.map((row, index) => (
+                  {stations.map((row, index) => (
                     <StyledTableContent key={index}>
                       <StyledTableCellContent component="th" scope="row">
-                        {row.name}
+                        {row.district}
                       </StyledTableCellContent>
-                      <CellType align="center" type={row.calories}>
-                        {row.calories}
+                      <CellType align="center" type={row.type}>
+                        {row.type === 1 ? "생산" : row.type === 2 ? "저장" : "충전"}
                       </CellType>
                       <StyledTableCellContent align="center">
-                        {row.fat}
+                        {row.name}
                       </StyledTableCellContent>
                       <StyledTableCellContent align="center">
-                        {row.carbs}
+                        {row.equipments.length}/{row.max_capacity} 
                       </StyledTableCellContent>
-                      <CellState align="center" state={row.protein}>
-                        {row.protein}
+                      <CellState align="center" state={row.state}>
+                        {row.state === 1 ? "가동중" : row.state === 0 ? "중단" :  "점검중"}
                       </CellState>
                     </StyledTableContent>
                   ))}

@@ -1,12 +1,11 @@
 .detail-header-content {
   background-color: var(--background);
   display: grid;
-  grid-template-columns: 1.5fr 2fr 0.7fr;
   margin: 0 10px;
+  grid-template-columns: 1.5fr 2fr 0.7fr;
 
   justify-content: space-between;
 
-      
   @media (max-width: 1536px) {
     grid-template-columns: 1.8fr 2.6fr 0.7fr;
   }

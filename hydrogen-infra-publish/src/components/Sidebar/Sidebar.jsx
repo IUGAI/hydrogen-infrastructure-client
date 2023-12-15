@@ -12,6 +12,8 @@ function Sidebar() {
     setSelectedItem(item);
   };
 
+
+
   const { state } = useMyContext();
 
   return (
@@ -20,7 +22,7 @@ function Sidebar() {
         {state.showSide ? (
           <span>대시보드 </span>
         ) : (
-          <img src="./img/active.png" />
+          <img src="/img/active.png" />
         )}
       </div>
       <div className="menu-bar">
@@ -35,8 +37,8 @@ function Sidebar() {
               <img
                 src={
                   selectedItem === "/"
-                    ? "./img/icon-dash-active.png"
-                    : "./img/icon-dash.png"
+                    ? "/img/icon-dash-active.png"
+                    : "/img/icon-dash.png"
                 }
                 className="icon-menu"
               />
@@ -49,14 +51,14 @@ function Sidebar() {
             <Link
               to="/dashboard"
               className={`link-item ${
-                selectedItem === "/dashboard" ? "active" : ""
+                selectedItem.slice(0,10) === "/dashboard" ? "active" : ""
               } ${state.showSide ? "" : "hide"}`}
             >
               <img
                 src={
-                  selectedItem === "/dashboard"
-                    ? "./img/active-icon-dash-detail.png"
-                    : "./img/icon-dash-detail.png"
+                  selectedItem.slice(0,10) === "/dashboard"
+                    ? "/img/active-icon-dash-detail.png"
+                    : "/img/icon-dash-detail.png"
                 }
                 className={state.showSide ? "icon-menu" : "icon-menu"}
               />
@@ -72,7 +74,7 @@ function Sidebar() {
         {state.showSide ? (
           <span>시설 정보 </span>
         ) : (
-          <img src="./img/disactive.png" />
+          <img src="/img/disactive.png" />
         )}
       </div>
       <div className="menu-bar">
@@ -85,7 +87,7 @@ function Sidebar() {
               }`}
             >
               <img
-                src={"./img/station-info-disactive.png"}
+                src={"/img/station-info-disactive.png"}
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -101,7 +103,7 @@ function Sidebar() {
               }`}
             >
               <img
-                src="./img/equipmentd-info-disactive.png"
+                src="/img/equipmentd-info-disactive.png"
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -117,7 +119,7 @@ function Sidebar() {
               }`}
             >
               <img
-                src="./img/icon-material-info-disactive.png"
+                src="/img/icon-material-info-disactive.png"
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -132,7 +134,7 @@ function Sidebar() {
         {state.showSide ? (
           <span>시설 등록 </span>
         ) : (
-          <img src="./img/disactive.png" />
+          <img src="/img/disactive.png" />
         )}
       </div>
       <div className="menu-bar">
@@ -145,7 +147,7 @@ function Sidebar() {
               }`}
             >
               <img
-                src="./img/station-register-disactive.png"
+                src="/img/station-register-disactive.png"
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -161,7 +163,7 @@ function Sidebar() {
               }`}
             >
               <img
-                src="./img/equipment-register-disactive.png"
+                src="/img/equipment-register-disactive.png"
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -177,7 +179,7 @@ function Sidebar() {
               }`}
             >
               <img
-                src="./img/material-register-disactive.png"
+                src="/img/material-register-disactive.png"
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -192,7 +194,7 @@ function Sidebar() {
         {state.showSide ? (
           <span>시설 관리 </span>
         ) : (
-          <img src="./img/disactive.png" />
+          <img src="/img/disactive.png" />
         )}
       </div>
       <div className="menu-bar">
@@ -205,7 +207,7 @@ function Sidebar() {
               }`}
             >
               <img
-                src="./img/failure-list-disactive.png"
+                src="/img/failure-list-disactive.png"
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -221,7 +223,7 @@ function Sidebar() {
               }`}
             >
               <img
-                src="./img/register-task-disactive.png"
+                src="/img/register-task-disactive.png"
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -236,7 +238,7 @@ function Sidebar() {
                 state.showSide ? "" : "hide"
               }`}
             >
-              <img src="./img/task-list-disactive.png" className="icon-menu" />
+              <img src="/img/task-list-disactive.png" className="icon-menu" />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
                 작업 조회
               </span>
@@ -250,7 +252,7 @@ function Sidebar() {
               }`}
             >
               <img
-                src="./img/task-report-disactive.png"
+                src="/img/task-report-disactive.png"
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -265,7 +267,7 @@ function Sidebar() {
         {state.showSide ? (
           <span>시설 통계 </span>
         ) : (
-          <img src="./img/disactive.png" />
+          <img src="/img/disactive.png" />
         )}
       </div>
       <div className="menu-bar">
@@ -278,7 +280,7 @@ function Sidebar() {
               }`}
             >
               <img
-                src="./img/station-statistic-disactive.png"
+                src="/img/station-statistic-disactive.png"
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -294,7 +296,7 @@ function Sidebar() {
               }`}
             >
               <img
-                src="./img/equipment-statistic-disactive.png"
+                src="/img/equipment-statistic-disactive.png"
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -309,7 +311,7 @@ function Sidebar() {
         {state.showSide ? (
           <span>시스템 설정 </span>
         ) : (
-          <img src="./img/disactive.png" />
+          <img src="/img/disactive.png" />
         )}
       </div>
       <div className="menu-bar">
@@ -322,7 +324,7 @@ function Sidebar() {
               }`}
             >
               <img
-                src="./img/user-controll-disactive.png"
+                src="/img/user-controll-disactive.png"
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -337,7 +339,7 @@ function Sidebar() {
                 state.showSide ? "" : "hide"
               }`}
             >
-              <img src="./img/settings-disactive.png" className="icon-menu" />
+              <img src="/img/settings-disactive.png" className="icon-menu" />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
                 설정
               </span>

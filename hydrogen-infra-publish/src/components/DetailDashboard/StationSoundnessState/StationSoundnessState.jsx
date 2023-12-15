@@ -45,7 +45,7 @@ function StationSoundnessState() {
 
   return (
     <div className="station-soundness-state-content">
-      <img src="./img/marker.png" className="" />
+      <img src="/img/marker.png" className="" />
       <div className="top">
         <span className="title-text">사업소 가동 현황</span>
         <CustomSelect

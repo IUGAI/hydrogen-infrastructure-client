@@ -38,7 +38,7 @@ function OperationState() {
 
   return (
     <div className="operation-state-content">
-      <img src="./img/marker.png" className="" />
+      <img src="/img/marker.png" className="" />
       <div className="top">
         <span className="title-text">가동 상태</span>
       </div>

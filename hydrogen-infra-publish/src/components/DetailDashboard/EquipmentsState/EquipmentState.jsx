@@ -5,10 +5,34 @@ import { BsArrows } from "react-icons/bs";
 import { styled, keyframes } from "styled-components";
 import EquipmentStateItem from "./EquipmentStateItem/EquipmentStateItem";
 import { equipmenst as initialEquipment } from "../../../data/statisticData";
+import { PiArrowUUpRightBold } from "react-icons/pi";
 import { useMediaQuery } from "react-responsive";
+import { useLocation, useParams } from "react-router-dom";
+import { stations } from "../../../data/Mapdata";
+
+const emptyStation = [
+  {
+    id: 0,
+    type: null,
+    failure: false,
+    max_capacity: 0,
+    percentage: null,
+    soundness: null,
+    temperature: 0,
+    equipment_name: "not available",
+    current_weight: null,
+  },
+];
 
 function EquipmentState() {
   const isMobilePhone = useMediaQuery({ maxWidth: 1024 });
+  const [selectedstation, setselectedStaion] = useState();
+  const [equipment, setEquipmenst] = useState([]);
+  const [selectedItemId, setSelectedItemId] = useState("default");
+  const [defaultvalue, setdefaultvalue] = useState("");
+  const [startReduce, setStartReduce] = useState();
+  const [endReduce, setEndReduce] = useState();
+  const { id } = useParams();
 
   const FlexContainer = styled.div`
     display: ${isMobilePhone ? "" : "flex"};
@@ -22,6 +46,7 @@ function EquipmentState() {
     flex: 0 0 auto;
     border-radius: 5px;
     margin: 0.8%;
+    cursor: pointer;
     width: ${({ selected, defaultvalue, index, startReduce, endReduce }) => {
       if (selected) {
         return "56.5%";
@@ -46,50 +71,62 @@ function EquipmentState() {
     }
   `;
 
-  const [hasExecutedCode, setHasExecutedCode] = useState(false);
-  const [equipment, setEquipmenst] = useState(initialEquipment);
-
   useEffect(() => {
-    const lengthofarray = equipment.length;
-    console.log(equipment);
-    const reminder = lengthofarray % 5;
-
-    let times;
-
-    if (lengthofarray === 0) {
-      times = 5;
-    } else if (reminder === 0) {
-      times = 0;
-    } else {
-      times = 5 - reminder;
-    }
-
-    if (!hasExecutedCode) {
-      const newEquipmenst = [...initialEquipment]; // Создаем копию массива
-      for (let i = 0; i < times; i++) {
-        newEquipmenst.push({
+    if (id === undefined) {
+      const emptyEquipmnets = []
+      for (let i = 0; i < 5; i++) {
+        emptyEquipmnets.push({
           id: 0,
           type: null,
           failure: false,
           max_capacity: 0,
-          procentage: null,
+          percentage: null,
           soundness: null,
           temperature: 0,
           equipment_name: "not available",
           current_weight: null,
         });
       }
-      setEquipmenst(newEquipmenst);
-      setHasExecutedCode(true);
+      setEquipmenst(emptyEquipmnets);
+    } else {
+      const findStation = stations.find((obj) => obj.id === parseInt(id));
+      if (!findStation) {
+        return;
+      }
+
+      const stationEquipments = findStation.equipments;
+
+      const lengthOfArray = stationEquipments.length;
+      const remainder = lengthOfArray % 5;
+
+      let timesToAdd = 0;
+
+      if (lengthOfArray === 0) {
+        timesToAdd = 5;
+      } else if (remainder !== 0) {
+        timesToAdd = 5 - remainder;
+      }
+
+      if (timesToAdd > 0) {
+        const newEquipments = [...stationEquipments];
+        for (let i = 0; i < timesToAdd; i++) {
+          newEquipments.push({
+            id: 0,
+            type: null,
+            failure: false,
+            max_capacity: 0,
+            percentage: null,
+            soundness: null,
+            temperature: 0,
+            equipment_name: "not available",
+            current_weight: null,
+          });
+        }
+        setEquipmenst(newEquipments);
+      }
     }
-  }, [equipment, hasExecutedCode]);
+  }, [id, stations]);
 
-  // alert(equipmenst.length)
-
-  const [selectedItemId, setSelectedItemId] = useState("default");
-  const [defaultvalue, setdefaultvalue] = useState("");
-  const [startReduce, setStartReduce] = useState();
-  const [endReduce, setEndReduce] = useState();
 
   const handleItemClick = (clickedItemId, index) => {
     setSelectedItemId(clickedItemId); // Установка ID выбранного элемента
@@ -108,10 +145,19 @@ function EquipmentState() {
   return (
     <div className="equipments-state-content">
       <div className="top">
-        <img src="./img/marker.png" className="" />
+        <img src="/img/marker.png" className="" />
         <span className="title-text">시설물 상태</span>
         <div className="icons-left">
-          <BsArrows size={28} color="#00B0F0" onClick={reset} />
+          {defaultvalue === "reduce" ? (
+            <PiArrowUUpRightBold
+              size={28}
+              color="#00B0F0"
+              onClick={reset}
+              style={{ cursor: "pointer" }}
+            />
+          ) : (
+            <BsArrows size={28} color="#00B0F0" />
+          )}
           <FiPlus size={28} color="#00B0F0" />
         </div>
       </div>
@@ -129,7 +175,9 @@ function EquipmentState() {
               <EquipmentStateItem
                 item={item}
                 index={index}
-                onClick={isMobilePhone ? "" : item.id === 0 ? "" :  handleItemClick}
+                onClick={
+                  isMobilePhone ? "" : item.id === 0 ? "" : handleItemClick
+                }
                 isSelected={
                   selectedItemId === item.id || isMobilePhone
                     ? "clicked"

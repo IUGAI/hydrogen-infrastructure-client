@@ -54,10 +54,12 @@
     &.clicked-item {
       justify-content: space-between;
       .mid {
+        flex: 1;
         align-items: center;
       }
       .mid-values-graph {
         flex: 1.5;
+        padding: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -68,25 +70,26 @@
           align-items: start;
         }
         .mid-vlues-chart-one-bar {
-          width: 580px;
+          width: 400px;
           position: relative;
-          margin-right: 10px;
           height: 90%;
 
           @media (max-width: 1536px) {
-            width: 370px;
+            width: 340px;
             height: 100%;
           }
 
           .graphs-value-item {
             position: absolute;
             bottom: 0;
-            top: 10px;
+            top: 30px;
             left: 40px;
             display: flex;
             right: 20px;
             height: 100%;
-
+            @media (max-width: 1536px) {
+              top: 15px;
+            }
             .item-value {
               align-items: flex-end;
               height: 100%;
@@ -137,7 +140,7 @@
 
             .vertical-line-s {
               border: 1px solid #2f3f6c; /* Change color by modifying the hex code */
-              width: 90%; /* Adjust the width as needed */
+              width: 100%; /* Adjust the width as needed */
               margin: 20px 0; /* Adjust top and bottom margins as needed */
             }
           }

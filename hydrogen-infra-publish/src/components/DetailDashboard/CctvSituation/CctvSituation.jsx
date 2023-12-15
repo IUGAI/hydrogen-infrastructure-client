@@ -7,7 +7,7 @@ function CctvSituation() {
       <div className="cctv-sitauation-inner">
       <div className="cctv-item">
         <div className="top">
-        <img src="./img/cctv2.png" alt="cctv" className="img-icon default" />
+        <img src="/img/cctv2.png" alt="cctv" className="img-icon default" />
         </div>
         <div className="bottom">
           <span>not connected</span>
@@ -16,7 +16,7 @@ function CctvSituation() {
       
       <div className="cctv-item">
         <div className="top">
-          <img src="./img/cctv2.png" alt="cctv" className="img-icon default" />
+          <img src="/img/cctv2.png" alt="cctv" className="img-icon default" />
         </div>
         <div className="bottom">
           <span>not connected</span>
@@ -24,7 +24,7 @@ function CctvSituation() {
       </div>
       <div className="cctv-item">
         <div className="top">
-          <img src="./img/cctv2.png" alt="cctv" className="img-icon default" />
+          <img src="/img/cctv2.png" alt="cctv" className="img-icon default" />
         </div>
         <div className="bottom">
           <span>not connected</span>
@@ -32,7 +32,7 @@ function CctvSituation() {
       </div>
       <div className="cctv-item">
         <div className="top">
-          <img src="./img/cctv2.png" alt="cctv" className="img-icon default" />
+          <img src="/img/cctv2.png" alt="cctv" className="img-icon default" />
         </div>
         <div className="bottom">
           <span>not connected</span>
@@ -40,7 +40,7 @@ function CctvSituation() {
       </div>
       <div className="cctv-item">
         <div className="top">
-          <img src="./img/cctv2.png" alt="cctv" className="img-icon default" />
+          <img src="/img/cctv2.png" alt="cctv" className="img-icon default" />
         </div>
         <div className="bottom">
           <span>not connected</span>
