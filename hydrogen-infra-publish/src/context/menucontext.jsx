@@ -2,7 +2,8 @@ import { useContext, useReducer,createContext  } from "react";
 const MyContext = createContext();
 
 const initialState = {
-  showSide: true
+  showSide: true,
+  
 };
 
 const reducer = (state, action) => {

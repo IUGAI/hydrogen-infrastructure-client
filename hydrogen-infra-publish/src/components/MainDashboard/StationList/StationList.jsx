@@ -6,15 +6,18 @@ import { IoIosSearch } from "react-icons/io";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
+import {stations} from '../../../data/Mapdata';
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { useMediaQuery } from "react-responsive";
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
+
 
 const rows = [
   createData("사울", "생산", "서울 B 사업소", "1/1", "중단"),
@@ -37,6 +40,8 @@ const rows = [
   createData("사울", "충전", "서울 C 사업소", "4/4", "가동중"),
   createData("남양주", "충전", "남양주 C 사업소", "3/4", "중단"),
 ];
+
+console.log(stations);
 
 
 const StyledTableHeader = styled(TableRow)`
@@ -73,9 +78,9 @@ const StyledTableCellContent = styled(TableCell)`
 const CellType = styled(TableCell)`
   font-family: "gothic 12";
   color: ${(props) =>
-    props.type === "생산"
+    props.type === 1
       ? "#00B0F0 "
-      : props.type === "충전"
+      : props.type === 3
       ? "#92D050 "
       : "#FFC000  "};
   border-bottom: 1px solid #253255;
@@ -87,9 +92,9 @@ const CellType = styled(TableCell)`
 const CellState = styled(TableCell)`
   font-family: "gothic 12";
   color: ${(props) =>
-    props.state === "중단"
+    props.state === 0
       ? "#FE609A"
-      : props.state === "점검중"
+      : props.state === 2
       ? "#8497B0"
       : "#fff"};
   border-bottom: 1px solid #253255;
@@ -98,26 +103,31 @@ const CellState = styled(TableCell)`
   }
 `;
 
-const ScrollableContainer = styled(Paper)({
-  maxHeight: "450px",
-  overflowY: "auto",
-  overflowX: "auto",
-  "&::-webkit-scrollbar": {
-    width: "5px",
-  },
-  "&::-webkit-scrollbar-track": {
-    background: "#1c2641",
-  },
-  "&::-webkit-scrollbar-thumb": {
-    background: "#253255",
-    borderRadius: "1px",
-  },
-  "&::-webkit-scrollbar-thumb:hover": {
-    background: "#1c2641",
-  },
-});
+
 
 function StationList() {
+
+  const isSmallScreen = useMediaQuery({ maxWidth: 1536 });
+
+  const ScrollableContainer = styled(Paper)({
+  
+    maxHeight: isSmallScreen ? "450px"  : "490px",
+    overflowY: "auto",
+    overflowX: "auto",
+    "&::-webkit-scrollbar": {
+      width: "5px",
+    },
+    "&::-webkit-scrollbar-track": {
+      background: "#1c2641",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      background: "#253255",
+      borderRadius: "1px",
+    },
+    "&::-webkit-scrollbar-thumb:hover": {
+      background: "#1c2641",
+    },
+  });
   return (
     <div className="station-list-content">
       <div className="top">
@@ -136,7 +146,7 @@ function StationList() {
             초기화
           </Button>
           <input type="text" placeholder="검색" className="input-search" />
-          <IoIosSearch size={24} color="#00B0F0" className="search-icon" />
+          {/* <IoIosSearch size={24} color="#00B0F0" className="search-icon" /> */}
         </div>
         <div className="station-table">
           <ScrollableContainer>
@@ -160,22 +170,22 @@ function StationList() {
                   </StyledTableHeader>
                 </TableHead>
                 <TableBody>
-                  {rows.map((row, index) => (
+                  {stations.map((row, index) => (
                     <StyledTableContent key={index}>
                       <StyledTableCellContent component="th" scope="row">
-                        {row.name}
+                        {row.district}
                       </StyledTableCellContent>
-                      <CellType align="center" type={row.calories}>
-                        {row.calories}
+                      <CellType align="center" type={row.type}>
+                        {row.type === 1 ? "생산" : row.type === 2 ? "저장" : "충전"}
                       </CellType>
                       <StyledTableCellContent align="center">
-                        {row.fat}
+                        {row.name}
                       </StyledTableCellContent>
                       <StyledTableCellContent align="center">
-                        {row.carbs}
+                        {row.equipments.length}/{row.max_capacity} 
                       </StyledTableCellContent>
-                      <CellState align="center" state={row.protein}>
-                        {row.protein}
+                      <CellState align="center" state={row.state}>
+                        {row.state === 1 ? "가동중" : row.state === 0 ? "중단" :  "점검중"}
                       </CellState>
                     </StyledTableContent>
                   ))}

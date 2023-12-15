@@ -23,7 +23,7 @@
     align-items: center;
 
     @media (max-width: 1536px) {
-      height: 50px;
+      height: 40px;
     }
 
     .title-text {
@@ -91,7 +91,7 @@
         top: 70px;
 
         @media (max-width: 1536px) {
-          top: 60px;
+          top: 0px;
         }
       }
     }

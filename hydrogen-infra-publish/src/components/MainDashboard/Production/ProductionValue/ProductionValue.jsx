@@ -21,7 +21,7 @@ function ProductionValue({ item }) {
         </span>
       </div>
       <div className="prod-item">
-        <span className="prod-text-percentage">{procent}</span>
+        <span className="prod-text-percentage">{procent}%</span>
       </div>
     </div>
   );

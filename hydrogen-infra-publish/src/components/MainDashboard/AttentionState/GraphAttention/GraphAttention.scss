@@ -20,6 +20,9 @@
     align-items: center;
     justify-content: center;
     top: 70;
+    @media (max-width: 1536px) {
+      top: 50;
+    }
 
     .text-value {
       color: #8faadc;
@@ -28,6 +31,7 @@
     }
 
     .text-percentage {
+      margin-top: 30px;
       color: white;
       font-family: "gothic M";
       font-size: 28px;
@@ -38,11 +42,13 @@
   }
 
   .text-main-value {
+    margin-top: 20px;
     color: #8faadc;
     font-family: "gothic 12";
     font-size: 17px;
 
     @media (max-width: 1536px) {
+      margin-top: 20px;
       font-size: 13px;
     }
   }

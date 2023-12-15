@@ -8,7 +8,7 @@ function GraphAttention({ items }) {
     <div className="graph-content">
       <div className="graph-item">
         <div className="graph-value">
-          <span className="text-value">{name}</span>
+          {/* <span className="text-value">{name}</span> */}
           <span className="text-percentage">{percentage}%</span>
         </div>
         <Graph items={items} />

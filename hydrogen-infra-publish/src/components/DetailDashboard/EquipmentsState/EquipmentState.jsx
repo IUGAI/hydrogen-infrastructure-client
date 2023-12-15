@@ -1,50 +1,69 @@
 import "./EquipmentState.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import { BsArrows } from "react-icons/bs";
 import { styled, keyframes } from "styled-components";
 import EquipmentStateItem from "./EquipmentStateItem/EquipmentStateItem";
-import { equipmenst } from "../../../data/statisticData";
+import { equipmenst as initialEquipment } from "../../../data/statisticData";
+import { PiArrowUUpRightBold } from "react-icons/pi";
 import { useMediaQuery } from "react-responsive";
+import { useLocation, useParams } from "react-router-dom";
+import { stations } from "../../../data/Mapdata";
+
+const emptyStation = [
+  {
+    id: 0,
+    type: null,
+    failure: false,
+    max_capacity: 0,
+    percentage: null,
+    soundness: null,
+    temperature: 0,
+    equipment_name: "not available",
+    current_weight: null,
+  },
+];
 
 function EquipmentState() {
-  const isSmallScreen = useMediaQuery({ maxWidth: 1536 });
+  const isMobilePhone = useMediaQuery({ maxWidth: 1024 });
+  const [selectedstation, setselectedStaion] = useState();
+  const [equipment, setEquipmenst] = useState([]);
+  const [selectedItemId, setSelectedItemId] = useState("default");
+  const [defaultvalue, setdefaultvalue] = useState("");
+  const [startReduce, setStartReduce] = useState();
+  const [endReduce, setEndReduce] = useState();
+  const { id } = useParams();
 
   const FlexContainer = styled.div`
-    display: flex;
+    display: ${isMobilePhone ? "" : "flex"};
     width: 100%;
-    padding: 0 10px;
+    padding-left: 10px;
     flex-wrap: wrap;
-    heigh:100%;
-    @media (max-width: 1876px) {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-
-    @media (max-width: 1536px) {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
+    heigh: 100%;
   `;
 
   const Item = styled.div`
     flex: 0 0 auto;
     border-radius: 5px;
-    margin: 5px 10px;
+    margin: 0.8%;
+    cursor: pointer;
     width: ${({ selected, defaultvalue, index, startReduce, endReduce }) => {
       if (selected) {
-        return isSmallScreen ? "570px" : "940px";
+        return "56.5%";
       } else if (
         defaultvalue === "reduce" &&
         index >= startReduce &&
         index <= endReduce
       ) {
-        return isSmallScreen ? "75px" : "140px"; // Ширина для первых четырех элементов
+        return "8.3%";
+      } else if (isMobilePhone) {
+        return "100%";
       }
-      return isSmallScreen ? "160px" : "300px"; // Ширина по умолчанию для остальных элементов
+      return "18%";
     }};
 
     border: 1px solid #253255;
     background-color: #212c4b;
-    margin-right: 5px;
     height: 550px;
 
     @media (max-width: 1536px) {
@@ -52,10 +71,62 @@ function EquipmentState() {
     }
   `;
 
-  const [selectedItemId, setSelectedItemId] = useState("default");
-  const [defaultvalue, setdefaultvalue] = useState("");
-  const [startReduce, setStartReduce] = useState();
-  const [endReduce, setEndReduce] = useState();
+  useEffect(() => {
+    if (id === undefined) {
+      const emptyEquipmnets = []
+      for (let i = 0; i < 5; i++) {
+        emptyEquipmnets.push({
+          id: 0,
+          type: null,
+          failure: false,
+          max_capacity: 0,
+          percentage: null,
+          soundness: null,
+          temperature: 0,
+          equipment_name: "not available",
+          current_weight: null,
+        });
+      }
+      setEquipmenst(emptyEquipmnets);
+    } else {
+      const findStation = stations.find((obj) => obj.id === parseInt(id));
+      if (!findStation) {
+        return;
+      }
+
+      const stationEquipments = findStation.equipments;
+
+      const lengthOfArray = stationEquipments.length;
+      const remainder = lengthOfArray % 5;
+
+      let timesToAdd = 0;
+
+      if (lengthOfArray === 0) {
+        timesToAdd = 5;
+      } else if (remainder !== 0) {
+        timesToAdd = 5 - remainder;
+      }
+
+      if (timesToAdd > 0) {
+        const newEquipments = [...stationEquipments];
+        for (let i = 0; i < timesToAdd; i++) {
+          newEquipments.push({
+            id: 0,
+            type: null,
+            failure: false,
+            max_capacity: 0,
+            percentage: null,
+            soundness: null,
+            temperature: 0,
+            equipment_name: "not available",
+            current_weight: null,
+          });
+        }
+        setEquipmenst(newEquipments);
+      }
+    }
+  }, [id, stations]);
+
 
   const handleItemClick = (clickedItemId, index) => {
     setSelectedItemId(clickedItemId); // Установка ID выбранного элемента
@@ -73,17 +144,26 @@ function EquipmentState() {
 
   return (
     <div className="equipments-state-content">
-      <img src="./img/marker.png" className="" />
       <div className="top">
+        <img src="/img/marker.png" className="" />
         <span className="title-text">시설물 상태</span>
         <div className="icons-left">
-          <BsArrows size={28} color="#00B0F0" onClick={reset} />
+          {defaultvalue === "reduce" ? (
+            <PiArrowUUpRightBold
+              size={28}
+              color="#00B0F0"
+              onClick={reset}
+              style={{ cursor: "pointer" }}
+            />
+          ) : (
+            <BsArrows size={28} color="#00B0F0" />
+          )}
           <FiPlus size={28} color="#00B0F0" />
         </div>
       </div>
       <div className="bottom">
         <FlexContainer>
-          {equipmenst.map((item, index) => (
+          {equipment.map((item, index) => (
             <Item
               selected={selectedItemId === item.id}
               defaultvalue={defaultvalue}
@@ -95,9 +175,11 @@ function EquipmentState() {
               <EquipmentStateItem
                 item={item}
                 index={index}
-                onClick={handleItemClick}
+                onClick={
+                  isMobilePhone ? "" : item.id === 0 ? "" : handleItemClick
+                }
                 isSelected={
-                  selectedItemId === item.id
+                  selectedItemId === item.id || isMobilePhone
                     ? "clicked"
                     : defaultvalue === "reduce" &&
                       index >= startReduce &&

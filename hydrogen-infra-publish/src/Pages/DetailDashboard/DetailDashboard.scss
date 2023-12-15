@@ -9,10 +9,15 @@
 
   .detail-dashboard-conetent {
     display: grid;
-    grid-template-columns: 1.5fr 2.5fr 0.5fr 0.7fr;
+    grid-template-columns: 1.5fr 1.5fr 0.5fr 0.7fr;
     grid-template-rows: 1fr 3fr 0.7fr;
     height: 100%;
     overflow: auto;
+
+    
+    @media (max-width: 1536px) {
+      grid-template-columns: 1.8fr 2.1fr 0.5fr 0.7fr;
+    }
 
     &::-webkit-scrollbar {
       width: 6px;
@@ -39,6 +44,10 @@
 
   .item-1 {
     grid-column: span 1;
+  }
+
+  .item-8{
+    grid-column: span 2;
   }
 
   .item-5{

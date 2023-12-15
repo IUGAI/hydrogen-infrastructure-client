@@ -51,7 +51,7 @@ function SoundnessState() {
 
   return (
     <div className="soundness-state-content">
-      <img src="./img/marker.png" className="" />
+      <img src="/img/marker.png" className="" />
       <div className="top">
         <span className="title-text">건전도 상태</span>
       </div>

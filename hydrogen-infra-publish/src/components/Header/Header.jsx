@@ -44,7 +44,7 @@ function Header() {
             <HiOutlineMenuAlt1 size={26} onClick={handletClick} />
           )}
         </div>
-        <img src="./img/logo.png" alt="logo" />
+        <img src="/img/logo.png" alt="logo" />
         <span className="title-hydrogen">수소 </span>
         <span className="title-hydrogen-fx">인프라 관리 시스템</span>
       </div>

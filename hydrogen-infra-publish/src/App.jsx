@@ -16,7 +16,7 @@ export default function App() {
           element: <MainDashboard />,
         },
         {
-          path: "/dashboard",
+          path: "/dashboard/:id?",
           element: <DetailDashboard />,
         },
       ],

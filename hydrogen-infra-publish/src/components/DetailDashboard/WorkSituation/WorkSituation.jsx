@@ -3,7 +3,7 @@ import { TfiMenuAlt } from "react-icons/tfi";
 function WorkSituation() {
   return (
     <div className="work-situation-state-content">
-      <img src="./img/marker.png" className="" />
+      <img src="/img/marker.png" className="" />
       <div className="top">
         <span className="title-text">유지 관리 작업</span>
         <TfiMenuAlt size={28} color="#00B0F0" />
