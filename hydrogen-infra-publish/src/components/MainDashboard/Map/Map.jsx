@@ -1,6 +1,7 @@
 import "./Map.scss";
 import React from "react";
 import { GoogleMap, InfoWindow, Marker } from "@react-google-maps/api";
+import { RxOpenInNewWindow } from "react-icons/rx";
 import Checkbox from "@mui/material/Checkbox";
 import { useEffect, useState } from "react";
 import { mapOptions } from "../../../data/Optionsformap";
@@ -98,6 +99,7 @@ function Map() {
           onLoad={onLoad}
           onUnmount={onUnmount}
         >
+        
           {markers.map((marker, index) => (
             <Marker
               key={index}
@@ -123,12 +125,30 @@ function Map() {
               position={{ lat: selectedMarker.lat, lng: selectedMarker.lng }}
             >
               <div className="info-station">
-                <span>{selectedMarker.district}</span>
-
+         
+                   <h1>Hello</h1>
               </div>
             </InfoWindow>
           )}
         </GoogleMap>
+        <div className="info-container">
+             <div className="top">
+              <span>대전 G 사업소</span>
+              <RxOpenInNewWindow size={24}/>
+             </div>
+             <div className="bottom">
+            <div className="left">
+                 <span>시설</span>
+                 <span>연락처</span>
+                 <span>알람 내용</span>
+            </div>
+            <div className="right">
+                 <span>시설</span>
+                 <span>연락처</span>
+                 <span>알람 내용</span>
+            </div>
+             </div>
+        </div>
       </div>
       <div className="map-filter">
         <div className="production-check check-container">

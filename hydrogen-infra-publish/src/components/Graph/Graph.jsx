@@ -31,6 +31,7 @@ function Graph({ items }) {
           innerRadius={isLargeScreen  ? 35 : 53}
           outerRadius={isLargeScreen  ? 55 : 80}
           dataKey="value"
+          startAngle={-270}
         >
           {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />

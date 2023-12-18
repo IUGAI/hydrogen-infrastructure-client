@@ -3,6 +3,7 @@ import { TfiMenuAlt } from "react-icons/tfi";
 import ButtonOutline from "../../Buttons/ButtonOutline";
 import AlarmWidgets from "./AlarmWidgets/AlarmWidgets";
 import { styled } from "@mui/material/styles";
+import { stations } from "../../../data/Mapdata";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -11,31 +12,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-function createData(type, station, failure, content, checked) {
-  return { type, station,failure, content, checked };
-}
 
-const rows = [
-  createData("중요", "부산 A 사업소",1, "설비 온도 이상", "미확인"),
-  createData("일반", "서울 A 사업소",0, "외부 충격", "확인"),
-  createData("일반", "나주 A 사업소",1, "점검 알림", "확인"),
-  createData("중요", "부산 A 사업소",1, "압력 이상", "확인"),
-  createData("일반", "서울 A 사업소",0, "가동중단", "확인"),
-  createData("중요", "광주 A 사업소",0, "설비 온도 이상", "확인"),
-  createData("일반", "나주 A 사업소",1, "점검 알림", "확인"),
-  createData("중요", "부산 A 사업소",1, "압력 이상", "확인"),
-  createData("일반", "서울 A 사업소",0, "가동중단", "확인"),
-  createData("중요", "광주 A 사업소",0, "설비 온도 이상", "확인"),
-  createData("일반", "나주 A 사업소",1, "점검 알림", "확인"),
-  createData("일반", "서울 A 사업소",0, "가동중단", "확인"),
-  createData("중요", "광주 A 사업소",0, "설비 온도 이상", "확인"),
-  createData("일반", "나주 A 사업소",1, "점검 알림", "확인"),
-  createData("중요", "부산 A 사업소",1, "압력 이상", "확인"),
-  createData("일반", "서울 A 사업소",0, "가동중단", "확인"),
-  createData("중요", "광주 A 사업소",0, "설비 온도 이상", "확인"),
-  createData("일반", "나주 A 사업소",1, "점검 알림", "확인"),
+const alarm = stations.flatMap((obj) => obj.alarms).filter((obj) => obj !== undefined);
+const alarm_notChecked = alarm.filter((obj) => obj.checked === false).length
 
-];
+
 
 const StyledTableHeader = styled(TableRow)`
   background-color: #212c4b;
@@ -70,7 +51,7 @@ const StyledTableCellContent = styled(TableCell)`
 const CellType = styled(TableCell)`
   font-family: "gothic 12";
   color: ${(props) =>
-    props.type === "중요"
+    props.type === 2
       ? "#00B0F0 "
       : "#fff  "};
   border-bottom: 1px solid #253255;
@@ -150,7 +131,7 @@ function AlarmList() {
         <img src="./img/marker.png" className="" />
         <div className="left">
           <span className="title-text">알람</span>
-          <ButtonOutline>미확인 1건</ButtonOutline>
+          <ButtonOutline>미확인 {alarm_notChecked}건</ButtonOutline>
         </div>
         <div className="right">
           <TfiMenuAlt size={28} color="#00B0F0" />
@@ -181,19 +162,19 @@ function AlarmList() {
                   </StyledTableHeader>
                 </TableHead>
                 <TableBody>
-                  {rows.map((row, index) => (
+                  {alarm.map((row, index) => (
                     <StyledTableContent key={index}>
-                      <CellType   type={row.type}>
-                        {row.type}
+                      <CellType   type={row.importance}>
+                        {row.importance === 2 ? "중요" : "일반"}
                       </CellType>
                       <StyledTableCellContent align="center">
-                        {row.station}
+                        {row.name}
                       </StyledTableCellContent>
-                      <CellTypeContent align="center" code = {row.failure}>
+                      <CellTypeContent align="center" code = {row.type}>
                         {row.content}
                       </CellTypeContent>
                       <CellTypeChecked align="center" checked={row.checked} >
-                        {row.checked}
+                        {row.checked ? "확인" : "미확인"}
                       </CellTypeChecked>
                     </StyledTableContent>
                   ))}

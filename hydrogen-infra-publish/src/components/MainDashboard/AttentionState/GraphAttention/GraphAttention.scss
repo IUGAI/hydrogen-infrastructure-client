@@ -25,18 +25,23 @@
     }
 
     .text-value {
+      margin-top: 30px;
       color: #8faadc;
       font-family: "gothic 12";
       font-size: 12px;
+      @media (max-width: 1536px) {
+        margin-top: 25px;
+      }
     }
 
     .text-percentage {
-      margin-top: 30px;
       color: white;
       font-family: "gothic M";
       font-size: 28px;
+      margin-top: 5px;
       @media (max-width: 1536px) {
-        font-size: 20px;
+        margin-top: 0px;
+        font-size: 15px;
       }
     }
   }

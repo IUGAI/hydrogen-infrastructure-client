@@ -4,29 +4,17 @@ import { FiPlus } from "react-icons/fi";
 import { BsArrows } from "react-icons/bs";
 import { styled, keyframes } from "styled-components";
 import EquipmentStateItem from "./EquipmentStateItem/EquipmentStateItem";
-import { equipmenst as initialEquipment } from "../../../data/statisticData";
+
 import { PiArrowUUpRightBold } from "react-icons/pi";
 import { useMediaQuery } from "react-responsive";
 import { useLocation, useParams } from "react-router-dom";
 import { stations } from "../../../data/Mapdata";
-
-const emptyStation = [
-  {
-    id: 0,
-    type: null,
-    failure: false,
-    max_capacity: 0,
-    percentage: null,
-    soundness: null,
-    temperature: 0,
-    equipment_name: "not available",
-    current_weight: null,
-  },
-];
+import { useMyContextEquipment } from "../../../context/equipmentContext";
 
 function EquipmentState() {
   const isMobilePhone = useMediaQuery({ maxWidth: 1024 });
-  const [selectedstation, setselectedStaion] = useState();
+  // const [selectedstation, setselectedStaion] = useState();
+  const { state, dispatch } = useMyContextEquipment();
   const [equipment, setEquipmenst] = useState([]);
   const [selectedItemId, setSelectedItemId] = useState("default");
   const [defaultvalue, setdefaultvalue] = useState("");
@@ -72,8 +60,10 @@ function EquipmentState() {
   `;
 
   useEffect(() => {
+    setSelectedItemId("default");
+    setdefaultvalue("");
     if (id === undefined) {
-      const emptyEquipmnets = []
+      const emptyEquipmnets = [];
       for (let i = 0; i < 5; i++) {
         emptyEquipmnets.push({
           id: 0,
@@ -88,12 +78,14 @@ function EquipmentState() {
         });
       }
       setEquipmenst(emptyEquipmnets);
+      dispatch({ type: "insert", payload: {} });
     } else {
       const findStation = stations.find((obj) => obj.id === parseInt(id));
       if (!findStation) {
         return;
       }
 
+      dispatch({ type: "insert", payload: findStation });
       const stationEquipments = findStation.equipments;
 
       const lengthOfArray = stationEquipments.length;
@@ -126,7 +118,6 @@ function EquipmentState() {
       }
     }
   }, [id, stations]);
-
 
   const handleItemClick = (clickedItemId, index) => {
     setSelectedItemId(clickedItemId); // Установка ID выбранного элемента

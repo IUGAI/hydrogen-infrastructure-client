@@ -1,16 +1,35 @@
+import { useMyContextEquipment } from "../../../context/equipmentContext";
 import Graph from "../../Graph/Graph";
 import CurentSitutationValue from "../../MainDashboard/CurrentSituation/CurentSituationValues/CurentSitutationValue";
 import "./OperationState.scss";
 
 function OperationState() {
+  const { state } = useMyContextEquipment();
+  const { equipments } = state.initalStation;
+  var total_equipments = 0;
+  var run_equipments = 0;
+  var irreversible_equipments  = 0;
+  var run_percentage = 0;
+
+  if (equipments !== undefined && equipments.length > 0) {
+    total_equipments = equipments.length;
+    run_equipments = equipments.filter((item) => item.failure === false).length;
+    irreversible_equipments =  equipments.filter((item) => item.failure === true).length
+    run_percentage = (run_equipments / total_equipments * 100).toFixed(0);
+  }
+
+
+
+
+
   const item = {
     id: 1,
     name: "가동",
     type: 10001,
-    percentage: 75,
+    percentage: run_percentage,
     data: [
-      { name: "Group A", value: 3 },
-      { name: "Group B", value: 4 },
+      { name: "Group A", value: equipments !== undefined && equipments.length > 0 ?  irreversible_equipments : 1 },
+      { name: "Group B", value: run_equipments },
     ],
     color_active: "#1681df",
     color_stroke: "#1f3c74",
@@ -22,17 +41,23 @@ function OperationState() {
     {
       id: 1,
       name: "충전",
-      quantity: "4",
+      quantity: equipments === undefined ? 0 : total_equipments,
     },
     {
       id: 4,
       name: "가동",
-      quantity: "3",
+      quantity:
+        equipments === undefined
+          ? 0
+          : run_equipments,
     },
     {
       id: 5,
       name: "비가동",
-      quantity: "1",
+      quantity:
+        equipments === undefined
+          ? 0
+          : irreversible_equipments,
     },
   ];
 

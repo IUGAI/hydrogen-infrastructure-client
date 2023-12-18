@@ -1,15 +1,21 @@
 import "./AttentionState.scss";
 import GraphAttention from "./GraphAttention/GraphAttention";
+import { stations } from "../../../data/Mapdata";
+
+const equipments = stations.flatMap(obj => obj.equipments);
+const run_equipments = equipments.filter((obj) => obj.failure === false).length;
+const irreversible_equipments = equipments.filter((obj) => obj.failure === true).length;
+const percentage_run = (run_equipments / equipments.length * 100).toFixed(0);
 
 const graphItems = [
   {
     id: 1,
     name: "가동",
     type: 10001,
-    percentage: 0,
+    percentage: percentage_run,
     data: [
-      { name: "Group A", value: 1200 },
-      { name: "Group B", value:  0},
+      { name: "Group A", value: irreversible_equipments },
+      { name: "Group B", value:  run_equipments},
     ],
     color_active: "#1681df",
     color_stroke: "#1f3c74",
@@ -61,6 +67,7 @@ const graphItems = [
 ];
 
 function AttentionState() {
+
   return (
     <div className="state-content">
       <img src="./img/marker.png" className="" />

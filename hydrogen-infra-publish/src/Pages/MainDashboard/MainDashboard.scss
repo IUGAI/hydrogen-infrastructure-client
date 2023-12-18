@@ -6,10 +6,10 @@
   color: white;
   display: grid;
   grid-template-columns: 1fr 1.5fr 1fr;
-    grid-template-rows: 1fr 1.5fr 1.5fr  1fr;
+  grid-template-rows: 1fr 1.5fr 1.5fr  5fr;
 
   @media (max-width: 1536px) {
-    grid-template-columns: 1fr 1.5fr 1fr;
+    grid-template-columns: 1fr 1.2fr 1fr;
     grid-template-rows: 1fr 1.5fr 1.5fr  1fr;
   }
 

@@ -5,10 +5,59 @@ import { styled } from "@mui/material/styles";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { useState } from "react";
+import { useMyContextEquipment } from "../../../context/equipmentContext";
 
 function StationSoundnessState() {
   const [selecteditem, setSelectedItem] = useState(1);
   const isLargeScreen = useMediaQuery({ maxWidth: 1536 });
+
+  const { state } = useMyContextEquipment();
+  const { equipments } = state.initalStation;
+
+  var current_production = 0;
+  var max_production = 0;
+  var current_storaging = 0;
+  var max_storaging = 0;
+  var current_charging = 0;
+  var max_charging = 0;
+  var percent_production = 0;
+  var percent_storaging = 0;
+  var percent_charging = 0;
+
+  if (equipments !== undefined && equipments.length > 0) {
+    current_production = equipments
+      .filter((item) => item.type === 1)
+      .reduce((total, element) => (total += element.current_weight), 0);
+    max_production = equipments
+      .filter((item) => item.type === 1)
+      .reduce((total, element) => (total += element.max_capacity), 0);
+    if (current_production !== 0 || max_production !== 0) {
+      percent_production = (
+        (current_production / max_production) *
+        100
+      ).toFixed(1);
+    }
+    current_storaging = equipments
+      .filter((item) => item.type === 2)
+      .reduce((total, element) => (total += element.current_weight), 0);
+    max_storaging = equipments
+      .filter((item) => item.type === 2)
+      .reduce((total, element) => (total += element.max_capacity), 0);
+    if (current_storaging !== 0 || max_storaging !== 0) {
+      percent_storaging = ((current_storaging / max_storaging) * 100).toFixed(
+        1
+      );
+    }
+    current_charging = equipments
+      .filter((item) => item.type === 3)
+      .reduce((total, element) => (total += element.current_weight), 0);
+    max_charging = equipments
+      .filter((item) => item.type === 3)
+      .reduce((total, element) => (total += element.max_capacity), 0);
+    if (current_charging !== 0 || max_charging !== 0) {
+      percent_charging = ((current_charging / max_charging) * 100).toFixed(1);
+    }
+  }
 
   const handlechange = (event) => {
     setSelectedItem(event.target.value);
@@ -75,19 +124,21 @@ function StationSoundnessState() {
         </div>
         <div className="item item-left">
           <span className="text-current">
-            396<span className="text-unit">kg</span>
+            {current_production}
+            <span className="text-unit">kg</span>
           </span>
         </div>
         <div className="item item-3-state">
           <div className="top-text">가동률</div>
-          <div className="bottom-text production">66.1%</div>
+          <div className="bottom-text production">{percent_production}%</div>
         </div>
         <div className="item item-center">
           <span>최대 생산량</span>
         </div>
         <div className="item item-left">
           <span className="text-max">
-            600<span className="text-unit">kg</span>
+            {max_production}
+            <span className="text-unit">kg</span>
           </span>
         </div>
         <div className="item item-center">
@@ -95,19 +146,21 @@ function StationSoundnessState() {
         </div>
         <div className="item item-left">
           <span className="text-current">
-            486<span className="text-unit">kg</span>
+            {current_storaging}
+            <span className="text-unit">kg</span>
           </span>
         </div>
         <div className="item item-8-state">
           <div className="top-text">저장률</div>
-          <div className="bottom-text storaging">91.7%</div>
+          <div className="bottom-text storaging">{percent_storaging}%</div>
         </div>
         <div className="item item-center">
           <span>최대 저장량</span>
         </div>
         <div className="item item-left">
           <span className="text-max">
-            530<span className="text-unit">kg</span>
+            {max_storaging}
+            <span className="text-unit">kg</span>
           </span>
         </div>
         <div className="item item-center">
@@ -115,19 +168,21 @@ function StationSoundnessState() {
         </div>
         <div className="item item-left">
           <span className="text-current">
-            528<span className="text-unit">kg</span>
+            {current_charging}
+            <span className="text-unit">kg</span>
           </span>
         </div>
         <div className="item item-13-state">
           <div className="top-text">사용률</div>
-          <div className="bottom-text charging">75.5%</div>
+          <div className="bottom-text charging">{percent_charging}%</div>
         </div>
         <div className="item item-center">
           <span>최대 충전량</span>
         </div>
         <div className="item item-left">
           <span className="text-max">
-            700<span className="text-unit">kg</span>
+            {max_charging}
+            <span className="text-unit">kg</span>
           </span>
         </div>
       </div>
