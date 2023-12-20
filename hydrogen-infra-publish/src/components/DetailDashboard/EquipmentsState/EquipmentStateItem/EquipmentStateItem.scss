@@ -88,7 +88,8 @@
             right: 20px;
             height: 100%;
             @media (max-width: 1536px) {
-              top: 15px;
+              top: 35px;
+              height: 90%;
             }
             .item-value {
               align-items: flex-end;
@@ -234,7 +235,7 @@
         }
 
         .vertical-line {
-          height: 25px; /* Высота линии равна высоте иконки */
+          height: 25px; 
           border-left: 1px solid #35477b; /* Стиль вертикальной линии */
           margin: 0 10px; /* Отступы вокруг линии */
         }

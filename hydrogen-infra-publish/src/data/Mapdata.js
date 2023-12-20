@@ -9,6 +9,7 @@ export const stations = [
   {
     id: 1001,
     type: 1,
+    phone_number: "042-4323-2818",
     lat: 37.5665,
     lng: 126.978,
     address: "서울특별시 금천구 시흥대로 321",
@@ -252,6 +253,8 @@ export const stations = [
   {
     id: 1002,
     type: 2,
+    phone_number: "02-4230-1110",
+    failure: 1,
     state: 2,
     lat: 35.1796,
     alarms: [
@@ -316,10 +319,11 @@ export const stations = [
     type: 3,
     lat: 33.49,
     state: 1,
+    phone_number: "02-4323-2288",
     lng: 126.53,
     address: "제주",
     district: "제주",
-    name: "제조 A 사업소",
+    name: "제주 A 사업소",
     max_capacity: 4,
     equipments: [
       {
@@ -340,6 +344,7 @@ export const stations = [
     id: 1004,
     type: 1,
     lat: 35.8714,
+    phone_number: "042-7772-2878",
     lng: 128.6014,
     address: "대구",
     state: 1,
@@ -354,6 +359,7 @@ export const stations = [
     type: 3,
     lat: 37.4563,
     lng: 126.7052,
+    phone_number: "02-3521-8891",
     state: 1,
     address: "인천",
     district: "인천",
@@ -381,6 +387,7 @@ export const stations = [
     lat: 35.1595,
     lng: 126.8526,
     address: "광주",
+    phone_number: "031-9212-0199",
     district: "광주",
     max_capacity: 5,
     name: "광주 A 사업소",
@@ -395,6 +402,7 @@ export const stations = [
     lat: 35.095,
     lng: 126.8726,
     address: "광주",
+    phone_number: "02-0192-2222",
     district: "광주",
     max_capacity: 5,
     name: "광주 B 사업소",

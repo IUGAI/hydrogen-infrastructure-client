@@ -21,12 +21,12 @@ function Graph({ items }) {
     <div>
       <PieChart
         width={isLargeScreen  ? 150 : 210}
-        height={isLargeScreen  ? 130 : 200}
+        height={isLargeScreen  ? 130 : 180}
       >
         <Pie
           data={items.data}
           cx={isLargeScreen  ? 68 : 98}
-          cy={isLargeScreen  ? 70 : 110}
+          cy={isLargeScreen  ? 70 : 90}
           stroke={color_stroke}
           innerRadius={isLargeScreen  ? 35 : 53}
           outerRadius={isLargeScreen  ? 55 : 80}

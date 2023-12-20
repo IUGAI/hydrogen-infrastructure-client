@@ -35,7 +35,7 @@ const StyledTableCellHeader = styled(TableCell)`
   color: #8faadc;
   border: 0;
   @media (max-width: 1536px) {
-    font-size: 12px;
+    font-size: 10px;
   }
 `;
 
@@ -44,7 +44,7 @@ const StyledTableCellContent = styled(TableCell)`
   border-bottom: 1px solid #253255;
   color: white;
   @media (max-width: 1536px) {
-    font-size: 12px;
+    font-size: 10px;
   }
 `;
 
@@ -56,7 +56,7 @@ const CellType = styled(TableCell)`
       : "#fff  "};
   border-bottom: 1px solid #253255;
   @media (max-width: 1536px) {
-    font-size: 12px;
+    font-size: 10px;
   }
 `;
 

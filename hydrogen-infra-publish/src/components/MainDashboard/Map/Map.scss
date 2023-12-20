@@ -22,47 +22,88 @@
     @media (max-width: 1536px) {
       height: 80%;
     }
-
-    
-    .info-container{
-      position: absolute;
+    .info-container {
+      // position: absolute;
       right: 0;
+      border: 1px solid #576dad;
       top: 0;
       height: 120px;
       opacity: 0.9;
-      width: 250px;
+      width: 200px;
       background-color: #1b2540;
+      @media (max-width: 1536px) {
+        width: 160px;
+        height: 90px;
+      }
 
-      .top{
+      .top {
         background-color: #576dad;
         align-items: center;
+        position: relative;
         justify-content: space-between;
-        font-family: "gothic 14";
         flex: 1;
         display: flex;
         height: 30%;
-                      
-        h5{
-
+        @media (max-width: 1536px) {
+          height: 30%;
         }
 
+        .img-marker {
+          position: absolute;
+          width: 9px;
+          bottom: 14px;
+          left: 10px;
+        }
+
+        span {
+          font-family: "gothic 14";
+          margin-left: 30px;
+          @media (max-width: 1536px) {
+            font-size: 10px;
+          }
+        }
+
+        .icons-container {
+          margin: 5px;
+          display: flex;
+          height: 100%;
+          align-items: center;
+          gap: 10px;
+        }
       }
 
-      .bottom{
+      .bottom {
         flex: 3;
         height: 70%;
+        padding-left: 10px;
         display: flex;
+
+        span {
+          font-size: 13px;
+          font-family: "gothic 12";
+          @media (max-width: 1536px) {
+            font-size: 10px;
+          }
+        }
 
         .left {
           display: flex;
-          border: 1px solid;
+          justify-content: center;
+          color: #5e76ba;
           height: 100%;
+          gap: 7px;
           width: 30%;
           flex-direction: column;
+          @media (max-width: 1536px) {
+            width: 40%;
+          }
         }
-        .right{
+        .right {
           display: flex;
+          justify-content: center;
+          font-family: "gothic 12";
           flex-direction: column;
+          gap: 7px;
         }
       }
     }
@@ -86,14 +127,7 @@
     .gm-style .gm-style-iw-d::-webkit-scrollbar-track-piece,
     .gm-style .gm-style-iw-c,
     .gm-style .gm-style-iw-t::after {
-            background-color: red;
-
-    }
-
-    .info-station {
-      color: black;
-      padding: 10px;
-      background-color: black;
+      background-color: #1c2641;
     }
   }
 
@@ -106,6 +140,9 @@
     color: #5e76ba;
     font-size: 40px;
     font-family: "gothic 16";
+    @media (max-width: 1536px) {
+      font-size: 30px;
+    }
   }
   img {
     width: 800px;
@@ -146,6 +183,9 @@
       align-items: center;
       gap: 10px;
 
+      @media (max-width: 1536px) {
+        gap: 10px;
+      }
       .check-text {
         font-size: 16px;
         color: #8faadc;

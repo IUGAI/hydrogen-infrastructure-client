@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import "./Sidebar.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMyContext } from "../../context/menucontext";
 
 function Sidebar() {
@@ -12,7 +12,9 @@ function Sidebar() {
     setSelectedItem(item);
   };
 
-
+  useEffect(() => {
+    setSelectedItem(start.pathname);
+  }, [start.pathname]);
 
   const { state } = useMyContext();
 
@@ -51,12 +53,12 @@ function Sidebar() {
             <Link
               to="/dashboard"
               className={`link-item ${
-                selectedItem.slice(0,10) === "/dashboard" ? "active" : ""
+                selectedItem.slice(0, 10) === "/dashboard" ? "active" : ""
               } ${state.showSide ? "" : "hide"}`}
             >
               <img
                 src={
-                  selectedItem.slice(0,10) === "/dashboard"
+                  selectedItem.slice(0, 10) === "/dashboard"
                     ? "/img/active-icon-dash-detail.png"
                     : "/img/icon-dash-detail.png"
                 }
@@ -251,10 +253,7 @@ function Sidebar() {
                 state.showSide ? "" : "hide"
               }`}
             >
-              <img
-                src="/img/task-report-disactive.png"
-                className="icon-menu"
-              />
+              <img src="/img/task-report-disactive.png" className="icon-menu" />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
                 결과 등록
               </span>
