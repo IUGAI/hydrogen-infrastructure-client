@@ -43,6 +43,8 @@ function Map() {
     mapRef.current = undefined;
   }, []);
 
+
+
   useEffect(() => {
     const savedMarkers = JSON.parse(localStorage.getItem("savedMarkers"));
     if (savedMarkers) {
@@ -103,7 +105,7 @@ function Map() {
           mapContainerStyle={containerStyle}
           options={mapOptions}
           center={center}
-          zoom={7.5}
+          zoom={2}
           onLoad={onLoad}
           onUnmount={onUnmount}
         >

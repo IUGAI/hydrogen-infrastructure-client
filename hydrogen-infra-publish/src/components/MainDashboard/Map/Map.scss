@@ -127,8 +127,24 @@
     .gm-style .gm-style-iw-d::-webkit-scrollbar-track-piece,
     .gm-style .gm-style-iw-c,
     .gm-style .gm-style-iw-t::after {
-      background-color: #1c2641;
+        background-color: transparent;
+
     }
+    .gm-style-iw-tc{
+      visibility: hidden;
+    }
+
+
+    button.gm-ui-hover-effect {
+      visibility: hidden;
+  }
+    .gm-style-iw.gm-style-iw-c{
+      padding: 0;
+      .gm-style-iw-d{
+        padding: 0;
+      }
+    }
+    
   }
 
   .icon-map {

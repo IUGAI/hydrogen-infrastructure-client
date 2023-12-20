@@ -5,6 +5,7 @@ import { MyequipmentContext } from "./context/equipmentContext";
 import "./App.scss";
 import AppLayout from "./components/AppLayout/AppLayout";
 import { MyProvider } from "./context/menucontext";
+import StationList from "./Pages/StationList/StationList";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -20,6 +21,10 @@ export default function App() {
           path: "/dashboard/:id?",
           element: <DetailDashboard />,
         },
+        {
+          path: "/stations",
+          element: <StationList/>
+        }
       ],
     },
   ]);
