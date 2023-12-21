@@ -5,7 +5,8 @@ import { MyequipmentContext } from "./context/equipmentContext";
 import "./App.scss";
 import AppLayout from "./components/AppLayout/AppLayout";
 import { MyProvider } from "./context/menucontext";
-import StationList from "./Pages/StationList/StationList";
+import Stations from "./Pages/StationList/Station";
+
 
 export default function App() {
   const router = createBrowserRouter([
@@ -23,7 +24,7 @@ export default function App() {
         },
         {
           path: "/stations",
-          element: <StationList/>
+          element: <Stations/>
         }
       ],
     },

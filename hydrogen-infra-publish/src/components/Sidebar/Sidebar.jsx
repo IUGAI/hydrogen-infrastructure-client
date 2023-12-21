@@ -83,7 +83,7 @@ function Sidebar() {
         <ul>
           <li onClick={() => handleClickItem("/stations")}>
             <Link
-              to="/"
+              to="/stations"
               className={`link-item ${selectedItem === "/stations" ? "active" : ""} ${
                 state.showSide ? "" : "hide"
               }`}
