@@ -1,6 +1,8 @@
 .station-list {
   margin: 10px 20px;
+  height: 700px;
   background-color: #1c2641;
+
   .header-table {
     height: 50px;
     border: 1px solid #253255;
@@ -39,25 +41,44 @@
       }
     }
   }
+
   .table {
     width: 100%;
     height: 90%;
-
     .custom-datagrid {
       font-family: "gothic 12";
-      color: #8faadc;
+      color: #fff;
       border: none;
+      font-size: 13px;
     }
-
     .MuiDataGrid-columnHeaders {
       background-color: #253255;
+      color: #8faadc;
+      min-height: 20px;
     }
     .MuiDataGrid-withBorderColor {
       border-color: #2b3a63;
     }
     .MuiDataGrid-columnHeader {
-      border: 1px solid #2b3a63;
+      border: 1px solid #232f50;
+    }
+    .MuiDataGrid-cell {
+      border: 1px solid #232f50;
+    }
+    .MuiDataGrid-checkboxInput {
+      color: #576fae;
+    }
+    .MuiTablePagination-root{
+        color: #8faadc;
+    }
+    .MuiSvgIcon-root{
+        color: #8faadc;
     }
 
+    .MuiDataGrid-columnHeaderTitleContainerContent {
+      span {
+        margin: 0;
+      }
+    }
   }
 }

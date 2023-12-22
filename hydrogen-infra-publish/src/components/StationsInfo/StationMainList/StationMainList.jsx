@@ -5,39 +5,103 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { SiMicrosoftexcel } from "react-icons/si";
 import "./StationMainList.scss";
 import { DataGrid } from "@mui/x-data-grid";
+import { stations } from "../../../data/Mapdata";
 
 const columns = [
-  { field: "id", headerName: "등록일", width: 200 },
-  { field: "firstName", headerName: "시도", width: 200 },
-  { field: "lastName", headerName: "사업자", width: 200 },
   {
-    field: "age",
+    field: "id",
+    headerName: "아이디",
+    width: 150,
+    sortable: false,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    field: "regist_date",
+    headerName: "등록일",
+    width: 150,
+    sortable: false,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    field: "district",
+    headerName: "시도",
+    width: 150,
+    sortable: false,
+    headerClassName: "super-app-theme--header",
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    field: "business",
+    headerName: "사업자",
+    width: 150,
+    headerAlign: "center",
+    align: "center",
+    valueGetter: (params) => {
+      // Convert the decimal value to a percentage
+      return params.value === 10000001 ? "남부사전" : "";
+    },
+  },
+  {
+    field: "station_name",
     headerName: "사업소",
-    type: "number",
+    width: 150,
+    align: "center",
+    headerAlign: "center",
+  },
+  {
+    field: "commencement_date",
+    headerName: "개시일",
+    description: "This column has a value getter and is not sortable.",
+    align: "center",
+    headerAlign: "center",
     width: 200,
   },
   {
-    field: "fullName",
-    headerName: "개시일",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
+    field: "station_type",
+    headerName: "사업소 종류",
+    width: 150,
+    align: "center",
+    headerAlign: "center",
+    valueGetter: (params) => {
+      // Convert the decimal value to a percentage
+      return params.value === 1 ? "생산" : params.value === 2 ? "저장" : "충전";
+    },
+  },
+  {
+    field: "production_cnt",
+    headerName: "생상시설",
+    align: "center",
+    headerAlign: "center",
     width: 200,
-    valueGetter: (params) =>
-      `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+  },
+  {
+    field: "storage_cnt",
+    headerName: "저장시설",
+    align: "center",
+    headerAlign: "center",
+    width: 200,
+  },
+  {
+    field: "charging_cnt",
+    headerName: "충전시설",
+    align: "center",
+    headerAlign: "center",
+    width: 200,
   },
 ];
 
-const rows = [
-  { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-  { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-  { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-  { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-  { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-  { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-  { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-  { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-  { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
-];
+const rows = stations.map((item) => ({
+  id: item.id,
+  regist_date: item.regist_date,
+  business: item.buisness_no,
+  district: item.district,
+  station_name: item.name,
+  commencement_date: item.commencement_date,
+  station_type: item.type,
+}));
 
 function StationMainList() {
   return (
@@ -70,6 +134,9 @@ function StationMainList() {
       <div className="table">
         <DataGrid
           rows={rows}
+          rowHeight={40}
+        //   autoHeight
+          columnHeaderHeight={40}
           columns={columns}
           className="custom-datagrid"
           initialState={{
