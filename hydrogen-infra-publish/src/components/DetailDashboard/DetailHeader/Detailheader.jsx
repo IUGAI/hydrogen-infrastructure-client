@@ -7,16 +7,15 @@ import { useMediaQuery } from "react-responsive";
 import MenuItem from "@mui/material/MenuItem";
 import "./Detailheader.scss";
 import { stations } from "../../../data/Mapdata";
-import {  useState } from "react";
-
+import { useState } from "react";
+import { useMyContextEquipment } from "../../../context/equipmentContext";
 
 function Detailheader() {
-  const {id} = useParams();
+  const { id } = useParams();
+  const { state } = useMyContextEquipment();
   const [selecteditem, setSelectedItem] = useState(id === undefined ? 1 : id);
   const isSmallScreen = useMediaQuery({ maxWidth: 1536 });
   const navigate = useNavigate();
-
-
 
   const CustomSelect = styled(Select)({
     width: isSmallScreen ? "100%" : "100%",
@@ -53,12 +52,12 @@ function Detailheader() {
     navigate(`/dashboard/${newValue}`);
   };
 
-
   return (
     <div className="detail-header-content">
       <div className="left">
-        <span className="detail-header-title">부산 A 사업소</span>
-        <ButtonCustum>정보</ButtonCustum>
+        <span className="detail-header-title">{state.initalStation.name}</span>
+
+        {state.initalStation.name && <ButtonCustum>정보</ButtonCustum>}
       </div>
       <div className="mid">
         <IoPartlySunnyOutline size={27} color="#8FAADC" />

@@ -1,13 +1,16 @@
 .curent-situation-value {
   border: 1px solid #253255;
   display: flex;
-  margin: 7px;
+  margin: 5px;
   height: 100%;
   align-items: center;
   border-radius: 10px;
   background-color: #212c4b;
   justify-content: center;
   flex-direction: column;
+  @media (max-width: 1536px) {
+    margin: 2px;
+  }
 
   .top-value {
     padding: 20px 0;
@@ -20,10 +23,10 @@
     .curent-text-name {
       color: #8faadc;
       font-family: "gothic 12";
-      font-size: 17px;
+      font-size: 15px;
       @media (max-width: 1536px) {
         padding: 10px 0;
-        font-size: 13px;
+        font-size: 12px;
       }
     }
 
@@ -42,7 +45,7 @@
 
     .curent-text-quantity {
       font-family: "gothic M";
-      font-size: 19px;
+      font-size: 24px;
       color: white;
 
       @media (max-width: 1636px) {

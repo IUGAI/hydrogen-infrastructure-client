@@ -19,28 +19,6 @@ function createData(name, calories, fat, carbs, protein) {
 }
 
 
-const rows = [
-  createData("사울", "생산", "서울 B 사업소", "1/1", "중단"),
-  createData("부산", "충전", "부산 A 사업소", "3/4", "가동중"),
-  createData("사울", "생산", "서울 A 사업소", "2/2", "점검중"),
-  createData("광주", "생산", "광주 C 사업소", "3/4", "가동중"),
-  createData("사울", "저장", "서울 C 사업소", "2/4", "점검중"),
-  createData("사울", "생산", "서울 C 사업소", "1/4", "가동중"),
-  createData("대구", "충전", "대구 B 사업소", "4/4", "중단"),
-  createData("사울", "생산", "서울 A 사업소", "4/4", "가동중"),
-  createData("사울", "생산", "서울 A 사업소", "0/3", "가동중"),
-  createData("울산", "충전", "울산 C 사업소", "3/4", "점검중"),
-  createData("사울", "생산", "서울 C 사업소", "3/4", "가동중"),
-  createData("사울", "생산", "서울 C 사업소", "3/4", "중단"),
-  createData("사울", "충전", "서울 C 사업소", "4/4", "중단"),
-  createData("사울", "충전", "서울 C 사업소", "4/4", "가동중"),
-  createData("제주", "생산", "제주 A 사업소", "3/4", "가동중"),
-  createData("사울", "생산", "서울 C 사업소", "3/4", "가동중"),
-  createData("부산", "충존", "부산 C 사업소", "4/4", "중단"),
-  createData("사울", "충전", "서울 C 사업소", "4/4", "가동중"),
-  createData("남양주", "충전", "남양주 C 사업소", "3/4", "중단"),
-];
-
 console.log(stations);
 
 
@@ -71,7 +49,7 @@ const StyledTableCellContent = styled(TableCell)`
   color: white;
 
   @media (max-width: 1536px) {
-    font-size: 12px;
+    font-size: 10px;
   }
 `;
 
@@ -85,7 +63,7 @@ const CellType = styled(TableCell)`
       : "#FFC000  "};
   border-bottom: 1px solid #253255;
   @media (max-width: 1536px) {
-    font-size: 12px;
+    font-size: 10px;
   }
 `;
 
@@ -99,7 +77,7 @@ const CellState = styled(TableCell)`
       : "#fff"};
   border-bottom: 1px solid #253255;
   @media (max-width: 1536px) {
-    font-size: 12px;
+    font-size: 10px;
   }
 `;
 
@@ -136,8 +114,8 @@ function StationList() {
           <span className="title-text">사업소 목록</span>
         </div>
         <div className="right">
-          <RiRefreshLine size={28} color="#00B0F0" />
-          <TfiMenuAlt size={28} color="#00B0F0" />
+          <RiRefreshLine size={isSmallScreen ? 20 :28} color="#00B0F0" />
+          <TfiMenuAlt size={isSmallScreen ? 20 :28} color="#00B0F0" />
         </div>
       </div>
       <div className="bottom">

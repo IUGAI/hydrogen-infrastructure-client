@@ -6,12 +6,18 @@
   color: white;
   display: grid;
   grid-template-columns: 1fr 1.5fr 1fr;
-    grid-template-rows: 1fr 1.5fr 1.5fr  1fr;
+  grid-template-rows: 1fr 1.5fr 1.5fr  5fr;
 
   @media (max-width: 1536px) {
     grid-template-columns: 1fr 1.5fr 1fr;
     grid-template-rows: 1fr 1.5fr 1.5fr  1fr;
   }
+
+  @media (max-width: 1400px) {
+    grid-template-columns: 1.1fr 1fr 1fr;
+    grid-template-rows: 1fr 1.5fr 1.5fr  1fr;
+  }
+
 
   &::-webkit-scrollbar {
     width: 6px;

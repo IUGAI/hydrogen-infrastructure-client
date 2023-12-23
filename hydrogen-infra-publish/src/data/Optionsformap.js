@@ -70,6 +70,15 @@ export const mapOptions = {
       ],
     },
     {
+      featureType: 'administrative',
+      elementType: 'geometry.stroke',
+      stylers: [
+        {
+          visibility: 'off', 
+        },
+      ],
+    },
+    {
       featureType: "landscape.man_made",
       elementType: "geometry",
       stylers: [

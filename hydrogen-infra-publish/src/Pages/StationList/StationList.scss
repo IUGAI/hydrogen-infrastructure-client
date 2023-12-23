@@ -1,0 +1,22 @@
+.stations-dashboard {
+  display: grid;
+  width: 100%;
+  height: 90%;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.1fr 1fr 4fr;
+
+  span {
+    color: white;
+    font-family: "gothic 12";
+    font-size: 19px;
+    margin: 10px 20px;
+  }
+
+  label {
+    color: #8faadc;
+    font-family: "gothic 12";
+    font-size: 13px;
+  }
+
+
+}

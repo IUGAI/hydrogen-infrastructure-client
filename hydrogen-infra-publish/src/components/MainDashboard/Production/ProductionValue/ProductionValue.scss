@@ -16,7 +16,7 @@
     align-items: center;
 
     @media (max-width: 1536px) {
-      padding: 15px 0;
+      padding: 12px 0;
     }
 
     .prod-text-name {
@@ -28,7 +28,7 @@
     .prod-text-value {
 
       font-family: "gothic M";
-      font-size: 19px;
+      font-size: 15px;
 
       &.production {
         color: #00b0f0;
@@ -41,13 +41,13 @@
         color: #92d050;
       }
       @media (max-width: 1989px) {
-        font-size: 17px;
+        font-size: 15px;
       }
     }
     .prod-text-percentage {
         color: #8faadc;
         font-family: "gothic 12";
-        font-size: 17px;
+        font-size: 15px;
     }
   }
   .prod-item:not(:last-child) {

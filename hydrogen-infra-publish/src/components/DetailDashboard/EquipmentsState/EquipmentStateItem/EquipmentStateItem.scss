@@ -10,6 +10,7 @@
   .top {
     flex: 1;
     display: flex;
+    gap: 10px;
     justify-content: space-between;
     border-bottom: 1px solid #253255;
 
@@ -59,7 +60,7 @@
       }
       .mid-values-graph {
         flex: 1.5;
-        padding: 20px;
+        padding: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -70,12 +71,12 @@
           align-items: start;
         }
         .mid-vlues-chart-one-bar {
-          width: 400px;
+          width: 410px;
           position: relative;
           height: 90%;
 
           @media (max-width: 1536px) {
-            width: 340px;
+            width: 370px;
             height: 100%;
           }
 
@@ -88,7 +89,8 @@
             right: 20px;
             height: 100%;
             @media (max-width: 1536px) {
-              top: 15px;
+              top: 32px;
+              height: 95%;
             }
             .item-value {
               align-items: flex-end;
@@ -234,7 +236,7 @@
         }
 
         .vertical-line {
-          height: 25px; /* Высота линии равна высоте иконки */
+          height: 25px; 
           border-left: 1px solid #35477b; /* Стиль вертикальной линии */
           margin: 0 10px; /* Отступы вокруг линии */
         }
@@ -302,7 +304,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 17px;
+      font-size: 15px;
       color: #8faadc;
       font-family: "gothic 12";
       @media (max-width: 1536px) {

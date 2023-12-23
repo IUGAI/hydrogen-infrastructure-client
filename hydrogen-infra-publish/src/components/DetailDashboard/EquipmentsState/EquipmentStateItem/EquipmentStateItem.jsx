@@ -284,7 +284,7 @@ function EquipmentStateItem({ item, index, onClick, isSelected }) {
     >
       <div className={`top ${backgroundColor}`}>
         <div className="title-name">
-          <RxDotFilled color={colorFailure} size={36} />
+          <RxDotFilled color={colorFailure} size={isSmallScreen ? 12 : 30} />
           {type === 1 ? (
             <span>생산</span>
           ) : type === 2 ? (
