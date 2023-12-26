@@ -5,6 +5,7 @@ import { MyequipmentContext } from "./context/equipmentContext";
 import "./App.scss";
 import AppLayout from "./components/AppLayout/AppLayout";
 import { MyProvider } from "./context/menucontext";
+import StationDetail from "./Pages/StationDetail/StationDetail";
 import Stations from "./Pages/StationList/Station";
 
 
@@ -25,6 +26,9 @@ export default function App() {
         {
           path: "/stations",
           element: <Stations/>
+        },{
+          path: "/stations/:id?",
+          element: <StationDetail/>
         }
       ],
     },
