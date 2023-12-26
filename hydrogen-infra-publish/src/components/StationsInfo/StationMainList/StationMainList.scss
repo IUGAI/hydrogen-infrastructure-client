@@ -51,6 +51,25 @@
       border: none;
       font-size: 13px;
     }
+
+    .prod-text-value {
+      font-family: "gothic 12";
+      font-size: 13px;
+
+      &.production {
+        color: #00b0f0;
+      }
+
+      &.storaging {
+        color: #ffc000;
+      }
+      &.charging {
+        color: #92d050;
+      }
+      @media (max-width: 1989px) {
+        font-size: 15px;
+      }
+    }
     .MuiDataGrid-columnHeaders {
       background-color: #253255;
       color: #8faadc;
@@ -68,11 +87,11 @@
     .MuiDataGrid-checkboxInput {
       color: #576fae;
     }
-    .MuiTablePagination-root{
-        color: #8faadc;
+    .MuiTablePagination-root {
+      color: #8faadc;
     }
-    .MuiSvgIcon-root{
-        color: #8faadc;
+    .MuiSvgIcon-root {
+      color: #8faadc;
     }
 
     .MuiDataGrid-columnHeaderTitleContainerContent {

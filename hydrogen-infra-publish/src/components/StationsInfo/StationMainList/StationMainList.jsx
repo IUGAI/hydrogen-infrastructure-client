@@ -65,10 +65,16 @@ const columns = [
     width: 150,
     align: "center",
     headerAlign: "center",
-    valueGetter: (params) => {
-      // Convert the decimal value to a percentage
-      return params.value === 1 ? "생산" : params.value === 2 ? "저장" : "충전";
-    },
+    renderCell: (params) => {
+        return (
+          params.value === 1
+            ? <span className="prod-text-value production">생산</span> 
+            : params.value === 2
+            ? <span className="prod-text-value storaging">저장</span>
+            : <span className="prod-text-value charging">충전</span>
+        );
+      }
+      
   },
   {
     field: "production_cnt",
@@ -101,6 +107,12 @@ const rows = stations.map((item) => ({
   station_name: item.name,
   commencement_date: item.commencement_date,
   station_type: item.type,
+  production_cnt: item.equipments.filter((equipments) => equipments.type === 1)
+    .length,
+  storage_cnt: item.equipments.filter((equipments) => equipments.type === 2)
+    .length,
+  charging_cnt: item.equipments.filter((equipments) => equipments.type === 3)
+    .length,
 }));
 
 function StationMainList() {
@@ -135,7 +147,7 @@ function StationMainList() {
         <DataGrid
           rows={rows}
           rowHeight={40}
-        //   autoHeight
+          //   autoHeight
           columnHeaderHeight={40}
           columns={columns}
           className="custom-datagrid"
