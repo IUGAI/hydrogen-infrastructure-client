@@ -28,7 +28,7 @@ export default function App() {
           element: <Stations/>
         },{
           path: "/stations/:id?",
-          element: <StationDetail/>
+          element: <StationDetail/>,
         }
       ],
     },

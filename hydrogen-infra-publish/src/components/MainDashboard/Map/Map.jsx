@@ -22,6 +22,7 @@ const center = {
   lng: 126.978,
 };
 
+
 function Map() {
   const navigate = useNavigate();
   const [markers, setMarkers] = useState([]);

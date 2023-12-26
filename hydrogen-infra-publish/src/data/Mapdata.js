@@ -2,6 +2,8 @@ export const buisness = [
   {
     id: 10001,
     name: "환경부",
+    lat: 37.52129,
+    lng: 126.9133
   },
 ];
 

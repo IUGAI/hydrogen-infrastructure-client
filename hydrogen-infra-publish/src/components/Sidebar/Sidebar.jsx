@@ -84,12 +84,12 @@ function Sidebar() {
           <li onClick={() => handleClickItem("/stations")}>
             <Link
               to="/stations"
-              className={`link-item ${selectedItem === "/stations" ? "active" : ""} ${
+              className={`link-item ${selectedItem.slice(0, 9) === "/stations" ? "active" : ""} ${
                 state.showSide ? "" : "hide"
               }`}
             >
               <img
-                src={selectedItem === "/stations" ? "/img/stationsactivemenu.png" :   "/img/station-info-disactive.png"}
+                src={selectedItem.slice(0, 9)  === "/stations" ? "/img/stationsactivemenu.png" :   "/img/station-info-disactive.png"}
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
