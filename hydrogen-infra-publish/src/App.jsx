@@ -7,6 +7,10 @@ import AppLayout from "./components/AppLayout/AppLayout";
 import { MyProvider } from "./context/menucontext";
 import StationDetail from "./Pages/StationDetail/StationDetail";
 import Stations from "./Pages/StationList/Station";
+import EquipmentsList from "./Pages/EquipmentsList/EquipmentsList";
+import EquipmentsDetail from "./Pages/EquipmentsDetail/EquipmentsDetail";
+import MaterialList from "./Pages/MaterialsList/MaterialList";
+import MaterialsDetail from "./Pages/MaterialsDetail/MaterialsDetail";
 
 
 export default function App() {
@@ -29,6 +33,21 @@ export default function App() {
         },{
           path: "/stations/:id?",
           element: <StationDetail/>,
+        },
+        {
+          path: "/equipments",
+          element: <EquipmentsList/>
+        }, {
+          path: "/equipments/:id?",
+          element: <EquipmentsDetail/>
+        },
+        {
+          path: "/materials",
+          element: <MaterialList/>
+        },
+        {
+          path: "/materials/:id?",
+          element: <MaterialsDetail/>
         }
       ],
     },

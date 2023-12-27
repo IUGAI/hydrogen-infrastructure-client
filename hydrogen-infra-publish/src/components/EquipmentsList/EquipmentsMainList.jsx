@@ -3,9 +3,8 @@ import { DiMootoolsBadge } from "react-icons/di";
 import { IoSaveOutline } from "react-icons/io5";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { SiMicrosoftexcel } from "react-icons/si";
-import "./StationMainList.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { stations } from "../../../data/Mapdata";
+import { equipments } from "../../data/Mapdata";
 import { useNavigate } from "react-router-dom";
 import { handleItemSelection } from "@mui/base/useList";
 import { useState } from "react";
@@ -55,16 +54,15 @@ const columns = [
     headerAlign: "center",
   },
   {
-    field: "commencement_date",
-    headerName: "개시일",
-    description: "This column has a value getter and is not sortable.",
+    field: "equipment_name",
+    headerName: "시설물명",
     align: "center",
     headerAlign: "center",
     width: 200,
   },
   {
     field: "station_type",
-    headerName: "사업소 종류",
+    headerName: "시설종류",
     width: 150,
     align: "center",
     headerAlign: "center",
@@ -79,68 +77,59 @@ const columns = [
     },
   },
   {
-    field: "production_cnt",
-    headerName: "생상시설",
+    field: "durable",
+    headerName: "내구연한",
     align: "center",
     headerAlign: "center",
     width: 200,
   },
   {
-    field: "storage_cnt",
-    headerName: "저장시설",
-    align: "center",
-    headerAlign: "center",
-    width: 200,
-  },
-  {
-    field: "charging_cnt",
-    headerName: "충전시설",
+    field: "manage_number",
+    headerName: "관리번호",
     align: "center",
     headerAlign: "center",
     width: 200,
   },
 ];
 
-const rows = stations.map((item) => ({
+// const rows = [];
+
+const rows = equipments.map((item) => ({
   id: item.id,
   regist_date: item.regist_date,
   business: item.buisness_no,
   district: item.district,
-  station_name: item.name,
-  commencement_date: item.commencement_date,
+  business: item.buisness_no,
+  station_name: item.station_name,
+  equipment_name: item.equipment_name,
   station_type: item.type,
-  production_cnt: item.equipments.filter((equipments) => equipments.type === 1)
-    .length,
-  storage_cnt: item.equipments.filter((equipments) => equipments.type === 2)
-    .length,
-  charging_cnt: item.equipments.filter((equipments) => equipments.type === 3)
-    .length,
+  durable: item.durable,
+  manage_number: item.manage_number,
 }));
 
-function StationMainList() {
+function EquipmentsMainList() {
   const [selectedItems, setSelectedItems] = useState([]);
   const navigate = useNavigate();
 
   const handleItemSelection = (selectionModel) => {
     setSelectedItems(selectionModel);
   };
-
   const handleNavigatetoDetail = () => {
     if (selectedItems.length > 1) {
       alert("한개 만 선택해주세요!");
     } else if (selectedItems.length === 0) {
-      alert("사업소 선택해 주세요");
+      alert("시설물 선택해 주세요");
     } else {
-         navigate(`/stations/${selectedItems[0]}`)
+      navigate(`/equipments/${selectedItems[0]}`);
     }
   };
-
   return (
     <div className="station-list">
       <div className="header-table">
         <div className="left">
           <div className="icon-header">
             <IoMdSearch
+              style={{ cursor: "pointer" }}
               size={24}
               color="#576dad"
               onClick={handleNavigatetoDetail}
@@ -189,4 +178,4 @@ function StationMainList() {
   );
 }
 
-export default StationMainList;
+export default EquipmentsMainList;

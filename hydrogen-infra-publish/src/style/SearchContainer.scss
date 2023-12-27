@@ -3,12 +3,9 @@
     padding: 10px 10px;
     display: grid;
     position: relative;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 0.35fr 0.35fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 0.5fr 0.5fr;
     grid-template-rows: 1fr 1fr;
     background-color: #1c2641;
-    @media (max-width: 1536px) {
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 0.5fr 0.5fr;
-    }
 
     .search-img{
         position: absolute;
@@ -18,10 +15,32 @@
 
     .search-input-item {
       display: flex;
+      z-index: 1;
       flex-direction: column;
       gap: 5px;
       justify-content: center;
       padding: 10px;
+
+      &.row-long {
+        grid-column: span 2;
+      }
+
+      .custom-input-default {
+        width: 93%;
+        padding: 10px;
+        color: #8faadc;
+        border: 1px solid #2b3a63;
+        font-size: 14px;
+        border-radius: 5px;
+        background-color: #212c4b;
+  
+        &:focus {
+          outline: none;
+          border-color: #8faadc;
+        }
+      }
+  
+
 
       .button-search {
         width: 100%;

@@ -3,6 +3,10 @@
   height: 700px;
   background-color: #1c2641;
 
+  &.equipments {
+    margin: 10px 0;
+  }
+
   .header-table {
     height: 50px;
     border: 1px solid #253255;
@@ -79,7 +83,7 @@
     .MuiDataGrid-columnHeaderTitle {
       font-family: "gothic 12";
     }
-    .MuiDataGrid-cellContent{
+    .MuiDataGrid-cellContent {
       font-family: "gothic 12";
     }
     .MuiDataGrid-withBorderColor {
@@ -87,6 +91,9 @@
     }
     .MuiDataGrid-columnHeader {
       border: 1px solid #232f50;
+    }
+    .MuiDataGrid-overlay {
+      background-color: #1c2641;
     }
     .MuiDataGrid-cell {
       border: 1px solid #232f50;
