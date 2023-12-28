@@ -11,6 +11,7 @@ import EquipmentsList from "./Pages/EquipmentsList/EquipmentsList";
 import EquipmentsDetail from "./Pages/EquipmentsDetail/EquipmentsDetail";
 import MaterialList from "./Pages/MaterialsList/MaterialList";
 import MaterialsDetail from "./Pages/MaterialsDetail/MaterialsDetail";
+import StationRegist from "./Pages/StationRegist/StationRegist";
 
 
 export default function App() {
@@ -48,6 +49,10 @@ export default function App() {
         {
           path: "/materials/:id?",
           element: <MaterialsDetail/>
+        },
+        {
+          path: "/station-regist",
+          element: <StationRegist/>
         }
       ],
     },

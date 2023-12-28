@@ -11,13 +11,46 @@
         flex-direction: column;
         gap: 20px;
 
+        .station-img-container {
+          border: 1px solid #2b3a63;
+          margin: 20px;
+          border-radius: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 200px;
+          background-color: #212c4b;
+          position: relative;
+
+          @media (max-width: 1536px) {
+            height: 150px;
+          }
+
+          .default-text {
+            font-family: "gothic 12";
+            color: #8faadc;
+            font-size: 14px;
+          }
+
+          .img_station_logo {
+            position: absolute;
+            bottom: -30px;
+            width: 150px;
+            right: -20px;
+          }
+        }
+
         .station-detail-info-left-inner {
           display: flex;
           flex-direction: column;
           gap: 20px;
+
+          @media (max-width: 1536px) {
+            gap: 10px;
+          }
           .station-detail-info-left-item {
             display: flex;
-            gap: 10px;
+            gap: 10px;            
             .station-detail-info-left-item-icon {
               width: 50px;
               height: 50px;
@@ -44,10 +77,58 @@
             }
           }
         }
+
+      }
+      .station-detail-info-right {
+        padding: 35px 20px;
+
+        .station-detail-location {
+          width: 100%;
+          height: 100%;
+          background-color: #bcbabd;
+
+          @media (max-width: 1536px) {
+            height: 450px
+          }
+        }
+      }
+      .station-detail-info-right-material{
+        padding: 10px 0;
+
+        .station-detail-info-left-item {
+          display: flex;
+          margin: 20px;
+          gap: 10px;
+          .station-detail-info-left-item-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #212c4b;
+          }
+          .station-detail-info-left-item-value {
+            display: flex;
+            flex-direction: column;
+            gap: 3%;
+            .station-detail-info-title {
+              font-family: "gothic 12";
+              color: #5e76ba;
+              font-size: 13px;
+            }
+            .station-detail-info-content {
+              font-family: "gothic 12";
+              color: #8faadc;
+              font-size: 16px;
+            }
+          }
+        }
+
         .station-img-container {
           border: 1px solid #2b3a63;
+          margin: 20px;
           border-radius: 5px;
-          width: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -71,15 +152,6 @@
             width: 150px;
             right: -20px;
           }
-        }
-      }
-      .station-detail-info-right {
-        padding: 35px 20px;
-
-        .station-detail-location {
-          width: 100%;
-          height: 100%;
-          background-color: #bcbabd;
         }
       }
     }
