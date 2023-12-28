@@ -74,7 +74,7 @@ export const mapOptions = {
       elementType: 'geometry.stroke',
       stylers: [
         {
-          visibility: 'off', 
+          visibility: 'off', // Скрыть сетку
         },
       ],
     },

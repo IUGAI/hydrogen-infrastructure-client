@@ -1,0 +1,130 @@
+.station-detail-content {
+  width: 100%;
+  overflow: auto;
+  padding: 10px 0;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: #1c2641;
+  }
+
+  .title-station-info {
+    color: #bcbabd;
+    margin: 10px 20px;
+    font-size: 19px;
+    font-family: "gothic 12";
+  }
+
+  .station-detail-content-header {
+    display: flex;
+    position: relative;
+    margin: 15px 20px;
+    justify-content: space-between;
+    align-items: center;
+
+    .left {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+
+      .icon-circle-background {
+        background-color: #1c2641;
+        width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        border-radius: 100%;
+        img {
+          width: 30px;
+        }
+      }
+      .station-detail-name {
+        color: #8da7d9;
+        font-size: 20px;
+        font-family: "gothic 12";
+      }
+      .station-business-name {
+        height: 20px;
+        display: flex;
+        gap: 10px;
+        font-family: "gothic 12";
+        color: #8da7d9;
+        font-size: 11px;
+
+        .vertical-line {
+          border-left: 1px solid #8da7d9; /* Цвет и толщина линии */
+          height: 15px; /* Высота линии */
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      gap: 15px;
+      margin-right: 150px;
+      align-items: center;
+
+      .icon-circle-background {
+        background-color: #1c2641;
+        width: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 35px;
+        border-radius: 100%;
+      }
+    }
+    .detail-img-station {
+      position: absolute;
+      bottom: -45px;
+      right: 10px;
+    }
+  }
+
+  .station-detail-content-info {
+    background-color: #1c2641;
+    border: 1px solid #2b3a63;
+    margin: 20px;
+    .station-detail-navbar {
+      display: flex;
+      .navbar-item {
+        width: 11%;
+        display: flex;
+        padding: 10px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        color: #5e76ba;
+        border-right: 1px solid #2b3a63;
+        border-bottom: 1px solid #2b3a63;
+
+        &.active {
+          color: white;
+          border-bottom: none;
+          border-top: 2px solid #8da7d9;
+        }
+
+        .left-item {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          font-size: 15px;
+          .text-title {
+            font-family: "gothic 12";
+          }
+        }
+
+        .item-quantity {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .station-detail-equipments {
+  
+    }
+  }
+}

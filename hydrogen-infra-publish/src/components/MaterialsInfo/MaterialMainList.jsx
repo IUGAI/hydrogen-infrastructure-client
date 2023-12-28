@@ -3,9 +3,8 @@ import { DiMootoolsBadge } from "react-icons/di";
 import { IoSaveOutline } from "react-icons/io5";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { SiMicrosoftexcel } from "react-icons/si";
-import "./StationMainList.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { stations } from "../../../data/Mapdata";
+import { materials } from "../../data/Mapdata";
 import { useNavigate } from "react-router-dom";
 import { handleItemSelection } from "@mui/base/useList";
 import { useState } from "react";
@@ -28,8 +27,8 @@ const columns = [
     align: "center",
   },
   {
-    field: "district",
-    headerName: "시도",
+    field: "station",
+    headerName: "사업소",
     width: 150,
     sortable: false,
     headerClassName: "super-app-theme--header",
@@ -37,87 +36,74 @@ const columns = [
     align: "center",
   },
   {
-    field: "business",
-    headerName: "사업자",
+    field: "major_cls",
+    headerName: "대분료",
     width: 150,
     headerAlign: "center",
     align: "center",
-    valueGetter: (params) => {
-      // Convert the decimal value to a percentage
-      return params.value === 10000001 ? "남부사전" : "";
-    },
   },
   {
-    field: "station_name",
-    headerName: "사업소",
+    field: "mid_cls",
+    headerName: "중분료",
     width: 150,
     align: "center",
     headerAlign: "center",
   },
   {
-    field: "commencement_date",
-    headerName: "개시일",
-    description: "This column has a value getter and is not sortable.",
+    field: "small_cls",
+    headerName: "소분료",
     align: "center",
     headerAlign: "center",
     width: 200,
   },
   {
-    field: "station_type",
-    headerName: "사업소 종류",
+    field: "material_name",
+    headerName: "자재명",
     width: 150,
     align: "center",
     headerAlign: "center",
-    renderCell: (params) => {
-      return params.value === 1 ? (
-        <span className="prod-text-value production">생산</span>
-      ) : params.value === 2 ? (
-        <span className="prod-text-value storaging">저장</span>
-      ) : (
-        <span className="prod-text-value charging">충전</span>
-      );
-    },
   },
   {
-    field: "production_cnt",
-    headerName: "생상시설",
+    field: "durable",
+    headerName: "내구연한",
     align: "center",
     headerAlign: "center",
     width: 200,
   },
   {
-    field: "storage_cnt",
-    headerName: "저장시설",
+    field: "lot_number",
+    headerName: "LOT번호",
     align: "center",
     headerAlign: "center",
     width: 200,
   },
   {
-    field: "charging_cnt",
-    headerName: "충전시설",
+    field: "storage_location",
+    headerName: "보관장소",
     align: "center",
     headerAlign: "center",
     width: 200,
   },
 ];
 
-const rows = stations.map((item) => ({
-  id: item.id,
-  regist_date: item.regist_date,
-  business: item.buisness_no,
-  district: item.district,
-  station_name: item.name,
-  commencement_date: item.commencement_date,
-  station_type: item.type,
-  production_cnt: item.equipments.filter((equipments) => equipments.type === 1)
-    .length,
-  storage_cnt: item.equipments.filter((equipments) => equipments.type === 2)
-    .length,
-  charging_cnt: item.equipments.filter((equipments) => equipments.type === 3)
-    .length,
-}));
 
-function StationMainList() {
+const newMaterials = materials.filter((item) => item !== undefined)
+
+const rows = newMaterials.map((item) => ({
+    id: item.id,
+    regist_date: item.regist_data,
+    station: item.station,
+    major_cls: item.major_classification,
+    mid_cls: item.middle_classification,
+    small_cls: item.small_classification,
+    material_name: item.material_name,
+    durable: item.durable,
+    lot_number: item.lot_number,
+    storage_location: item.storage_location,
+
+  }));
+
+function MaterialMainList() {
   const [selectedItems, setSelectedItems] = useState([]);
   const navigate = useNavigate();
 
@@ -129,9 +115,9 @@ function StationMainList() {
     if (selectedItems.length > 1) {
       alert("한개 만 선택해주세요!");
     } else if (selectedItems.length === 0) {
-      alert("사업소 선택해 주세요");
+      alert("자재 선택해 주세요");
     } else {
-         navigate(`/stations/${selectedItems[0]}`)
+      navigate(`/materials/${selectedItems[0]}`);
     }
   };
 
@@ -141,6 +127,7 @@ function StationMainList() {
         <div className="left">
           <div className="icon-header">
             <IoMdSearch
+              style={{ cursor: "pointer" }}
               size={24}
               color="#576dad"
               onClick={handleNavigatetoDetail}
@@ -189,4 +176,4 @@ function StationMainList() {
   );
 }
 
-export default StationMainList;
+export default MaterialMainList;

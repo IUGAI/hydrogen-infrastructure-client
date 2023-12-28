@@ -23,8 +23,11 @@ function Sidebar() {
       <div className={state.showSide ? "title-menu" : "title-menu hide"}>
         {state.showSide ? (
           <span>대시보드 </span>
-        ) : (
+        ) : selectedItem === "/" ||
+          selectedItem.slice(0, 10) === "/dashboard" ? (
           <img src="/img/active.png" />
+        ) : (
+          <img src="/img/disactive.png" />
         )}
       </div>
       <div className="menu-bar">
@@ -75,6 +78,8 @@ function Sidebar() {
       <div className={state.showSide ? "title-menu" : "title-menu hide"}>
         {state.showSide ? (
           <span>시설 정보 </span>
+        ) : selectedItem.slice(0, 9) === "/stations"  || selectedItem.slice(0,11) === "/equipments" || selectedItem === "/materials" ? (
+          <img src="/img/active.png" />
         ) : (
           <img src="/img/disactive.png" />
         )}
@@ -84,12 +89,16 @@ function Sidebar() {
           <li onClick={() => handleClickItem("/stations")}>
             <Link
               to="/stations"
-              className={`link-item ${selectedItem === "/stations" ? "active" : ""} ${
-                state.showSide ? "" : "hide"
-              }`}
+              className={`link-item ${
+                selectedItem.slice(0, 9) === "/stations" ? "active" : ""
+              } ${state.showSide ? "" : "hide"}`}
             >
               <img
-                src={selectedItem === "/stations" ? "/img/stationsactivemenu.png" :   "/img/station-info-disactive.png"}
+                src={
+                  selectedItem.slice(0, 9) === "/stations"
+                    ? "/img/stationsactivemenu.png"
+                    : "/img/station-info-disactive.png"
+                }
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -97,15 +106,19 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li onClick={() => handleClickItem("/")}>
+          <li onClick={() => handleClickItem("/equipments")}>
             <Link
-              to="/"
-              className={`link-item ${selectedItem === 4 ? "active" : ""} ${
-                state.showSide ? "" : "hide"
-              }`}
+              to="/equipments"
+              className={`link-item ${
+                selectedItem.slice(0, 11) === "/equipments" ? "active" : ""
+              } ${state.showSide ? "" : "hide"}`}
             >
               <img
-                src="/img/equipmentd-info-disactive.png"
+                src={
+                  selectedItem.slice(0, 11) === "/equipments"
+                    ? "/img/equipments-icon-menu.png"
+                    : "/img/equipmentd-info-disactive.png"
+                }
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -113,15 +126,15 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li onClick={() => handleClickItem("/")}>
+          <li onClick={() => handleClickItem("/materials")}>
             <Link
-              to="/"
-              className={`link-item ${selectedItem === 4 ? "active" : ""} ${
+              to="/materials"
+              className={`link-item ${selectedItem.slice(0, 10) === "/materials" ? "active" : ""} ${
                 state.showSide ? "" : "hide"
               }`}
             >
               <img
-                src="/img/icon-material-info-disactive.png"
+                src={selectedItem.slice(0, 10) === "/materials" ? "/img/menu_materials_active.png" :"/img/icon-material-info-disactive.png"}
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -283,7 +296,7 @@ function Sidebar() {
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
-                사업 통계
+                사업소 통계
               </span>
             </Link>
           </li>
