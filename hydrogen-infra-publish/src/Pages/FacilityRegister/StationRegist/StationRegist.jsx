@@ -3,8 +3,8 @@ import { SiMicrosoftexcel } from "react-icons/si";
 import { RiPhoneFill } from "react-icons/ri";
 import "./StationRegist.scss";
 
-import StationRegister from "../../components/StationRegister/StationRegister";
-import BuisnessRegister from "../../components/StationRegister/BuisnessRegister";
+import StationRegister from "../../../components/StationRegister/StationRegister";
+import BuisnessRegister from "../../../components/StationRegister/BuisnessRegister";
 import { useState } from "react";
 
 function StationRegist() {

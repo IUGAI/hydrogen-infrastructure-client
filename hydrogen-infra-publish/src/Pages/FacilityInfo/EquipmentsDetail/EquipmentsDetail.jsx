@@ -4,18 +4,18 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdHome } from "react-icons/md";
 
 import { SiMaterialdesignicons } from "react-icons/si";
-import { stations, buisness } from '../../data/Mapdata';
+import { stations, buisness } from '../../../data/Mapdata';
 import { IoNotificationsSharp } from "react-icons/io5";
 import { BsConeStriped } from "react-icons/bs";
 import { BsTools } from "react-icons/bs";
 import { FaBookmark } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import StationDetailMainInfo from "../../components/StationDetail/StationDetailMainInfo/StationDetailMainInfo";
-import StationDetailMaterial from "../../components/StationDetail/StationDetailMaterial/StationDetailMaterial";
-import StationDetailNoticeList from "../../components/StationDetail/StationDetailNoticeList/StationDetailNoticeList";
-import StationDetailBrekList from "../../components/StationDetail/StationDetailBeakList/StationDetailBrekList";
-import StationDetailTaskList from "../../components/StationDetail/StationDetailTaskList/StationDetailTaskList";
+import StationDetailMainInfo from "../../../components/StationDetail/StationDetailMainInfo/StationDetailMainInfo";
+import StationDetailMaterial from "../../../components/StationDetail/StationDetailMaterial/StationDetailMaterial";
+import StationDetailNoticeList from "../../../components/StationDetail/StationDetailNoticeList/StationDetailNoticeList";
+import StationDetailBrekList from "../../../components/StationDetail/StationDetailBeakList/StationDetailBrekList";
+import StationDetailTaskList from "../../../components/StationDetail/StationDetailTaskList/StationDetailTaskList";
 
 
 const item_info = [

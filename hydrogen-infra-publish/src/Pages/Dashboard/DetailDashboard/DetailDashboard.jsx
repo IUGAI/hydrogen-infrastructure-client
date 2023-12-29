@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
-import AlarmState from "../../components/DetailDashboard/AlarmState/AlarmState";
-import CctvSituation from "../../components/DetailDashboard/CctvSituation/CctvSituation";
-import Detailheader from "../../components/DetailDashboard/DetailHeader/Detailheader";
-import EquipmentState from "../../components/DetailDashboard/EquipmentsState/EquipmentState";
-import OperationState from "../../components/DetailDashboard/OpeartionState/OperationState";
-import SoundnessState from "../../components/DetailDashboard/SoundnessState/SoundnessState";
-import StationSoundnessState from "../../components/DetailDashboard/StationSoundnessState/StationSoundnessState";
-import WorkSituation from "../../components/DetailDashboard/WorkSituation/WorkSituation";
-import { stations } from "../../data/Mapdata";
+import AlarmState from "../../../components/DetailDashboard/AlarmState/AlarmState";
+import CctvSituation from "../../../components/DetailDashboard/CctvSituation/CctvSituation";
+import Detailheader from "../../../components/DetailDashboard/DetailHeader/Detailheader";
+import EquipmentState from "../../../components/DetailDashboard/EquipmentsState/EquipmentState";
+import OperationState from "../../../components/DetailDashboard/OpeartionState/OperationState";
+import SoundnessState from "../../../components/DetailDashboard/SoundnessState/SoundnessState";
+import StationSoundnessState from "../../../components/DetailDashboard/StationSoundnessState/StationSoundnessState";
+import WorkSituation from "../../../components/DetailDashboard/WorkSituation/WorkSituation";
+import { stations } from "../../../data/Mapdata";
 import "./DetailDashboard.scss";
 import { useParams } from "react-router-dom";
-import { useMyContextEquipment } from "../../context/equipmentContext";
 
 function DetailDashboard() {
   const [selectedstation, setselectedStaion] = useState();

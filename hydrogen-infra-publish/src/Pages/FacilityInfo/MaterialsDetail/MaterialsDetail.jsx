@@ -1,15 +1,15 @@
 import { useNavigate } from "react-router";
-import StationDetailMaterial from "../../components/StationDetail/StationDetailMaterial/StationDetailMaterial";
+import StationDetailMaterial from "../../../components/StationDetail/StationDetailMaterial/StationDetailMaterial";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { FaRegFile } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
 import { MdHome } from "react-icons/md";
-import { stations, buisness } from "../../data/Mapdata";
+import { stations, buisness } from "../../../data/Mapdata";
 import { BsTools } from "react-icons/bs";
 import { FaBookmark } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
-import MaterialMainInfo from "../../components/MaterialDetail/MaterialMainInfo/MaterialMainInfo";
-import MaterialHistoryInfo from "../../components/MaterialDetail/MaterialHistoryInfo/MaterialHistoryInfo";
+import MaterialMainInfo from "../../../components/MaterialDetail/MaterialMainInfo/MaterialMainInfo";
+import MaterialHistoryInfo from "../../../components/MaterialDetail/MaterialHistoryInfo/MaterialHistoryInfo";
 
 const item_info = [
   {

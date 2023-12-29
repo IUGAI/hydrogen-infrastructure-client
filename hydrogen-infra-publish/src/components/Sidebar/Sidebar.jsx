@@ -78,7 +78,9 @@ function Sidebar() {
       <div className={state.showSide ? "title-menu" : "title-menu hide"}>
         {state.showSide ? (
           <span>시설 정보 </span>
-        ) : selectedItem.slice(0, 9) === "/stations"  || selectedItem.slice(0,11) === "/equipments" || selectedItem === "/materials" ? (
+        ) : selectedItem.slice(0, 9) === "/stations" ||
+          selectedItem.slice(0, 11) === "/equipments" ||
+          selectedItem === "/materials" ? (
           <img src="/img/active.png" />
         ) : (
           <img src="/img/disactive.png" />
@@ -129,12 +131,16 @@ function Sidebar() {
           <li onClick={() => handleClickItem("/materials")}>
             <Link
               to="/materials"
-              className={`link-item ${selectedItem.slice(0, 10) === "/materials" ? "active" : ""} ${
-                state.showSide ? "" : "hide"
-              }`}
+              className={`link-item ${
+                selectedItem.slice(0, 10) === "/materials" ? "active" : ""
+              } ${state.showSide ? "" : "hide"}`}
             >
               <img
-                src={selectedItem.slice(0, 10) === "/materials" ? "/img/menu_materials_active.png" :"/img/icon-material-info-disactive.png"}
+                src={
+                  selectedItem.slice(0, 10) === "/materials"
+                    ? "/img/menu_materials_active.png"
+                    : "/img/icon-material-info-disactive.png"
+                }
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -148,6 +154,10 @@ function Sidebar() {
       <div className={state.showSide ? "title-menu" : "title-menu hide"}>
         {state.showSide ? (
           <span>시설 등록 </span>
+        ) : selectedItem === "/station-regist" ||
+          selectedItem === "/equipment-regist" ||
+          selectedItem === "/material-regist" ? (
+          <img src="/img/active.png" />
         ) : (
           <img src="/img/disactive.png" />
         )}
@@ -157,12 +167,16 @@ function Sidebar() {
           <li onClick={() => handleClickItem("/station-regist")}>
             <Link
               to="/station-regist"
-              className={`link-item ${selectedItem === "/station-regist" ? "active" : ""} ${
-                state.showSide ? "" : "hide"
-              }`}
+              className={`link-item ${
+                selectedItem === "/station-regist" ? "active" : ""
+              } ${state.showSide ? "" : "hide"}`}
             >
               <img
-                src={selectedItem === "/station-regist" ? "/img/station-regist-active.png" : "/img/station-register-disactive.png"}
+                src={
+                  selectedItem === "/station-regist"
+                    ? "/img/station-regist-active.png"
+                    : "/img/station-register-disactive.png"
+                }
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -170,15 +184,19 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li onClick={() => handleClickItem("/")}>
+          <li onClick={() => handleClickItem("/equipment-regist")}>
             <Link
-              to="/"
-              className={`link-item ${selectedItem === 6 ? "active" : ""} ${
-                state.showSide ? "" : "hide"
-              }`}
+              to="/equipment-regist"
+              className={`link-item ${
+                selectedItem === "/equipment-regist" ? "active" : ""
+              } ${state.showSide ? "" : "hide"}`}
             >
               <img
-                src="/img/equipment-register-disactive.png"
+                src={`${
+                  selectedItem === "/equipment-regist"
+                    ? "/img/equipment-regist-active.png"
+                    : "/img/equipment-register-disactive.png"
+                }`}
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -186,15 +204,19 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li onClick={() => handleClickItem("/")}>
+          <li onClick={() => handleClickItem("/material-regist")}>
             <Link
-              to="/"
-              className={`link-item ${selectedItem === 7 ? "active" : ""} ${
-                state.showSide ? "" : "hide"
-              }`}
+              to="/material-regist"
+              className={`link-item ${
+                selectedItem === "/material-regist" ? "active" : ""
+              } ${state.showSide ? "" : "hide"}`}
             >
               <img
-                src="/img/material-register-disactive.png"
+                src={`${
+                  selectedItem === "/material-regist"
+                    ? "/img/material-active-icon.png"
+                    : "/img/material-register-disactive.png"
+                }`}
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -214,15 +236,19 @@ function Sidebar() {
       </div>
       <div className="menu-bar">
         <ul>
-          <li onClick={() => handleClickItem("/")}>
+          <li onClick={() => handleClickItem("/failure-list")}>
             <Link
-              to="/"
-              className={`link-item ${selectedItem === 8 ? "active" : ""} ${
-                state.showSide ? "" : "hide"
-              }`}
+              to="/failure-list"
+              className={`link-item ${
+                selectedItem === "/failure-list" ? "active" : ""
+              } ${state.showSide ? "" : "hide"}`}
             >
               <img
-                src="/img/failure-list-disactive.png"
+                src={`${
+                  selectedItem === "/failure-list"
+                    ? "/img/failure-active-icon.png"
+                    : "/img/failure-list-disactive.png"
+                }`}
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
@@ -230,15 +256,15 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li onClick={() => handleClickItem("/")}>
+          <li onClick={() => handleClickItem("/work-register")}>
             <Link
-              to="/"
-              className={`link-item ${selectedItem === 9 ? "active" : ""} ${
+              to="/work-register"
+              className={`link-item ${selectedItem === "/work-register" ? "active" : ""} ${
                 state.showSide ? "" : "hide"
               }`}
             >
               <img
-                src="/img/register-task-disactive.png"
+                src={`${selectedItem === "/work-register" ? "/img/work-register-active.png" : "/img/register-task-disactive.png"}`}
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>

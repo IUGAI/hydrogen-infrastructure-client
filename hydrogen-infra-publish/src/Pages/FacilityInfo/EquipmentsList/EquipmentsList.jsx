@@ -1,5 +1,5 @@
-import EquipmentsMainList from "../../components/EquipmentsList/EquipmentsMainList";
-import EquipmentsSearch from "../../components/EquipmentsList/EquipmentsSearch";
+import EquipmentsMainList from "../../../components/EquipmentsList/EquipmentsMainList";
+import EquipmentsSearch from "../../../components/EquipmentsList/EquipmentsSearch";
 function EquipmentsList() {
     return (
         <div className="stations-dashboard">

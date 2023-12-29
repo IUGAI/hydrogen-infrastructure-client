@@ -4,7 +4,7 @@ import { FaRegFile } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
 import { MdHome } from "react-icons/md";
 import { MdFactory } from "react-icons/md";
-import { stations, buisness } from '../../data/Mapdata';
+import { stations, buisness } from '../../../data/Mapdata';
 import { SiMaterialdesignicons } from "react-icons/si";
 import { IoNotificationsSharp } from "react-icons/io5";
 import { BsConeStriped } from "react-icons/bs";
@@ -13,13 +13,13 @@ import { FaUser } from "react-icons/fa";
 import { FaBookmark } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import StationDetailMainInfo from "../../components/StationDetail/StationDetailMainInfo/StationDetailMainInfo";
-import StationDetailEquipments from "../../components/StationDetail/StationDetailEquipments/StationDetailEquipments";
-import StationDetailMaterial from "../../components/StationDetail/StationDetailMaterial/StationDetailMaterial";
-import StationDetailNoticeList from "../../components/StationDetail/StationDetailNoticeList/StationDetailNoticeList";
-import StationDetailBrekList from "../../components/StationDetail/StationDetailBeakList/StationDetailBrekList";
-import StationDetailTaskList from "../../components/StationDetail/StationDetailTaskList/StationDetailTaskList";
-import StationDetailUsers from "../../components/StationDetail/StationDetailUsers/StationDetailUsers";
+import StationDetailMainInfo from "../../../components/StationDetail/StationDetailMainInfo/StationDetailMainInfo";
+import StationDetailEquipments from "../../../components/StationDetail/StationDetailEquipments/StationDetailEquipments";
+import StationDetailMaterial from "../../../components/StationDetail/StationDetailMaterial/StationDetailMaterial";
+import StationDetailNoticeList from "../../../components/StationDetail/StationDetailNoticeList/StationDetailNoticeList";
+import StationDetailBrekList from "../../../components/StationDetail/StationDetailBeakList/StationDetailBrekList";
+import StationDetailTaskList from "../../../components/StationDetail/StationDetailTaskList/StationDetailTaskList";
+import StationDetailUsers from "../../../components/StationDetail/StationDetailUsers/StationDetailUsers";
 
 const item_info = [
   {

@@ -1,8 +1,8 @@
 import "./StationList.scss";
 
 import "react-datepicker/dist/react-datepicker.css";
-import SearchContainer from "../../components/StationsInfo/SearchContainer/SearchContainer";
-import StationMainList from "../../components/StationsInfo/StationMainList/StationMainList";
+import SearchContainer from "../../../components/StationsInfo/SearchContainer/SearchContainer";
+import StationMainList from "../../../components/StationsInfo/StationMainList/StationMainList";
 
 function Stations() {
   return (

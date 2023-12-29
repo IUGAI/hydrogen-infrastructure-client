@@ -6,7 +6,6 @@ import { SiMicrosoftexcel } from "react-icons/si";
 import { DataGrid } from "@mui/x-data-grid";
 import { equipments } from "../../data/Mapdata";
 import { useNavigate } from "react-router-dom";
-import { handleItemSelection } from "@mui/base/useList";
 import { useState } from "react";
 
 const columns = [

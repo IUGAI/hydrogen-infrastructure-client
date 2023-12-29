@@ -1,12 +1,12 @@
-import Production from "../../components/MainDashboard/Production/Production";
-import AttentionState from "../../components/MainDashboard/AttentionState/AttentionState";
-import CurrentSituation from "../../components/MainDashboard/CurrentSituation/CurrentSituation";
-import StationList from "../../components/MainDashboard/StationList/StationList";
-import AlarmList from "../../components/MainDashboard/AlarmList/AlarmList";
+import Production from "../../../components/MainDashboard/Production/Production";
+import AttentionState from "../../../components/MainDashboard/AttentionState/AttentionState";
+import CurrentSituation from "../../../components/MainDashboard/CurrentSituation/CurrentSituation";
+import StationList from "../../../components/MainDashboard/StationList/StationList";
+import AlarmList from "../../../components/MainDashboard/AlarmList/AlarmList";
 import { useMediaQuery } from "react-responsive";
 import {  useJsApiLoader } from "@react-google-maps/api";
 import "./MainDashboard.scss";
-import Map from "../../components/MainDashboard/Map/Map";
+import Map from "../../../components/MainDashboard/Map/Map";
 const apikey = "AIzaSyChEBMFjqOmWaZk3pixSK7GU0dhEUi_uI0";
 
 
