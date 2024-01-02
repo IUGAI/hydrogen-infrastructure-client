@@ -16,6 +16,9 @@ import EquipmentRegist from "./Pages/FacilityRegister/EquipmentRegist/EquipmentR
 import MaterialRegist from "./Pages/FacilityRegister/MaterialRegist/MaterialRegist";
 import FailureList from "./Pages/Maintenance/FailureList/FailureList"
 import WorkRegist from "./Pages/Maintenance/WorkRegister/WorkRegist";
+import WorkList from "./Pages/Maintenance/WorkList/WorkList";
+import WorkReportRegister from "./Pages/Maintenance/WorkReportRegister/WorkReportRegister";
+import StationStatistics from "./Pages/Statistics/StationStatistics";
 
 
 export default function App() {
@@ -72,7 +75,19 @@ export default function App() {
         {
           path: "/work-register",
           element:  <WorkRegist/>
-        }
+        },
+        {
+          path: "/work-list",
+          element:  <WorkList/>
+        },
+        {
+          path: "/work-report-register",
+          element: <WorkReportRegister/>
+        },
+        {
+          path: "/station-statistic",
+          element: <StationStatistics/>
+        },
       ],
     },
   ]);

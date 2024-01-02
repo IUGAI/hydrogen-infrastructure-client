@@ -230,7 +230,12 @@ function Sidebar() {
       <div className={state.showSide ? "title-menu" : "title-menu hide"}>
         {state.showSide ? (
           <span>시설 관리 </span>
-        ) : (
+        ) :  selectedItem === "/failure-list" ||
+        selectedItem === "/work-register" ||
+        selectedItem === "/work-report-register" ||
+        selectedItem === "/work-list" ? (
+        <img src="/img/active.png" />
+      ) : (
           <img src="/img/disactive.png" />
         )}
       </div>
@@ -272,27 +277,27 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li onClick={() => handleClickItem("/")}>
+          <li onClick={() => handleClickItem("/work-list")}>
             <Link
-              to="/"
-              className={`link-item ${selectedItem === 9 ? "active" : ""} ${
+              to="/work-list"
+              className={`link-item ${selectedItem === "/work-list" ? "active" : ""} ${
                 state.showSide ? "" : "hide"
               }`}
             >
-              <img src="/img/task-list-disactive.png" className="icon-menu" />
+              <img src={selectedItem === "/work-list" ? "/img/work-list-active.png" : "/img/task-list-disactive.png"} className="icon-menu" />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
                 작업 조회
               </span>
             </Link>
           </li>
-          <li onClick={() => handleClickItem("/")}>
+          <li onClick={() => handleClickItem("/work-report-register")}>
             <Link
-              to="/"
-              className={`link-item ${selectedItem === 9 ? "active" : ""} ${
+              to="/work-report-register"
+              className={`link-item ${selectedItem === "/work-report-register" ? "active" : ""} ${
                 state.showSide ? "" : "hide"
               }`}
             >
-              <img src="/img/task-report-disactive.png" className="icon-menu" />
+              <img src={selectedItem === "/work-report-register" ?  "/img/report-regist-active.png": "/img/task-report-disactive.png"} className="icon-menu" />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>
                 결과 등록
               </span>
@@ -310,15 +315,15 @@ function Sidebar() {
       </div>
       <div className="menu-bar">
         <ul>
-          <li onClick={() => handleClickItem("/")}>
+          <li onClick={() => handleClickItem("/station-statistic")}>
             <Link
-              to="/"
-              className={`link-item ${selectedItem === 9 ? "active" : ""} ${
+              to="/station-statistic"
+              className={`link-item ${selectedItem === "/station-statistic" ? "active" : ""} ${
                 state.showSide ? "" : "hide"
               }`}
             >
               <img
-                src="/img/station-statistic-disactive.png"
+                src={selectedItem === "/station-statistic" ? "/img/station-statisctic-active.png" :  "/img/station-statistic-disactive.png"}
                 className="icon-menu"
               />
               <span className={state.showSide ? "text-menu" : "text-menu hide"}>

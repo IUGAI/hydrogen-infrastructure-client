@@ -1,12 +1,8 @@
-
-import { IoMdSearch } from "react-icons/io";
 import { DiMootoolsBadge } from "react-icons/di";
 import { IoSaveOutline } from "react-icons/io5";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { SiMicrosoftexcel } from "react-icons/si";
 import { DataGrid } from "@mui/x-data-grid";
-import { equipments } from "../../data/Mapdata";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 
