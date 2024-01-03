@@ -18,7 +18,12 @@
   --production:#00B0F0;
   --charging:#92D050 
   --storage: #FFC000 
+  
 
+}
+
+body{
+  color: white;
 }
 
 @font-face {
@@ -40,6 +45,13 @@
   font-style: normal;
   font-weight: 100;
   src: url("../public/fonts/a각헤드L.ttf") format("woff");
+}
+
+@font-face {
+  font-family: "gothic B";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../public/fonts/a각헤드B.ttf") format("woff");
 }
 
 @font-face {

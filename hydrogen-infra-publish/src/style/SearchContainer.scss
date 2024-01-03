@@ -7,6 +7,10 @@
     grid-template-rows: 1fr 1fr;
     background-color: #1c2641;
 
+    // &.search{
+    //   grid-template-columns: ;
+    // }
+
     .search-img{
         position: absolute;
         bottom: 0;
@@ -40,7 +44,34 @@
         }
       }
   
-
+      .button-container-custum {
+        display: flex;
+  
+        .custom-button-radio {
+          width: 50%;
+          border: 1px solid #2b3a63;
+          padding: 10px;
+          color: #8faadc;
+          font-size: 14px;
+          background-color: #212c4b;
+  
+          &:first-child {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+          }
+        
+          &:last-child {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+          }
+        
+  
+          &.active {
+            outline: none;
+            border-color: #8faadc;
+          }
+        }
+      }
 
       .button-search {
         width: 100%;
