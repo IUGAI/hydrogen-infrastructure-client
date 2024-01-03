@@ -181,40 +181,7 @@ function Map() {
           )}
         </GoogleMap>
 
-        {/* {selectedMarker && (
-          <div className="info-container">
-            <div className="top">
-              <img src="/img/marker.png" alt="marker" className="img-marker" />
-              <span>{selectedMarker.name}</span>
-              <div className="icons-container">
-                <MdPushPin size={20} style={{ transform: "rotate(310deg)" }} />
-                <RxOpenInNewWindow
-                  size={20}
-                  style={{ cursor: "pointer" }}
-                  onClick={() => handleCheckDetail(selectedMarker.id)}
-                />
-              </div>
-            </div>
-            <div className="bottom">
-              <div className="left">
-                <span>시설</span>
-                <span>연락처</span>
-                {selectedMarker.failure === 1 && <span>알람 내용</span>}
-              </div>
-              <div className="right">
-                <span>
-                  {selectedMarker.type === 1
-                    ? "생상 시설"
-                    : selectedMarker.type === 2
-                    ? "저장 시설"
-                    : "충전 시설"}
-                </span>
-                <span>{selectedMarker.phone_number}</span>
-                {selectedMarker.failure === 1 &&  <span style={{color: "#FE609A"}}>가동 중단</span>}
-              </div>
-            </div>
-          </div>
-        )} */}
+
       </div>
       <div className="map-filter">
         <div className="production-check check-container">
