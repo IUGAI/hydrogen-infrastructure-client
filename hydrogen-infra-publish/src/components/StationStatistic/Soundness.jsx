@@ -18,7 +18,7 @@ import Checkbox from "@mui/material/Checkbox";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
-function StationStatisticProduction({ data, lineGraph, barGraph, ticksNumbers, unit }) {
+function Soundness({ data, lineGraph, barGraph, ticksNumbers, unit }) {
   const datacharging = data.reduce((sum, item) => {
     return (sum += item.uv);
   }, 0);
@@ -54,20 +54,8 @@ function StationStatisticProduction({ data, lineGraph, barGraph, ticksNumbers, u
           <div className="toltip-content">
             {checkedstate.production &&
               payload.find((item) => item.dataKey === "pv") && (
-                <p className="production">{`생산량: ${
+                <p className="production">{`건전도: ${
                   payload.find((item) => item.dataKey === "pv").value
-                } ${unit}`}</p>
-              )}
-            {checkedstate.charging &&
-              payload.find((item) => item.dataKey === "uv") && (
-                <p className="charging">{`충전량: ${
-                  payload.find((item) => item.dataKey === "uv").value
-                } ${unit}`}</p>
-              )}
-            {checkedstate.storaging &&
-              payload.find((item) => item.dataKey === "amt") && (
-                <p className="storaging">{`저장량: ${
-                  payload.find((item) => item.dataKey === "amt").value
                 } ${unit}`}</p>
               )}
           </div>
@@ -114,41 +102,7 @@ function StationStatisticProduction({ data, lineGraph, barGraph, ticksNumbers, u
                 },
               }}
             />
-            <span className="check-text">생산시설</span>
-          </div>
-        )}
-        {datacharging !== 0 && (
-          <div className="checkBox-item">
-            <Checkbox
-              {...label}
-              onChange={handleCheck}
-              name="charging"
-              defaultChecked
-              sx={{
-                color: "#92D050",
-                "&.Mui-checked": {
-                  color: "#92D050",
-                },
-              }}
-            />
-            <span className="check-text">충전량</span>
-          </div>
-        )}
-        {datastoraging !== 0 && (
-          <div className="checkBox-item">
-            <Checkbox
-              {...label}
-              defaultChecked
-              onChange={handleCheck}
-              name="storaging"
-              sx={{
-                color: "#FFC000 ",
-                "&.Mui-checked": {
-                  color: "#FFC000 ",
-                },
-              }}
-            />
-            <span className="check-text">저장량</span>
+            <span className="check-text">건전도</span>
           </div>
         )}
       </div>
@@ -178,26 +132,6 @@ function StationStatisticProduction({ data, lineGraph, barGraph, ticksNumbers, u
                   }
                 />
               )}
-              {checkedstate.charging && (
-                <Bar
-                  dataKey="uv"
-                  fill={`url(#gradient-2)`}
-                  shape={<RoundedBar />}
-                  activeBar={
-                    <RoundedBar fill={`url(#gradient-2)`} stroke="purple" />
-                  }
-                />
-              )}
-              {checkedstate.storaging && (
-                <Bar
-                  dataKey="amt"
-                  fill={`url(#gradient-3)`}
-                  shape={<RoundedBar />}
-                  activeBar={
-                    <RoundedBar fill={`url(#gradient-3)`} stroke="purple" />
-                  }
-                />
-              )}
             </>
           )}
 
@@ -207,23 +141,7 @@ function StationStatisticProduction({ data, lineGraph, barGraph, ticksNumbers, u
                 <Line
                   type="monotone"
                   dataKey="pv"
-                  stroke="#0c8bd1"
-                  strokeDasharray="3 3"
-                />
-              )}
-              {checkedstate.charging && (
-                <Line
-                  type="monotone"
-                  dataKey="uv"
-                  stroke="#1fb750"
-                  strokeDasharray="3 3"
-                />
-              )}
-              {checkedstate.storaging && (
-                <Line
-                  type="monotone"
-                  dataKey="amt"
-                  stroke="#eab104"
+                  stroke="#92D050"
                   strokeDasharray="3 3"
                 />
               )}
@@ -236,16 +154,6 @@ function StationStatisticProduction({ data, lineGraph, barGraph, ticksNumbers, u
               <stop offset="60%" stopColor="#0c8bd1" />
               <stop offset="90%" stopColor="#1e3759" />
             </linearGradient>
-            <linearGradient id="gradient-2" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="30%" stopColor="#1fb750" />
-              <stop offset="60%" stopColor="#8ccf50" />
-              <stop offset="90%" stopColor="#293a3d" />
-            </linearGradient>
-            <linearGradient id="gradient-3" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="30%" stopColor="#cc9a00" />
-              <stop offset="60%" stopColor="#eab104" />
-              <stop offset="90%" stopColor="#393832" />
-            </linearGradient>
           </defs>
         </ComposedChart>
       </ResponsiveContainer>
@@ -253,4 +161,4 @@ function StationStatisticProduction({ data, lineGraph, barGraph, ticksNumbers, u
   );
 }
 
-export default StationStatisticProduction;
+export default Soundness;
