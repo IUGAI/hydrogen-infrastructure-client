@@ -1,4 +1,4 @@
-
+import "./StationStatistics.scss";
 import { BsFillLightningFill } from "react-icons/bs";
 import { BiSolidFlask } from "react-icons/bi";
 import { BsConeStriped } from "react-icons/bs";
@@ -58,226 +58,77 @@ const graphItemsState = [
 const data = [
   {
     name: "1월",
-    uv: 0,
-    pv: 0,
-    amt: 220,
+    uv: 12,
+    pv: 12,
+    amt: 120,
   },
   {
     name: "2월",
-    uv: 200,
-    pv: 225,
-    amt: 237,
+    uv: 100,
+    pv: 88,
+    amt: 137,
   },
   {
     name: "3월",
-    uv: 230,
-    pv: 290,
-    amt: 280,
+    uv: 30,
+    pv: 90,
+    amt: 80,
   },
   {
     name: "4월",
-    uv: 270,
-    pv: 250,
-    amt: 290,
+    uv: 120,
+    pv: 130,
+    amt: 120,
   },
   {
     name: "5월",
-    uv: 265,
-    pv: 255,
-    amt: 300,
+    uv: 115,
+    pv: 115,
+    amt: 100,
   },
   {
     name: "6월",
-    uv: 243,
-    pv: 260,
-    amt: 256,
+    uv: 33,
+    pv: 90,
+    amt: 120,
   },
   {
     name: "7월",
-    uv: 260,
-    pv: 270,
-    amt: 290,
+    uv: 120,
+    pv: 120,
+    amt: 120,
   },
   {
     name: "8월",
-    uv: 265,
-    pv: 280,
-    amt: 270,
+    uv: 115,
+    pv: 120,
+    amt: 130,
   },
   {
     name: "9월",
-    uv: 290,
-    pv: 239,
-    amt: 265,
+    uv: 90,
+    pv: 89,
+    amt: 95,
   },
   {
     name: "10월",
-    uv: 230,
-    pv: 277,
-    amt: 250,
+    uv: 130,
+    pv: 117,
+    amt: 130,
   },
   {
     name: "11월",
-    uv: 258,
-    pv: 265,
-    amt: 280,
+    uv: 128,
+    pv: 65,
+    amt: 80,
   },
   {
     name: "12월",
-    uv: 120,
+    uv: 90,
     pv: 130,
-    amt: 133,
+    amt: 63,
   },
 ];
-
-//   {
-//     name: "1월",
-//     uv: 0,
-//     pv: 225,
-//     amt: 220,
-//   },
-//   {
-//     name: "2월",
-//     uv: 0,
-//     pv: 225,
-//     amt: 237,
-//   },
-//   {
-//     name: "3월",
-//     uv: 0,
-//     pv: 290,
-//     amt: 280,
-//   },
-//   {
-//     name: "4월",
-//     uv: 0,
-//     pv: 250,
-//     amt: 290,
-//   },
-//   {
-//     name: "5월",
-//     uv: 0,
-//     pv: 255,
-//     amt: 300,
-//   },
-//   {
-//     name: "6월",
-//     uv: 0,
-//     pv: 260,
-//     amt: 256,
-//   },
-//   {
-//     name: "7월",
-//     uv: 0,
-//     pv: 270,
-//     amt: 290,
-//   },
-//   {
-//     name: "8월",
-//     uv: 0,
-//     pv: 280,
-//     amt: 270,
-//   },
-//   {
-//     name: "9월",
-//     uv: 0,
-//     pv: 239,
-//     amt: 265,
-//   },
-//   {
-//     name: "10월",
-//     uv: 0,
-//     pv: 277,
-//     amt: 250,
-//   },
-//   {
-//     name: "11월",
-//     uv: 0,
-//     pv: 265,
-//     amt: 280,
-//   },
-//   {
-//     name: "12월",
-//     uv: 0,
-//     pv: 130,
-//     amt: 133,
-//   },
-// ];
-
-// const data_uv_pv_0 = [
-//   {
-//     name: "1월",
-//     uv: 0,
-//     pv: 0,
-//     amt: 220,
-//   },
-//   {
-//     name: "2월",
-//     uv: 0,
-//     pv: 0,
-//     amt: 237,
-//   },
-//   {
-//     name: "3월",
-//     uv: 0,
-//     pv: 0,
-//     amt: 280,
-//   },
-//   {
-//     name: "4월",
-//     uv: 0,
-//     pv: 0,
-//     amt: 290,
-//   },
-//   {
-//     name: "5월",
-//     uv: 0,
-//     pv: 0,
-//     amt: 300,
-//   },
-//   {
-//     name: "6월",
-//     uv: 0,
-//     pv: 0,
-//     amt: 256,
-//   },
-//   {
-//     name: "7월",
-//     uv: 0,
-//     pv: 0,
-//     amt: 290,
-//   },
-//   {
-//     name: "8월",
-//     uv: 0,
-//     pv: 0,
-//     amt: 270,
-//   },
-//   {
-//     name: "9월",
-//     uv: 0,
-//     pv: 0,
-//     amt: 265,
-//   },
-//   {
-//     name: "10월",
-//     uv: 0,
-//     pv: 0,
-//     amt: 250,
-//   },
-//   {
-//     name: "11월",
-//     uv: 0,
-//     pv: 0,
-//     amt: 280,
-//   },
-//   {
-//     name: "12월",
-//     uv: 0,
-//     pv: 0,
-//     amt: 133,
-//   },
-// ];
 
 const data_production = [
   {
@@ -357,90 +208,90 @@ const data_production = [
 const data_soundness = [
   {
     name: "1월",
-    pv: 88,
+    pv: 85,
   },
   {
     name: "2월",
-    pv: 75,
+    pv: 85,
   },
   {
     name: "3월",
-    pv: 99,
+    pv: 85,
   },
   {
     name: "4월",
-    pv: 96,
+    pv: 85,
   },
   {
     name: "5월",
-    pv: 73,
+    pv: 85,
   },
   {
     name: "6월",
-    pv: 88,
+    pv: 85,
   },
   {
     name: "7월",
-    pv: 65,
+    pv: 75,
   },
   {
     name: "8월",
-    pv: 78,
+    pv: 75,
   },
   {
     name: "9월",
-    pv: 83,
+    pv: 75,
   },
   {
     name: "10월",
-    pv: 99,
+    pv: 60,
   },
   {
     name: "11월",
-    pv: 100,
+    pv: 0,
   },
   {
     name: "12월",
-    pv: 100,
+    pv: 0,
   },
 ];
 
 const data_failure = [
   {
     name: "1월",
-    pv: 10,
+    pv: 0,
   },
   {
     name: "2월",
-    pv: 13,
+    pv: 0,
   },
   {
     name: "3월",
-    pv: 12,
+    pv: 0,
   },
   {
     name: "4월",
-    pv: 6,
+    pv: 0,
   },
   {
     name: "5월",
-    pv: 10,
+    pv: 0,
   },
   {
     name: "6월",
-    pv: 4,
+    pv: 1,
   },
   {
     name: "7월",
-    pv: 4,
+    pv: 2,
   },
   {
     name: "8월",
-    pv: 13,
+    pv: 0,
   },
   {
     name: "9월",
-    pv: 16,
+    pv: 0,
   },
   {
     name: "10월",
@@ -457,64 +308,64 @@ const data_failure = [
 ];
 
 const data_work = [
-    {
-      name: "1월",
-      pv: 8,
-    },
-    {
-      name: "2월",
-      pv: 10,
-    },
-    {
-      name: "3월",
-      pv: 12,
-    },
-    {
-      name: "4월",
-      pv: 4,
-    },
-    {
-      name: "5월",
-      pv: 7,
-    },
-    {
-      name: "6월",
-      pv: 4,
-    },
-    {
-      name: "7월",
-      pv: 4,
-    },
-    {
-      name: "8월",
-      pv: 12,
-    },
-    {
-      name: "9월",
-      pv: 13,
-    },
-    {
-      name: "10월",
-      pv: 0,
-    },
-    {
-      name: "11월",
-      pv: 0,
-    },
-    {
-      name: "12월",
-      pv: 0,
-    },
-  ];
+  {
+    name: "1월",
+    pv: 3,
+  },
+  {
+    name: "2월",
+    pv: 0,
+  },
+  {
+    name: "3월",
+    pv: 0,
+  },
+  {
+    name: "4월",
+    pv: 5,
+  },
+  {
+    name: "5월",
+    pv: 0,
+  },
+  {
+    name: "6월",
+    pv: 0,
+  },
+  {
+    name: "7월",
+    pv: 4,
+  },
+  {
+    name: "8월",
+    pv: 0,
+  },
+  {
+    name: "9월",
+    pv: 0,
+  },
+  {
+    name: "10월",
+    pv: 3,
+  },
+  {
+    name: "11월",
+    pv: 0,
+  },
+  {
+    name: "12월",
+    pv: 2,
+  },
+];
 
-function StationStatistics() {
+function EquipmentStatistics() {
   const [lineGraph, setlineGraph] = useState(true);
   const [barGraph, setbarGraph] = useState(true);
   const [menuState, setMenuState] = useState("operation");
 
   const ticksNumbers = [];
-  for (let i = 0; i <= 300; i++) {
-    if (i % 25 === 0) {
+  for (let i = 0; i <= 160; i++) {
+    if (i % 10 === 0) {
       ticksNumbers.push(i);
     }
   }
@@ -527,7 +378,7 @@ function StationStatistics() {
   }
 
   const ticksNumbersFailure = [];
-  for (let i = 0; i <= 20; i++) {
+  for (let i = 0; i <= 12; i++) {
     if (i % 2 === 0) {
       ticksNumbersFailure.push(i);
     }
@@ -548,24 +399,12 @@ function StationStatistics() {
   return (
     <div className={`station-statistic-wrapper`}>
       <div className={`station-statistic-header `}>
-        <span>사업소 통계</span>
+        <span>시설물 통계</span>
       </div>
       <div className="station-statistic-inner">
         <div className="station-statistic-search">
           <div className="search-input-item">
             <label>시도</label>
-            <select className="custom-select">
-              <option selected disabled>
-                선택
-              </option>
-              <option>서울</option>
-              <option>부산</option>
-              <option>제주</option>
-              <option>광주</option>
-            </select>
-          </div>
-          <div className="search-input-item">
-            <label>사업자</label>
             <select className="custom-select">
               <option selected disabled>
                 선택
@@ -584,8 +423,16 @@ function StationStatistics() {
               </option>
               <option>서울</option>
               <option>부산</option>
-              <option>제주</option>
-              <option>광주</option>
+            </select>
+          </div>
+          <div className="search-input-item">
+            <label>시설물</label>
+            <select className="custom-select">
+              <option selected disabled>
+                선택
+              </option>
+              <option>서울</option>
+              <option>부산</option>
             </select>
           </div>
           <div className="search-input-item">
@@ -734,8 +581,7 @@ function StationStatistics() {
                 menuState={menuState}
               />
             </div>
-          ) 
-          : menuState === "work" ? (
+          ) : menuState === "work" ? (
             <div className="staion-statistic-graph-failure">
               <StationFailureBarStatistic
                 graphItems={graphItems}
@@ -760,4 +606,4 @@ function StationStatistics() {
   );
 }
 
-export default StationStatistics;
+export default EquipmentStatistics;

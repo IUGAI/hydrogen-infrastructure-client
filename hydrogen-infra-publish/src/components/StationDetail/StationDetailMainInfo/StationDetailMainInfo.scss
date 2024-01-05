@@ -1,15 +1,26 @@
   .station-detail-info {
-      display: grid;
+      display: flex;
       height: 100%;
       width: 100%;
       grid-template-columns: 1fr 1fr 1fr;
+
+      &.station-detail-info-user{
+        grid-template-columns: 1fr 2fr;
+      }
       .station-detail-info-left {
         padding: 35px 20px;
+        width: 35%;
         justify-content: space-between;
         border-right: 1px solid #2b3a63;
         display: flex;
         flex-direction: column;
         gap: 20px;
+
+        &.station-detail-info-left-info{
+          padding: 0;
+          width: 65%;
+          
+        }
 
         .station-img-container {
           border: 1px solid #2b3a63;
@@ -43,7 +54,7 @@
         .station-detail-info-left-inner {
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 25px;
 
           @media (max-width: 1536px) {
             gap: 10px;
@@ -76,11 +87,47 @@
               }
             }
           }
+          .user-detail-header-info{
+               display: flex;
+               align-items: center;
+               gap: 20px;
+            .user-detail-header-info-text-circle{
+              width: 120px;
+              border-radius: 100%;
+              display: flex;
+              align-items: end;
+              justify-content: center;
+              height: 120px;
+              background-color: #2b3a63;
+
+              img{
+                width: 65%;
+                height: 80%;
+              }
+            }
+            .user-detail-header-info-text{
+              display: flex;
+              flex-direction: column;
+              .detail-info-text-level{
+                color: #00B0F0;
+                font-size: 18px;
+                font-family: "gothic L";
+              }
+
+              .detail-info-main-text-level{
+                color: #5591c7;
+                font-size: 28px;
+                font-family: "gothic b";
+              }
+            }
+          }
         }
 
       }
       .station-detail-info-right {
         padding: 35px 20px;
+        width: 30%;
+
 
         .station-detail-location {
           width: 100%;
@@ -94,9 +141,11 @@
       }
       .station-detail-info-right-material{
         padding: 10px 0;
+        width: 30%;
 
         .station-detail-info-left-item {
           display: flex;
+          
           margin: 20px;
           gap: 10px;
           .station-detail-info-left-item-icon {

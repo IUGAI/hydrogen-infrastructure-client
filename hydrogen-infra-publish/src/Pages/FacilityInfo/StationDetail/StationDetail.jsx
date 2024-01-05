@@ -4,7 +4,7 @@ import { FaRegFile } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
 import { MdHome } from "react-icons/md";
 import { MdFactory } from "react-icons/md";
-import { stations, buisness } from '../../../data/Mapdata';
+import { stations, buisness } from "../../../data/Mapdata";
 import { SiMaterialdesignicons } from "react-icons/si";
 import { IoNotificationsSharp } from "react-icons/io5";
 import { BsConeStriped } from "react-icons/bs";
@@ -104,15 +104,15 @@ const center = {
 const buisness_st = {
   lat: buisness[0].lat,
   lng: buisness[0].lng,
-}
+};
 
 function StationDetail() {
   const [navitem, setnavitem] = useState("main");
   const navigate = useNavigate();
- 
+
   const handleitemreturn = () => {
-    navigate('/stations')
-  }
+    navigate("/stations");
+  };
 
   return (
     <div className="station-detail-content">
@@ -243,6 +243,9 @@ function StationDetail() {
             </div>
             <span className="item-quantity">4</span>
           </div>
+          <div
+            className={`navbar-item default`}
+          ></div>
         </div>
         {navitem === "main" ? (
           <StationDetailMainInfo
@@ -254,15 +257,15 @@ function StationDetail() {
         ) : navitem === "equipments" ? (
           <StationDetailEquipments />
         ) : navitem === "materials" ? (
-          <StationDetailMaterial/>
+          <StationDetailMaterial />
         ) : navitem === "alarm-list" ? (
-          <StationDetailNoticeList/>
+          <StationDetailNoticeList />
         ) : navitem === "break-list" ? (
-          <StationDetailBrekList/>
+          <StationDetailBrekList />
         ) : navitem === "task-list" ? (
-          <StationDetailTaskList/>
+          <StationDetailTaskList />
         ) : navitem === "user" ? (
-          <StationDetailUsers/>
+          <StationDetailUsers />
         ) : (
           ""
         )}

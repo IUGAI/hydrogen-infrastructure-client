@@ -100,7 +100,7 @@ function StationStatisticProduction({ data, lineGraph, barGraph, ticksNumbers, u
       <span className="unit">({unit})</span>
       <div className="station-statistic-checkbox">
         {dataproduction !== 0 && (
-          <div className="checkBox-item">
+          <div className="checkBox-item" >
             <Checkbox
               {...label}
               name="production"
@@ -152,7 +152,7 @@ function StationStatisticProduction({ data, lineGraph, barGraph, ticksNumbers, u
           </div>
         )}
       </div>
-      <ResponsiveContainer width="99%" height="90%">
+      <ResponsiveContainer width="99%" height="90%" style={{margin: "0 20px"}}>
         <ComposedChart
           data={data}
           barCategoryGap={isSmallScreen ? 10 : isMediumScreen ? 20 : 30}

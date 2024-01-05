@@ -200,6 +200,9 @@ function MaterialsDetail() {
             </div>
             <span className="item-quantity">3</span>
           </div>
+          <div
+            className={`navbar-item default-materials`}
+          ></div>
         </div>
         {navitem === "main" ? (
           <MaterialMainInfo
