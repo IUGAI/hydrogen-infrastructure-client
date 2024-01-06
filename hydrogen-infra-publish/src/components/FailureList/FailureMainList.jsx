@@ -3,7 +3,7 @@ import { IoSaveOutline } from "react-icons/io5";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { SiMicrosoftexcel } from "react-icons/si";
 import { DataGrid } from "@mui/x-data-grid";
-import { useState } from "react";
+
 
 
 const columns = [
@@ -77,7 +77,7 @@ const columns = [
   
 
 function FailureMainList() {
-    const [selectedItems, setSelectedItems] = useState([]);
+
 
     const handleItemSelection = (selectionModel) => {
         setSelectedItems(selectionModel);

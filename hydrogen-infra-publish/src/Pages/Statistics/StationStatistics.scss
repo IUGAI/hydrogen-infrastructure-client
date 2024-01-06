@@ -110,15 +110,99 @@
       height: 90%;
       display: flex;
 
+      &.common {
+        height: 100%;
+        border-top: 1px solid #2b3a63;
+      }
+
       @media (max-height: 1100px) {
         height: 85%;
+      }
+
+      .common-settings-alarm {
+        width: 100%;
+        display: flex;
+
+        .common-settings-alarm-left {
+          width: 50%;
+          border: 1px solid #2b3a63;
+          padding: 20px;
+
+          .text-instructions{
+            font-family: "gothic 12";
+            color: #8FAADC;
+            font-size: 15px;
+            letter-spacing: 1px;
+            p{
+              font-family: "gothic 12";
+            }
+          }
+        }
+        .common-settings-alarm-right {
+          width: 50%;
+          padding: 20px;
+          display: flex;
+          justify-content: flex-end;
+          .button-submit-form {
+            border: 1px solid #5e76ba;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            font-family: "gothic 12";
+       
+            height: 40px;
+            padding: 5px 40px;
+            background-color: #3c4d7c;
+
+            &.add-material {
+              margin-top: 70px;
+            }
+
+            &.add-equipm {
+              margin-top: 350px;
+            }
+          }
+        }
       }
       .station-statistic-aside {
         width: 15%;
         border: 1px solid #2b3a63;
         border-top: none;
         border-left: none;
+        position: relative;
         height: 100%;
+
+        .img-marker {
+          position: absolute;
+          top: 0;
+          left: 20px;
+        }
+
+        .asideheader {
+          display: flex;
+          height: 70px;
+          border-bottom: 1px solid #2b3a63;
+          align-items: center;
+          padding-left: 50px;
+          padding-top: 10px;
+
+          .station-title-kor {
+            font-size: 28px;
+            font-family: "gothic 14";
+            color: #fff;
+
+            &.buisness {
+              color: #5e76ba;
+            }
+          }
+          .station-tile-eng {
+            margin-left: 10px;
+            font-size: 16px;
+            align-self: center;
+            color: #5e76ba;
+            font-family: "gothic B";
+          }
+        }
 
         .aside-item {
           display: flex;
@@ -126,10 +210,14 @@
           cursor: pointer;
           justify-content: space-between;
           height: 50px;
-          font-family: "gothic 12";
+
           padding: 0 20px;
           color: #8faadc;
           border-bottom: 1px solid #2b3a63;
+
+          span {
+            font-family: "gothic 12";
+          }
 
           &.active {
             color: #fff;
@@ -137,21 +225,42 @@
           }
         }
       }
+
       .station-statistic-graph {
         width: 100%;
         display: flex;
+
         flex-direction: column;
-        padding: 20px;
         gap: 20px;
         align-items: end;
         position: relative;
 
-        .unit{
+        &.statistic_failure {
+          align-items: center;
+          justify-content: center;
+          grid-row: span 2;
+          padding: 0;
+        }
+
+        .unit {
           position: absolute;
-          top: 55px;
+          top: 35px;
           font-family: "gothic 12";
-          color: #8FAADC;
-          left: 70px;
+          color: #8faadc;
+          left: 35px;
+          @media (max-height: 1100px) {
+            left: 25px;
+            top: 35px;
+          }
+
+          &.unit-failure {
+            left: 68px;
+            top: 50px;
+            @media (max-height: 1100px) {
+              left: 53px;
+              top: 35px;
+            }
+          }
         }
 
         .custom-tooltip {
@@ -186,7 +295,14 @@
 
         .station-statistic-checkbox {
           display: flex;
+          margin: 0 20px;
+          align-self: flex-end;
           gap: 30px;
+
+          &.checkbox-failure {
+            align-self: flex-end;
+            margin-right: 35px;
+          }
           .check-text {
             font-size: 16px;
             color: #8faadc;
@@ -195,6 +311,79 @@
             @media (max-width: 1536px) {
               font-size: 12px;
             }
+          }
+        }
+      }
+
+      .staion-statistic-graph-failure {
+        width: 100%;
+        display: flex;
+        .left {
+          width: 50%;
+          .staion-failure-type {
+            height: 50%;
+            border: 1px solid #2b3a63;
+            border-top: none;
+            border-left: none;
+
+            .station-failrute-type-wrapper {
+              display: flex;
+
+              height: 90%;
+
+              .station-failure-type-top {
+                width: 70%;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+              }
+              .station-failure-type-top-right {
+                width: 30%;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                ul {
+                  li {
+                    display: flex;
+                    gap: 20px;
+                    margin: 12px 0;
+                    align-items: center;
+                    font-family: "gothic 12";
+                    font-size: 14px;
+                    color: #8faadc;
+                    justify-content: start;
+                    .item-category {
+                      width: 15px;
+                      border: 1px solid #2050a0;
+                      height: 15px;
+                      background-color: #00b0f0;
+
+                      &.typeb {
+                        background-color: #2e75b6;
+                      }
+                      &.typec {
+                        background-color: #9dc3e6;
+                      }
+                      &.typed {
+                        background-color: #deebf7;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            .station-failure-type-inner {
+              display: flex;
+              align-items: center;
+              width: 100%;
+              font-family: "gothic 12";
+              color: #8faadc;
+              justify-content: center;
+            }
+          }
+
+          .item-3 {
+            height: 50%;
           }
         }
       }

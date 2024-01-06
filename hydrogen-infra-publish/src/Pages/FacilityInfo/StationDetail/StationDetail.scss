@@ -1,5 +1,6 @@
 .station-detail-content {
   width: 100%;
+
   overflow: auto;
   padding: 10px 0;
 
@@ -9,7 +10,7 @@
   }
 
   .title-station-info {
-    color: #bcbabd;
+    color: #fff;
     margin: 10px 20px;
     font-size: 19px;
     font-family: "gothic 12";
@@ -41,7 +42,7 @@
       }
       .station-detail-name {
         color: #8da7d9;
-        font-size: 20px;
+        font-size: 25px;
         font-family: "gothic 12";
       }
       .station-business-name {
@@ -50,11 +51,11 @@
         gap: 10px;
         font-family: "gothic 12";
         color: #8da7d9;
-        font-size: 11px;
+        font-size: 15px;
 
         .vertical-line {
           border-left: 1px solid #8da7d9; /* Цвет и толщина линии */
-          height: 15px; /* Высота линии */
+          height: 20px; /* Высота линии */
         }
       }
     }
@@ -68,6 +69,7 @@
       .icon-circle-background {
         background-color: #1c2641;
         width: 35px;
+        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -99,6 +101,28 @@
         color: #5e76ba;
         border-right: 1px solid #2b3a63;
         border-bottom: 1px solid #2b3a63;
+
+        &.default{
+          width: 20%;
+          border-right: none;
+          border-bottom: 1px solid #2b3a63;
+        }
+
+        &.default-equpmnt{
+          width: 50%;
+          border-right: none;
+          border-bottom: 1px solid #2b3a63;
+        }
+        &.default-materials{
+          width: 80%;
+          border-right: none;
+          border-bottom: 1px solid #2b3a63;
+        }
+        &.default-edit-user{
+          width: 65%;
+          border-right: none;
+          border-bottom: 1px solid #2b3a63;
+        }
 
         &.active {
           color: white;

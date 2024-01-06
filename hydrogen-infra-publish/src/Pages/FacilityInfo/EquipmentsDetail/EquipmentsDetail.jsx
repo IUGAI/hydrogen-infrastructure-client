@@ -217,6 +217,9 @@ function EquipmentsDetail() {
             </div>
             <span className="item-quantity">2</span>
           </div>
+          <div
+            className={`navbar-item default-equpmnt`}
+          ></div>
         </div>
         {navitem === "main" ? (
           <StationDetailMainInfo

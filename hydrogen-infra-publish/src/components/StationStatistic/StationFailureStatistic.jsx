@@ -18,7 +18,7 @@ import Checkbox from "@mui/material/Checkbox";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
-function Soundness({ data, lineGraph, barGraph, ticksNumbers, unit }) {
+function StationFailureStatistic({ data, lineGraph, barGraph, ticksNumbers, unit, graphName }) {
   const datacharging = data.reduce((sum, item) => {
     return (sum += item.uv);
   }, 0);
@@ -54,7 +54,7 @@ function Soundness({ data, lineGraph, barGraph, ticksNumbers, unit }) {
           <div className="toltip-content">
             {checkedstate.production &&
               payload.find((item) => item.dataKey === "pv") && (
-                <p className="production">{`건전도: ${
+                <p className="production">{`${graphName}: ${
                   payload.find((item) => item.dataKey === "pv").value
                 } ${unit}`}</p>
               )}
@@ -84,9 +84,9 @@ function Soundness({ data, lineGraph, barGraph, ticksNumbers, unit }) {
   };
 
   return (
-    <div className="station-statistic-graph">
-      <span className="unit">({unit})</span>
-      <div className="station-statistic-checkbox">
+    <div className="station-statistic-graph statistic_failure">
+      <span className="unit unit-failure">({unit})</span>
+      <div className="station-statistic-checkbox checkbox-failure">
         {dataproduction !== 0 && (
           <div className="checkBox-item">
             <Checkbox
@@ -102,11 +102,11 @@ function Soundness({ data, lineGraph, barGraph, ticksNumbers, unit }) {
                 },
               }}
             />
-            <span className="check-text">건전도</span>
+            <span className="check-text">{graphName}</span>
           </div>
         )}
       </div>
-      <ResponsiveContainer width="99%" height="90%" style={{margin: "0 20px"}}>
+      <ResponsiveContainer width="95%" height="90%">
         <ComposedChart
           data={data}
           barCategoryGap={isSmallScreen ? 10 : isMediumScreen ? 20 : 30}
@@ -126,9 +126,9 @@ function Soundness({ data, lineGraph, barGraph, ticksNumbers, unit }) {
                 <Bar
                   dataKey="pv"
                   shape={<RoundedBar />}
-                  fill={`url(#gradient-1)`}
+                  fill={`url(#gradient-6)`}
                   activeBar={
-                    <RoundedBar fill={`url(#gradient-1)`} stroke="blue" />
+                    <RoundedBar fill={`url(#gradient-6)`} stroke="blue" />
                   }
                 />
               )}
@@ -149,10 +149,10 @@ function Soundness({ data, lineGraph, barGraph, ticksNumbers, unit }) {
           )}
 
           <defs>
-            <linearGradient id="gradient-1" x1="0" y1="0" x2="0" y2="1">
+            <linearGradient id="gradient-6" x1="0" y1="0" x2="0" y2="1">
               <stop offset="30%" stopColor="#1f6dd5" />
               <stop offset="60%" stopColor="#0c8bd1" />
-              <stop offset="90%" stopColor="#1e3759" />
+              <stop offset="90%" stopColor="#1e2b49" />
             </linearGradient>
           </defs>
         </ComposedChart>
@@ -161,4 +161,4 @@ function Soundness({ data, lineGraph, barGraph, ticksNumbers, unit }) {
   );
 }
 
-export default Soundness;
+export default StationFailureStatistic;

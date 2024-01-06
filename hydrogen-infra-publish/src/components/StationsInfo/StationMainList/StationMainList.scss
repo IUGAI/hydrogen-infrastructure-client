@@ -49,6 +49,10 @@
   .table {
     width: 100%;
     height: 90%;
+
+    &.table-user{
+      height: 100%;
+    }
     .custom-datagrid {
       font-family: "gothic 12";
       color: #fff;

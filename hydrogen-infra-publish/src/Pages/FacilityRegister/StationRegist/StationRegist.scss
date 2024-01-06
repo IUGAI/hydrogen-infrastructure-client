@@ -2,6 +2,9 @@
   width: 100%;
   overflow: auto;
   display: flex;
+  &.station-regist-content-main-edit-user{
+    height: 830px;
+  }
 
   &::-webkit-scrollbar {
     width: 6px;
@@ -118,7 +121,7 @@
                 width: 50%;
                 border: 1px solid #2b3a63;
                 padding: 10px;
-                color: #8faadc;
+                color: #fff;
                 font-size: 14px;
                 background-color: #212c4b;
 
@@ -143,16 +146,22 @@
 
             .custom-input-default {
               width: 100%;
-              color: #8faadc;
+              color: #fff;
               height: 37px;
               padding: 0 15px;
+              font-family: "gothic 12";
               border: 1px solid #2b3a63;
               font-size: 14px;
               border-radius: 5px;
               background-color: #212c4b;
 
+              &.input-edit-user{
+                background-color: #2b3a63;
+              }
+
               &:focus {
                 outline: none;
+                color: #fff;
                 border-color: #8faadc;
               }
               &::placeholder {
@@ -192,7 +201,7 @@
 
             .custom-input-default-search {
               width: 90%;
-              color: #8faadc;
+              color: #fff;
               height: 37px;
               padding: 0 15px;
               border: 1px solid #2b3a63;
@@ -320,6 +329,39 @@
               }
             }
           }
+          .input-item-station-buttons{
+            width: 100%;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+
+            .button-submit-form-edit-user {
+              border: 1px solid #5e76ba;
+              border-radius: 5px;
+              width: 100%;
+              cursor: pointer;
+              color: #fff;
+              margin-top: 30px;
+              font-family: "gothic 12";
+              padding: 10px 0;
+              background-color: #3c4d7c;
+            }
+
+            
+            .button-submit-form-edit-user-cancel {
+              border: 1px solid #8497b0;
+              border-radius: 5px;
+              width: 100%;
+              cursor: pointer;
+              color: #fff;
+              margin-top: 30px;
+              font-family: "gothic 12";
+              padding: 10px 0;
+              background-color: #8497b0;
+  
+ 
+            }
+          }
 
           .input-item-station-add-editor {
             display: flex;
@@ -438,7 +480,6 @@
             display: flex;
             .custom-input-default-start-title {
               width: 20%;
-              color: #5e76ba;
               text-align: center;
               height: 37px;
               padding: 0 15px;
@@ -458,15 +499,17 @@
 
               &.end {
                 border-top-right-radius: 5px;
+                height: 39px;
                 border-bottom-right-radius: 5px;
               }
             }
 
             .custom-input-default-start {
               width: 95%;
-              color: #8faadc;
+              color: #fff;
               height: 37px;
               padding: 0 15px;
+              font-family: "gothic 12";
               border: 1px solid #2b3a63;
               font-size: 14px;
               background-color: #212c4b;
@@ -485,6 +528,7 @@
               }
               &:focus {
                 outline: none;
+                color: #fff;
                 border-color: #8faadc;
               }
             }
@@ -540,6 +584,7 @@
               border-color: #8faadc;
             }
           }
+          
           .button-submit-form {
             border: 1px solid #5e76ba;
             border-radius: 5px;
@@ -551,6 +596,10 @@
 
             &.add-material {
               margin-top: 70px;
+            }
+
+            &.edit-equipm {
+          margin-top: 30px;
             }
 
             &.add-equipm {

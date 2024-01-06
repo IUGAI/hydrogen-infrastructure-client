@@ -1,4 +1,4 @@
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import { useMediaQuery } from "react-responsive";
 
 function Graph({ items }) {
@@ -23,6 +23,7 @@ function Graph({ items }) {
         width={isLargeScreen  ? 150 : 210}
         height={isLargeScreen  ? 130 : 180}
       >
+        {/* <Tooltip/> */}
         <Pie
           data={items.data}
           cx={isLargeScreen  ? 68 : 98}

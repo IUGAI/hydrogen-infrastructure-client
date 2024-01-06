@@ -19,6 +19,12 @@ import WorkRegist from "./Pages/Maintenance/WorkRegister/WorkRegist";
 import WorkList from "./Pages/Maintenance/WorkList/WorkList";
 import WorkReportRegister from "./Pages/Maintenance/WorkReportRegister/WorkReportRegister";
 import StationStatistics from "./Pages/Statistics/StationStatistics";
+import EquipmentStatistics from "./Pages/Statistics/EquipmentStatistics";
+import UserList from './Pages/SystemManagment/User/UserList'
+import UserRegisterAccept from "./Pages/SystemManagment/User/UserRegisterAccept";
+import UserInfo from "./Pages/SystemManagment/User/UserInfo";
+import CommonSetting from "./Pages/SystemManagment/SystemSettings/CommonSetting";
+import PremissionsSetting from "./Pages/SystemManagment/SystemSettings/PremissionsSetting";
 
 
 export default function App() {
@@ -87,6 +93,30 @@ export default function App() {
         {
           path: "/station-statistic",
           element: <StationStatistics/>
+        },
+        {
+          path: "/equipment-statistic",
+          element: <EquipmentStatistics/>
+        },
+        {
+          path: "/user-list",
+          element: <UserList/>
+        },
+        {
+          path: "/user-accept",
+          element: <UserRegisterAccept/>
+        },
+        {
+          path: "/user-info/:id?",
+          element: <UserInfo/>
+        },
+        {
+          path: "/common-setting",
+          element: <CommonSetting/>
+        },
+        {
+          path: "/premissions-setting",
+          element: <PremissionsSetting/>
         },
       ],
     },

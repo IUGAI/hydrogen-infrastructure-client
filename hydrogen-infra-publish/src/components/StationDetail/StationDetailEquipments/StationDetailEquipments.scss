@@ -3,6 +3,12 @@
   margin: 10px 20px;
   padding: 10px 10px;
   display: grid;
+
+  &.user{
+    padding: 0;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 0;
+  }
   @media (max-width: 1536px) {
     padding: 10px 0;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 0.5fr 0.5fr;
