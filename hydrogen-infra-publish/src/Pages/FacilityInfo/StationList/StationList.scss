@@ -5,6 +5,10 @@
   overflow: auto;
   grid-template-columns: 100%;
   grid-template-rows: 0.1fr 1fr 5fr;
+
+  &.premmisions {
+    grid-template-rows: 0.1fr 1fr 6fr;
+  }
   
   &.user-register{
     grid-template-rows:  0.1fr  5fr;

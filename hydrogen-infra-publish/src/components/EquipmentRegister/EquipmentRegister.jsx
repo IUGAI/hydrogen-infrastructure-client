@@ -63,7 +63,7 @@ function EquipmentRegister() {
                 type="text"
                 className="custom-input-default-search border-left active"
               ></input>
-              <input className="input-weight" value="kg" />
+              <input className="input-weight"  value="kg" />
             </div>
             <div className="input-item-station-add">
               <label>
