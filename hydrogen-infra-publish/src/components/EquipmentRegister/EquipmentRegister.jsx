@@ -63,7 +63,7 @@ function EquipmentRegister() {
                 type="text"
                 className="custom-input-default-search border-left active"
               ></input>
-              <input className="input-weight"  value="kg" />
+              <input className="input-weight"   disabled value="kg" />
             </div>
             <div className="input-item-station-add">
               <label>
@@ -91,7 +91,7 @@ function EquipmentRegister() {
                   type="text"
                   disabled
                   value="bar"
-                  className="custom-input-default-start-title end"
+                  className="custom-input-default-start-title"
                 />
               </div>
             </div>
@@ -121,7 +121,7 @@ function EquipmentRegister() {
                   type="text"
                   disabled
                   value="°C"
-                  className="custom-input-default-start-title end"
+                  className="custom-input-default-start-title "
                 />
               </div>
             </div>

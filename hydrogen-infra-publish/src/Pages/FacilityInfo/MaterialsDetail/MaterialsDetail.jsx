@@ -1,12 +1,15 @@
-import { useNavigate } from "react-router";
+
 import StationDetailMaterial from "../../../components/StationDetail/StationDetailMaterial/StationDetailMaterial";
 import { TfiMenuAlt } from "react-icons/tfi";
+import { FaHome } from "react-icons/fa";
+import { GrEdit } from "react-icons/gr";
 import { FaRegFile } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
 import { MdHome } from "react-icons/md";
 import { stations, buisness } from "../../../data/Mapdata";
 import { BsTools } from "react-icons/bs";
 import { FaBookmark } from "react-icons/fa";
+import { useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import MaterialMainInfo from "../../../components/MaterialDetail/MaterialMainInfo/MaterialMainInfo";
 import MaterialHistoryInfo from "../../../components/MaterialDetail/MaterialHistoryInfo/MaterialHistoryInfo";
@@ -132,12 +135,51 @@ const center = {
 };
 
 function MaterialsDetail() {
+
+  
   const [navitem, setnavitem] = useState("main");
   const navigate = useNavigate();
+  const [hoveredIcon, setHoveredIcon] = useState(null);
+  const path = useLocation();
+  const id = path.pathname.slice(11, 19)
+  const handleHover = (index) => {
+    setHoveredIcon(index);
+  };
 
   const handleitemreturn = () => {
     navigate("/materials");
   };
+
+  const handleGrEditClick = () => {
+    // navigate(`/station-edit/${id}`)
+  };
+
+  const handleItemReturnClick = () => {
+
+  }
+
+  const handleClickGotoEditPAge = ()=> {
+     navigate(`/material-edit/${id}`)
+  }
+
+
+  const iconData = [
+    {
+      icon: <TfiMenuAlt color={hoveredIcon === 0 ? "#fff" : "#8da7d9"} />,
+      text: "목록",
+      onClick: handleItemReturnClick,
+    },
+    {
+      icon: <FaHome color={hoveredIcon === 1 ? "#fff" : "#8da7d9"} />,
+      text: "사업소 정보",
+      onClick: handleGrEditClick,
+    },
+    {
+      icon: <GrEdit color={hoveredIcon === 2 ? "#fff" : "#8da7d9"} />,
+      text: "자재 수정",
+      onClick: handleClickGotoEditPAge,
+    },
+  ];
   return (
     <div className="station-detail-content">
       <span className="title-station-info">자재 정보</span>
@@ -153,19 +195,20 @@ function MaterialsDetail() {
           </div>
         </div>
         <div className="right">
-          <div className="icon-circle-background">
-            <TfiMenuAlt
-              color="#8da7d9"
-              onClick={handleitemreturn}
-              style={{ cursor: "pointer" }}
-            />
-          </div>
-          <div className="icon-circle-background">
-            <FaRegEdit color="#8da7d9" style={{ cursor: "pointer" }} />
-          </div>
-          <div className="icon-circle-background">
-            <FaRegFile color="#8da7d9" style={{ cursor: "pointer" }} />
-          </div>
+        {iconData.map((data, index) => (
+            <div
+              key={index}
+              className="icon-circle-background"
+              onMouseEnter={() => handleHover(index)}
+              onMouseLeave={() => handleHover(null)}
+              onClick={data.onClick}
+            >
+              {hoveredIcon === index && (
+                <span className="tooltip">{data.text}</span>
+              )}
+              {data.icon}
+            </div>
+          ))}
         </div>
         <img
           src="/img/material_storage.png"

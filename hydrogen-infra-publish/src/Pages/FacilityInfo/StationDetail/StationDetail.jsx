@@ -1,7 +1,7 @@
 import "./StationDetail.scss";
 import { TfiMenuAlt } from "react-icons/tfi";
-import { FaRegFile } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
+import { GrEdit } from "react-icons/gr";
 import { MdHome } from "react-icons/md";
 import { MdFactory } from "react-icons/md";
 import { stations, buisness } from "../../../data/Mapdata";
@@ -12,7 +12,7 @@ import { BsTools } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
 import { FaBookmark } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import StationDetailMainInfo from "../../../components/StationDetail/StationDetailMainInfo/StationDetailMainInfo";
 import StationDetailEquipments from "../../../components/StationDetail/StationDetailEquipments/StationDetailEquipments";
 import StationDetailMaterial from "../../../components/StationDetail/StationDetailMaterial/StationDetailMaterial";
@@ -20,6 +20,7 @@ import StationDetailNoticeList from "../../../components/StationDetail/StationDe
 import StationDetailBrekList from "../../../components/StationDetail/StationDetailBeakList/StationDetailBrekList";
 import StationDetailTaskList from "../../../components/StationDetail/StationDetailTaskList/StationDetailTaskList";
 import StationDetailUsers from "../../../components/StationDetail/StationDetailUsers/StationDetailUsers";
+import ModalBuisnessEdit from "../../../components/Modal/ModalBuisnessEdit";
 
 const item_info = [
   {
@@ -108,7 +109,49 @@ const buisness_st = {
 
 function StationDetail() {
   const [navitem, setnavitem] = useState("main");
+  const [open, setOpen] = React.useState(false);
+  const [hoveredIcon, setHoveredIcon] = useState(null);
   const navigate = useNavigate();
+  const path = useLocation();
+  const id = path.pathname.slice(10, 15)
+  const handleHover = (index) => {
+    setHoveredIcon(index);
+  };
+
+
+  const handleItemReturnClick = () => {};
+
+  const handleGrEditClick = () => {
+    navigate(`/station-edit/${id}`)
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
+
+  const iconData = [
+    {
+      icon: <TfiMenuAlt color={hoveredIcon === 0 ? "#fff" : "#8da7d9"} />,
+      text: "목록",
+      onClick: handleItemReturnClick,
+    },
+    {
+      icon: <GrEdit color={hoveredIcon === 1 ? "#fff" : "#8da7d9"} />,
+      text: "사업소 수정",
+      onClick: handleGrEditClick,
+    },
+    {
+      icon: <FaRegEdit color={hoveredIcon === 2 ? "#fff" : "#8da7d9"} />,
+      text: "사업자 수정",
+      onClick: handleOpen,
+    },
+  ];
 
   const handleitemreturn = () => {
     navigate("/stations");
@@ -116,6 +159,10 @@ function StationDetail() {
 
   return (
     <div className="station-detail-content">
+      <ModalBuisnessEdit
+        open={open}
+        handleClose={handleClose}
+      />
       <span className="title-station-info">사업소 정보</span>
       <div className="station-detail-content-header">
         <div className="left">
@@ -129,15 +176,20 @@ function StationDetail() {
           </div>
         </div>
         <div className="right">
-          <div className="icon-circle-background">
-            <TfiMenuAlt color="#8da7d9" onClick={handleitemreturn} />
-          </div>
-          <div className="icon-circle-background">
-            <FaRegEdit color="#8da7d9" />
-          </div>
-          <div className="icon-circle-background">
-            <FaRegFile color="#8da7d9" />
-          </div>
+          {iconData.map((data, index) => (
+            <div
+              key={index}
+              className="icon-circle-background"
+              onMouseEnter={() => handleHover(index)}
+              onMouseLeave={() => handleHover(null)}
+              onClick={data.onClick}
+            >
+              {hoveredIcon === index && (
+                <span className="tooltip">{data.text}</span>
+              )}
+              {data.icon}
+            </div>
+          ))}
         </div>
         <img
           src="/img/detail_info.png"
@@ -243,9 +295,7 @@ function StationDetail() {
             </div>
             <span className="item-quantity">4</span>
           </div>
-          <div
-            className={`navbar-item default`}
-          ></div>
+          <div className={`navbar-item default`}></div>
         </div>
         {navitem === "main" ? (
           <StationDetailMainInfo

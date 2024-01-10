@@ -1,0 +1,58 @@
+.logout-state {
+  width: 250px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  outline: none;
+
+  .img-marker {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    height: 25px;
+  }
+
+  .modal-header {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background-color: #5e76ba;
+
+    .modal-title-text {
+      margin-left: 40px;
+      font-family: "gothic 12";
+    }
+  }
+  .modal-content {
+    height: 120px;
+    display: flex;
+    padding: 0 20px;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: #1c2641;
+    .modal-content-description {
+      font-family: "gothic 12";
+      font-size: 14px;
+      color: #8faadc;
+    }
+    .modal-conten-buttons {
+      display: flex;
+      width: 100%;
+      gap: 10px;
+      .buttons-alarm-modal {
+        width: 100%;
+        gap: 3px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        border: none;
+        background-color: #212c4b;
+        color: #8FAADC;
+        padding: 7px 0;
+      }
+    }
+  }
+}

@@ -1,15 +1,14 @@
-import MaterialMainList from "../../../components/MaterialsInfo/MaterialMainList"
-import MaterialsSearch from "../../../components/MaterialsInfo/MaterialsSearch"
-import PremissionsSettingsSearch from "../../../components/PremissionsSettings/PremissionsSettingsSearch"
+import PremissionsSettingsSearch from "../../../components/PremissionsSettings/PremissionsSettingsSearch";
+import PremissionsSettingsMainList from "../../../components/PremissionsSettings/PremissionsSettingsMainList";
 
 function PremissionsSetting() {
-    return (
-        <div className="stations-dashboard premmisions">
-        <span>권한 설정</span>
-        <PremissionsSettingsSearch />
-        <MaterialMainList />
-      </div>
-    )
+  return (
+    <div className="stations-dashboard premmisions">
+      <span>권한 설정</span>
+      <PremissionsSettingsSearch />
+      <PremissionsSettingsMainList />
+    </div>
+  );
 }
 
-export default PremissionsSetting
+export default PremissionsSetting;

@@ -10,19 +10,11 @@ function PremissionsSettingsSearch() {
     <div className="search-premissons">
       <div className="input-items">
       <div className="search-input-item">
-          <label>사업소</label>
-          <select className="custom-select">
-            <option selected disabled>
-              선택
-            </option>
-            <option>서울</option>
-            <option>부산</option>
-            <option>제주</option>
-            <option>광주</option>
-          </select>
+          <label>메뉴열</label>
+          <input type="text" className="custom-input-default "></input>
         </div>
         <div className="search-input-item">
-          <label>사업소</label>
+          <label>구분</label>
           <select className="custom-select">
             <option selected disabled>
               선택
@@ -35,14 +27,14 @@ function PremissionsSettingsSearch() {
         </div>
       </div>
 
-      <div className="input-items">
-      <div className="search-input-item">
+      <div className="input-items buttons">
+      <div className="search-input-item buttons">
           <button className="button-search">
             <CiSearch size={24} />
             검색
           </button>
         </div>
-        <div className="search-input-item">
+        <div className="search-input-item buttons">
           <button className="button-search">
             <GrPowerReset size={24} />
             초기화

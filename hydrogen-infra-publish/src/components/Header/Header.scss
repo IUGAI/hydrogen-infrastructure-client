@@ -60,7 +60,129 @@
       padding: 0 12px;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: center; 
+
+      &.current {
+        background-color: #5E76BA;
+      }
+
+      .alarm-info-drop-modal{
+        position: absolute;
+        top: 65px;
+        border: 1px solid #253255;
+        right: 163px;
+        width: 280px;
+        z-index: 10;
+
+        @media (max-width: 1536px) {
+          width: 250px;
+        }
+
+        &.user-info-drop-modal{
+          right: 116px;
+        }
+        .img-marker {
+          position: absolute;
+          top: 0;
+          left: 20px;
+          height: 25px;
+        }
+
+        .circle-avatar{
+          width: 50px;
+          height: 50px;
+          position: absolute;
+          top: 10px;
+          display: flex;
+          align-items: end;
+          justify-content: center;
+          border-radius: 100%;
+          right: 30px;
+          background-color: #1c2641;
+          border: solid 1px #222e4e;
+          .img-avatar{
+            width: 30px;
+            height: 35px;
+          }
+        }
+        .modal-info-header {
+          display: flex;
+          height: 40px;
+          align-items: center;
+          padding-left: 40px;
+          padding-right: 20px;
+          background-color: #5e76ba;
+          justify-content: space-between;
+    
+  
+          .modal-info-title-text{
+            font-family: "gothic 12";
+            font-size: 16px;
+          }
+        }
+        .mofal-info-content {
+          background-color: #1c2641;
+          padding: 10px 20px;
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+
+          &.modal-info-content-user{
+            padding: 20px 20px;
+          }
+    
+          .work-fills {
+            border-bottom: 1px solid #2b3a63;
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+    
+            &.last{
+              border-bottom: none;
+              display: flex;
+              gap: 10px;
+            }
+
+            .button-alram{
+              width: 100%;
+              gap: 3px;
+              align-items: center;
+              justify-content: center;
+              display: flex;
+              border: none;
+              background-color: #212c4b;
+              color: #8FAADC;
+              padding: 7px 0;
+            }
+    
+            .work-fills-label {
+              gap: 5px;
+              display: flex;
+              .work-fills-title{
+                color:  #8FAADC;
+                font-size: 13px;
+                font-family: "gothic 12";
+
+                &.important{
+                  color: #FE609A;
+                }
+              }
+    
+             
+            }
+            .work-fills-content{
+              gap: 5px;
+              display: flex;
+              .work-fills-text{
+                color:  #5E76BA;
+                font-size: 13px;
+                font-family: "gothic 12";
+              }
+            }
+          }
+        }
+        
+      }
        
       .dateTime{
         font-family: "gothic L";

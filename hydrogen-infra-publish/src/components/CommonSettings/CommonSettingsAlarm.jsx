@@ -4,101 +4,94 @@ import { DataGrid } from "@mui/x-data-grid";
 import { values } from "lodash";
 
 
-const columns = [
-    {
-      field: "name",
-      headerName: "구분",
-      width: 186,
-      sortable: false,
-      headerAlign: "center",
-      align: "center",
-      renderCell: (params) => {
-        return <span className="text-data-grid">{params.value}</span>;
-      },
-    },
-    {
-      field: "level_0",
-      headerName: "LEVEL_0",
-      width: 150,
-      sortable: false,
-      headerAlign: "center",
-      align: "center",
-      renderCell: (params) => (
-        <Checkbox
-        checked={params.value}
-          onCheckboxChange={(checked) => {
-            // Добавьте обработчик изменения флажка здесь
-            // например, для обновления состояния или данных
-            console.log(`Checkbox checked: ${checked}`);
-            // Вы можете добавить логику обновления данных здесь
-          }}
-        />
-      ),
-    },
-    {
-      field: "level_1",
-      headerName: "LEVEL_1",
-      width: 150,
-      sortable: false,
-      headerAlign: "center",
-      align: "center",
-      renderCell: (params) => (
-        <Checkbox
-        checked={params.value}
-          onCheckboxChange={(checked) => {
-            console.log(`Checkbox checked: ${checked}`);
-          }}
-        />
-      ),
-    },
-    {
-      field: "level_2",
-      headerName: "LEVEL_2",
-      width: 150,
-      sortable: false,
-      headerAlign: "center",
-      align: "center",
-      renderCell: (params) => (
-        <Checkbox
-           checked={params.value}
-          onCheckboxChange={(checked) => {
-            console.log(`Checkbox checked: ${checked}`);
-          }}
-        />
-      ),
-    },
-    {
-      field: "level_3",
-      headerName: "LEVEL_3",
-      width: 150,
-      sortable: false,
-      headerAlign: "center",
-      align: "center",
-      renderCell: (params) => (
-        <Checkbox
-        checked={params.value}
-          onCheckboxChange={(checked) => {
-            // Добавьте обработчик изменения флажка здесь
-            // например, для обновления состояния или данных
-            console.log(`Checkbox checked: ${checked}`);
-            // Вы можете добавить логику обновления данных здесь
-          }}
-        />
-      ),
-    },
-  ];
-  
-  const rows = [
-    { id: 1, name: "중요 알람", level_0: true, level_1: true,  level_2: true, level_3: true },
-    { id: 2, name: "일반 알람",level_0: true, level_1: true,  level_2: false, level_3: false  },
-    { id: 3, name: "사업소별",level_0: false, level_1: true,  level_2: true, level_3: true  },
-  ];
+
 var text_init = `[소수인프라관리시스템] {성명}님, 발생시간 : {발생시간}, 시설물 : {시설물명}에 {고장종류} 이상이 발생하였습니다. 확인바랍니다.`;
 
 function CommonSettingsAlarm() {
 
     const [filename, setFileName] = useState();
     const [text, setText] = useState(text_init);
+    const [rows, setRows] = useState([
+      { id: 1, name: "중요 알람", level_0: true, level_1: true,  level_2: true, level_3: true },
+      { id: 2, name: "일반 알람",level_0: true, level_1: true,  level_2: false, level_3: false  },
+      { id: 3, name: "사업소별",level_0: false, level_1: true,  level_2: true, level_3: true  },
+    ])
+
+    const handleCheckChange = (id, field) => {
+      setRows((prevRows) => prevRows.map((row) => row.id === id ? {...row, [field] : !row[field]} : row ))
+    }
+
+    const columns = [
+      {
+        field: "name",
+        headerName: "구분",
+        width: 186,
+        sortable: false,
+        headerAlign: "center",
+        align: "center",
+        renderCell: (params) => {
+          return <span className="text-data-grid">{params.value}</span>;
+        },
+      },
+      {
+        field: "level_0",
+        headerName: "LEVEL_0",
+        width: 150,
+        sortable: false,
+        headerAlign: "center",
+        align: "center",
+        renderCell: (params) => (
+          <Checkbox
+          checked={params.value}
+            onChange={() => handleCheckChange(params.id, "level_0")}
+          />
+        ),
+      },
+      {
+        field: "level_1",
+        headerName: "LEVEL_1",
+        width: 150,
+        sortable: false,
+        headerAlign: "center",
+        align: "center",
+        renderCell: (params) => (
+          <Checkbox
+          checked={params.value}
+          onChange={() => handleCheckChange(params.id, "level_1")}
+          />
+        ),
+      },
+      {
+        field: "level_2",
+        headerName: "LEVEL_2",
+        width: 150,
+        sortable: false,
+        headerAlign: "center",
+        align: "center",
+        renderCell: (params) => (
+          <Checkbox
+             checked={params.value}
+             onChange={() => handleCheckChange(params.id, "level_2")}
+          />
+        ),
+      },
+      {
+        field: "level_3",
+        headerName: "LEVEL_3",
+        width: 150,
+        sortable: false,
+        headerAlign: "center",
+        align: "center",
+        renderCell: (params) => (
+          <Checkbox
+          checked={params.value}
+          onChange={() => handleCheckChange(params.id, "level_3")}
+          />
+        ),
+      },
+    ];
+    
+
 
     const handleInputChange = (event) => {
         const input = event.target.value;

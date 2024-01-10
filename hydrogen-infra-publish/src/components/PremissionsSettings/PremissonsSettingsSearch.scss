@@ -8,14 +8,28 @@
 
     .input-items{
         display: flex;
-        width: 30%;
+        width: 50%;
+        height: 100px;
+        align-items: center;
+
+        &.buttons{
+            justify-content: end;
+        }
+   
         .search-input-item {
             display: flex;
             z-index: 1;
+   
+            width: 300px;
             flex-direction: column;
             gap: 5px;
             justify-content: center;
             padding: 10px;
+
+            &.buttons {
+                height: 50px;
+                width: 150px;
+            }
         
             &.hide {
               display: none;
@@ -28,7 +42,7 @@
             .custom-input-default {
               width: 93%;
               padding: 10px;
-              color: #8faadc;
+              color: #fff;
               border: 1px solid #2b3a63;
               font-size: 14px;
               border-radius: 5px;

@@ -8,7 +8,7 @@ function StationRegister({show , setshow}) {
     }
     return (
         <div className={`station-regist-station-add ${show ? "" : "full-width"}`}>
-        <img src="./img/marker.png" className="img-marker" />
+        <img src="/img/marker.png" className="img-marker" />
         <div className="station-regist-station-add-header">
           <div className="station-regist-header-add-left">
             <span className="station-title-kor">사업소</span>

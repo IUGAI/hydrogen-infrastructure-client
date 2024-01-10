@@ -5,15 +5,18 @@ import Select from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
 import { useMediaQuery } from "react-responsive";
 import MenuItem from "@mui/material/MenuItem";
+
 import "./Detailheader.scss";
 import { stations } from "../../../data/Mapdata";
 import { useState } from "react";
 import { useMyContextEquipment } from "../../../context/equipmentContext";
+import StationModalInfo from "./StationModalInfo";
 
 function Detailheader() {
   const { id } = useParams();
   const { state } = useMyContextEquipment();
   const [selecteditem, setSelectedItem] = useState(id === undefined ? 1 : id);
+  const [stationInfoModal, setStationInfoModal] = useState(false);
   const isSmallScreen = useMediaQuery({ maxWidth: 1536 });
   const navigate = useNavigate();
 
@@ -46,6 +49,10 @@ function Detailheader() {
     fontSize: "14px",
   };
 
+  const handleClick = () => {
+    setStationInfoModal(!stationInfoModal);
+  };
+
   const handlechange = (event) => {
     const newValue = event.target.value;
     setSelectedItem(newValue);
@@ -56,8 +63,19 @@ function Detailheader() {
     <div className="detail-header-content">
       <div className="left">
         <span className="detail-header-title">{state.initalStation.name}</span>
-
-        {state.initalStation.name && <ButtonCustum>정보</ButtonCustum>}
+        <div
+          className="button-container-modal"
+          style={{ position: "relative" }}
+        >
+          {state.initalStation.name && (
+            <ButtonCustum handleClick={handleClick}>정보</ButtonCustum>
+          )}
+          {stationInfoModal ? (
+           <StationModalInfo setStationInfoModal={setStationInfoModal}/>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
       <div className="mid">
         <IoPartlySunnyOutline size={27} color="#8FAADC" />
