@@ -19,7 +19,7 @@ function UserDetail({ item_info }) {
             </div>
             <div className="user-detail-header-info-text">
               <span className="detail-info-text-level">LEVEL_2</span>
-              <span className="detail-info-main-text-level">hongKilDong_1</span>
+              <span className="detail-info-main-text-level">hongKilDong_11</span>
             </div>
           </div>
           {item_info.map((item, index) => (

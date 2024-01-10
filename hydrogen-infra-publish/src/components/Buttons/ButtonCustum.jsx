@@ -16,10 +16,10 @@ const StyledButtonCustum = styled(Button)`
   }
 `;
 
-function ButtonCustum({ children }) {
+function ButtonCustum({ children,handleClick }) {
   return (
     <>
-      <StyledButtonCustum variant="contained">{children}</StyledButtonCustum>
+      <StyledButtonCustum onClick={handleClick} variant="contained">{children}</StyledButtonCustum>
     </>
   );
 }

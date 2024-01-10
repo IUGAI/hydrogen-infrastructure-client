@@ -25,6 +25,12 @@ import UserRegisterAccept from "./Pages/SystemManagment/User/UserRegisterAccept"
 import UserInfo from "./Pages/SystemManagment/User/UserInfo";
 import CommonSetting from "./Pages/SystemManagment/SystemSettings/CommonSetting";
 import PremissionsSetting from "./Pages/SystemManagment/SystemSettings/PremissionsSetting";
+import Login from "./Pages/LoginRegister/Login";
+import Register from "./Pages/LoginRegister/Register";
+import WorkListDetail from "./Pages/Maintenance/WorkList/WorkListDetail";
+import StationEdit from "./Pages/FacilityRegister/StationRegist/StationEdit";
+import EquipmentEdit from "./Pages/FacilityRegister/EquipmentRegist/EquipmentEdit";
+import MaterialEdit from "./Pages/FacilityRegister/MaterialRegist/MaterialEdit";
 
 
 export default function App() {
@@ -66,13 +72,27 @@ export default function App() {
         {
           path: "/station-regist",
           element: <StationRegist/>
-        },{
+        },
+        {
+          path: "/station-edit/:id?",
+          element: <StationEdit/>
+        },
+        
+        {
           path: "/equipment-regist",
           element: <EquipmentRegist/>
         },
         {
+          path: "/equipment-edit/:id?",
+          element: <EquipmentEdit/>
+        },
+        {
           path: "/material-regist",
           element: <MaterialRegist/>
+        },
+        {
+          path: "/material-edit/:id?",
+          element: <MaterialEdit/>
         },
         {
           path: "/failure-list",
@@ -85,6 +105,10 @@ export default function App() {
         {
           path: "/work-list",
           element:  <WorkList/>
+        },
+        {
+          path: "/work-list/:id?",
+          element: <WorkListDetail/>
         },
         {
           path: "/work-report-register",
@@ -118,8 +142,18 @@ export default function App() {
           path: "/premissions-setting",
           element: <PremissionsSetting/>
         },
+   
       ],
     },
+    {
+      path:"/login",
+      element: <Login/>
+    }
+    ,
+    {
+      path: "/register",
+      element: <Register/>
+    }
   ]);
 
   return (

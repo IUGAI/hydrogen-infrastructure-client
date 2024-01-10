@@ -1,0 +1,302 @@
+.station-edit-state {
+  width: 900px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  outline: none;
+
+  .img-marker {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    height: 25px;
+  }
+
+  .modal-header {
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+    align-items: center;
+    background-color: #5e76ba;
+
+    .modal-title-text {
+      margin-left: 40px;
+      font-family: "gothic 12";
+    }
+  }
+
+  .station-regist-station-add-input {
+    padding: 30px 60px;
+    display: flex;
+    border-bottom: 1px solid #253255;
+    background-color: #1c2641;
+    flex-direction: column;
+    gap: 25px;
+
+    .essential-mark {
+      color: #ffc300;
+    }
+    .station-title-notice {
+      color: #5e76ba;
+      font-family: "gothic 12";
+      text-align: right;
+      font-size: 13px;
+    }
+
+    &.work-regist-add {
+      margin-top: 30px;
+    }
+
+    .input-item-station-add {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      label {
+        width: 20%;
+        font-size: 14px;
+        font-family: "gothic 12";
+        color: #8faadc;
+
+        @media (max-width: 1536px) {
+          width: 30%;
+        }
+      }
+
+      .button-container-custum {
+        display: flex;
+        width: 103%;
+
+        .custom-button-radio {
+          width: 50%;
+          border: 1px solid #2b3a63;
+          padding: 10px;
+          color: #8faadc;
+          font-size: 14px;
+          background-color: #212c4b;
+
+          &:first-child {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+          }
+
+          &:last-child {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+          }
+
+          &.active {
+            outline: none;
+            background-color: #35477b;
+            color: #fff;
+            border-color: #8faadc;
+          }
+        }
+      }
+
+      .custom-input-default {
+        width: 100%;
+        color: #fff;
+        height: 37px;
+        padding: 0 15px;
+        border: 1px solid #2b3a63;
+        font-size: 14px;
+        border-radius: 5px;
+        background-color: #212c4b;
+
+        &:focus {
+          outline: none;
+          border-color: #8faadc;
+        }
+        &::placeholder {
+          font-size: 13px;
+          color: #5e76ba;
+        }
+      }
+
+      .custom-input-default-search {
+        width: 90%;
+        color: #fff;
+        height: 37px;
+        padding: 0 15px;
+        border: 1px solid #2b3a63;
+        font-size: 14px;
+        background-color: #2b3a63;
+
+        &.active {
+          background-color: #212c4b;
+        }
+
+        &.border-left {
+          color: #fff;
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+        }
+
+        &.buisness-regist-number {
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+          background-color: #212c4b;
+        }
+
+        &::placeholder {
+          font-size: 13px;
+          color: #5e76ba;
+        }
+
+        &:focus {
+          outline: none;
+          border-color: #8faadc;
+        }
+      }
+      .button-search-address {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: 20px;
+        width: 10%;
+        height: 39px;
+        cursor: pointer;
+        font-family: "gothic 12";
+        font-size: 13px;
+        border: 1px solid #2b3a63;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        background-color: #212c4b;
+        color: #5e76ba;
+        @media (max-width: 1536px) {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .input_item_lat_lng {
+      width: 105%;
+      display: flex;
+      .custom-input-default-start-title {
+        width: 20%;
+        color: #5e76ba;
+        text-align: center;
+        height: 37px;
+        padding: 0 15px;
+        border: 1px solid #2b3a63;
+        font-size: 14px;
+        background-color: #212c4b;
+
+        &::placeholder {
+          font-size: 13px;
+          color: #5e76ba;
+        }
+
+        &.start {
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+        }
+
+        &.end {
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+          height: 39px;
+        }
+      }
+
+      .custom-input-default-start {
+        width: 95%;
+        color: #fff;
+        height: 37px;
+        padding: 0 15px;
+        border: 1px solid #2b3a63;
+        font-size: 14px;
+        background-color: #212c4b;
+
+        &.container{
+            width: 5%;
+            display: flex;
+            align-items: center;
+            justify-self: center;
+        }
+
+        &.start {
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+        }
+
+        &.end {
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+        }
+        &::placeholder {
+          font-size: 13px;
+          color: #5e76ba;
+        }
+        &:focus {
+          outline: none;
+          border-color: #8faadc;
+        }
+      }
+    }
+
+    .input-datapicker {
+      align-items: center;
+      display: flex;
+      width: 100%;
+      gap: 60px;
+    }
+    .react-datepicker {
+      font-size: 10px;
+      .react-datepicker__navigation {
+        height: 15px;
+      }
+
+      .react-datepicker__month-container {
+        background-color: #253255;
+      }
+      .react-datepicker__day {
+        line-height: 1rem;
+        color: white;
+      }
+      .react-datepicker__header {
+        font-size: 9px;
+        background-color: #8faadc;
+      }
+      .react-datepicker__month {
+        background-color: #253255;
+      }
+      .react-datepicker__current-month {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .footer {
+    height: 50px;
+    background-color: #1c2641;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    .buttons-container {
+      display: flex;
+      width: 100%;
+      justify-content: end;
+      gap: 10px;
+      margin-right: 60px;
+
+      .button-edit-business {
+        width: 90px;
+        background-color: #5e76ba;
+        border: none;
+        color: #fff;
+        border: 1px solid #253255;
+        font-family: "gothic 12";
+        height: 30px;
+
+        &.cancel {
+          background-color: #8497b0;
+        }
+      }
+    }
+  }
+}

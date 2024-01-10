@@ -10,7 +10,7 @@ function MaterialRegister() {
     <>
       <div className="station-regist-content">
         <div className={`station-regist-station-add full-width}`}>
-          <img src="./img/marker.png" className="img-marker" />
+          <img src="/img/marker.png" className="img-marker" />
           <div className="station-regist-station-add-header">
             <div className="station-regist-header-add-left">
               <span className="station-title-kor">자재</span>

@@ -2,7 +2,7 @@
   width: 100%;
   overflow: auto;
   display: flex;
-  &.station-regist-content-main-edit-user{
+  &.station-regist-content-main-edit-user {
     height: 830px;
   }
 
@@ -19,6 +19,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    .icon-circle-background {
+      background-color: #1c2641;
+      width: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 30px;
+      border-radius: 100%;
+    }
 
     &.hide {
       width: 48.5%;
@@ -38,6 +48,10 @@
       width: 50%;
       height: 840px;
       background-color: #1c2641;
+
+      &.work-detail-content {
+        height: 1000px;
+      }
 
       &.hide {
         display: none;
@@ -65,6 +79,20 @@
 
           .station-regist-header-add-left {
             display: flex;
+            gap: 5px;
+            align-items: center;
+
+            .work-write-date {
+              font-size: 14px;
+              font-family: "gothic 12";
+              color: #5e76ba;
+            }
+
+            .work-writter {
+              font-size: 14px;
+              font-family: "gothic 14";
+              color: #8faadc;
+            }
             .station-title-kor {
               font-size: 27px;
               font-family: "gothic 14";
@@ -93,8 +121,45 @@
           flex-direction: column;
           gap: 30px;
 
+          &.work-detail {
+            gap: 10px;
+          }
+
           &.work-regist-add {
             margin-top: 30px;
+          }
+          .work-fills {
+            border-bottom: 1px solid #2b3a63;
+            display: flex;
+            padding: 8px 0;
+
+            .work-fills-label {
+              width: 20%;
+
+              .work-fills-title {
+                color: #8faadc;
+                font-size: 15px;
+                font-family: "gothic 12";
+              }
+            }
+            .work-fills-content {
+              width: 80%;
+
+              ul {
+                list-style: none;
+
+                li {
+                  color: #fff;
+                  font-size: 15px;
+                  font-family: "gothic 12";
+                }
+              }
+              .work-fills-text {
+                color: #fff;
+                font-size: 15px;
+                font-family: "gothic 12";
+              }
+            }
           }
 
           .input-item-station-add {
@@ -155,7 +220,7 @@
               border-radius: 5px;
               background-color: #212c4b;
 
-              &.input-edit-user{
+              &.input-edit-user {
                 background-color: #2b3a63;
               }
 
@@ -233,6 +298,7 @@
                 border-color: #8faadc;
               }
             }
+
             .button-search-address {
               display: flex;
               align-items: center;
@@ -329,7 +395,7 @@
               }
             }
           }
-          .input-item-station-buttons{
+          .input-item-station-buttons {
             width: 100%;
             display: flex;
             gap: 10px;
@@ -347,7 +413,6 @@
               background-color: #3c4d7c;
             }
 
-            
             .button-submit-form-edit-user-cancel {
               border: 1px solid #8497b0;
               border-radius: 5px;
@@ -358,8 +423,6 @@
               font-family: "gothic 12";
               padding: 10px 0;
               background-color: #8497b0;
-  
- 
             }
           }
 
@@ -411,20 +474,18 @@
                 width: 7px;
                 height: 5px;
               }
-            
+
               &::-webkit-scrollbar-track {
                 background-color: #1c2641;
-        
               }
-            
-          
+
               &::-webkit-scrollbar-thumb {
                 background-color: #35477b;
-                border-radius: 4px; 
+                border-radius: 4px;
               }
-            
+
               &::-webkit-scrollbar-thumb:hover {
-                background-color: #5E76BA; 
+                background-color: #5e76ba;
               }
 
               table {
@@ -482,6 +543,7 @@
               width: 20%;
               text-align: center;
               height: 37px;
+              color: #5e76ba;
               padding: 0 15px;
               border: 1px solid #2b3a63;
               font-size: 14px;
@@ -499,7 +561,7 @@
 
               &.end {
                 border-top-right-radius: 5px;
-                height: 39px;
+                height: 37px;
                 border-bottom-right-radius: 5px;
               }
             }
@@ -569,7 +631,7 @@
             width: 100% !important;
             border: 1px solid #2b3a63;
             padding: 10px;
-            color: #8faadc;
+            color: #fff;
             font-size: 14px;
             border-radius: 5px;
             background-color: #212c4b;
@@ -584,26 +646,38 @@
               border-color: #8faadc;
             }
           }
-          
-          .button-submit-form {
-            border: 1px solid #5e76ba;
-            border-radius: 5px;
-            cursor: pointer;
-            color: #fff;
-            font-family: "gothic 12";
-            padding: 10px 0;
-            background-color: #3c4d7c;
 
-            &.add-material {
-              margin-top: 70px;
-            }
+          .button-edit {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            .button-submit-form {
+              width: 100%;
+              border: 1px solid #5e76ba;
+              border-radius: 5px;
+              cursor: pointer;
+              color: #fff;
+              font-family: "gothic 12";
+              padding: 10px 0;
+              background-color: #3c4d7c;
 
-            &.edit-equipm {
-          margin-top: 30px;
-            }
+              &.cancel{
+                background-color: #8497b0;
+              }
 
-            &.add-equipm {
-              margin-top: 350px;
+              &.add-material {
+                margin-top: 70px;
+              }
+
+              &.edit-equipm {
+                margin-top: 30px;
+              }
+
+              &.add-equipm {
+                margin-top: 350px;
+              }
             }
           }
           .input-custum-phone {

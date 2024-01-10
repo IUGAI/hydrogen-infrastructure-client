@@ -1,6 +1,5 @@
 import { SiMicrosoftexcel } from "react-icons/si";
-// import { useForm, SubmitHandler } from "react-hook-form"
-import { RiPhoneFill } from "react-icons/ri";
+
 import "./StationRegist.scss";
 
 import StationRegister from "../../../components/StationRegister/StationRegister";

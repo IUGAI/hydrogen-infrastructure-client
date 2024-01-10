@@ -1,6 +1,6 @@
 import { TfiMenuAlt } from "react-icons/tfi";
-import { FaRegFile } from "react-icons/fa";
-import { FaRegEdit } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
+import { GrEdit } from "react-icons/gr";
 import { MdHome } from "react-icons/md";
 
 import { SiMaterialdesignicons } from "react-icons/si";
@@ -10,7 +10,7 @@ import { BsConeStriped } from "react-icons/bs";
 import { BsTools } from "react-icons/bs";
 import { FaBookmark } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import StationDetailMainInfo from "../../../components/StationDetail/StationDetailMainInfo/StationDetailMainInfo";
 import StationDetailMaterial from "../../../components/StationDetail/StationDetailMaterial/StationDetailMaterial";
 import StationDetailNoticeList from "../../../components/StationDetail/StationDetailNoticeList/StationDetailNoticeList";
@@ -104,6 +104,8 @@ const item_info_mid = [
   },
 ];
 
+
+
 const center = {
     lat: stations[0].lat,
     lng: stations[0].lng,
@@ -111,11 +113,51 @@ const center = {
 
 function EquipmentsDetail() {
   const [navitem, setnavitem] = useState("main");
+  const [hoveredIcon, setHoveredIcon] = useState(null);
   const navigate = useNavigate();
+  const path = useLocation();
+  const id = path.pathname.slice(12, 17)
+  const handleHover = (index) => {
+    setHoveredIcon(index);
+  };
+
+  console.log(id);
+  
+
+  const handleGrEditClick = () => {
+    // navigate(`/station-edit/${id}`)
+  };
+
+  const handleItemReturnClick = () => {
+
+  }
+
+  const handleClickGotoEditPAge = ()=> {
+     navigate(`/equipment-edit/${id}`)
+  }
 
   const handleitemreturn = () => {
     navigate("/equipments");
   };
+
+  
+const iconData = [
+  {
+    icon: <TfiMenuAlt color={hoveredIcon === 0 ? "#fff" : "#8da7d9"} />,
+    text: "목록",
+    onClick: handleItemReturnClick,
+  },
+  {
+    icon: <FaHome color={hoveredIcon === 1 ? "#fff" : "#8da7d9"} />,
+    text: "사업소 정보",
+    onClick: handleGrEditClick,
+  },
+  {
+    icon: <GrEdit color={hoveredIcon === 2 ? "#fff" : "#8da7d9"} />,
+    text: "시설물 수정",
+    onClick: handleClickGotoEditPAge,
+  },
+];
   return (
     <div className="station-detail-content">
       <span className="title-station-info">시설물 정보</span>
@@ -131,15 +173,20 @@ function EquipmentsDetail() {
           </div>
         </div>
         <div className="right">
-          <div className="icon-circle-background">
-            <TfiMenuAlt color="#8da7d9" onClick={handleitemreturn} style={{cursor: "pointer"}} />
-          </div>
-          <div className="icon-circle-background">
-            <FaRegEdit color="#8da7d9" style={{cursor: "pointer"}} />
-          </div>
-          <div className="icon-circle-background">
-            <FaRegFile color="#8da7d9" style={{cursor: "pointer"}} />
-          </div>
+        {iconData.map((data, index) => (
+            <div
+              key={index}
+              className="icon-circle-background"
+              onMouseEnter={() => handleHover(index)}
+              onMouseLeave={() => handleHover(null)}
+              onClick={data.onClick}
+            >
+              {hoveredIcon === index && (
+                <span className="tooltip">{data.text}</span>
+              )}
+              {data.icon}
+            </div>
+          ))}
         </div>
         <img
           src="/img/detail_eq_info.png"

@@ -44,7 +44,7 @@ function Sidebar() {
       </div>
       <div className="menu-bar">
         <ul>
-          <li onClick={() => handleClickItem("/")}>
+          <li>
             <Link
               to="/"
               className={`link-item ${selectedItem === "/" ? "active" : ""} ${
@@ -64,7 +64,7 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li onClick={() => handleClickItem("/dashboard")}>
+          <li >
             <Link
               to="/dashboard"
               className={`link-item ${
@@ -100,16 +100,16 @@ function Sidebar() {
       </div>
       <div className="menu-bar">
         <ul>
-          <li onClick={() => handleClickItem("/stations")}>
+          <li >
             <Link
               to="/stations"
               className={`link-item ${
-                selectedItem.slice(0, 9) === "/stations" ? "active" : ""
+                selectedItem.slice(0, 9) === "/stations"  || selectedItem.slice(0,13) === "/station-edit"? "active" : ""
               } ${state.showSide ? "" : "hide"}`}
             >
               <img
                 src={
-                  selectedItem.slice(0, 9) === "/stations"
+                  selectedItem.slice(0, 9) === "/stations" || selectedItem.slice(0,13) === "/station-edit"
                     ? "/img/stationsactivemenu.png"
                     : "/img/station-info-disactive.png"
                 }
@@ -120,16 +120,16 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li onClick={() => handleClickItem("/equipments")}>
+          <li>
             <Link
               to="/equipments"
               className={`link-item ${
-                selectedItem.slice(0, 11) === "/equipments" ? "active" : ""
+                selectedItem.slice(0, 11) === "/equipments" || selectedItem.slice(0,15) === "/equipment-edit"  ? "active" : ""
               } ${state.showSide ? "" : "hide"}`}
             >
               <img
                 src={
-                  selectedItem.slice(0, 11) === "/equipments"
+                  selectedItem.slice(0, 11) === "/equipments"  || selectedItem.slice(0,15) === "/equipment-edit" 
                     ? "/img/equipments-icon-menu.png"
                     : "/img/equipmentd-info-disactive.png"
                 }
@@ -140,16 +140,16 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li onClick={() => handleClickItem("/materials")}>
+          <li>
             <Link
               to="/materials"
               className={`link-item ${
-                selectedItem.slice(0, 10) === "/materials" ? "active" : ""
+                selectedItem.slice(0, 10) === "/materials"  || selectedItem.slice(0, 14) === "/material-edit" ? "active" : ""
               } ${state.showSide ? "" : "hide"}`}
             >
               <img
                 src={
-                  selectedItem.slice(0, 10) === "/materials"
+                  selectedItem.slice(0, 10) === "/materials" || selectedItem.slice(0, 14) === "/material-edit" 
                     ? "/img/menu_materials_active.png"
                     : "/img/icon-material-info-disactive.png"
                 }
@@ -176,7 +176,7 @@ function Sidebar() {
       </div>
       <div className="menu-bar">
         <ul>
-          <li onClick={() => handleClickItem("/station-regist")}>
+          <li >
             <Link
               to="/station-regist"
               className={`link-item ${
@@ -196,7 +196,7 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li onClick={() => handleClickItem("/equipment-regist")}>
+          <li >
             <Link
               to="/equipment-regist"
               className={`link-item ${
@@ -216,7 +216,7 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li onClick={() => handleClickItem("/material-regist")}>
+          <li >
             <Link
               to="/material-regist"
               className={`link-item ${
@@ -253,7 +253,7 @@ function Sidebar() {
       </div>
       <div className="menu-bar">
         <ul>
-          <li onClick={() => handleClickItem("/failure-list")}>
+          <li >
             <Link
               to="/failure-list"
               className={`link-item ${
@@ -273,7 +273,7 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li onClick={() => handleClickItem("/work-register")}>
+          <li >
             <Link
               to="/work-register"
               className={`link-item ${
@@ -293,16 +293,16 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li onClick={() => handleClickItem("/work-list")}>
+          <li>
             <Link
               to="/work-list"
               className={`link-item ${
-                selectedItem === "/work-list" ? "active" : ""
+                selectedItem.slice(0,10) === "/work-list" ? "active" : ""
               } ${state.showSide ? "" : "hide"}`}
             >
               <img
                 src={
-                  selectedItem === "/work-list"
+                  selectedItem.slice(0,10) === "/work-list"
                     ? "/img/work-list-active.png"
                     : "/img/task-list-disactive.png"
                 }
@@ -313,7 +313,7 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li onClick={() => handleClickItem("/work-report-register")}>
+          <li >
             <Link
               to="/work-report-register"
               className={`link-item ${
@@ -348,7 +348,7 @@ function Sidebar() {
       </div>
       <div className="menu-bar">
         <ul>
-          <li onClick={() => handleClickItem("/station-statistic")}>
+          <li >
             <Link
               to="/station-statistic"
               className={`link-item ${
@@ -368,7 +368,7 @@ function Sidebar() {
               </span>
             </Link>
           </li>
-          <li onClick={() => handleClickItem("/equipment-statistic")}>
+          <li >
             <Link
               to="/equipment-statistic"
               className={`link-item ${
@@ -437,7 +437,7 @@ function Sidebar() {
             </div>
           </li>
           <li
-            onClick={() => handleClickItem("/user-list")}
+
             style={{ display: state.showSide ? "" : "none" }}
           >
             <Link
@@ -468,7 +468,7 @@ function Sidebar() {
             </Link>
           </li>
           <li
-            onClick={() => handleClickItem("/user-accept")}
+         
             style={{ display: state.showSide ? "" : "none" }}
           >
             <Link
@@ -499,7 +499,7 @@ function Sidebar() {
             </Link>
           </li>
           <li
-            onClick={() => handleClickItem("")}
+        
             style={{ display: state.showSide ? "" : "none" }}
           >
             <Link
@@ -559,7 +559,7 @@ function Sidebar() {
           </li>
 
           <li
-            onClick={() => handleClickItem("/common-setting")}
+      
             style={{ display: state.showSide ? "" : "none" }}
           >
             <Link
@@ -590,7 +590,7 @@ function Sidebar() {
             </Link>
           </li>
           <li
-            onClick={() => handleClickItem("/premissions-setting")}
+
             style={{ display: state.showSide ? "" : "none" }}
           >
             <Link

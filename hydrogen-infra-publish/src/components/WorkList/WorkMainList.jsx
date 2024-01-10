@@ -6,16 +6,17 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { SiMicrosoftexcel } from "react-icons/si";
 import { DataGrid } from "@mui/x-data-grid";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const columns = [
-  {
-    field: "id",
-    headerName: "아이디",
-    width: 150,
-    sortable: false,
-    headerAlign: "center",
-    align: "center",
-  },
+  // {
+  //   field: "id",
+  //   headerName: "아이디",
+  //   width: 150,
+  //   sortable: false,
+  //   headerAlign: "center",
+  //   align: "center",
+  // },
   {
     field: "regist_date",
     headerName: "등록일",
@@ -39,21 +40,17 @@ const columns = [
     width: 150,
     headerAlign: "center",
     align: "center",
-    valueGetter: (params) => {
-      // Convert the decimal value to a percentage
-      return params.value === 10000001 ? "남부사전" : "";
-    },
   },
 
   {
-    field: "station_number",
+    field: "work_number",
     headerName: "작업번호",
     width: 150,
     align: "center",
     headerAlign: "center",
   },
   {
-    field: "station_name",
+    field: "work_name",
     headerName: "작업명",
     width: 150,
     align: "center",
@@ -65,6 +62,7 @@ const columns = [
     width: 150,
     align: "center",
     headerAlign: "center",
+
   },
   {
     field: "worker",
@@ -79,16 +77,43 @@ const columns = [
     align: "center",
     headerAlign: "center",
     width: 200,
+    renderCell: (params) => {
+      return params.value ? "유" : "무"
+},
   },
 ];
 
-const rows = [];
 
 function WorkMainList() {
   const [selectedItems, setSelectedItems] = useState([]);
+  const [rows , setRows] = useState([
+    {
+             id: 100002,
+             regist_date: "2024-01-09",
+             station: "서울 A 사업소",
+             equipment: "생산 1",
+             work_number: "W-20240109181232",
+             work_name: "6월 정기점검",
+             work_day: "2024-01-12",
+             worker: "나성실",
+             materialuseyn: true
+    }
+  ])
+ 
+  const navigate = useNavigate()
 
   const handleItemSelection = (selectionModel) => {
     setSelectedItems(selectionModel);
+  };
+
+  const handleNavigatetoDetail = () => {
+    if (selectedItems.length > 1) {
+      alert("한개 만 선택해주세요!");
+    } else if (selectedItems.length === 0) {
+      alert("사업소 선택해 주세요");
+    } else {
+         navigate(`/work-list/${selectedItems[0]}`)
+    }
   };
   return (
     <div className="station-list">
@@ -98,7 +123,8 @@ function WorkMainList() {
           <IoMdSearch
               size={24}
               color="#576dad"
-      
+              onClick={handleNavigatetoDetail}
+               style={{cursor:"pointer"}}
             />
           </div>
           <div className="icon-header">
