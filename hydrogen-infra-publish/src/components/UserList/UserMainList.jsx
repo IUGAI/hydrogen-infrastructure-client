@@ -5,6 +5,7 @@ import { SiMicrosoftexcel } from "react-icons/si";
 import { DataGrid } from "@mui/x-data-grid";
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import ModalDefault from "../Modal/ModalDefault";
 
 const columns = [
   {
@@ -84,9 +85,18 @@ const rows = [
 
 function UserMainList() {
   const [selectedItems, setSelectedItems] = useState([]);
-  const navigate = useNavigate()
+  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
   const handleItemSelection = (selectionModel) => {
     setSelectedItems(selectionModel);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleClickGoToLogin = () => {
+    navigate(`/user-info/${selectedItems[0]}`);
   };
 
   const handleNavigatetoDetail = () => {
@@ -95,15 +105,33 @@ function UserMainList() {
     } else if (selectedItems.length === 0) {
       alert("사용자 선택해 주세요");
     } else {
-      navigate(`/user-info/${selectedItems[0]}`);
+      setOpen(true);
     }
   };
   return (
     <div className="station-list">
+      <ModalDefault
+        open={open}
+        handleClose={handleClose}
+        modalTitle={"사용자 정보 보기"}
+        modalDsecriptions={
+          <div
+            dangerouslySetInnerHTML={{
+              __html: "선택한 사용자의 정보를  </p>  확인하시겠습니까?",
+            }}
+          />
+        }
+        handleClickGoToLogin={handleClickGoToLogin}
+      />
       <div className="header-table">
         <div className="left">
           <div className="icon-header">
-            <IoMdSearch size={24} color="#576dad"        onClick={handleNavigatetoDetail} />
+            <IoMdSearch
+              size={24}
+              style={{ cursor: "pointer" }}
+              color="#576dad"
+              onClick={handleNavigatetoDetail}
+            />
           </div>
           <div className="icon-header">
             <IoSaveOutline size={24} color="#576dad" />

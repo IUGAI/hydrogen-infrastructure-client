@@ -121,16 +121,14 @@ function EquipmentsDetail() {
     setHoveredIcon(index);
   };
 
-  console.log(id);
+
   
 
   const handleGrEditClick = () => {
     // navigate(`/station-edit/${id}`)
   };
 
-  const handleItemReturnClick = () => {
 
-  }
 
   const handleClickGotoEditPAge = ()=> {
      navigate(`/equipment-edit/${id}`)
@@ -145,7 +143,7 @@ const iconData = [
   {
     icon: <TfiMenuAlt color={hoveredIcon === 0 ? "#fff" : "#8da7d9"} />,
     text: "목록",
-    onClick: handleItemReturnClick,
+    onClick: handleitemreturn,
   },
   {
     icon: <FaHome color={hoveredIcon === 1 ? "#fff" : "#8da7d9"} />,

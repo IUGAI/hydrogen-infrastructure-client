@@ -8,7 +8,7 @@ import { FaPlus } from "react-icons/fa";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import ModalAddMaterial from "../Modal/ModalAddMaterial";
 
-function WorkRegister() {
+function WorkEditComponent() {
   const [startDate, setStartDate] = useState(null);
   const [open, setOpen] = useState(false);
 
@@ -35,7 +35,7 @@ function WorkRegister() {
           <div className="station-regist-station-add-header">
             <div className="station-regist-header-add-left">
               <span className="station-title-kor">작업</span>
-              <span className="station-tile-eng">REGISTER</span>
+              <span className="station-tile-eng">EDIT</span>
             </div>
             <span className="station-title-notice">
               <span className="essential-mark">*</span> 표시는 필수항목입니다
@@ -254,4 +254,4 @@ function WorkRegister() {
   );
 }
 
-export default WorkRegister;
+export default WorkEditComponent;

@@ -1,11 +1,41 @@
+import { useState } from "react";
 import "./Register.scss";
+import ModalDefault from "../../components/Modal/ModalDefault";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
-  const handleclickreturn = () => {
-    setEdituser(false);
+  const [open, setOpen] = useState(false);
+ const navigate = useNavigate();
+
+  const handleClose = () => {
+    setOpen(false);
   };
+
+  const handleRegist = () => {
+    setOpen(true)
+  }
+
+  const handleClickGoToLogin = () => {
+    setOpen(false)
+    navigate("/login")
+  };
+
   return (
     <div className="register-content">
+      <ModalDefault
+        open={open}
+        state={'success'}
+        handleClose={handleClose}
+        modalTitle={"가입 신청 성공"}
+        modalDsecriptions={
+          <div
+            dangerouslySetInnerHTML={{
+              __html: `가입 신청이 완료되었습니다.  </p>  이메일이 발송됩니다`,
+            }}
+          />
+        }
+        handleClickGoToLogin={handleClickGoToLogin}
+      />
       <div className="register-content-wrapper">
         <div className="header">
           <img src="/img/logo.png" alt="logo" />
@@ -134,7 +164,7 @@ function Register() {
               </div>
 
               <div className="input-item-station-buttons">
-                <button className="button-submit-form-edit-user">
+                <button className="button-submit-form-edit-user" onClick={handleRegist}>
                   가입하기
                 </button>
               </div>
@@ -148,7 +178,7 @@ function Register() {
             />
             <img
               src="/img/register-2.png"
-                className="img-regist-2"
+              className="img-regist-2"
               alt="register-2"
             />
             <img

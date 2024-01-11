@@ -18,6 +18,10 @@
     display: flex;
     align-items: center;
     background-color: #5e76ba;
+    
+    &.success{
+      background-color: #92D050;
+    }
 
     .modal-title-text {
       margin-left: 40px;
@@ -35,6 +39,7 @@
     background-color: #1c2641;
     .modal-content-description {
       font-family: "gothic 12";
+      text-align: center;
       font-size: 14px;
       color: #8faadc;
     }
@@ -42,6 +47,7 @@
       display: flex;
       width: 100%;
       gap: 10px;
+      justify-content: center;
       .buttons-alarm-modal {
         width: 100%;
         gap: 3px;
@@ -52,6 +58,10 @@
         background-color: #212c4b;
         color: #8FAADC;
         padding: 7px 0;
+
+        &.success{
+          width: 50%;
+        }
       }
     }
   }

@@ -154,9 +154,7 @@ function MaterialsDetail() {
     // navigate(`/station-edit/${id}`)
   };
 
-  const handleItemReturnClick = () => {
 
-  }
 
   const handleClickGotoEditPAge = ()=> {
      navigate(`/material-edit/${id}`)
@@ -167,7 +165,7 @@ function MaterialsDetail() {
     {
       icon: <TfiMenuAlt color={hoveredIcon === 0 ? "#fff" : "#8da7d9"} />,
       text: "목록",
-      onClick: handleItemReturnClick,
+      onClick: handleitemreturn,
     },
     {
       icon: <FaHome color={hoveredIcon === 1 ? "#fff" : "#8da7d9"} />,

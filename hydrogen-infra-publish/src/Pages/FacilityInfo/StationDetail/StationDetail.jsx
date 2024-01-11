@@ -119,7 +119,9 @@ function StationDetail() {
   };
 
 
-  const handleItemReturnClick = () => {};
+  const handleItemReturnClick = () => {
+    navigate('/stations')
+  };
 
   const handleGrEditClick = () => {
     navigate(`/station-edit/${id}`)

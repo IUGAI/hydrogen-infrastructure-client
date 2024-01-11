@@ -1,7 +1,20 @@
 import { TiEdit } from "react-icons/ti";
 import { MdEdit } from "react-icons/md";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function WorkDetailComponent() {
+  const navigate = useNavigate();
+  const path = useLocation();
+
+  const id = path.pathname.slice(11, 19);
+
+  const handleNavigate = () => {
+    navigate(`/work-edit/${id}`);
+  };
+
+  const handleNavigateReport = () => {
+    navigate(`/work-report-edit/${id}`);
+  };
   return (
     <>
       <div className="station-regist-content work-detail-content">
@@ -19,7 +32,11 @@ function WorkDetailComponent() {
               <span className="work-writter"> 홍길동</span>
             </div>
             <span className="station-title-notice">
-              <TiEdit style={{ cursor: "pointer" }} size={30} />
+              <TiEdit
+                style={{ cursor: "pointer" }}
+                size={30}
+                onClick={handleNavigate}
+              />
             </span>
           </div>
           <div className="station-regist-station-add-input work-detail">
@@ -164,7 +181,7 @@ function WorkDetailComponent() {
             <div className="station-regist-header-add-left">
               <span className="station-title-kor">결과보고서</span>
               <MdEdit
-                style={{ marginLeft: "25px" }}
+                style={{ marginLeft: "25px", cursor: "pointer" }}
                 size={20}
                 color="#5e76ba"
               />
@@ -172,7 +189,11 @@ function WorkDetailComponent() {
               <span className="work-writter"> 나성실</span>
             </div>
             <span className="station-title-notice">
-              <TiEdit style={{ cursor: "pointer" }} size={30} />
+              <TiEdit
+                style={{ cursor: "pointer" }}
+                size={30}
+                onClick={handleNavigateReport}
+              />
             </span>
           </div>
           <div className="station-regist-station-add-input work-detail">

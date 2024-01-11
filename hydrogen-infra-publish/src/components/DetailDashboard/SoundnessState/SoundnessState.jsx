@@ -28,15 +28,19 @@ function SoundnessState() {
     percantage = (((good + very_good) / total) * 100).toFixed(0);
   }
 
-
-  
   const item = {
     id: 1,
     name: "가동",
-    type: 10001,
-    percentage: percantage,
+    type: 10002,
+    percentage: parseInt(percantage),
     data: [
-      { name: "Group A", value: equipments !== undefined && equipments.length > 0 ? very_bad + bad : 1},
+      {
+        name: "Group A",
+        value:
+          equipments !== undefined && equipments.length > 0
+            ? very_bad + bad
+            : 1,
+      },
       { name: "Group B", value: very_good + good },
     ],
     color_active: "#8fcc4f",
@@ -44,6 +48,7 @@ function SoundnessState() {
     color_disactive: "#c5e0b4",
     title: "가동 상태",
   };
+
 
   const items = [
     {
@@ -87,6 +92,9 @@ function SoundnessState() {
           <div className="graph-item">
             <span className="text-percentage">{item.percentage}%</span>
             <Graph items={item} />
+            {item.percentage !== 0  && (
+              <div className="circle-dash cirlce-dash-color"></div>
+            )}
           </div>
         </div>
         <div className="right">

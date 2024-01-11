@@ -3,17 +3,32 @@ import { CiSearch } from "react-icons/ci";
 import { useState } from "react";
 import React, { Component } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import { FaMinus } from "react-icons/fa";
-import { FaPlus } from "react-icons/fa";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import ModalAddMaterial from "../Modal/ModalAddMaterial";
 
 function WorkReportRegisterComponent() {
   const [startDate, setStartDate] = useState(null);
+  const [open, setOpen] = useState(false);
+
+  const handleClickSave = () => {};
+  
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <>
       <div className="station-regist-content">
+      <ModalAddMaterial
+          open={open}
+          handleClose={handleClose}
+          handleClickSave={handleClickSave}
+        />
         <div className={`station-regist-station-add full-width}`}>
-          <img src="./img/marker.png" className="img-marker" />
+          <img src="/img/marker.png" className="img-marker" />
           <div className="station-regist-station-add-header">
             <div className="station-regist-header-add-left">
               <span className="station-title-kor">결과</span>
@@ -157,10 +172,11 @@ function WorkReportRegisterComponent() {
             <div className="input-item-station-add-editor material">
               <div className="input-item-station-add-editor-inner">
                 <label>사용자재</label>
-                <button className="button-search">
+                <button className="button-search" onClick={handleOpen}>
                   <CiSearch size={20} />
                   추가
                 </button>
+                
               </div>
               <div className="material-container">
                 <table></table>

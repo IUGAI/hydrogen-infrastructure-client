@@ -6,6 +6,14 @@
   transform: translate(-50%, -50%);
   outline: none;
 
+  &.material-add-modal-state {
+    width: 1500px;
+
+    @media (max-width: 1536px) {
+      width: 900px;
+    }
+  }
+
   .img-marker {
     position: absolute;
     top: 0;
@@ -34,6 +42,9 @@
     background-color: #1c2641;
     flex-direction: column;
     gap: 25px;
+    &.material-add-modal {
+      padding: 0;
+    }
 
     .essential-mark {
       color: #ffc300;
@@ -211,11 +222,11 @@
         font-size: 14px;
         background-color: #212c4b;
 
-        &.container{
-            width: 5%;
-            display: flex;
-            align-items: center;
-            justify-self: center;
+        &.container {
+          width: 5%;
+          display: flex;
+          align-items: center;
+          justify-self: center;
         }
 
         &.start {
@@ -266,6 +277,147 @@
       }
       .react-datepicker__current-month {
         font-size: 12px;
+      }
+    }
+
+    .material-add-search {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 10px;
+      grid-template-rows: 1fr 1fr;
+
+      &.material-add-modal {
+        padding: 20px 30px;
+      }
+
+      .search-input-item-material-add {
+        display: flex;
+        z-index: 1;
+        flex-direction: column;
+        gap: 5px;
+        justify-content: center;
+
+        label {
+          font-family: "gothic 12";
+          color: #8faadc;
+          font-size: 14px;
+        }
+
+        .custom-select {
+          width: 100%;
+          border: 1px solid #2b3a63;
+          padding: 10px;
+          color: #8faadc;
+          font-size: 14px;
+          border-radius: 5px;
+          background-color: #212c4b;
+
+          &:focus {
+            outline: none;
+            border-color: #8faadc;
+          }
+        }
+        .custom-input-default {
+          width: 92%;
+          padding: 10px;
+          color: #fff;
+          border: 1px solid #2b3a63;
+          font-size: 14px;
+          border-radius: 5px;
+          background-color: #212c4b;
+
+          &:focus {
+            outline: none;
+            border-color: #8faadc;
+          }
+        }
+        .custom-datepicker {
+          width: 92%;
+          border: 1px solid #2b3a63;
+          padding: 10px;
+          color: #8faadc;
+          font-size: 14px;
+          border-radius: 5px;
+          background-color: #212c4b;
+
+          &:focus {
+            outline: none;
+            border-color: #8faadc;
+          }
+
+          &::placeholder {
+            font-size: 14px;
+            color: #8faadc;
+          }
+
+          @media (max-width: 1536px) {
+            width: 89%;
+          }
+        }
+      }
+    }
+  }
+
+  .table {
+    height: 500px;
+    
+    .MuiDataGrid-columnHeaders {
+      background-color: #253255;
+      color: #8faadc;
+      min-height: 20px;
+    }
+
+    .MuiDataGrid-columnHeaderTitle {
+      font-family: "gothic 12";
+    }
+    .MuiDataGrid-cellContent {
+      font-family: "gothic 12";
+    }
+    .MuiDataGrid-withBorderColor {
+      border-color: #2b3a63;
+    }
+    .MuiDataGrid-columnHeader {
+      border: 1px solid #232f50;
+    }
+    .MuiDataGrid-overlay {
+      background-color: #1c2641;
+      color: #8FAADC;
+    }
+    .MuiDataGrid-cell {
+      border: 1px solid #232f50;
+    }
+    .MuiDataGrid-checkboxInput {
+      color: #576fae;
+    }
+    .MuiTablePagination-root {
+      color: #8faadc;
+    }
+    .MuiSvgIcon-root {
+      color: #8faadc;
+    }
+    .MuiDataGrid-virtualScroller {
+      &::-webkit-scrollbar {
+        width: 2px;
+        height: 7px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background-color: #1c2641;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #35477b;
+        border-radius: 4px;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background-color: #5e76ba;
+      }
+    }
+
+    .MuiDataGrid-columnHeaderTitleContainerContent {
+      span {
+        margin: 0;
       }
     }
   }

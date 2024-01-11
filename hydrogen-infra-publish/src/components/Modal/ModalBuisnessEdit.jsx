@@ -1,5 +1,5 @@
 import Modal from "@mui/material/Modal";
-import "./ModalBusinessEdit.scss";
+import "./ModaDetail.scss";
 import { TfiClose } from "react-icons/tfi";
 import { RiPhoneFill } from "react-icons/ri";
 import React from "react";

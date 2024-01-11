@@ -8,27 +8,31 @@ function OperationState() {
   const { equipments } = state.initalStation;
   var total_equipments = 0;
   var run_equipments = 0;
-  var irreversible_equipments  = 0;
+  var irreversible_equipments = 0;
   var run_percentage = 0;
 
   if (equipments !== undefined && equipments.length > 0) {
     total_equipments = equipments.length;
     run_equipments = equipments.filter((item) => item.failure === false).length;
-    irreversible_equipments =  equipments.filter((item) => item.failure === true).length
-    run_percentage = (run_equipments / total_equipments * 100).toFixed(0);
+    irreversible_equipments = equipments.filter(
+      (item) => item.failure === true
+    ).length;
+    run_percentage = ((run_equipments / total_equipments) * 100).toFixed(0);
   }
-
-
-
-
 
   const item = {
     id: 1,
     name: "가동",
     type: 10001,
-    percentage: run_percentage,
+    percentage: parseInt(run_percentage),
     data: [
-      { name: "Group A", value: equipments !== undefined && equipments.length > 0 ?  irreversible_equipments : 1 },
+      {
+        name: "Group A",
+        value:
+          equipments !== undefined && equipments.length > 0
+            ? irreversible_equipments
+            : 1,
+      },
       { name: "Group B", value: run_equipments },
     ],
     color_active: "#1681df",
@@ -46,18 +50,12 @@ function OperationState() {
     {
       id: 4,
       name: "가동",
-      quantity:
-        equipments === undefined
-          ? 0
-          : run_equipments,
+      quantity: equipments === undefined ? 0 : run_equipments,
     },
     {
       id: 5,
       name: "비가동",
-      quantity:
-        equipments === undefined
-          ? 0
-          : irreversible_equipments,
+      quantity: equipments === undefined ? 0 : irreversible_equipments,
     },
   ];
 
@@ -72,6 +70,8 @@ function OperationState() {
           <div className="graph-item">
             <span className="text-percentage">{item.percentage}%</span>
             <Graph items={item} />
+
+            {item.percentage !== 0  && <div className="circle-dash"></div>}
           </div>
         </div>
         <div className="right">
