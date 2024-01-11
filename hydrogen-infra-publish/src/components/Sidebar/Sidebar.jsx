@@ -2,8 +2,23 @@ import { Link, useLocation } from "react-router-dom";
 import "./Sidebar.scss";
 import { useEffect, useState } from "react";
 import { useMyContext } from "../../context/menucontext";
+import { MdDashboard } from "react-icons/md";
 import { MdKeyboardArrowRight } from "react-icons/md";
-
+import { TfiDashboard } from "react-icons/tfi";
+import { TbBuildingFactory2 } from "react-icons/tb";
+import { GiChemicalTank } from "react-icons/gi";
+import { BsBoxes } from "react-icons/bs";
+import { BsPlusCircleFill } from "react-icons/bs";
+import { TbCylinderPlus } from "react-icons/tb";
+import { BsCartPlusFill } from "react-icons/bs";
+import { TbBellRinging2Filled } from "react-icons/tb";
+import { GrUserWorker } from "react-icons/gr";
+import { FaTasks } from "react-icons/fa";
+import { TfiWrite } from "react-icons/tfi";
+import { BsGraphUpArrow } from "react-icons/bs";
+import { VscGraph } from "react-icons/vsc";
+import { FaUser } from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
 function Sidebar() {
   const start = useLocation();
   const [selectedItem, setSelectedItem] = useState(start.pathname);
@@ -18,6 +33,7 @@ function Sidebar() {
     setSelectedMenuAccess(!selectedMenAccess);
   };
 
+
   useEffect(() => {
     setSelectedItem(start.pathname);
   }, [start.pathname]);
@@ -28,12 +44,25 @@ function Sidebar() {
     }
   }, [start.pathname]);
 
-  const { state } = useMyContext();
+  const { state, dispatch } = useMyContext();
+
+
+  const handleShowMenu = () => {
+
+    if (!state.showSide || state.mouseEnter ) {
+      dispatch({ type: "toggle-leave" });
+    }
+
+  };
+
+
+
+
 
   return (
-    <div className="sidebar-content">
-      <div className={state.showSide ? "title-menu" : "title-menu hide"}>
-        {state.showSide ? (
+    <div className="sidebar-content" onMouseEnter={handleShowMenu} onMouseLeave={handleShowMenu}>
+      <div className={state.showSide || state.mouseEnter || state.MouseEnter ? "title-menu" : "title-menu hide"}>
+        {state.showSide || state.mouseEnter  || state.onMouseEnter? (
           <span>대시보드 </span>
         ) : selectedItem === "/" ||
           selectedItem.slice(0, 10) === "/dashboard" ? (
@@ -48,38 +77,30 @@ function Sidebar() {
             <Link
               to="/"
               className={`link-item ${selectedItem === "/" ? "active" : ""} ${
-                state.showSide ? "" : "hide"
+                state.showSide || state.mouseEnter ? "" : "hide"
               }`}
             >
-              <img
-                src={
-                  selectedItem === "/"
-                    ? "/img/icon-dash-active.png"
-                    : "/img/icon-dash.png"
-                }
-                className="icon-menu"
+              <MdDashboard
+                color={selectedItem === "/" ? "#fff" : "#5E76BA"}
+                size={24}
               />
-              <span className={state.showSide ? "text-menu" : "text-menu hide"}>
+              <span className={state.showSide || state.mouseEnter  ? "text-menu" : "text-menu hide"}>
                 전체 현황
               </span>
             </Link>
           </li>
-          <li >
+          <li>
             <Link
               to="/dashboard"
               className={`link-item ${
                 selectedItem.slice(0, 10) === "/dashboard" ? "active" : ""
-              } ${state.showSide ? "" : "hide"}`}
+              } ${state.showSide || state.mouseEnter ? "" : "hide"}`}
             >
-              <img
-                src={
-                  selectedItem.slice(0, 10) === "/dashboard"
-                    ? "/img/active-icon-dash-detail.png"
-                    : "/img/icon-dash-detail.png"
-                }
-                className={state.showSide ? "icon-menu" : "icon-menu"}
+              <TfiDashboard
+                color={selectedItem === "/dashboard" ? "#fff" : "#5E76BA"}
+                size={24}
               />
-              <span className={state.showSide ? "text-menu" : "text-menu hide"}>
+              <span className={state.showSide || state.mouseEnter ? "text-menu" : "text-menu hide"}>
                 사업소 현황
               </span>
             </Link>
@@ -87,8 +108,8 @@ function Sidebar() {
         </ul>
         <hr />
       </div>
-      <div className={state.showSide ? "title-menu" : "title-menu hide"}>
-        {state.showSide ? (
+      <div className={state.showSide || state.mouseEnter ? "title-menu" : "title-menu hide"}>
+        {state.showSide || state.mouseEnter ? (
           <span>시설 정보 </span>
         ) : selectedItem.slice(0, 9) === "/stations" ||
           selectedItem.slice(0, 11) === "/equipments" ||
@@ -100,22 +121,26 @@ function Sidebar() {
       </div>
       <div className="menu-bar">
         <ul>
-          <li >
+          <li>
             <Link
               to="/stations"
               className={`link-item ${
-                selectedItem.slice(0, 9) === "/stations"  || selectedItem.slice(0,13) === "/station-edit"? "active" : ""
-              } ${state.showSide ? "" : "hide"}`}
+                selectedItem.slice(0, 9) === "/stations" ||
+                selectedItem.slice(0, 13) === "/station-edit"
+                  ? "active"
+                  : ""
+              } ${state.showSide || state.mouseEnter ? "" : "hide"}`}
             >
-              <img
-                src={
-                  selectedItem.slice(0, 9) === "/stations" || selectedItem.slice(0,13) === "/station-edit"
-                    ? "/img/stationsactivemenu.png"
-                    : "/img/station-info-disactive.png"
+              <TbBuildingFactory2
+                color={
+                  selectedItem.slice(0, 9) === "/stations" ||
+                  selectedItem.slice(0, 13) === "/station-edit"
+                    ? "#fff"
+                    : "#5E76BA"
                 }
-                className="icon-menu"
+                size={24}
               />
-              <span className={state.showSide ? "text-menu" : "text-menu hide"}>
+              <span className={state.showSide || state.mouseEnter ? "text-menu" : "text-menu hide"}>
                 사업소 정보
               </span>
             </Link>
@@ -124,18 +149,22 @@ function Sidebar() {
             <Link
               to="/equipments"
               className={`link-item ${
-                selectedItem.slice(0, 11) === "/equipments" || selectedItem.slice(0,15) === "/equipment-edit"  ? "active" : ""
-              } ${state.showSide ? "" : "hide"}`}
+                selectedItem.slice(0, 11) === "/equipments" ||
+                selectedItem.slice(0, 15) === "/equipment-edit"
+                  ? "active"
+                  : ""
+              } ${state.showSide || state.mouseEnter ? "" : "hide"}`}
             >
-              <img
-                src={
-                  selectedItem.slice(0, 11) === "/equipments"  || selectedItem.slice(0,15) === "/equipment-edit" 
-                    ? "/img/equipments-icon-menu.png"
-                    : "/img/equipmentd-info-disactive.png"
+              <GiChemicalTank
+                color={
+                  selectedItem.slice(0, 11) === "/equipments" ||
+                  selectedItem.slice(0, 15) === "/equipment-edit"
+                    ? "#fff"
+                    : "#5E76BA"
                 }
-                className="icon-menu"
+                size={24}
               />
-              <span className={state.showSide ? "text-menu" : "text-menu hide"}>
+              <span className={state.showSide || state.mouseEnter ? "text-menu" : "text-menu hide"}>
                 시설물 정보
               </span>
             </Link>
@@ -144,18 +173,22 @@ function Sidebar() {
             <Link
               to="/materials"
               className={`link-item ${
-                selectedItem.slice(0, 10) === "/materials"  || selectedItem.slice(0, 14) === "/material-edit" ? "active" : ""
-              } ${state.showSide ? "" : "hide"}`}
+                selectedItem.slice(0, 10) === "/materials" ||
+                selectedItem.slice(0, 14) === "/material-edit"
+                  ? "active"
+                  : ""
+              } ${state.showSide || state.mouseEnter ? "" : "hide"}`}
             >
-              <img
-                src={
-                  selectedItem.slice(0, 10) === "/materials" || selectedItem.slice(0, 14) === "/material-edit" 
-                    ? "/img/menu_materials_active.png"
-                    : "/img/icon-material-info-disactive.png"
+              <BsBoxes
+                color={
+                  selectedItem.slice(0, 10) === "/materials" ||
+                  selectedItem.slice(0, 14) === "/material-edit"
+                    ? "#fff"
+                    : "#5E76BA"
                 }
-                className="icon-menu"
+                size={24}
               />
-              <span className={state.showSide ? "text-menu" : "text-menu hide"}>
+              <span className={state.showSide || state.mouseEnter ? "text-menu" : "text-menu hide"}>
                 자재 정보
               </span>
             </Link>
@@ -163,8 +196,8 @@ function Sidebar() {
         </ul>
         <hr />
       </div>
-      <div className={state.showSide ? "title-menu" : "title-menu hide"}>
-        {state.showSide ? (
+      <div className={state.showSide || state.mouseEnter ? "title-menu" : "title-menu hide"}>
+        {state.showSide || state.mouseEnter ? (
           <span>시설 등록 </span>
         ) : selectedItem === "/station-regist" ||
           selectedItem === "/equipment-regist" ||
@@ -176,62 +209,53 @@ function Sidebar() {
       </div>
       <div className="menu-bar">
         <ul>
-          <li >
+          <li>
             <Link
               to="/station-regist"
               className={`link-item ${
                 selectedItem === "/station-regist" ? "active" : ""
-              } ${state.showSide ? "" : "hide"}`}
+              } ${state.showSide || state.mouseEnter ? "" : "hide"}`}
             >
-              <img
-                src={
-                  selectedItem === "/station-regist"
-                    ? "/img/station-regist-active.png"
-                    : "/img/station-register-disactive.png"
-                }
-                className="icon-menu"
+              <BsPlusCircleFill
+                color={selectedItem === "/station-regist" ? "#fff" : "#5E76BA"}
+                size={24}
               />
-              <span className={state.showSide ? "text-menu" : "text-menu hide"}>
+
+              <span className={state.showSide || state.mouseEnter ? "text-menu" : "text-menu hide"}>
                 사업소 등록
               </span>
             </Link>
           </li>
-          <li >
+          <li>
             <Link
               to="/equipment-regist"
               className={`link-item ${
                 selectedItem === "/equipment-regist" ? "active" : ""
-              } ${state.showSide ? "" : "hide"}`}
+              } ${state.showSide || state.mouseEnter ? "" : "hide"}`}
             >
-              <img
-                src={`${
-                  selectedItem === "/equipment-regist"
-                    ? "/img/equipment-regist-active.png"
-                    : "/img/equipment-register-disactive.png"
-                }`}
-                className="icon-menu"
+              <TbCylinderPlus
+                color={
+                  selectedItem === "/equipment-regist" ? "#fff" : "#5E76BA"
+                }
+                size={24}
               />
-              <span className={state.showSide ? "text-menu" : "text-menu hide"}>
+              <span className={state.showSide || state.mouseEnter ? "text-menu" : "text-menu hide"}>
                 시설물 등록
               </span>
             </Link>
           </li>
-          <li >
+          <li>
             <Link
               to="/material-regist"
               className={`link-item ${
                 selectedItem === "/material-regist" ? "active" : ""
-              } ${state.showSide ? "" : "hide"}`}
+              } ${state.showSide || state.mouseEnter ? "" : "hide"}`}
             >
-              <img
-                src={`${
-                  selectedItem === "/material-regist"
-                    ? "/img/material-active-icon.png"
-                    : "/img/material-register-disactive.png"
-                }`}
-                className="icon-menu"
+              <BsCartPlusFill
+                color={selectedItem === "/material-regist" ? "#fff" : "#5E76BA"}
+                size={24}
               />
-              <span className={state.showSide ? "text-menu" : "text-menu hide"}>
+              <span className={state.showSide || state.mouseEnter ? "text-menu" : "text-menu hide"}>
                 자재 등록
               </span>
             </Link>
@@ -239,8 +263,8 @@ function Sidebar() {
         </ul>
         <hr />
       </div>
-      <div className={state.showSide ? "title-menu" : "title-menu hide"}>
-        {state.showSide ? (
+      <div className={state.showSide || state.mouseEnter ? "title-menu" : "title-menu hide"}>
+        {state.showSide || state.mouseEnter ? (
           <span>시설 관리 </span>
         ) : selectedItem === "/failure-list" ||
           selectedItem === "/work-register" ||
@@ -253,43 +277,47 @@ function Sidebar() {
       </div>
       <div className="menu-bar">
         <ul>
-          <li >
+          <li>
             <Link
               to="/failure-list"
               className={`link-item ${
                 selectedItem === "/failure-list" ? "active" : ""
-              } ${state.showSide ? "" : "hide"}`}
+              } ${state.showSide || state.mouseEnter ? "" : "hide"}`}
             >
-              <img
-                src={`${
-                  selectedItem === "/failure-list"
-                    ? "/img/failure-active-icon.png"
-                    : "/img/failure-list-disactive.png"
-                }`}
-                className="icon-menu"
+              <TbBellRinging2Filled
+                color={selectedItem === "/failure-list" ? "#fff" : "#5E76BA"}
+                size={24}
               />
-              <span className={state.showSide ? "text-menu" : "text-menu hide"}>
+              <span className={state.showSide || state.mouseEnter ? "text-menu" : "text-menu hide"}>
                 고장 조회
               </span>
             </Link>
           </li>
-          <li >
+          <li>
             <Link
               to="/work-register"
               className={`link-item ${
-                selectedItem === "/work-register" ? "active" : ""
-              } ${state.showSide ? "" : "hide"}`}
+                selectedItem === "/work-register" ||
+                selectedItem.slice(0, 14) === "/work-register" ||
+                selectedItem.slice(0, 10) === "/work-edit"
+                  ? "active"
+                  : ""
+              } ${state.showSide || state.mouseEnter ? "" : "hide"}`}
             >
-              <img
-                src={`${
-                  selectedItem === "/work-register"
-                    ? "/img/work-register-active.png"
-                    : "/img/register-task-disactive.png"
-                }`}
-                className="icon-menu"
+              <GrUserWorker
+                color={
+                  selectedItem === "/work-register" ||
+                  selectedItem.slice(0, 14) === "/work-register" ||
+                  selectedItem.slice(0, 10) === "/work-edit"
+                    ? "#fff"
+                    : "#5E76BA"
+                }
+                size={24}
               />
-              <span className={state.showSide ? "text-menu" : "text-menu hide"}>
-                작업 등록
+              <span className={state.showSide || state.mouseEnter ? "text-menu" : "text-menu hide"}>
+                {selectedItem.slice(0, 10) === "/work-edit"
+                  ? "작업 수정 "
+                  : "작업 등록"}
               </span>
             </Link>
           </li>
@@ -297,47 +325,55 @@ function Sidebar() {
             <Link
               to="/work-list"
               className={`link-item ${
-                selectedItem.slice(0,10) === "/work-list" ? "active" : ""
-              } ${state.showSide ? "" : "hide"}`}
+                selectedItem.slice(0, 10) === "/work-list" ? "active" : ""
+              } ${state.showSide || state.mouseEnter ? "" : "hide"}`}
             >
-              <img
-                src={
-                  selectedItem.slice(0,10) === "/work-list"
-                    ? "/img/work-list-active.png"
-                    : "/img/task-list-disactive.png"
+              <FaTasks
+                color={
+                  selectedItem.slice(0, 10) === "/work-list"
+                    ? "#fff"
+                    : "#5E76BA"
                 }
-                className="icon-menu"
+                size={23}
               />
-              <span className={state.showSide ? "text-menu" : "text-menu hide"}>
+              <span className={state.showSide || state.mouseEnter ? "text-menu" : "text-menu hide"}>
                 작업 조회
               </span>
             </Link>
           </li>
-          <li >
+          <li>
             <Link
               to="/work-report-register"
               className={`link-item ${
-                selectedItem === "/work-report-register" ? "active" : ""
-              } ${state.showSide ? "" : "hide"}`}
+                selectedItem === "/work-report-register" ||
+                selectedItem.slice(0, 17) === "/work-report-edit" ||
+                selectedItem.slice(0, 21) === "/work-report-register"
+                  ? "active"
+                  : ""
+              } ${state.showSide || state.mouseEnter ? "" : "hide"}`}
             >
-              <img
-                src={
-                  selectedItem === "/work-report-register"
-                    ? "/img/report-regist-active.png"
-                    : "/img/task-report-disactive.png"
+              <TfiWrite
+                color={
+                  selectedItem === "/work-report-register" ||
+                  selectedItem.slice(0, 17) === "/work-report-edit" ||
+                  selectedItem.slice(0, 21) === "/work-report-register"
+                    ? "#fff"
+                    : "#5E76BA"
                 }
-                className="icon-menu"
+                size={23}
               />
-              <span className={state.showSide ? "text-menu" : "text-menu hide"}>
-                결과 등록
+              <span className={state.showSide || state.mouseEnter ? "text-menu" : "text-menu hide"}>
+                {selectedItem.slice(0, 17) === "/work-report-edit"
+                  ? "결과 수정"
+                  : "결과 등록"}
               </span>
             </Link>
           </li>
         </ul>
         <hr />
       </div>
-      <div className={state.showSide ? "title-menu" : "title-menu hide"}>
-        {state.showSide ? (
+      <div className={state.showSide || state.mouseEnter ? "title-menu" : "title-menu hide"}>
+        {state.showSide || state.mouseEnter ? (
           <span>시설 통계 </span>
         ) : selectedItem === "/station-statistic" ||
           selectedItem === "/equipment-statistic" ? (
@@ -348,42 +384,38 @@ function Sidebar() {
       </div>
       <div className="menu-bar">
         <ul>
-          <li >
+          <li>
             <Link
               to="/station-statistic"
               className={`link-item ${
                 selectedItem === "/station-statistic" ? "active" : ""
-              } ${state.showSide ? "" : "hide"}`}
+              } ${state.showSide || state.mouseEnter ? "" : "hide"}`}
             >
-              <img
-                src={
-                  selectedItem === "/station-statistic"
-                    ? "/img/station-statisctic-active.png"
-                    : "/img/station-statistic-disactive.png"
+              <BsGraphUpArrow
+                color={
+                  selectedItem === "/station-statistic" ? "#fff" : "#5E76BA"
                 }
-                className="icon-menu"
+                size={23}
               />
-              <span className={state.showSide ? "text-menu" : "text-menu hide"}>
+              <span className={state.showSide || state.mouseEnter ? "text-menu" : "text-menu hide"}>
                 사업소 통계
               </span>
             </Link>
           </li>
-          <li >
+          <li>
             <Link
               to="/equipment-statistic"
               className={`link-item ${
                 selectedItem === "/equipment-statistic" ? "active" : ""
-              } ${state.showSide ? "" : "hide"}`}
+              } ${state.showSide || state.mouseEnter ? "" : "hide"}`}
             >
-              <img
-                src={
-                  selectedItem === "/equipment-statistic"
-                    ? "/img/equipment-statistic-active.png"
-                    : "/img/equipment-statistic-disactive.png"
+              <VscGraph
+                color={
+                  selectedItem === "/equipment-statistic" ? "#fff" : "#5E76BA"
                 }
-                className="icon-menu"
+                size={23}
               />
-              <span className={state.showSide ? "text-menu" : "text-menu hide"}>
+              <span className={state.showSide || state.mouseEnter ? "text-menu" : "text-menu hide"}>
                 시설물 통계
               </span>
             </Link>
@@ -391,10 +423,15 @@ function Sidebar() {
         </ul>
         <hr />
       </div>
-      <div className={state.showSide ? "title-menu" : "title-menu hide"}>
-        {state.showSide ? (
+      <div className={state.showSide || state.mouseEnter ? "title-menu" : "title-menu hide"}>
+        {state.showSide || state.mouseEnter ? (
           <span>시스템 설정 </span>
-        ) : (
+        ) : selectedItem === "/user-list" ||
+                       selectedItem === "/common-setting" ||
+                  selectedItem === "/premissions-setting" ||
+        selectedItem === "/user-accept" ? (
+        <img src="/img/active.png" />
+      ) :(
           <img src="/img/disactive.png" />
         )}
       </div>
@@ -404,22 +441,22 @@ function Sidebar() {
             <div
               to=""
               className={`link-item ${selectedItem === 9 ? "active" : ""} ${
-                state.showSide ? "" : "hide"
+                state.showSide || state.mouseEnter ? "" : "hide"
               }`}
             >
-              <img
-                src={
+              <FaUser
+                color={
                   selectedItem === "/user-list" ||
                   selectedItem === "/user-accept" ||
                   selectedItem.slice(0, 10) === "/user-info"
-                    ? "/img/user-setting-active.png"
-                    : "/img/user-controll-disactive.png"
+                    ? "#fff"
+                    : "#5E76BA"
                 }
-                className="icon-menu"
+                size={23}
               />
               <div className="user-list">
                 <span
-                  className={state.showSide ? "text-menu" : "text-menu hide"}
+                  className={state.showSide || state.mouseEnter ? "text-menu" : "text-menu hide"}
                 >
                   사용자 관리
                 </span>
@@ -427,7 +464,7 @@ function Sidebar() {
 
               <MdKeyboardArrowRight
                 style={{
-                  display: state.showSide ? "" : "none",
+                  display: state.showSide || state.mouseEnter ? "" : "none",
                   transform: selectedMenu ? "rotate(90deg)" : "rotate(0)",
                   marginLeft: "5px",
                 }}
@@ -436,22 +473,19 @@ function Sidebar() {
               />
             </div>
           </li>
-          <li
-
-            style={{ display: state.showSide ? "" : "none" }}
-          >
+          <li style={{ display: state.showSide || state.mouseEnter ? "" : "none" }}>
             <Link
               to="/user-list"
               className={`link-item  link-item-user ${
                 selectedMenu ? "" : "hidden"
               }   ${selectedItem === "/user-list" ? "active" : ""} ${
-                state.showSide ? "" : "hide"
+                state.showSide || state.mouseEnter ? "" : "hide"
               }`}
             >
               <div
                 style={{
                   width: "3px",
-                  display: state.showSide ? "" : "none",
+                  display: state.showSide || state.mouseEnter ? "" : "none",
                   height: "3px",
                   backgroundColor: "#b9c1da",
                 }}
@@ -459,7 +493,7 @@ function Sidebar() {
               <div className="user-list">
                 <span
                   className={
-                    state.showSide ? "text-menu-hiden" : "text-menu-hiden hide"
+                    state.showSide || state.mouseEnter ? "text-menu-hiden" : "text-menu-hiden hide"
                   }
                 >
                   사용자 리스트
@@ -467,22 +501,19 @@ function Sidebar() {
               </div>
             </Link>
           </li>
-          <li
-         
-            style={{ display: state.showSide ? "" : "none" }}
-          >
+          <li style={{ display: state.showSide || state.mouseEnter ? "" : "none" }}>
             <Link
               to="/user-accept"
               className={`link-item  link-item-user  ${
                 selectedMenu ? "" : "hidden"
               }  ${selectedItem === "/user-accept" ? "active" : ""} ${
-                state.showSide ? "" : "hide"
+                state.showSide || state.mouseEnter ? "" : "hide"
               }`}
             >
               <div
                 style={{
                   width: "3px",
-                  display: state.showSide ? "" : "none",
+                  display: state.showSide || state.mouseEnter ? "" : "none",
                   height: "3px",
                   backgroundColor: "#b9c1da",
                 }}
@@ -490,7 +521,7 @@ function Sidebar() {
               <div className="user-list">
                 <span
                   className={
-                    state.showSide ? "text-menu-hiden" : "text-menu-hiden hide"
+                    state.showSide || state.mouseEnter ? "text-menu-hiden" : "text-menu-hiden hide"
                   }
                 >
                   사용자 등록
@@ -498,17 +529,14 @@ function Sidebar() {
               </div>
             </Link>
           </li>
-          <li
-        
-            style={{ display: state.showSide ? "" : "none" }}
-          >
+          <li style={{ display: state.showSide || state.mouseEnter ? "" : "none" }}>
             <Link
               to="/"
               className={`link-item  link-item-user  ${
                 selectedItem.slice(0, 10) === "/user-info" ? "" : "hidden"
               }  ${
                 selectedItem.slice(0, 10) === "/user-info" ? "active" : ""
-              } ${state.showSide ? "" : "hide"}`}
+              } ${state.showSide || state.mouseEnter ? "" : "hide"}`}
             >
               <div
                 style={{
@@ -520,7 +548,7 @@ function Sidebar() {
               <div className="user-list">
                 <span
                   className={
-                    state.showSide ? "text-menu-hiden" : "text-menu-hiden hide"
+                    state.showSide || state.mouseEnter ? "text-menu-hiden" : "text-menu-hiden hide"
                   }
                 >
                   사용자 정보
@@ -531,24 +559,24 @@ function Sidebar() {
           <li onClick={() => handleCilcikMenuAccess()}>
             <div
               className={`link-item ${selectedItem === 9 ? "active" : ""} ${
-                state.showSide ? "" : "hide"
+                state.showSide || state.mouseEnter ? "" : "hide"
               }`}
             >
-              <img
-                src={
+              <IoMdSettings
+                color={
                   selectedItem === "/common-setting" ||
                   selectedItem === "/premissions-setting"
-                    ? "/img/common-settings-active.png"
-                    : "/img/settings-disactive.png"
+                    ? "#fff"
+                    : "#5E76BA"
                 }
-                className="icon-menu"
+                size={23}
               />
-              <span className={state.showSide ? "text-menu" : "text-menu hide"}>
+              <span className={state.showSide || state.mouseEnter ? "text-menu" : "text-menu hide"}>
                 설정
               </span>
               <MdKeyboardArrowRight
                 style={{
-                  display: state.showSide ? "" : "none",
+                  display: state.showSide || state.mouseEnter ? "" : "none",
                   transform: selectedMenAccess ? "rotate(90deg)" : "rotate(0)",
                   marginLeft: "47px",
                 }}
@@ -558,22 +586,19 @@ function Sidebar() {
             </div>
           </li>
 
-          <li
-      
-            style={{ display: state.showSide ? "" : "none" }}
-          >
+          <li style={{ display: state.showSide || state.mouseEnter ? "" : "none" }}>
             <Link
               to="/common-setting"
               className={`link-item  link-item-user  ${
                 selectedMenAccess ? "" : "hidden"
               }  ${selectedItem === "/common-setting" ? "active" : ""} ${
-                state.showSide ? "" : "hide"
+                state.showSide || state.mouseEnter ? "" : "hide"
               }`}
             >
               <div
                 style={{
                   width: "3px",
-                  display: state.showSide ? "" : "none",
+                  display: state.showSide || state.mouseEnter ? "" : "none",
                   height: "3px",
                   backgroundColor: "#b9c1da",
                 }}
@@ -581,7 +606,7 @@ function Sidebar() {
               <div className="user-list">
                 <span
                   className={
-                    state.showSide ? "text-menu-hiden" : "text-menu-hiden hide"
+                    state.showSide || state.mouseEnter ? "text-menu-hiden" : "text-menu-hiden hide"
                   }
                 >
                   공통 설정
@@ -589,22 +614,19 @@ function Sidebar() {
               </div>
             </Link>
           </li>
-          <li
-
-            style={{ display: state.showSide ? "" : "none" }}
-          >
+          <li style={{ display: state.showSide || state.mouseEnter ? "" : "none" }}>
             <Link
               to="/premissions-setting"
               className={`link-item  link-item-user  ${
                 selectedMenAccess ? "" : "hidden"
               }  ${selectedItem === "/premissions-setting" ? "active" : ""} ${
-                state.showSide ? "" : "hide"
+                state.showSide || state.mouseEnter ? "" : "hide"
               }`}
             >
               <div
                 style={{
                   width: "3px",
-                  display: state.showSide ? "" : "none",
+                  display: state.showSide || state.mouseEnter ? "" : "none",
                   height: "3px",
                   backgroundColor: "#b9c1da",
                 }}
@@ -612,7 +634,7 @@ function Sidebar() {
               <div className="user-list">
                 <span
                   className={
-                    state.showSide ? "text-menu-hiden" : "text-menu-hiden hide"
+                    state.showSide || state.mouseEnter ? "text-menu-hiden" : "text-menu-hiden hide"
                   }
                 >
                   권한 설정

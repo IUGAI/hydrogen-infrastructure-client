@@ -6,20 +6,18 @@ import { FiUser } from "react-icons/fi";
 import { IoPower } from "react-icons/io5";
 import { useMyContext } from "../../context/menucontext";
 import AlarmDrop from "./AlarmDrop";
-import Box from "@mui/material/Box";
 import UserInfoDrop from "./UserInfoDrop";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import ModalLogout from "../Modal/ModalLogout";
 import { useNavigate } from "react-router-dom";
+import ModalDefault from "../Modal/ModalDefault";
 
 function Header() {
   const modalRef = useRef();
+  const userModalRef = useRef();
   const [currentTime, setCurrentTime] = useState();
   const [alramView, setAlarmView] = useState(false);
   const [userView, setUserView] = useState(false);
   const [logout, setLogout] = useState(false);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const { state, dispatch } = useMyContext();
   const navigate = useNavigate();
 
@@ -46,6 +44,12 @@ function Header() {
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         setAlarmView(false);
+      }
+
+      if (
+        userModalRef.current &&
+        !userModalRef.current.contains(event.target)
+      ) {
         setUserView(false);
       }
     };
@@ -55,7 +59,7 @@ function Header() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [modalRef, userModalRef]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -63,7 +67,7 @@ function Header() {
   };
   const handleClose = () => {
     setOpen(false);
-    setLogout(!logout)
+    setLogout(!logout);
   };
 
   const handleClickGoToLogin = () => {
@@ -86,8 +90,10 @@ function Header() {
 
   return (
     <div className="header-content">
-      <ModalLogout
+      <ModalDefault
         open={open}
+        modalTitle={'Logout'}
+        modalDsecriptions={"로그아웃 하시겠습니까?"}
         handleClose={handleClose}
         handleClickGoToLogin={handleClickGoToLogin}
       />
@@ -108,7 +114,10 @@ function Header() {
         <div className="dateTime">
           <span className="sign-out-text">{currentTime}</span>
         </div>
-        <div className={alramView ? "icon-header current" : "icon-header"} ref={modalRef}>
+        <div
+          className={alramView ? "icon-header current" : "icon-header"}
+          ref={modalRef}
+        >
           <CiBellOn
             size={24}
             style={{ cursor: "pointer" }}
@@ -117,7 +126,10 @@ function Header() {
           {alramView && <AlarmDrop />}
           {userView && <UserInfoDrop />}
         </div>
-        <div className={userView ? "icon-header current" : "icon-header"}>
+        <div
+          className={userView ? "icon-header current" : "icon-header"}
+          ref={userModalRef}
+        >
           <FiUser
             size={20}
             onClick={handleClickUser}

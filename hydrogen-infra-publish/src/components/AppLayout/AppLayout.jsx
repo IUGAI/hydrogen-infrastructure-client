@@ -15,10 +15,9 @@ function AppLayout() {
       </div>
       <div className="main">
         <div className="inner-container">
-          <div className={state.showSide ? "sidebar" : "sidebar hide"}>
+          <div className={state.showSide || state.mouseEnter ? "sidebar" : "sidebar hide"}>
             <Sidebar />
           </div>
-
           <Outlet />
         </div>
       </div>

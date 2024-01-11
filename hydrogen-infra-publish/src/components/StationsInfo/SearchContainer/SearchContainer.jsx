@@ -2,6 +2,7 @@
 import { CiSearch } from "react-icons/ci";
 import { GrPowerReset } from "react-icons/gr";
 import { useState } from "react";
+import ko from 'date-fns/locale/ko'
 import DatePicker from "react-datepicker";
 
 
@@ -13,7 +14,8 @@ function SearchContainer() {
       <div className="search-input-item">
         <label>등록일</label>
         <DatePicker
-        //   locale={ko}
+          locale={ko}
+          dateFormat="yyyy-MM-dd"
           selected={startDate}
           placeholderText="선택"
           onChange={(date) => setStartDate(date)}
@@ -45,6 +47,17 @@ function SearchContainer() {
         </select>
       </div>
       <div className="search-input-item">
+        <label>개시일</label>
+        <DatePicker
+          locale={ko}
+          dateFormat="yyyy-MM-dd"
+          selected={startDate}
+          placeholderText="선택"
+          onChange={(date) => setStartDate(date)}
+          className="custom-datepicker"
+        />
+      </div>
+      <div className="search-input-item">
         <label>사업소</label>
         <select className="custom-select">
           <option selected disabled>
@@ -55,16 +68,6 @@ function SearchContainer() {
           <option>제주</option>
           <option>광주</option>
         </select>
-      </div>
-      <div className="search-input-item">
-        <label>개시일</label>
-        <DatePicker
-        //   locale={ko}
-          selected={startDate}
-          placeholderText="선택"
-          onChange={(date) => setStartDate(date)}
-          className="custom-datepicker"
-        />
       </div>
       <div className="search-input-item">
         <button className="button-search">

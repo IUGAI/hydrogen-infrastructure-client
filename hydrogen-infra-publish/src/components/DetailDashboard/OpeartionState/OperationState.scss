@@ -48,6 +48,32 @@
         align-items: center;
         justify-content: center;
 
+        .circle-dash{
+          // border: 3px solid #01adef; 
+          position: absolute;
+          top: 15px;
+          z-index: 1;
+          left: 11%;
+          width: 160px;
+          height: 160px;
+          box-shadow: 0px 0px 10px 5px rgba(33, 87, 179, 1.3);
+          border-radius: 100%;
+          opacity: 0; 
+          pointer-events: none;
+          animation: fadeIn 1.5s ease 1.5s forwards; 
+    
+          &.cirlce-dash-color{
+            box-shadow: 0px 0px 10px 5px  rgba(68,102,47, 1.3);
+          }
+    
+          @media (max-width: 1536px) {
+            top: 20px;
+            left: 20px;
+            width: 107px;
+            height: 109px;
+          }
+        }
+
         .text-percentage {
           color: white;
           position: absolute;

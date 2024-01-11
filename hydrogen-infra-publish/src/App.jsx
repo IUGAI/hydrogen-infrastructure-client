@@ -31,6 +31,8 @@ import WorkListDetail from "./Pages/Maintenance/WorkList/WorkListDetail";
 import StationEdit from "./Pages/FacilityRegister/StationRegist/StationEdit";
 import EquipmentEdit from "./Pages/FacilityRegister/EquipmentRegist/EquipmentEdit";
 import MaterialEdit from "./Pages/FacilityRegister/MaterialRegist/MaterialEdit";
+import WorkEdit from "./Pages/Maintenance/WorkRegister/WorkEdit";
+import WorkReportEdit from "./Pages/Maintenance/WorkReportRegister/WorkReportEdit";
 
 
 export default function App() {
@@ -99,8 +101,12 @@ export default function App() {
           element:  <FailureList/>
         },
         {
-          path: "/work-register",
+          path: "/work-register/:id?",
           element:  <WorkRegist/>
+        },
+        {
+          path: "/work-edit/:id?",
+          element: <WorkEdit/>
         },
         {
           path: "/work-list",
@@ -111,8 +117,12 @@ export default function App() {
           element: <WorkListDetail/>
         },
         {
-          path: "/work-report-register",
+          path: "/work-report-register/:id?",
           element: <WorkReportRegister/>
+        },
+        {
+          path: "/work-report-edit/:id?",
+          element: <WorkReportEdit/>
         },
         {
           path: "/station-statistic",

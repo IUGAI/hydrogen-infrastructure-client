@@ -7,6 +7,7 @@ import { SiMicrosoftexcel } from "react-icons/si";
 import { DataGrid } from "@mui/x-data-grid";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ModalDefault from "../Modal/ModalDefault";
 
 const columns = [
   // {
@@ -62,7 +63,6 @@ const columns = [
     width: 150,
     align: "center",
     headerAlign: "center",
-
   },
   {
     field: "worker",
@@ -78,32 +78,40 @@ const columns = [
     headerAlign: "center",
     width: 200,
     renderCell: (params) => {
-      return params.value ? "유" : "무"
-},
+      return params.value ? "유" : "무";
+    },
   },
 ];
 
-
 function WorkMainList() {
   const [selectedItems, setSelectedItems] = useState([]);
-  const [rows , setRows] = useState([
+  const [open, setOpen] = useState(false);
+  const [rows, setRows] = useState([
     {
-             id: 100002,
-             regist_date: "2024-01-09",
-             station: "서울 A 사업소",
-             equipment: "생산 1",
-             work_number: "W-20240109181232",
-             work_name: "6월 정기점검",
-             work_day: "2024-01-12",
-             worker: "나성실",
-             materialuseyn: true
-    }
-  ])
- 
-  const navigate = useNavigate()
+      id: 100002,
+      regist_date: "2024-01-09",
+      station: "서울 A 사업소",
+      equipment: "생산 1",
+      work_number: "W-20240109181232",
+      work_name: "6월 정기점검",
+      work_day: "2024-01-12",
+      worker: "나성실",
+      materialuseyn: true,
+    },
+  ]);
+
+  const navigate = useNavigate();
 
   const handleItemSelection = (selectionModel) => {
     setSelectedItems(selectionModel);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleClickGoToLogin = () => {
+    navigate(`/work-report-register/${selectedItems[0]}`);
   };
 
   const handleNavigatetoDetail = () => {
@@ -112,19 +120,52 @@ function WorkMainList() {
     } else if (selectedItems.length === 0) {
       alert("사업소 선택해 주세요");
     } else {
-         navigate(`/work-list/${selectedItems[0]}`)
+      navigate(`/work-list/${selectedItems[0]}`);
+    }
+  };
+
+  const handleEditReport= () =>{
+    if (selectedItems.length > 1) {
+      alert("한개 만 선택해주세요!");
+    } else if (selectedItems.length === 0) {
+      alert("사업소 선택해 주세요");
+    } else {
+      navigate(`/work-report-edit/${selectedItems[0]}`);
+    }
+  }
+
+  const handleNavigatetoReportRegist = () => {
+    if (selectedItems.length > 1) {
+      alert("한개 만 선택해주세요!");
+    } else if (selectedItems.length === 0) {
+      alert("사업소 선택해 주세요");
+    } else {
+      setOpen(true);
     }
   };
   return (
     <div className="station-list">
+      <ModalDefault
+        open={open}
+        handleClose={handleClose}
+        modalTitle={"작업 결과 등록"}
+        modalDsecriptions={
+          <div
+            dangerouslySetInnerHTML={{
+              __html: "선택한 작업에 대한 </p>  결과보고서를 등록하시겠습니까?",
+            }}
+          />
+        }
+        handleClickGoToLogin={handleClickGoToLogin}
+      />
       <div className="header-table">
         <div className="left">
           <div className="icon-header">
-          <IoMdSearch
+            <IoMdSearch
               size={24}
               color="#576dad"
               onClick={handleNavigatetoDetail}
-               style={{cursor:"pointer"}}
+              style={{ cursor: "pointer" }}
             />
           </div>
           <div className="icon-header">
@@ -134,10 +175,10 @@ function WorkMainList() {
             <RiDeleteBin6Line size={24} color="#576dad" />
           </div>
           <div className="icon-header">
-            <IoPencilSharp size={24} color="#576dad" />
+            <IoPencilSharp size={24}  style={{ cursor: "pointer" }} color="#576dad" onClick={handleNavigatetoReportRegist} />
           </div>
           <div className="icon-header">
-            <FaRegPenToSquare size={24} color="#576dad" />
+            <FaRegPenToSquare size={24} style={{ cursor: "pointer" }} color="#576dad" onClick={handleEditReport}/>
           </div>
         </div>
         <div className="right">

@@ -93,10 +93,16 @@
       }
     }
 
+    .react-datepicker__tab-loop{
+      margin-top: -5px;
+      z-index: 90;
+    }
     .react-datepicker {
       font-size: 10px;
+      z-index: 10;
       .react-datepicker__navigation {
         height: 15px;
+        z-index: 90;
       }
 
       .react-datepicker__month-container {
@@ -160,6 +166,8 @@
 
     .input-type-search-production {
       display: flex;
+      position: relative;
+      z-index: 0;
       width: 100%;
 
       .custom-input {
