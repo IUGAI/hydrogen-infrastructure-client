@@ -3,12 +3,31 @@ import StationDetailMaterial from "../../../components/StationDetail/StationDeta
 import { TfiMenuAlt } from "react-icons/tfi";
 import { FaHome } from "react-icons/fa";
 import { GrEdit } from "react-icons/gr";
-import { FaRegFile } from "react-icons/fa";
-import { FaRegEdit } from "react-icons/fa";
+import { FaLocationArrow } from "react-icons/fa";
+import { GiChemicalTank } from "react-icons/gi";
+import { SiMaterialdesignicons } from "react-icons/si";
+import { FaChargingStation } from "react-icons/fa6";
 import { MdHome } from "react-icons/md";
 import { stations, buisness } from "../../../data/Mapdata";
+import { FaSquareMinus } from "react-icons/fa6";
+import { FaCoins } from "react-icons/fa";
+import { FaGripLines } from "react-icons/fa";
 import { BsTools } from "react-icons/bs";
+import { IoMdBuild } from "react-icons/io";
+import { BsBoxes } from "react-icons/bs";
+import { FaBoxesStacked } from "react-icons/fa6"
 import { FaBookmark } from "react-icons/fa";
+import { IoToday } from "react-icons/io5";
+import { FaRegKeyboard } from "react-icons/fa";
+import { FaMoneyBillAlt } from "react-icons/fa";
+import { FaBuilding } from "react-icons/fa6";
+import { FaCalendarTimes } from "react-icons/fa";
+import { FaCalculator } from "react-icons/fa6";
+import { FaCartShopping } from "react-icons/fa6";
+import { HiReceiptTax } from "react-icons/hi";
+import { SiBigcartel } from "react-icons/si";
+import { GrStatusInfoSmall } from "react-icons/gr";
+import { GrStatusWarningSmall } from "react-icons/gr";
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import MaterialMainInfo from "../../../components/MaterialDetail/MaterialMainInfo/MaterialMainInfo";
@@ -16,57 +35,57 @@ import MaterialHistoryInfo from "../../../components/MaterialDetail/MaterialHist
 
 const item_info = [
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaHome size={24} color="#8da7d9" />,
     title: "사업소",
     text: "서울 A 사업소",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaLocationArrow color="#8da7d9" />,
     title: "주소",
     text: "서울특별시 금천구 시흥대로 321",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <GiChemicalTank size={24} color="#8da7d9" />,
     title: "시설물명",
     text: "서울-A-생산-1",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaChargingStation size={20} color="#8da7d9" />,
     title: "시설종류",
     text: "생산시설",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <SiMaterialdesignicons color="#8da7d9" />,
     title: "자재명",
     text: "워터펌",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaRegKeyboard color="#8da7d9" />,
     title: "LOT번호",
     text: "M-A-1-10001",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaSquareMinus size={20} color="#8da7d9" />,
     title: "시리얼번호",
     text: "SA315814358731",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaGripLines color="#8da7d9" />,
     title: "규격",
     text: "180X200",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaCalendarTimes size={20} color="#8da7d9" />,
     title: "내구연한(년)",
     text: "15",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaBuilding size={20} color="#8da7d9" />,
     title: "제조사",
     text: "수소사(주)",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <IoMdBuild size={22} color="#8da7d9" />,
     title: "제조일",
     text: "2023.05.15",
   },
@@ -74,57 +93,57 @@ const item_info = [
 
 const item_info_mid = [
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <BsBoxes size={24} color="#8da7d9" />,
     title: "재고수량",
     text: "10",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaBoxesStacked size={22} color="#8da7d9" />,
     title: "구매수량",
     text: "53",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaCoins size={22} color="#8da7d9" />,
     title: "단가",
     text: "100,000 원",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaMoneyBillAlt size={22} color="#8da7d9" />,
     title: "공급가액",
     text: "1,000,000 원",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <HiReceiptTax size={22} color="#8da7d9" />,
     title: "부가가치세",
     text: "100,000 원",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaCalculator size={22} color="#8da7d9" />,
     title: "합계",
     text: "1,100,000 원",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <SiBigcartel size={22} color="#8da7d9" />,
     title: "대분류",
     text: "A-1",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <GrStatusInfoSmall size={22} color="#8da7d9" />,
     title: "중분류",
     text: "B-1",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <GrStatusWarningSmall size={22} color="#8da7d9" />,
     title: "소분류",
     text: "C-3",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaCartShopping size={22} color="#8da7d9" />,
     title: "구매처",
     text: "좋은유통사(주)",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <IoToday color="#8da7d9" />,
     title: "구매일",
     text: "2023.07.28",
   },
@@ -237,7 +256,7 @@ function MaterialsDetail() {
                 color={`${navitem === "materials-history" ? "#fff" : "#5e76ba"}`}
                 size={24}
               />
-              <span>자재 이력</span>
+              <span  className="info-nav-item">자재 이력</span>
             </div>
             <span className="item-quantity">3</span>
           </div>

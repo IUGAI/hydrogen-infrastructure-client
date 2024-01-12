@@ -72,6 +72,7 @@ const columns = [
 
 function FailureMainList() {
   const [selectedItems, setSelectedItems] = useState([]);
+  const [hoveredIcon, setHoveredIcon] = useState(null);
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [rows, setRows] = useState([
@@ -86,6 +87,10 @@ function FailureMainList() {
       description: "생산-A-시설물 작업 중단",
     },
   ]);
+
+  const handleHover = (index) => {
+    setHoveredIcon(index);
+  };
 
   const handleClose = () => {
     setOpen(false);
@@ -109,6 +114,34 @@ function FailureMainList() {
     }
   };
 
+  const iconData = [
+    {
+      icon: (
+        <DiMootoolsBadge
+        size={34}
+        color={hoveredIcon === 0 ? "#fff" : "#576dad"}
+        style={{ transform: `rotate(32deg)`, cursor: "pointer" }}
+      />
+      ),
+      text: "작업 등록",
+      onClick: handleNavigatetoDetail,
+    },
+    {
+      icon: (
+        <IoSaveOutline size={24} color={hoveredIcon === 1 ? "#fff" : "#576dad"} />
+      ),
+      text: "저장",
+      // onClick: handleGrEditClick,
+    },
+    {
+      icon: (
+        <RiDeleteBin6Line size={24} color={hoveredIcon === 2 ? "#fff" : "#576dad"} />
+      ),
+      text: "삭제",
+      // onClick: handleClickGotoEditPAge,
+    },
+  ];
+
   return (
     <div className="station-list">
       <ModalDefault
@@ -122,25 +155,20 @@ function FailureMainList() {
       />
       <div className="header-table">
         <div className="left">
-          <div className="icon-header">
-            <DiMootoolsBadge
-              size={34}
-              onClick={handleNavigatetoDetail}
-              color="#576dad"
-              style={{ transform: `rotate(32deg)`, cursor: "pointer" }}
-            />
-          </div>
-          <div className="icon-header">
-            <IoSaveOutline size={24} color="#576dad" />
-          </div>
-          <div className="icon-header">
-            <RiDeleteBin6Line size={24} color="#576dad" />
-          </div>
-        </div>
-        <div className="right">
-          <div className="icon-header">
-            <SiMicrosoftexcel size={24} color="#576dad" />
-          </div>
+        {iconData.map((data, index) => (
+            <div
+              key={index}
+              className="icon-header"
+              onMouseEnter={() => handleHover(index)}
+              onMouseLeave={() => handleHover(null)}
+              onClick={data.onClick}
+            >
+              {hoveredIcon === index && (
+                <span className="tooltip">{data.text}</span>
+              )}
+              {data.icon}
+            </div>
+          ))}
         </div>
       </div>
       <div className="table">

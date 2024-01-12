@@ -2,6 +2,7 @@ import DatePicker from "react-datepicker";
 import { CiSearch } from "react-icons/ci";
 import { useState } from "react";
 import React, { Component } from "react";
+import ko from "date-fns/locale/ko";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import ModalAddMaterial from "../Modal/ModalAddMaterial";
@@ -11,7 +12,7 @@ function WorkReportRegisterComponent() {
   const [open, setOpen] = useState(false);
 
   const handleClickSave = () => {};
-  
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -22,7 +23,7 @@ function WorkReportRegisterComponent() {
   return (
     <>
       <div className="station-regist-content">
-      <ModalAddMaterial
+        <ModalAddMaterial
           open={open}
           handleClose={handleClose}
           handleClickSave={handleClickSave}
@@ -75,7 +76,8 @@ function WorkReportRegisterComponent() {
               </label>
               <div className="input_item_lat_lng">
                 <DatePicker
-                  //   locale={ko}
+                  locale={ko}
+                  dateFormat="yyyy-MM-dd"
                   selected={startDate}
                   placeholderText="선택"
                   onChange={(date) => setStartDate(date)}
@@ -89,7 +91,8 @@ function WorkReportRegisterComponent() {
               </label>
               <div className="input_item_lat_lng">
                 <DatePicker
-                  //   locale={ko}
+                  locale={ko}
+                  dateFormat="yyyy-MM-dd"
                   selected={startDate}
                   placeholderText="선택"
                   onChange={(date) => setStartDate(date)}
@@ -154,19 +157,10 @@ function WorkReportRegisterComponent() {
               <CKEditor
                 editor={ClassicEditor}
                 data="<p></p>"
-                onReady={(editor) => {
-                  // You can store the "editor" and use when it is needed.
-                  console.log("Editor is ready to use!", editor);
-                }}
-                onChange={(event) => {
-                  console.log(event);
-                }}
-                onBlur={(event, editor) => {
-                  console.log("Blur.", editor);
-                }}
-                onFocus={(event, editor) => {
-                  console.log("Focus.", editor);
-                }}
+                onReady={(editor) => {}}
+                onChange={(event) => {}}
+                onBlur={(event, editor) => {}}
+                onFocus={(event, editor) => {}}
               />
             </div>
             <div className="input-item-station-add-editor material">
@@ -176,7 +170,6 @@ function WorkReportRegisterComponent() {
                   <CiSearch size={20} />
                   추가
                 </button>
-                
               </div>
               <div className="material-container">
                 <table></table>

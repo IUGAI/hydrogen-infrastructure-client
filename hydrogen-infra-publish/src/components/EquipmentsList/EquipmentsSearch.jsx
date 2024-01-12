@@ -1,11 +1,17 @@
 import { CiSearch } from "react-icons/ci";
 import { GrPowerReset } from "react-icons/gr";
+import ko from "date-fns/locale/ko";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
-import "../../style/SearchContainer.scss"
+import { useMediaQuery } from "react-responsive";
+import "../../style/SearchContainer.scss";
 
 function EquipmentsSearch() {
+  const [registDate, setRegistDate] = useState(null);
+  const [installationDate, setInstallationDate] = useState(null);
+  const [productionDate, setProductionDate] = useState(null);
   const [startDate, setStartDate] = useState(null);
+  const isSmallScreen = useMediaQuery({ maxWidth: 1100 });
   return (
     <div className="search">
       <img className="search-img" src="/img/search.png" />
@@ -53,18 +59,24 @@ function EquipmentsSearch() {
         <label>관리번호</label>
         <input type="text" className="custom-input-default "></input>
       </div>
-      <div className="search-input-item">
-        <button className="button-search">
-          <CiSearch size={24} />
-          검색
-        </button>
-      </div>
-      <div className="search-input-item">
-        <button className="button-search">
-          <GrPowerReset size={24} />
-          초기화
-        </button>
-      </div>
+      {!isSmallScreen ? (
+        <>
+          <div className="search-input-item">
+            <button className="button-search">
+              <CiSearch size={24} />
+              검색
+            </button>
+          </div>
+          <div className="search-input-item">
+            <button className="button-search">
+              <GrPowerReset size={24} />
+              초기화
+            </button>
+          </div>
+        </>
+      ) : (
+        ""
+      )}
       <div className="search-input-item">
         <label>시설종류</label>
         <select className="custom-select">
@@ -89,37 +101,39 @@ function EquipmentsSearch() {
           <option>광주</option>
         </select>
       </div>
-      <div className="search-input-item">
+      <div className="search-input-item" style={{ zIndex: "30" }}>
         <label>등록일</label>
         <DatePicker
-        //   locale={ko}
-          selected={startDate}
+          locale={ko}
+          dateFormat="yyyy-MM-dd"
+          selected={registDate}
           placeholderText="선택"
-          onChange={(date) => setStartDate(date)}
+          onChange={(date) => setRegistDate(date)}
           className="custom-datepicker"
         />
       </div>
-      <div className="search-input-item">
+      <div className="search-input-item" style={{ zIndex: "25" }}>
         <label>설치일</label>
         <DatePicker
-        //   locale={ko}
-          selected={startDate}
+          locale={ko}
+          dateFormat="yyyy-MM-dd"
+          selected={installationDate}
           placeholderText="선택"
-          onChange={(date) => setStartDate(date)}
+          onChange={(date) => setInstallationDate(date)}
           className="custom-datepicker"
         />
       </div>
-      <div className="search-input-item">
+      <div className="search-input-item" style={{ zIndex: "20" }}>
         <label>가동일</label>
         <DatePicker
-        //   locale={ko}
-          selected={startDate}
+          //   locale={ko}
+          selected={productionDate}
           placeholderText="선택"
-          onChange={(date) => setStartDate(date)}
+          onChange={(date) => setProductionDate(date)}
           className="custom-datepicker"
         />
       </div>
-      
+
       <div className="search-input-item row-long">
         <label>담당자</label>
         <select className="custom-select">
@@ -130,6 +144,23 @@ function EquipmentsSearch() {
           <option>광주</option>
         </select>
       </div>
+      
+      {
+        isSmallScreen ? <>
+              <div className="search-input-item">
+        <button className="button-search">
+          <CiSearch size={24} />
+          검색
+        </button>
+      </div>
+      <div className="search-input-item">
+        <button className="button-search">
+          <GrPowerReset size={24} />
+          초기화
+        </button>
+      </div>
+        </> : ""
+      }
     </div>
   );
 }

@@ -7,6 +7,12 @@
   grid-template-rows: 1fr 1fr;
   background-color: #1c2641;
 
+  @media (max-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
 
   .search-img {
     position: absolute;
@@ -30,14 +36,41 @@
       grid-column: span 2;
     }
 
+        .custom-select {
+      width: 100%;
+      border: 1px solid #2b3a63;
+      padding: 10px;
+      color: #8faadc;
+      font-size: 14px;
+      border-radius: 5px;
+      background-color: #212c4b;
+
+      &:focus {
+        outline: none;
+        border-color: #8faadc;
+      }
+    }
+
+
     .custom-input-default {
-      width: 93%;
+      width: 94%;
       padding: 10px;
       color: #fff;
       border: 1px solid #2b3a63;
       font-size: 14px;
       border-radius: 5px;
       background-color: #212c4b;
+      @media (max-width: 1200px) {
+
+        width: 98%;
+      }
+
+
+      @media (max-width: 500px) {
+
+        width: 94%;
+      }
+      
 
       &:focus {
         outline: none;
@@ -91,18 +124,22 @@
       @media (max-width: 1536px) {
         font-size: 14px;
       }
+
+      @media (max-width: 1200px) {
+
+        height: 37px;
+      }
+    
     }
 
     .react-datepicker__tab-loop{
       margin-top: -5px;
-      z-index: 90;
+     
     }
     .react-datepicker {
       font-size: 10px;
-      z-index: 10;
       .react-datepicker__navigation {
         height: 15px;
-        z-index: 90;
       }
 
       .react-datepicker__month-container {
@@ -141,6 +178,18 @@
       @media (max-width: 1536px) {
         width: 89%;
       }
+
+      
+      @media (max-width: 1200px) {
+
+        width: 98%;
+      }
+
+      @media (max-width: 500px) {
+
+        width: 94%;
+      }
+    
     }
 
     input {
@@ -149,20 +198,6 @@
       }
     }
 
-    .custom-select {
-      width: 100%;
-      border: 1px solid #2b3a63;
-      padding: 10px;
-      color: #8faadc;
-      font-size: 14px;
-      border-radius: 5px;
-      background-color: #212c4b;
-
-      &:focus {
-        outline: none;
-        border-color: #8faadc;
-      }
-    }
 
     .input-type-search-production {
       display: flex;

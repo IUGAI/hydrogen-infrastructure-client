@@ -3,10 +3,11 @@ import { CiSearch } from "react-icons/ci";
 import { useState } from "react";
 import React, { Component } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import { FaMinus } from "react-icons/fa";
-import { FaPlus } from "react-icons/fa";
+import '../../components/UserDetail/EditUser.scss'
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import ModalAddMaterial from "../Modal/ModalAddMaterial";
+import ko from "date-fns/locale/ko";
+import WorkRegistrerMaterialsAdd from "./WorkRegistrerMaterialsAdd";
 
 function WorkRegister() {
   const [startDate, setStartDate] = useState(null);
@@ -91,7 +92,8 @@ function WorkRegister() {
               </label>
               <div className="input_item_lat_lng">
                 <DatePicker
-                  //   locale={ko}
+                  locale={ko}
+                  dateFormat="yyyy-MM-dd"
                   selected={startDate}
                   placeholderText="선택"
                   onChange={(date) => setStartDate(date)}
@@ -103,7 +105,8 @@ function WorkRegister() {
               <label>종료일시</label>
               <div className="input_item_lat_lng">
                 <DatePicker
-                  //   locale={ko}
+                  locale={ko}
+                  dateFormat="yyyy-MM-dd"
                   selected={startDate}
                   placeholderText="선택"
                   onChange={(date) => setStartDate(date)}
@@ -182,68 +185,7 @@ function WorkRegister() {
                 </button>
               </div>
               <div className="material-container">
-                <table>
-                  <tr>
-                    <td style={{ width: "50%" }}>자재-1</td>
-                    <td style={{ textAlign: "center", color: "#5E76BA" }}>
-                      수량
-                    </td>
-                    <td style={{ textAlign: "center", width: "5%" }}>
-                      <FaMinus size={24} color="#5E76BA" />
-                    </td>
-                    <td
-                      style={{
-                        width: "20%",
-                        textAlign: "center",
-                      }}
-                    >
-                      2
-                    </td>
-                    <td style={{ textAlign: "center", width: "5%" }}>
-                      <FaPlus size={20} color="#5E76BA" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style={{ width: "50%" }}>자재-2</td>
-                    <td style={{ textAlign: "center", color: "#5E76BA" }}>
-                      수량
-                    </td>
-                    <td style={{ textAlign: "center", width: "5%" }}>
-                      <FaMinus size={24} color="#5E76BA" />
-                    </td>
-                    <td
-                      style={{
-                        width: "20%",
-                        textAlign: "center",
-                      }}
-                    >
-                      4
-                    </td>
-                    <td style={{ textAlign: "center", width: "5%" }}>
-                      <FaPlus size={20} color="#5E76BA" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style={{ width: "50%" }}>자재-3</td>
-                    <td style={{ textAlign: "center", color: "#5E76BA" }}>
-                      수량
-                    </td>
-                    <td style={{ textAlign: "center", width: "5%" }}>
-                      <FaMinus size={24} color="#5E76BA" />
-                    </td>
-                    <td
-                      style={{
-                        width: "20%",
-                        textAlign: "center",
-                      }}
-                    >
-                      10
-                    </td>
-                    <td style={{ textAlign: "center", width: "5%" }}>
-                      <FaPlus size={20} color="#5E76BA" />
-                    </td>
-                  </tr>
-                </table>
+              <WorkRegistrerMaterialsAdd/>
               </div>
             </div>
             <button className="button-submit-form ">등록하기</button>

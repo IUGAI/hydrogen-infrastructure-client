@@ -2,23 +2,27 @@
 import { CiSearch } from "react-icons/ci";
 import { GrPowerReset } from "react-icons/gr";
 import { useState } from "react";
-import ko from 'date-fns/locale/ko'
+import { stations } from "../../../data/Mapdata";
+import ko from "date-fns/locale/ko";
 import DatePicker from "react-datepicker";
-
+import { useMediaQuery } from "react-responsive";
 
 function SearchContainer() {
   const [startDate, setStartDate] = useState(null);
+  const [registDate, setRegistDate] = useState(null);
+  
+  const isSmallScreen = useMediaQuery({ maxWidth: 1100 });
   return (
     <div className="search">
       <img className="search-img" src="/img/search.png" />
-      <div className="search-input-item">
+      <div className="search-input-item" style={{ zIndex: "20" }}>
         <label>등록일</label>
         <DatePicker
           locale={ko}
           dateFormat="yyyy-MM-dd"
-          selected={startDate}
+          selected={registDate}
           placeholderText="선택"
-          onChange={(date) => setStartDate(date)}
+          onChange={(date) => setRegistDate(date)}
           className="custom-datepicker"
         />
       </div>
@@ -40,13 +44,10 @@ function SearchContainer() {
           <option selected disabled>
             선택
           </option>
-          <option>서울</option>
-          <option>부산</option>
-          <option>제주</option>
-          <option>광주</option>
+          <option>좋은솔루션(주)</option>
         </select>
       </div>
-      <div className="search-input-item">
+      <div className="search-input-item" style={{ zIndex: "20" }}>
         <label>개시일</label>
         <DatePicker
           locale={ko}
@@ -63,13 +64,17 @@ function SearchContainer() {
           <option selected disabled>
             선택
           </option>
-          <option>서울</option>
-          <option>부산</option>
-          <option>제주</option>
-          <option>광주</option>
+          {
+            stations.map((item, index) => (
+              <option>{item.name}</option>
+            ))
+          }
+ 
         </select>
       </div>
-      <div className="search-input-item">
+      {
+        !isSmallScreen ? <>
+              <div className="search-input-item">
         <button className="button-search">
           <CiSearch size={24} />
           검색
@@ -81,6 +86,9 @@ function SearchContainer() {
           초기화
         </button>
       </div>
+        </> : ""
+      }
+
       <div className="search-input-item">
         <label>생산시설</label>
         <div className="input-type-search-production">
@@ -130,6 +138,23 @@ function SearchContainer() {
           <option>광주</option>
         </select>
       </div>
+
+      {
+        isSmallScreen ? <>
+              <div className="search-input-item">
+        <button className="button-search">
+          <CiSearch size={24} />
+          검색
+        </button>
+      </div>
+      <div className="search-input-item">
+        <button className="button-search">
+          <GrPowerReset size={24} />
+          초기화
+        </button>
+      </div>
+        </> : ""
+      }
     </div>
   );
 }

@@ -2,13 +2,27 @@ import { TfiMenuAlt } from "react-icons/tfi";
 import { FaHome } from "react-icons/fa";
 import { GrEdit } from "react-icons/gr";
 import { MdHome } from "react-icons/md";
-
+import { FaLocationArrow } from "react-icons/fa";
 import { SiMaterialdesignicons } from "react-icons/si";
+import { GiChemicalTank } from "react-icons/gi";
 import { stations, buisness } from '../../../data/Mapdata';
 import { IoNotificationsSharp } from "react-icons/io5";
 import { BsConeStriped } from "react-icons/bs";
 import { BsTools } from "react-icons/bs";
+import { FaPlay } from "react-icons/fa";
+import { IoToday } from "react-icons/io5";
+import { FaUser } from "react-icons/fa";
 import { FaBookmark } from "react-icons/fa";
+import { FaPlaceOfWorship } from "react-icons/fa";
+import { FaChargingStation } from "react-icons/fa6";
+import { FaSquareMinus } from "react-icons/fa6";
+import { FaCompressArrowsAlt } from "react-icons/fa";
+import { IoSpeedometer } from "react-icons/io5";
+import { FaCartShopping } from "react-icons/fa6";
+import { FaTemperatureFull } from "react-icons/fa6";
+import { FaBuilding } from "react-icons/fa6";
+import { IoMdBuild } from "react-icons/io";
+import { FaCalendarTimes } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import StationDetailMainInfo from "../../../components/StationDetail/StationDetailMainInfo/StationDetailMainInfo";
@@ -20,42 +34,42 @@ import StationDetailTaskList from "../../../components/StationDetail/StationDeta
 
 const item_info = [
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaHome color="#8da7d9" size={24} />,
     title: "사업소",
     text: "서울 A 사업소",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaLocationArrow color="#8da7d9" />,
     title: "주소",
     text: "서울특별시 금천구 시흥대로 321",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <GiChemicalTank size={24} color="#8da7d9" />,
     title: "시설물명",
     text: "서울 A 사업소",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaChargingStation size={20}  color="#8da7d9" />,
     title: "시설종류",
     text: "생산시설",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaSquareMinus size={20}  color="#8da7d9" />,
     title: "관리번호",
     text: "AC000001",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <IoSpeedometer size={24} color="#8da7d9" />,
     title: "최대용량(g)",
     text: "300",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaCompressArrowsAlt color="#8da7d9" />,
     title: "직정압력(bar)",
     text: "350-450",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaTemperatureFull size={24} color="#8da7d9" />,
     title: "직정온도(C)",
     text: "180-200",
   },
@@ -63,42 +77,42 @@ const item_info = [
 
 const item_info_mid = [
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaCalendarTimes size={20} color="#8da7d9" />,
     title: "내구연한",
     text: "10",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaPlaceOfWorship  size={24} color="#8da7d9" />,
     title: "설치일",
     text: "2022.11.05",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaPlay color="#8da7d9" />,
     title: "가동일",
     text: "2023.02.01",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaBuilding size={20} color="#8da7d9" />,
     title: "제조사",
     text: "좋은회사",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <IoMdBuild size={22} color="#8da7d9" />,
     title: "제조일",
     text: "2023.01.03",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaCartShopping size={22} color="#8da7d9" />,
     title: "구매처",
     text: "강산유통회사",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <IoToday size={23} color="#8da7d9" />,
     title: "구매일",
     text: "2022.11.16",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaUser size={23} color="#8da7d9" />,
     title: "담당자",
     text: "강감찬",
   },
@@ -215,7 +229,7 @@ const iconData = [
                 color={`${navitem === "materials" ? "#fff" : "#5e76ba"}`}
                 size={24}
               />
-              <span>자재</span>
+              <span  className="info-nav-item">자재</span>
             </div>
             <span className="item-quantity">80</span>
           </div>
@@ -230,7 +244,7 @@ const iconData = [
                 color={`${navitem === "alarm-list" ? "#fff" : "#5e76ba"}`}
                 size={24}
               />
-              <span>알람 내역</span>
+              <span  className="info-nav-item">알람 내역</span>
             </div>
             <span className="item-quantity">5</span>
           </div>
@@ -245,7 +259,7 @@ const iconData = [
                 color={`${navitem === "break-list" ? "#fff" : "#5e76ba"}`}
                 size={24}
               />
-              <span>고장 내역</span>
+              <span  className="info-nav-item">고장 내역</span>
             </div>
             <span className="item-quantity">2</span>
           </div>
@@ -258,7 +272,7 @@ const iconData = [
                 color={`${navitem === "task-list" ? "#fff" : "#5e76ba"}`}
                 size={24}
               />
-              <span>작업 내역</span>
+              <span  className="info-nav-item">작업 내역</span>
             </div>
             <span className="item-quantity">2</span>
           </div>

@@ -8,7 +8,7 @@ import { CiSearch } from "react-icons/ci";
 import { GrPowerReset } from "react-icons/gr";
 import DatePicker from "react-datepicker";
 import { DataGrid } from "@mui/x-data-grid";
-
+import '../../../components/StationDetail/StationDetailEquipments/StationDetailEquipments.scss'
 
 const columns = [
     {

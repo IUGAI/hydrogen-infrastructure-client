@@ -10,6 +10,7 @@ const containerStyle = {
 function MaterialMainInfo({ item_info, item_info_mid }) {
   return (
     <div className="station-detail-info">
+      <div></div>
       <div className="station-detail-info-left">
         <div className="station-detail-info-left-inner">
           {item_info.map((item, index) => (

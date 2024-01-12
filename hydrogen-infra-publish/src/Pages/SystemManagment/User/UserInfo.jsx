@@ -53,6 +53,12 @@ const item_info = [
 function UserInfo() {
   const [editUser, setEdituser] = useState(false);
   const navigate = useNavigate();
+  const [hoveredIcon, setHoveredIcon] = useState(null);
+
+  const handleHover = (index) => {
+    setHoveredIcon(index);
+  };
+
 
   const handleclickedituser = () => {
     setEdituser(true);
@@ -60,6 +66,20 @@ function UserInfo() {
   const handleitemreturn = () => {
     navigate("/user-list");
   };
+
+  const iconData = [
+    {
+      icon: <TfiMenuAlt color={hoveredIcon === 0 ? "#fff" : "#8da7d9"} />,
+      text: "목록",
+      onClick: handleitemreturn,
+    },
+    {
+      icon: <FaRegEdit color={hoveredIcon === 1 ? "#fff" : "#8da7d9"} />,
+      text: "사용자  수정",
+      onClick: handleclickedituser,
+    },
+
+  ];
 
   return (
     <div className="station-detail-content">
@@ -85,18 +105,20 @@ function UserInfo() {
               </div>
             </div>
             <div className="right">
-              <div
-                className="icon-circle-background"
-                onClick={handleitemreturn}
-              >
-                <TfiMenuAlt color="#8da7d9" />
-              </div>
-              <div
-                className="icon-circle-background"
-                onClick={handleclickedituser}
-              >
-                <FaRegEdit color="#8da7d9" style={{ cursor: "pointer" }} />
-              </div>
+            {iconData.map((data, index) => (
+            <div
+              key={index}
+              className="icon-circle-background"
+              onMouseEnter={() => handleHover(index)}
+              onMouseLeave={() => handleHover(null)}
+              onClick={data.onClick}
+            >
+              {hoveredIcon === index && (
+                <span className="tooltip">{data.text}</span>
+              )}
+              {data.icon}
+            </div>
+          ))}
             </div>
             <img
               src="/img/user-info.png"

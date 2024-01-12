@@ -23,10 +23,22 @@
     justify-content: space-between;
     align-items: center;
 
+    @media(max-width: 700px){
+      align-items: start;
+      gap: 10px;
+      flex-direction: column;
+
+    }
+
     .left {
       display: flex;
       gap: 15px;
       align-items: center;
+
+      @media(max-width: 700px){
+        // flex-direction: column;
+
+      }
 
       .icon-circle-background {
         background-color: #1c2641;
@@ -38,7 +50,7 @@
         height: 50px;
         border-radius: 100%;
 
-        .tooltip{
+        .tooltip {
           position: absolute;
           text-align: center;
           font-size: 12px;
@@ -48,7 +60,7 @@
           border-radius: 10px;
           padding: 3px 0;
           font-family: "gothic 12";
-          color: #8FAADC;
+          color: #8faadc;
           top: 40px;
         }
         img {
@@ -92,8 +104,7 @@
         height: 35px;
         border-radius: 100%;
 
-        
-        .tooltip{
+        .tooltip {
           position: absolute;
           text-align: center;
           font-size: 12px;
@@ -103,7 +114,7 @@
           border-radius: 10px;
           padding: 3px 0;
           font-family: "gothic 12";
-          color: #8FAADC;
+          color: #8faadc;
           top: 40px;
         }
       }
@@ -112,6 +123,10 @@
       position: absolute;
       bottom: -45px;
       right: 10px;
+
+      @media (max-width: 800px) {
+      display: none;
+      }
     }
   }
 
@@ -132,24 +147,27 @@
         color: #5e76ba;
         border-right: 1px solid #2b3a63;
         border-bottom: 1px solid #2b3a63;
+        @media (max-width: 1200px) {
+          gap: 1px;
+        }
 
-        &.default{
+        &.default {
           width: 20%;
           border-right: none;
           border-bottom: 1px solid #2b3a63;
         }
 
-        &.default-equpmnt{
+        &.default-equpmnt {
           width: 50%;
           border-right: none;
           border-bottom: 1px solid #2b3a63;
         }
-        &.default-materials{
+        &.default-materials {
           width: 80%;
           border-right: none;
           border-bottom: 1px solid #2b3a63;
         }
-        &.default-edit-user{
+        &.default-edit-user {
           width: 65%;
           border-right: none;
           border-bottom: 1px solid #2b3a63;
@@ -167,19 +185,38 @@
           justify-content: center;
           gap: 10px;
           font-size: 15px;
+          @media (max-width: 1200px) {
+            gap: 1px;
+          }
           .text-title {
             font-family: "gothic 12";
+            @media (max-width: 1200px) {
+              display: none;
+            }
+          }
+          .info-nav-item {
+            font-family: "gothic 12";
+            @media (max-width: 1200px) {
+              display: none;
+            }
           }
         }
 
         .item-quantity {
           font-size: 16px;
+          @media (max-width: 700px){
+            display: none;
+          }
         }
       }
     }
 
     .station-detail-equipments {
-  
+
+      @media (max-width: 1200px){
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 }

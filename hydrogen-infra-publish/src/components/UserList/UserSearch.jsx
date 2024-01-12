@@ -1,6 +1,7 @@
 import { CiSearch } from "react-icons/ci";
 import { GrPowerReset } from "react-icons/gr";
 import { useState } from "react";
+import ko from "date-fns/locale/ko";
 import DatePicker from "react-datepicker";
 import "../../style/SearchContainer.scss";
 
@@ -52,7 +53,8 @@ function UserSearch() {
       <div className="search-input-item">
         <label>가입일</label>
         <DatePicker
-          //   locale={ko}
+          locale={ko}
+          dateFormat="yyyy-MM-dd"
           selected={startDate}
           placeholderText="선택"
           onChange={(date) => setStartDate(date)}

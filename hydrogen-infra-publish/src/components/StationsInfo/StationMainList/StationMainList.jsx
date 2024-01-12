@@ -119,10 +119,15 @@ const rows = stations.map((item) => ({
 
 function StationMainList() {
   const [selectedItems, setSelectedItems] = useState([]);
+  const [hoveredIcon, setHoveredIcon] = useState(null);
   const navigate = useNavigate();
+
 
   const handleItemSelection = (selectionModel) => {
     setSelectedItems(selectionModel);
+  };
+  const handleHover = (index) => {
+    setHoveredIcon(index);
   };
 
   const handleNavigatetoDetail = () => {
@@ -131,38 +136,93 @@ function StationMainList() {
     } else if (selectedItems.length === 0) {
       alert("사업소 선택해 주세요");
     } else {
-         navigate(`/stations/${selectedItems[0]}`)
+      navigate(`/stations/${selectedItems[0]}`);
     }
   };
+
+  const iconDataRight = [
+    {
+      icon: (
+        <SiMicrosoftexcel
+          size={24}
+          color={hoveredIcon === 4 ? "#fff" : "#8da7d9"}
+        />
+      ),
+      text: "엑셀 출력",
+    },
+  ];
+
+  const iconData = [
+    {
+      icon: (
+        <IoMdSearch
+          size={24}
+          style={{ cursor: "pointer" }}
+          color={hoveredIcon === 0 ? "#fff" : "#576dad"}
+        />
+      ),
+      text: "상세 정보",
+      onClick: handleNavigatetoDetail,
+    },
+    {
+      icon: (
+        <IoSaveOutline
+          size={24}
+          style={{ cursor: "pointer" }}
+          color={hoveredIcon === 1 ? "#fff" : "#576dad"}
+        />
+      ),
+      text: "저장",
+      // onClick: handleGrEditClick,
+    },
+    {
+      icon: (
+        <RiDeleteBin6Line
+          style={{ cursor: "pointer" }}
+          size={24}
+          color={hoveredIcon === 2 ? "#fff" : "#576dad"}
+        />
+      ),
+      text: "삭제",
+      // onClick: handleClickGotoEditPAge,
+    },
+  ];
 
   return (
     <div className="station-list">
       <div className="header-table">
         <div className="left">
-          <div className="icon-header">
-            <IoMdSearch
-              size={24}
-              color="#576dad"
-              onClick={handleNavigatetoDetail}
-            />
-          </div>
-          <div className="icon-header">
-            <DiMootoolsBadge
-              size={34}
-              color="#576dad"
-              style={{ transform: `rotate(32deg)` }}
-            />
-          </div>
-          <div className="icon-header">
-            <IoSaveOutline size={24} color="#576dad" />
-          </div>
-          <div className="icon-header">
-            <RiDeleteBin6Line size={24} color="#576dad" />
-          </div>
+          {iconData.map((data, index) => (
+            <div
+              key={index}
+              className="icon-header"
+              onMouseEnter={() => handleHover(index)}
+              onMouseLeave={() => handleHover(null)}
+              onClick={data.onClick}
+            >
+              {hoveredIcon === index && (
+                <span className="tooltip">{data.text}</span>
+              )}
+              {data.icon}
+            </div>
+          ))}
         </div>
         <div className="right">
           <div className="icon-header">
-            <SiMicrosoftexcel size={24} color="#576dad" />
+          {iconDataRight.map((data, index) => (
+            <div
+              key={4}
+              className="icon-header"
+              onMouseEnter={() => handleHover(4)}
+              onMouseLeave={() => handleHover(null)}
+              onClick={data.onClick}
+            >
+              {hoveredIcon === 4 && (
+                <span className="tooltip">{data.text}</span>
+              )}
+              {data.icon}
+            </div>
+          ))}
           </div>
         </div>
       </div>

@@ -110,16 +110,7 @@ function StationDetailNoticeList() {
           </div>
         </div>
         <div className="search-input-item hidden">
-          <label>종류</label>
-          <select className="custom-select">
-            <option selected disabled>
-              선택
-            </option>
-            <option>서울</option>
-            <option>부산</option>
-            <option>제주</option>
-            <option>광주</option>
-          </select>
+ 
         </div>
         <div className="search-input-item">
           <button className="button-search">

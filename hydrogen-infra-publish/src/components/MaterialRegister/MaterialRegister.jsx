@@ -1,5 +1,6 @@
 import DatePicker from "react-datepicker";
 import { useState } from "react";
+import ko from "date-fns/locale/ko";
 const handleclick = () => {
   setshow(!show);
 };
@@ -160,7 +161,8 @@ function MaterialRegister() {
               <label>제조일</label>
               <div className="input_item_lat_lng">
                 <DatePicker
-                  //   locale={ko}
+                       locale={ko}
+                       dateFormat="yyyy-MM-dd"
                   selected={startDate}
                   placeholderText="선택"
                   onChange={(date) => setStartDate(date)}
@@ -178,7 +180,8 @@ function MaterialRegister() {
               </label>
               <div className="input_item_lat_lng">
                 <DatePicker
-                  //   locale={ko}
+                    locale={ko}
+                    dateFormat="yyyy-MM-dd"
                   selected={startDate}
                   placeholderText="선택"
                   onChange={(date) => setStartDate(date)}

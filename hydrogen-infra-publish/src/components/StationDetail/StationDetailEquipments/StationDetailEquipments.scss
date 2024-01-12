@@ -4,6 +4,12 @@
   padding: 10px 10px;
   display: grid;
 
+  @media (max-width: 1200px) {
+    margin: 0 20px;
+    padding: 0 10px;
+  }
+
+
   &.user{
     padding: 0;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -47,6 +53,11 @@
       @media (max-width: 1536px) {
         font-size: 13px;
       }
+
+      @media (max-width: 1200px){
+        height: 37px;
+        margin-top: 15px;
+      }
     }
 
     label {
@@ -55,6 +66,10 @@
       font-size: 13px;
     }
 
+    .react-datepicker__tab-loop{
+      margin-top: -5px;
+     
+    }
     .react-datepicker {
       font-size: 10px;
       .react-datepicker__navigation {
@@ -97,6 +112,16 @@
 
       @media (max-width: 1536px) {
         width: 89%;
+      }
+
+      @media (max-width: 1200px){
+        width: 97.5%;
+      }
+      @media (max-width: 900px){
+        width: 97%;
+      }
+      @media (max-width: 500px){
+        width: 94%;
       }
     }
 
@@ -146,7 +171,7 @@
     }
 
     .custom-input-default {
-      width: 93%;
+        width: auto;
       padding: 10px;
       color: #fff;
       border: 1px solid #2b3a63;

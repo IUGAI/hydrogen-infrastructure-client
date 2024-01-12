@@ -85,10 +85,15 @@ const rows = [
 
 function UserMainList() {
   const [selectedItems, setSelectedItems] = useState([]);
+  const [hoveredIcon, setHoveredIcon] = useState(null);
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const handleItemSelection = (selectionModel) => {
     setSelectedItems(selectionModel);
+  };
+
+  const handleHover = (index) => {
+    setHoveredIcon(index);
   };
 
   const handleClose = () => {
@@ -108,6 +113,43 @@ function UserMainList() {
       setOpen(true);
     }
   };
+
+  
+  const iconData = [
+    {
+      icon: (
+        <IoMdSearch
+          size={24}
+          color={hoveredIcon === 0 ? "#fff" : "#576dad"}
+          style={{ cursor: "pointer" }}
+        />
+      ),
+      text: "상세 정보",
+      onClick: handleNavigatetoDetail,
+    },
+    {
+      icon: (
+        <IoSaveOutline
+          size={24}
+          style={{ cursor: "pointer" }}
+          color={hoveredIcon === 1 ? "#fff" : "#576dad"}
+        />
+      ),
+      text: "저장",
+      // onClick: handleGrEditClick,
+    },
+    {
+      icon: (
+        <RiDeleteBin6Line
+          size={24}
+          style={{ cursor: "pointer" }}
+          color={hoveredIcon === 2 ? "#fff" : "#576dad"}
+        />
+      ),
+      text: "삭제",
+      // onClick: handleClickGotoEditPAge,
+    },
+  ];
   return (
     <div className="station-list">
       <ModalDefault
@@ -125,20 +167,20 @@ function UserMainList() {
       />
       <div className="header-table">
         <div className="left">
-          <div className="icon-header">
-            <IoMdSearch
-              size={24}
-              style={{ cursor: "pointer" }}
-              color="#576dad"
-              onClick={handleNavigatetoDetail}
-            />
-          </div>
-          <div className="icon-header">
-            <IoSaveOutline size={24} color="#576dad" />
-          </div>
-          <div className="icon-header">
-            <RiDeleteBin6Line size={24} color="#576dad" />
-          </div>
+        {iconData.map((data, index) => (
+            <div
+              key={index}
+              className="icon-header"
+              onMouseEnter={() => handleHover(index)}
+              onMouseLeave={() => handleHover(null)}
+              onClick={data.onClick}
+            >
+              {hoveredIcon === index && (
+                <span className="tooltip">{data.text}</span>
+              )}
+              {data.icon}
+            </div>
+          ))}
         </div>
         <div className="right">
           <div className="icon-header">
