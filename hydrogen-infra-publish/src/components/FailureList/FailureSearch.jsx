@@ -29,10 +29,7 @@ function FailureSearch() {
           <option selected disabled>
             선택
           </option>
-          <option>서울</option>
-          <option>부산</option>
-          <option>제주</option>
-          <option>광주</option>
+
         </select>
       </div>
       <div className="search-input-item" style={{ zIndex: "20" }}>
@@ -52,10 +49,7 @@ function FailureSearch() {
           <option selected disabled>
             선택
           </option>
-          <option>서울</option>
-          <option>부산</option>
-          <option>제주</option>
-          <option>광주</option>
+
         </select>
       </div>
       <div className="search-input-item">
@@ -64,10 +58,7 @@ function FailureSearch() {
           <option selected disabled>
             선택
           </option>
-          <option>서울</option>
-          <option>부산</option>
-          <option>제주</option>
-          <option>광주</option>
+
         </select>
       </div>
       {!isSmallScreen ? <SearchButtons /> : ""}

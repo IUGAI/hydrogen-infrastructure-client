@@ -19,15 +19,7 @@ function UserSearch() {
       </div>
       <div className="search-input-item">
         <label>아이디</label>
-        <select className="custom-select">
-          <option selected disabled>
-            선택
-          </option>
-          <option>서울</option>
-          <option>부산</option>
-          <option>제주</option>
-          <option>광주</option>
-        </select>
+        <input type="text" className="custom-input-default "></input>
       </div>
       <div className="search-input-item">
         <label>생년월일</label>
@@ -61,10 +53,7 @@ function UserSearch() {
           <option selected disabled>
             선택
           </option>
-          <option>서울</option>
-          <option>부산</option>
-          <option>제주</option>
-          <option>광주</option>
+          <option>좋은솔루션</option>
         </select>
       </div>
       <div className="search-input-item">
@@ -73,10 +62,10 @@ function UserSearch() {
           <option selected disabled>
             선택
           </option>
-          <option>서울</option>
-          <option>부산</option>
-          <option>제주</option>
-          <option>광주</option>
+          <option>1등</option>
+          <option>2등</option>
+          <option>3등</option>
+          <option>4등</option>
         </select>
       </div>
       {

@@ -5,46 +5,54 @@ import { FaBookmark } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserDetail from "../../../components/UserDetail/UserDetail";
+import { BiRename } from "react-icons/bi";
+import { FaIdCard } from "react-icons/fa";
+import { MdNumbers } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
+import { BiBuildings } from "react-icons/bi";
+import { PiMedalDuotone } from "react-icons/pi";
+import { FaPhoneAlt } from "react-icons/fa";
+import { FaCalendarCheck } from "react-icons/fa";
 import EditUser from "../../../components/UserDetail/EditUser";
 
 const item_info = [
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaIdCard size={24} color="#8da7d9" />,
     title: "아이디",
     text: "hongKilDong_1",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <BiRename size={24} color="#8da7d9" />,
     title: "성명",
     text: "홍길동",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <MdNumbers  size={24}  color="#8da7d9" />,
     title: "주민등록번호",
     text: "981213-5******",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaPhoneAlt size={24}  color="#8da7d9" />,
     title: "휴대전화",
     text: "010-5756-1133",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <MdEmail  size={24}  color="#8da7d9" />,
     title: "이메일",
     text: "hongkildong001@gmail.com",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <BiBuildings size={24}   color="#8da7d9" />,
     title: "소속(사업소)",
     text: "서울 A 사업소",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <PiMedalDuotone  size={24}  color="#8da7d9" />,
     title: "접근권한",
     text: "LEVEL 2 (일반 사용자)",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaCalendarCheck  size={24}  color="#8da7d9" />,
     title: "가입일",
     text: "2023.12.20",
   },

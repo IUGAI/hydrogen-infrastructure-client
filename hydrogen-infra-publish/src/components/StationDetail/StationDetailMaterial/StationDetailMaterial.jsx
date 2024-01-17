@@ -99,9 +99,6 @@ function StationDetailMaterial() {
             <option selected disabled>
               선택
             </option>
-            <option>생산</option>
-            <option>저장</option>
-            <option>충전</option>
           </select>
         </div>
         <div className="search-input-item">
@@ -110,9 +107,7 @@ function StationDetailMaterial() {
             <option selected disabled>
               선택
             </option>
-            <option>생산</option>
-            <option>저장</option>
-            <option>충전</option>
+
           </select>
         </div>
         <div className="search-input-item">
@@ -121,10 +116,7 @@ function StationDetailMaterial() {
             <option selected disabled>
               선택
             </option>
-            <option>서울</option>
-            <option>부산</option>
-            <option>제주</option>
-            <option>광주</option>
+
           </select>
         </div>
         <div className="search-input-item">
