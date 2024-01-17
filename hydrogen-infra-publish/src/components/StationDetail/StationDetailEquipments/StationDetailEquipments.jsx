@@ -8,9 +8,8 @@ import "./StationDetailEquipments.scss";
 import { CiSearch } from "react-icons/ci";
 import { GrPowerReset } from "react-icons/gr";
 import DatePicker from "react-datepicker";
-import StationMainList from "../../StationsInfo/StationMainList/StationMainList";
+import ko from "date-fns/locale/ko";
 import { DataGrid } from "@mui/x-data-grid";
-import { stations } from "../../../data/Mapdata";
 
 const columns = [
     {
@@ -143,17 +142,18 @@ function StationDetailEquipments() {
             <option selected disabled>
               선택
             </option>
-            <option>서울</option>
-            <option>부산</option>
-            <option>제주</option>
-            <option>광주</option>
+            <option>1년</option>
+            <option>5년</option>
+            <option>10년</option>
+            <option>20년</option>
           </select>
         </div>
 
         <div className="search-input-item">
           <label>등록일</label>
           <DatePicker
-            //   locale={ko}
+          locale={ko}
+          dateFormat="yyyy-MM-dd"
             selected={startDate}
             placeholderText="선택"
             onChange={(date) => setStartDate(date)}

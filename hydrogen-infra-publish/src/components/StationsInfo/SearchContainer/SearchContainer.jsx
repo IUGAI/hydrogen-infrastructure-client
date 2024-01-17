@@ -1,11 +1,10 @@
-// import ko from "date-fns/locale/ko";
-import { CiSearch } from "react-icons/ci";
-import { GrPowerReset } from "react-icons/gr";
+
 import { useState } from "react";
 import { stations } from "../../../data/Mapdata";
 import ko from "date-fns/locale/ko";
 import DatePicker from "react-datepicker";
 import { useMediaQuery } from "react-responsive";
+import SearchButtons from "../../SearchButtons/SearchButtons";
 
 function SearchContainer() {
   const [startDate, setStartDate] = useState(null);
@@ -73,20 +72,7 @@ function SearchContainer() {
         </select>
       </div>
       {
-        !isSmallScreen ? <>
-              <div className="search-input-item">
-        <button className="button-search">
-          <CiSearch size={24} />
-          검색
-        </button>
-      </div>
-      <div className="search-input-item">
-        <button className="button-search">
-          <GrPowerReset size={24} />
-          초기화
-        </button>
-      </div>
-        </> : ""
+        !isSmallScreen ? <SearchButtons/>: ""
       }
 
       <div className="search-input-item">
@@ -140,20 +126,7 @@ function SearchContainer() {
       </div>
 
       {
-        isSmallScreen ? <>
-              <div className="search-input-item">
-        <button className="button-search">
-          <CiSearch size={24} />
-          검색
-        </button>
-      </div>
-      <div className="search-input-item">
-        <button className="button-search">
-          <GrPowerReset size={24} />
-          초기화
-        </button>
-      </div>
-        </> : ""
+        isSmallScreen ? <SearchButtons/> : ""
       }
     </div>
   );

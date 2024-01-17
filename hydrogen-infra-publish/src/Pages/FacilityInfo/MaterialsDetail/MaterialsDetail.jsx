@@ -1,5 +1,3 @@
-
-import StationDetailMaterial from "../../../components/StationDetail/StationDetailMaterial/StationDetailMaterial";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { FaHome } from "react-icons/fa";
 import { GrEdit } from "react-icons/gr";
@@ -8,7 +6,7 @@ import { GiChemicalTank } from "react-icons/gi";
 import { SiMaterialdesignicons } from "react-icons/si";
 import { FaChargingStation } from "react-icons/fa6";
 import { MdHome } from "react-icons/md";
-import { stations, buisness } from "../../../data/Mapdata";
+import { stations } from "../../../data/Mapdata";
 import { FaSquareMinus } from "react-icons/fa6";
 import { FaCoins } from "react-icons/fa";
 import { FaGripLines } from "react-icons/fa";
@@ -16,7 +14,6 @@ import { BsTools } from "react-icons/bs";
 import { IoMdBuild } from "react-icons/io";
 import { BsBoxes } from "react-icons/bs";
 import { FaBoxesStacked } from "react-icons/fa6"
-import { FaBookmark } from "react-icons/fa";
 import { IoToday } from "react-icons/io5";
 import { FaRegKeyboard } from "react-icons/fa";
 import { FaMoneyBillAlt } from "react-icons/fa";
@@ -153,9 +150,7 @@ const center = {
   lng: stations[0].lng,
 };
 
-function MaterialsDetail() {
-
-  
+function MaterialsDetail() {  
   const [navitem, setnavitem] = useState("main");
   const navigate = useNavigate();
   const [hoveredIcon, setHoveredIcon] = useState(null);
@@ -164,22 +159,17 @@ function MaterialsDetail() {
   const handleHover = (index) => {
     setHoveredIcon(index);
   };
-
   const handleitemreturn = () => {
     navigate("/materials");
   };
-
+  
   const handleGrEditClick = () => {
     // navigate(`/station-edit/${id}`)
   };
 
-
-
   const handleClickGotoEditPAge = ()=> {
      navigate(`/material-edit/${id}`)
   }
-
-
   const iconData = [
     {
       icon: <TfiMenuAlt color={hoveredIcon === 0 ? "#fff" : "#8da7d9"} />,

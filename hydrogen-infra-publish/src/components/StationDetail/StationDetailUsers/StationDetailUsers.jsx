@@ -8,6 +8,7 @@ import { CiSearch } from "react-icons/ci";
 import { GrPowerReset } from "react-icons/gr";
 import DatePicker from "react-datepicker";
 import { DataGrid } from "@mui/x-data-grid";
+import ko from "date-fns/locale/ko";
 
 const columns = [
   {
@@ -84,14 +85,14 @@ function StationDetailUsers() {
         </div>
         <div className="search-input-item">
           <label>가입일</label>
-          <select className="custom-select">
-            <option selected disabled>
-              선택
-            </option>
-            <option>생산</option>
-            <option>저장</option>
-            <option>충전</option>
-          </select>
+          <DatePicker
+            locale={ko}
+            dateFormat="yyyy-MM-dd"
+            selected={startDate}
+            placeholderText="선택"
+            onChange={(date) => setStartDate(date)}
+            className="custom-datepicker"
+          />
         </div>
         <div className="search-input-item">
           <label>전화번호</label>
@@ -101,7 +102,8 @@ function StationDetailUsers() {
         <div className="search-input-item">
           <label>접근현황</label>
           <DatePicker
-            //   locale={ko}
+            locale={ko}
+            dateFormat="yyyy-MM-dd"
             selected={startDate}
             placeholderText="선택"
             onChange={(date) => setStartDate(date)}

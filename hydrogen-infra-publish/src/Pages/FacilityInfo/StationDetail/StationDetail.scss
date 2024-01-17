@@ -23,11 +23,10 @@
     justify-content: space-between;
     align-items: center;
 
-    @media(max-width: 700px){
+    @media (max-width: 700px) {
       align-items: start;
       gap: 10px;
       flex-direction: column;
-
     }
 
     .left {
@@ -35,9 +34,8 @@
       gap: 15px;
       align-items: center;
 
-      @media(max-width: 700px){
+      @media (max-width: 700px) {
         // flex-direction: column;
-
       }
 
       .icon-circle-background {
@@ -124,8 +122,12 @@
       bottom: -45px;
       right: 10px;
 
+      @media (max-width: 1536px) {
+        width: 5%;
+      }
+
       @media (max-width: 800px) {
-      display: none;
+        display: none;
       }
     }
   }
@@ -133,6 +135,7 @@
   .station-detail-content-info {
     background-color: #1c2641;
     border: 1px solid #2b3a63;
+
     margin: 20px;
     .station-detail-navbar {
       display: flex;
@@ -147,7 +150,9 @@
         color: #5e76ba;
         border-right: 1px solid #2b3a63;
         border-bottom: 1px solid #2b3a63;
-        @media (max-width: 1200px) {
+
+        @media (max-width: 1536px) {
+          width: 30%;
           gap: 1px;
         }
 
@@ -204,7 +209,7 @@
 
         .item-quantity {
           font-size: 16px;
-          @media (max-width: 700px){
+          @media (max-width: 700px) {
             display: none;
           }
         }
@@ -212,8 +217,7 @@
     }
 
     .station-detail-equipments {
-
-      @media (max-width: 1200px){
+      @media (max-width: 1200px) {
         display: flex;
         flex-direction: column;
       }

@@ -1,12 +1,15 @@
 import { CiSearch } from "react-icons/ci";
 import { GrPowerReset } from "react-icons/gr";
 import { useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import ko from "date-fns/locale/ko";
 import DatePicker from "react-datepicker";
 import "../../style/SearchContainer.scss";
+import SearchButtons from "../SearchButtons/SearchButtons";
 
 function UserSearch() {
   const [startDate, setStartDate] = useState(null);
+  const isSmallScreen = useMediaQuery({ maxWidth: 1200 });
   return (
     <div className="search">
       <img className="search-img" src="/img/search.png" />
@@ -38,19 +41,10 @@ function UserSearch() {
         <label>이메일</label>
         <input type="text" className="custom-input-default "></input>
       </div>
-      <div className="search-input-item">
-        <button className="button-search">
-          <CiSearch size={24} />
-          검색
-        </button>
-      </div>
-      <div className="search-input-item">
-        <button className="button-search">
-          <GrPowerReset size={24} />
-          초기화
-        </button>
-      </div>
-      <div className="search-input-item">
+    {
+      !isSmallScreen ? <SearchButtons/> : ""
+    }
+      <div className="search-input-item" style={{ zIndex: "20" }}>
         <label>가입일</label>
         <DatePicker
           locale={ko}
@@ -85,6 +79,9 @@ function UserSearch() {
           <option>광주</option>
         </select>
       </div>
+      {
+      isSmallScreen ? <SearchButtons/> : ""
+    }
     </div>
   );
 }

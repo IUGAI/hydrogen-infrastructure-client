@@ -27,11 +27,26 @@
       align-items: center;
       justify-content: center;
       height: 30px;
+      position: relative;
       border-radius: 100%;
+
+      .tooltip {
+        position: absolute;
+        text-align: center;
+        font-size: 12px;
+        background-color: #1c2641;
+        width: 80px;
+        z-index: 10;
+        border-radius: 10px;
+        padding: 3px 0;
+        font-family: "gothic 12";
+        color: #8faadc;
+        top: 40px;
+      }
     }
 
     &.hide {
-      width: 48.5%;
+      width: 50%;
     }
     span {
       color: white;
@@ -133,8 +148,15 @@
             display: flex;
             padding: 8px 0;
 
+        
+
+
             .work-fills-label {
               width: 20%;
+
+              @media (max-width: 900px){
+                width:  50%;
+              }
 
               .work-fills-title {
                 color: #8faadc;
@@ -144,6 +166,10 @@
             }
             .work-fills-content {
               width: 80%;
+
+              @media (max-width: 900px){
+                width:  50%;
+              }
 
               ul {
                 list-style: none;
@@ -674,6 +700,7 @@
               &.edit-equipm {
                 margin-top: 30px;
               }
+     
 
               &.add-equipm {
                 margin-top: 350px;

@@ -1,10 +1,13 @@
 import DatePicker from "react-datepicker";
 import ko from "date-fns/locale/ko";
 import { useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import '../../components/UserDetail/EditUser.scss'
 
 function EquipmentRegister() {
   const [startDate, setStartDate] = useState(null);
+  const isSmallScreen = useMediaQuery({ maxWidth: 1200 });
+
   return (
     <>
       <div className="station-regist-content">
@@ -223,7 +226,7 @@ function EquipmentRegister() {
                 <option>서울</option>
               </select>
             </div>
-            <button className="button-submit-form add-equipm">등록하기</button>
+            <button className={ isSmallScreen ? "button-submit-form" : "button-submit-form add-equipm"}>등록하기</button>
           </div>
         </div>
       </div>

@@ -1,14 +1,11 @@
 import { useState } from "react";
 import {
-  BarChart,
   Bar,
-  Rectangle,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   ComposedChart,
-  Legend,
   ResponsiveContainer,
   Line,
 } from "recharts";
@@ -18,7 +15,13 @@ import Checkbox from "@mui/material/Checkbox";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
-function StationStatisticProduction({ data, lineGraph, barGraph, ticksNumbers, unit }) {
+function StationStatisticProduction({
+  data,
+  lineGraph,
+  barGraph,
+  ticksNumbers,
+  unit,
+}) {
   const datacharging = data.reduce((sum, item) => {
     return (sum += item.uv);
   }, 0);
@@ -28,7 +31,6 @@ function StationStatisticProduction({ data, lineGraph, barGraph, ticksNumbers, u
   const datastoraging = data.reduce((sum, item) => {
     return (sum += item.amt);
   }, 0);
-
 
   const isSmallScreen = useMediaQuery({ maxWidth: 1536 });
   const isMediumScreen = useMediaQuery({ maxWidth: 2000 });
@@ -89,8 +91,8 @@ function StationStatisticProduction({ data, lineGraph, barGraph, ticksNumbers, u
         width={width}
         height={height}
         fill={fill}
-        rx={isSmallScreen ? 10 : 20} 
-        ry={isSmallScreen ? 10 : 20} 
+        rx={isSmallScreen ? 10 : 20}
+        ry={isSmallScreen ? 10 : 20}
       />
     );
   };
@@ -100,7 +102,7 @@ function StationStatisticProduction({ data, lineGraph, barGraph, ticksNumbers, u
       <span className="unit">({unit})</span>
       <div className="station-statistic-checkbox">
         {dataproduction !== 0 && (
-          <div className="checkBox-item" >
+          <div className="checkBox-item">
             <Checkbox
               {...label}
               name="production"
@@ -152,7 +154,11 @@ function StationStatisticProduction({ data, lineGraph, barGraph, ticksNumbers, u
           </div>
         )}
       </div>
-      <ResponsiveContainer width="99%" height="90%" style={{margin: "0 20px"}}>
+      <ResponsiveContainer
+        width="99%"
+        height="90%"
+        style={{ margin: "0 20px" }}
+      >
         <ComposedChart
           data={data}
           barCategoryGap={isSmallScreen ? 10 : isMediumScreen ? 20 : 30}

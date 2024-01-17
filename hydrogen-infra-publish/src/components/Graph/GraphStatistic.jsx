@@ -1,16 +1,14 @@
 import {
   PieChart,
   Pie,
-  Sector,
   Cell,
-  ResponsiveContainer,
   Tooltip,
 } from "recharts";
 import { useMediaQuery } from "react-responsive";
 
 function GraphStatistic({ items }) {
   const isLargeScreen = useMediaQuery({ maxWidth: 1536 });
-  const isLargeScrennHigh = useMediaQuery({ maxHeight: 1233 });
+ 
 
   var total = items.data
     .map((items) => items.value)
@@ -54,7 +52,7 @@ function GraphStatistic({ items }) {
           cx={isLargeScreen ? 100 : 130}
           cy={isLargeScreen ? 100 : 130}
           stroke={color_stroke}
-          innerRadius={isLargeScreen ? 45 : 70}
+          innerRadius={isLargeScreen ? 50 : 70}
           outerRadius={isLargeScreen ? 80 : 115}
           dataKey="value"
           startAngle={-270}

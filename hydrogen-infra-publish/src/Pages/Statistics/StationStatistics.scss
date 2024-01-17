@@ -3,6 +3,10 @@
   overflow: auto;
   display: flex;
   flex-direction: column;
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: #1c2641;
+  }
 
   .table {
     width: 105%;
@@ -13,6 +17,10 @@
       width: auto;
       height: 900px;
       overflow: auto;
+
+      @media (max-width: 1200px){
+        height: 500px;
+      }
     }
 
     .text-data-grid {
@@ -105,24 +113,30 @@
     display: flex;
     flex-direction: column;
     margin: 10px 20px;
-    height: 90%;
+
+    @media (min-width: 1200px) {
+      height: 90%;
+    }
 
     &.commonsettings {
       height: auto;
     }
 
-    @media (max-height: 1100px) {
-    }
-
     background-color: #1c2641;
     .station-statistic-search {
-      height: 10%;
       display: grid;
       border: 1px solid #2b3a63;
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
       width: 100%;
-      @media (max-height: 1100px) {
-        height: 15%;
+      @media (max-width: 1200px) {
+        height: 250px;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        &::-webkit-scrollbar {
+          width: 6px;
+          background-color: #1c2641;
+        }
       }
 
       .search-input-item {
@@ -227,6 +241,11 @@
       .common-settings-alarm {
         width: 100%;
         display: flex;
+
+        @media (max-height: 1200px) {
+          flex-direction: column;
+        }
+
         .text-instructions {
           font-family: "gothic 12";
           color: #8faadc;
@@ -244,6 +263,10 @@
           gap: 30px;
           display: flex;
           flex-direction: column;
+
+          @media (max-height: 1200px) {
+            width: auto;
+          }
           .common-settings-classifications-inner {
             display: flex;
             justify-content: space-between;
@@ -362,6 +385,10 @@
           width: 100%;
           gap: 20px;
           flex-direction: column;
+
+          @media (max-height: 1200px) {
+            width: auto;
+          }
           label {
             color: #8faadc;
             font-family: "gothic 12";
@@ -396,11 +423,14 @@
 
         .common-settings-alarm-left {
           width: 50%;
-          border: 1px solid #2b3a63;
           padding: 30px;
           display: flex;
           justify-content: start;
           flex-direction: column;
+
+          @media (max-height: 1200px) {
+            width: auto;
+          }
 
           .custom-select-default {
             width: 104%;
@@ -668,6 +698,10 @@
           justify-content: start;
           flex-direction: column;
 
+          @media (max-width: 1200px){
+            width: auto;
+          }
+
           .item-sections {
             display: flex;
             justify-content: space-between;
@@ -675,9 +709,9 @@
 
             .common-title {
               width: 30%;
-              .title-label{
+              .title-label {
                 font-family: "gothic 12";
-                color: #8FAADC;
+                color: #8faadc;
               }
             }
             .common-settings {
@@ -710,7 +744,7 @@
               .common-inner-add {
                 width: 100%;
                 height: 20%;
-                border: 1px solid #253255;;
+                border: 1px solid #253255;
                 border-top: none;
                 position: relative;
                 background-color: #212c4b;
@@ -755,18 +789,17 @@
                     cursor: pointer;
                     font-size: 16px;
                     font-style: "gothic 12";
-                    color: #8FAADC;
+                    color: #8faadc;
                     background-color: transparent;
                     border: 1px solid #253255;
                     border-top: none;
                     border-bottom: none;
 
-                    &.text{
+                    &.text {
                       width: 100px;
                       border-right: none;
                     }
                   }
-
                 }
               }
             }
@@ -806,11 +839,16 @@
             font-family: "gothic 14";
             color: #fff;
 
-            @media (max-height: 1536px) {
+            @media (max-width: 1536px) {
               font-size: 20px;
               margin-left: 30px;
             }
 
+            @media (max-width: 1200px) {
+              font-size: 20px;
+              margin-left: 0;
+              margin-left: 10px;
+            }
             &.buisness {
               color: #5e76ba;
             }
@@ -849,7 +887,6 @@
       .station-statistic-graph {
         width: 100%;
         display: flex;
-
         flex-direction: column;
         gap: 20px;
         align-items: end;
@@ -937,9 +974,25 @@
 
       .staion-statistic-graph-failure {
         width: 100%;
+        position: relative;
         display: flex;
+
+        .slider-bar {
+          position: absolute;
+          left: 10px;
+          z-index: 10;
+
+          .switch-values {
+            color: #8faadc;
+            font-family: "gothic 12";
+            font-size: 15px;
+          }
+        }
         .left {
           width: 50%;
+          @media (max-width: 800px) {
+            width: 100%;
+          }
           .staion-failure-type {
             height: 50%;
             border: 1px solid #2b3a63;

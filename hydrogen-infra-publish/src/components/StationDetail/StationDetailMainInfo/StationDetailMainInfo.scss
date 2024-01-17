@@ -25,12 +25,16 @@
 
         @media (max-width: 1200px) {
           width: 100%;
+
         }
 
         &.station-detail-info-left-info{
           padding: 0;
           width: 65%;
-          
+          @media (max-width: 1200px) {
+            width: 100%;
+            border-top: 1px solid #2b3a63;
+          }
         }
 
         .station-img-container {

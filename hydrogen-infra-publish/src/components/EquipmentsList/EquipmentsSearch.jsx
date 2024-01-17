@@ -1,17 +1,17 @@
-import { CiSearch } from "react-icons/ci";
-import { GrPowerReset } from "react-icons/gr";
+
 import ko from "date-fns/locale/ko";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import { useMediaQuery } from "react-responsive";
 import "../../style/SearchContainer.scss";
+import SearchButtons from "../SearchButtons/SearchButtons";
 
 function EquipmentsSearch() {
   const [registDate, setRegistDate] = useState(null);
   const [installationDate, setInstallationDate] = useState(null);
   const [productionDate, setProductionDate] = useState(null);
   const [startDate, setStartDate] = useState(null);
-  const isSmallScreen = useMediaQuery({ maxWidth: 1100 });
+  const isSmallScreen = useMediaQuery({ maxWidth: 1200 });
   return (
     <div className="search">
       <img className="search-img" src="/img/search.png" />
@@ -59,24 +59,7 @@ function EquipmentsSearch() {
         <label>관리번호</label>
         <input type="text" className="custom-input-default "></input>
       </div>
-      {!isSmallScreen ? (
-        <>
-          <div className="search-input-item">
-            <button className="button-search">
-              <CiSearch size={24} />
-              검색
-            </button>
-          </div>
-          <div className="search-input-item">
-            <button className="button-search">
-              <GrPowerReset size={24} />
-              초기화
-            </button>
-          </div>
-        </>
-      ) : (
-        ""
-      )}
+      {!isSmallScreen ? <SearchButtons /> : ""}
       <div className="search-input-item">
         <label>시설종류</label>
         <select className="custom-select">
@@ -126,7 +109,8 @@ function EquipmentsSearch() {
       <div className="search-input-item" style={{ zIndex: "20" }}>
         <label>가동일</label>
         <DatePicker
-          //   locale={ko}
+           locale={ko}
+           dateFormat="yyyy-MM-dd"
           selected={productionDate}
           placeholderText="선택"
           onChange={(date) => setProductionDate(date)}
@@ -144,23 +128,8 @@ function EquipmentsSearch() {
           <option>광주</option>
         </select>
       </div>
-      
-      {
-        isSmallScreen ? <>
-              <div className="search-input-item">
-        <button className="button-search">
-          <CiSearch size={24} />
-          검색
-        </button>
-      </div>
-      <div className="search-input-item">
-        <button className="button-search">
-          <GrPowerReset size={24} />
-          초기화
-        </button>
-      </div>
-        </> : ""
-      }
+
+      {isSmallScreen ? <SearchButtons /> : ""}
     </div>
   );
 }

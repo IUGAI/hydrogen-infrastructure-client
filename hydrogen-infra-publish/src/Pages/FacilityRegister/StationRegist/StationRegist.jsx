@@ -1,18 +1,19 @@
 import { SiMicrosoftexcel } from "react-icons/si";
-
 import "./StationRegist.scss";
-
+import { useMediaQuery } from "react-responsive";
 import StationRegister from "../../../components/StationRegister/StationRegister";
 import BuisnessRegister from "../../../components/StationRegister/BuisnessRegister";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function StationRegist() {
   const [show, setshow] = useState(true);
+  const buinessRef = useRef(null);
+  const isSmallScreen = useMediaQuery({ maxWidth: 1200 });
   return (
     <div
       className={`station-regist-content-main`}
     >
-      <div className={`station-regist-header ${show ? "hide" : ""} `}>
+      <div className={`station-regist-header ${!isSmallScreen ? "hide" : ""} `}>
         <span>사업소 등록</span>
         <SiMicrosoftexcel size={24} color="#576dad" />
       </div>
@@ -21,7 +22,7 @@ function StationRegist() {
         <StationRegister show={show} setshow={setshow} />
       </div>
       <div className={`station-regist-content ${show ? "hide" : ""}`}>
-        <BuisnessRegister show={show} />
+        <BuisnessRegister show={show} ref={buinessRef} />
       </div>
       </div>
 

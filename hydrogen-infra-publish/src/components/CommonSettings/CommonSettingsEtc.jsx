@@ -100,7 +100,6 @@ function CommonSettingsEtc() {
         </div>
       </div>
 
-      <div className="common-settings-alarm-right"></div>
     </div>
   );
 }

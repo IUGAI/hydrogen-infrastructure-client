@@ -166,7 +166,7 @@ function MaterialMainList() {
         <RiDeleteBin6Line
           style={{ cursor: "pointer" }}
           size={24}
-          color={hoveredIcon === 2 ? "#fff" : "#576dad"}
+          color={hoveredIcon === 3 ? "#fff" : "#576dad"}
         />
       ),
       text: "삭제",

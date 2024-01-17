@@ -9,9 +9,12 @@ import CommonSettingsAlarm from "../../../components/CommonSettings/CommonSettin
 import CommonSettingsMaterials from "../../../components/CommonSettings/CommonSettingsMaterials";
 import CommonSettingsEmail from "../../../components/CommonSettings/CommonSettingsEmail";
 import CommonSettingsEtc from "../../../components/CommonSettings/CommonSettingsEtc";
+import { useMediaQuery } from "react-responsive";
 
 function CommonSetting() {
   const [menuState, setMenuState] = useState("alarm-setting");
+  const isSmallScreen = useMediaQuery({ maxWidth: 1200 });
+  const isMobileScreen = useMediaQuery({ maxWidth: 900 });
 
   const handleItemMenuGraph = (state) => {
     setMenuState(state);
@@ -28,7 +31,11 @@ function CommonSetting() {
             <img src="./img/marker.png" className="img-marker" />
             <div className="asideheader">
               <span className="station-title-kor">설정</span>
-              <span className="station-tile-eng">REGISTER</span>
+              {isSmallScreen ? (
+                ""
+              ) : (
+                <span className="station-tile-eng">REGISTER</span>
+              )}
             </div>
             <div
               className={`aside-item ${
@@ -36,7 +43,8 @@ function CommonSetting() {
               }`}
               onClick={() => handleItemMenuGraph("alarm-setting")}
             >
-              <span>알람 설정</span>
+              {isMobileScreen ? "" : <span>알람 설정</span>}
+
               <IoNotificationsSharp
                 color={`${menuState === "alarm-setting" ? "#fff" : "#8faadc"}`}
                 size={20}
@@ -48,7 +56,7 @@ function CommonSetting() {
               }`}
               onClick={() => handleItemMenuGraph("matterialClassification")}
             >
-              <span>자재 분류</span>
+              {isMobileScreen ? "" : <span>자재 분류</span>}
               <SiMaterialdesignicons
                 color={`${
                   menuState === "matterialClassification" ? "#fff" : "#8faadc"
@@ -60,7 +68,8 @@ function CommonSetting() {
               className={`aside-item ${menuState === "email" ? "active" : ""}`}
               onClick={() => handleItemMenuGraph("email")}
             >
-              <span>이메일 설정</span>
+              {isMobileScreen ? "" : <span>이메일 설정</span>}
+
               <MdOutlineEmail
                 color={`${menuState === "email" ? "#fff" : "#8faadc"}`}
                 size={20}
@@ -72,7 +81,8 @@ function CommonSetting() {
               }`}
               onClick={() => handleItemMenuGraph("common-settings")}
             >
-              <span>기타 설정</span>
+              {isMobileScreen ? "" : <span>기타 설정</span>}
+
               <BsConeStriped
                 color={`${
                   menuState === "common-settings" ? "#fff" : "#8faadc"

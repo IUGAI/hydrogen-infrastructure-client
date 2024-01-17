@@ -9,6 +9,7 @@ import { GrPowerReset } from "react-icons/gr";
 import DatePicker from "react-datepicker";
 import { DataGrid } from "@mui/x-data-grid";
 import { useMediaQuery } from "react-responsive";
+import ko from "date-fns/locale/ko";
 
 const columns = [
   {
@@ -90,7 +91,8 @@ function MaterialHistoryInfo() {
         <div className="search-input-item">
           <label>작업일</label>
           <DatePicker
-            //   locale={ko}
+            locale={ko}
+            dateFormat="yyyy-MM-dd"
             selected={startDate}
             placeholderText="선택"
             onChange={(date) => setStartDate(date)}

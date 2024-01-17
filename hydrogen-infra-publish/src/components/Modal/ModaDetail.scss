@@ -10,7 +10,11 @@
     width: 1500px;
 
     @media (max-width: 1536px) {
-      width: 900px;
+      width: 750px;
+    }
+
+    @media (max-width: 600px) {
+      width: 400px;
     }
   }
 
@@ -290,6 +294,18 @@
       gap: 10px;
       grid-template-rows: 1fr 1fr;
 
+      @media (max-width: 800px){
+        display: flex;
+        height: 150px;
+        overflow: auto;
+        flex-direction: column;
+
+        &::-webkit-scrollbar {
+          width: 6px;
+          background-color: #1c2641;
+        }
+      }
+
       &.material-add-modal {
         padding: 20px 30px;
       }
@@ -308,7 +324,7 @@
         }
 
         .custom-select {
-          width: 100%;
+          width: 93%;
           border: 1px solid #2b3a63;
           padding: 10px;
           color: #8faadc;
@@ -322,7 +338,7 @@
           }
         }
         .custom-input-default {
-          width: 92%;
+          width: 85%;
           padding: 10px;
           color: #fff;
           border: 1px solid #2b3a63;
@@ -330,13 +346,17 @@
           border-radius: 5px;
           background-color: #212c4b;
 
+          @media (max-width: 1536px){
+            width: 90%;
+          }
+
           &:focus {
             outline: none;
             border-color: #8faadc;
           }
         }
         .custom-datepicker {
-          width: 92%;
+          width: 85%;
           border: 1px solid #2b3a63;
           padding: 10px;
           color: #8faadc;
@@ -355,7 +375,7 @@
           }
 
           @media (max-width: 1536px) {
-            width: 89%;
+            width: 90%;
           }
         }
       }

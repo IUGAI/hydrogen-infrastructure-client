@@ -2,29 +2,31 @@ import { useState } from "react";
 import "./Register.scss";
 import ModalDefault from "../../components/Modal/ModalDefault";
 import { useNavigate } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 
 function Register() {
   const [open, setOpen] = useState(false);
- const navigate = useNavigate();
+  const isSmallScreen = useMediaQuery({ maxWidth: 800 });
+  const navigate = useNavigate();
 
   const handleClose = () => {
     setOpen(false);
   };
 
   const handleRegist = () => {
-    setOpen(true)
-  }
+    setOpen(true);
+  };
 
   const handleClickGoToLogin = () => {
-    setOpen(false)
-    navigate("/login")
+    setOpen(false);
+    navigate("/login");
   };
 
   return (
     <div className="register-content">
       <ModalDefault
         open={open}
-        state={'success'}
+        state={"success"}
         handleClose={handleClose}
         modalTitle={"가입 신청 성공"}
         modalDsecriptions={
@@ -164,44 +166,51 @@ function Register() {
               </div>
 
               <div className="input-item-station-buttons">
-                <button className="button-submit-form-edit-user" onClick={handleRegist}>
+                <button
+                  className="button-submit-form-edit-user"
+                  onClick={handleRegist}
+                >
                   가입하기
                 </button>
               </div>
             </div>
           </div>
-          <div className="right">
-            <img
-              src="/img/register-1.png"
-              className="img-regist-1"
-              alt="register-1"
-            />
-            <img
-              src="/img/register-2.png"
-              className="img-regist-2"
-              alt="register-2"
-            />
-            <img
-              src="/img/register-6.png"
-              className="img-regist-6"
-              alt="register-6"
-            />
-            <img
-              src="/img/register-3.png"
-              className="img-regist-3"
-              alt="register-3"
-            />
-            <img
-              src="/img/register-4.png"
-              className="img-regist-4"
-              alt="register-4"
-            />
-            <img
-              src="/img/register-5.png"
-              className="img-regist-5"
-              alt="register-5"
-            />
-          </div>
+          {isSmallScreen ? (
+            ""
+          ) : (
+            <div className="right">
+              <img
+                src="/img/register-1.png"
+                className="img-regist-1"
+                alt="register-1"
+              />
+              <img
+                src="/img/register-2.png"
+                className="img-regist-2"
+                alt="register-2"
+              />
+              <img
+                src="/img/register-6.png"
+                className="img-regist-6"
+                alt="register-6"
+              />
+              <img
+                src="/img/register-3.png"
+                className="img-regist-3"
+                alt="register-3"
+              />
+              <img
+                src="/img/register-4.png"
+                className="img-regist-4"
+                alt="register-4"
+              />
+              <img
+                src="/img/register-5.png"
+                className="img-regist-5"
+                alt="register-5"
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

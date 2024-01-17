@@ -8,6 +8,7 @@ import { CiSearch } from "react-icons/ci";
 import { GrPowerReset } from "react-icons/gr";
 import DatePicker from "react-datepicker";
 import { DataGrid } from "@mui/x-data-grid";
+import ko from "date-fns/locale/ko";
 
 const columns = [
   {
@@ -57,20 +58,30 @@ const columns = [
     headerAlign: "center",
     width: 200,
   },
-
 ];
 
 const rows = [];
 
 function StationDetailNoticeList() {
   const [startDate, setStartDate] = useState(null);
+  const [alarmNegative, setAlaramNegative] = useState(false);
+  const [alarmChecked, setAlaramChecked] = useState(false);
+
+  const handleSetAlaramNegative = () => {
+    setAlaramNegative(!alarmNegative);
+  };
+  const handleSetAlaramCheked = () => {
+    setAlaramChecked(!alarmChecked);
+  };
+
   return (
     <>
       <div className="station-detail-equipments">
         <div className="search-input-item">
           <label>등록일</label>
           <DatePicker
-            //   locale={ko}
+            locale={ko}
+            dateFormat="yyyy-MM-dd"
             selected={startDate}
             placeholderText="선택"
             onChange={(date) => setStartDate(date)}
@@ -83,10 +94,9 @@ function StationDetailNoticeList() {
             <option selected disabled>
               선택
             </option>
-            <option>서울</option>
-            <option>부산</option>
-            <option>제주</option>
-            <option>광주</option>
+            <option>중요</option>
+            <option>보통</option>
+            <option>낮음</option>
           </select>
         </div>
 
@@ -96,22 +106,35 @@ function StationDetailNoticeList() {
             <option selected disabled>
               선택
             </option>
-            <option>서울</option>
-            <option>부산</option>
-            <option>제주</option>
-            <option>광주</option>
+            <option>고장</option>
           </select>
         </div>
         <div className="search-input-item">
           <label>확인 유무</label>
           <div className="button-container-custum">
-            <button className="custom-button-radio">안함</button>
-            <button className="custom-button-radio">학인</button>
+            <button
+              className={
+                alarmNegative
+                  ? "custom-button-radio active"
+                  : "custom-button-radio"
+              }
+              onClick={handleSetAlaramNegative}
+            >
+              안함
+            </button>
+            <button
+              className={
+                alarmChecked
+                  ? "custom-button-radio active"
+                  : "custom-button-radio"
+              }
+              onClick={handleSetAlaramCheked}
+            >
+              학인
+            </button>
           </div>
         </div>
-        <div className="search-input-item hidden">
- 
-        </div>
+        <div className="search-input-item hidden"></div>
         <div className="search-input-item">
           <button className="button-search">
             <CiSearch size={24} />
