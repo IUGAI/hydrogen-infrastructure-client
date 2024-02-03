@@ -1,14 +1,9 @@
 import Checkbox from "@mui/material/Checkbox";
 import React, { useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-
-
-
-
-
+import { useMediaQuery } from "react-responsive";
 
 function CommonSettingsEmail() {
-
   const [rows, setRows] = useState([
     {
       id: 1,
@@ -146,10 +141,15 @@ function CommonSettingsEmail() {
       level_3: true,
     },
   ]);
+  const isSmallScreen = useMediaQuery({ maxWidth: 1200 });
 
   const handleCheckBox = (id, fieldid) => {
-    setRows((prevRows) => prevRows.map((rows) => rows.id === id ? {...rows, [fieldid] : !rows[fieldid]} : rows))
-  }
+    setRows((prevRows) =>
+      prevRows.map((rows) =>
+        rows.id === id ? { ...rows, [fieldid]: !rows[fieldid] } : rows
+      )
+    );
+  };
   const columns = [
     {
       field: "name",
@@ -231,7 +231,6 @@ function CommonSettingsEmail() {
     },
   ];
 
-
   return (
     <div className="common-settings-alarm">
       <div className="common-settings-email">
@@ -240,7 +239,11 @@ function CommonSettingsEmail() {
             시설물에 관한 중요 또는 일반 알람에 대해 사용자에게 메시지를
             전달합니다. <p>소리, 주기, 메시지, 대상 등을 설정할 수 있습니다.</p>
           </span>
-          <button className="button-submit-form">저장</button>
+          {isSmallScreen ? (
+            " "
+          ) : (
+            <button className="button-submit-form">저장</button>
+          )}
         </div>
         <div className="email-content">
           <label>대표 이메일 (수신)</label>
@@ -261,6 +264,11 @@ function CommonSettingsEmail() {
             className="custom-datagrid"
           />
         </div>
+        {!isSmallScreen ? (
+            " "
+          ) : (
+            <button className="button-submit-form">저장</button>
+          )}
       </div>
     </div>
   );

@@ -2,7 +2,6 @@ import "./StationDetailMainInfo.scss";
 import { GoogleMap, MarkerF } from "@react-google-maps/api";
 import { mapOptions } from "../../../data/OptionsMapDetail";
 const apikey = "AIzaSyChEBMFjqOmWaZk3pixSK7GU0dhEUi_uI0";
-import { stations, buisness } from "../../../data/Mapdata";
 import { useJsApiLoader } from "@react-google-maps/api";
 import React, { useEffect, useState } from "react";
 
@@ -17,7 +16,7 @@ function StationDetailMainInfo({
   center,
   buisness_st,
 }) {
-  const [markers, setMarkers] = useState(stations[0]);
+
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: apikey,

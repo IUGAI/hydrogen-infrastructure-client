@@ -1,8 +1,13 @@
 import DatePicker from "react-datepicker";
+import ko from "date-fns/locale/ko";
 import { useState } from "react";
+import { useMediaQuery } from "react-responsive";
+import '../../components/UserDetail/EditUser.scss'
 
 function EquipmentRegister() {
   const [startDate, setStartDate] = useState(null);
+  const isSmallScreen = useMediaQuery({ maxWidth: 1200 });
+
   return (
     <>
       <div className="station-regist-content">
@@ -63,7 +68,7 @@ function EquipmentRegister() {
                 type="text"
                 className="custom-input-default-search border-left active"
               ></input>
-              <input className="input-weight"   disabled value="kg" />
+              <input className="input-weight" disabled value="kg" />
             </div>
             <div className="input-item-station-add">
               <label>
@@ -143,7 +148,8 @@ function EquipmentRegister() {
               </label>
               <div className="input_item_lat_lng">
                 <DatePicker
-                  //   locale={ko}
+                  locale={ko}
+                  dateFormat="yyyy-MM-dd"
                   selected={startDate}
                   placeholderText="선택"
                   onChange={(date) => setStartDate(date)}
@@ -155,7 +161,8 @@ function EquipmentRegister() {
               <label>가동일</label>
               <div className="input_item_lat_lng">
                 <DatePicker
-                  //   locale={ko}
+                  locale={ko}
+                  dateFormat="yyyy-MM-dd"
                   selected={startDate}
                   placeholderText="선택"
                   onChange={(date) => setStartDate(date)}
@@ -182,7 +189,8 @@ function EquipmentRegister() {
               <label>제조일</label>
               <div className="input_item_lat_lng">
                 <DatePicker
-                  //   locale={ko}
+                       locale={ko}
+                       dateFormat="yyyy-MM-dd"
                   selected={startDate}
                   placeholderText="선택"
                   onChange={(date) => setStartDate(date)}
@@ -200,7 +208,8 @@ function EquipmentRegister() {
               </label>
               <div className="input_item_lat_lng">
                 <DatePicker
-                  //   locale={ko}
+                locale={ko}
+                dateFormat="yyyy-MM-dd"
                   selected={startDate}
                   placeholderText="선택"
                   onChange={(date) => setStartDate(date)}
@@ -209,9 +218,7 @@ function EquipmentRegister() {
               </div>
             </div>
             <div className="input-item-station-add">
-              <label>
-                담당자
-              </label>
+              <label>담당자</label>
               <select className="custom-select-default">
                 <option selected disabled>
                   선택해주세요
@@ -219,7 +226,7 @@ function EquipmentRegister() {
                 <option>서울</option>
               </select>
             </div>
-            <button className="button-submit-form add-equipm">등록하기</button>
+            <button className={ isSmallScreen ? "button-submit-form" : "button-submit-form add-equipm"}>등록하기</button>
           </div>
         </div>
       </div>

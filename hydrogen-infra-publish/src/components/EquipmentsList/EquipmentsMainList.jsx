@@ -108,8 +108,14 @@ const rows = equipments.map((item) => ({
 
 function EquipmentsMainList() {
   const [selectedItems, setSelectedItems] = useState([]);
+  const [hoveredIcon, setHoveredIcon] = useState(null);
   const navigate = useNavigate();
 
+  const handleHover = (index) => {
+    setHoveredIcon(index);
+  };
+
+  
   const handleItemSelection = (selectionModel) => {
     setSelectedItems(selectionModel);
   };
@@ -122,31 +128,72 @@ function EquipmentsMainList() {
       navigate(`/equipments/${selectedItems[0]}`);
     }
   };
+
+  const iconData = [
+    {
+      icon: (
+        <IoMdSearch
+          size={24}
+          style={{ cursor: "pointer" }}
+          color={hoveredIcon === 0 ? "#fff" : "#576dad"}
+        />
+      ),
+      text: "상세 정보",
+      onClick: handleNavigatetoDetail,
+    },
+    {
+      icon: (
+        <DiMootoolsBadge
+          size={34}
+          style={{ cursor: "pointer" , transform: `rotate(32deg)`}}
+          color={hoveredIcon === 1 ? "#fff" : "#576dad"}
+        />
+      ),
+      text: "작업 등록",
+      // onClick: handleGrEditClick,
+    },
+    {
+      icon: (
+        <IoSaveOutline
+          style={{ cursor: "pointer" }}
+          size={24}
+          color={hoveredIcon === 2 ? "#fff" : "#576dad"}
+        />
+      ),
+      text: "저장",
+      // onClick: handleClickGotoEditPAge,
+    },
+    {
+      icon: (
+        <RiDeleteBin6Line
+          style={{ cursor: "pointer" }}
+          size={24}
+          color={hoveredIcon === 2 ? "#fff" : "#576dad"}
+        />
+      ),
+      text: "삭제",
+      // onClick: handleClickGotoEditPAge,
+    },
+  ];
+
   return (
     <div className="station-list">
       <div className="header-table">
         <div className="left">
-          <div className="icon-header">
-            <IoMdSearch
-              style={{ cursor: "pointer" }}
-              size={24}
-              color="#576dad"
-              onClick={handleNavigatetoDetail}
-            />
-          </div>
-          <div className="icon-header">
-            <DiMootoolsBadge
-              size={34}
-              color="#576dad"
-              style={{ transform: `rotate(32deg)` }}
-            />
-          </div>
-          <div className="icon-header">
-            <IoSaveOutline size={24} color="#576dad" />
-          </div>
-          <div className="icon-header">
-            <RiDeleteBin6Line size={24} color="#576dad" />
-          </div>
+          {iconData.map((data, index) => (
+            <div
+              key={index}
+              className="icon-header"
+              onMouseEnter={() => handleHover(index)}
+              onMouseLeave={() => handleHover(null)}
+              onClick={data.onClick}
+            >
+              {hoveredIcon === index && (
+                <span className="tooltip">{data.text}</span>
+              )}
+              {data.icon}
+            </div>
+          ))}
         </div>
         <div className="right">
           <div className="icon-header">

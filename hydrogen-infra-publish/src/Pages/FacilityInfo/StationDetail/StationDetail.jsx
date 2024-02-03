@@ -11,6 +11,15 @@ import { BsConeStriped } from "react-icons/bs";
 import { BsTools } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
 import { FaBookmark } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
+import { FaLocationArrow } from "react-icons/fa";
+import { FaPhone } from "react-icons/fa6";
+import { FaUserTie } from "react-icons/fa6";
+import { GrUserWorker } from "react-icons/gr";
+import { FaCertificate } from "react-icons/fa";
+import { TbCertificate } from "react-icons/tb";
+import { BiSolidBusiness } from "react-icons/bi";
+import { MdOutlineNumbers } from "react-icons/md";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import StationDetailMainInfo from "../../../components/StationDetail/StationDetailMainInfo/StationDetailMainInfo";
@@ -29,37 +38,37 @@ const item_info = [
     text: "서울 A 사업소",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaLocationArrow color="#8da7d9" />,
     title: "주소",
     text: "서울특별시 금천구 시흥대로 321",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaLocationDot color="#8da7d9" />,
     title: "위도/경도",
     text: "123.00 / 245.00",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaPhone color="#8da7d9" />,
     title: "전화번호",
     text: "02-0000-0000",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <GrUserWorker color="#8da7d9" />,
     title: "관리자(정)",
     text: "홍길동 | 010-9632-2158",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaUserTie color="#8da7d9" />,
     title: "관리자(부)",
     text: "이몽룡 | 010-1258-7526",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <TbCertificate color="#8da7d9" />,
     title: "인가일",
     text: "2022.12.20",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaCertificate color="#8da7d9" />,
     title: "개시일",
     text: "2023.01.01",
   },
@@ -67,32 +76,32 @@ const item_info = [
 
 const item_info_mid = [
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <BiSolidBusiness color="#8da7d9" />,
     title: "사업자",
     text: "수소솔루션(주)",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <MdOutlineNumbers color="#8da7d9" />,
     title: "사업자등록번호",
     text: "000-00-00000",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaLocationArrow color="#8da7d9" />,
     title: "본사 주소",
     text: "서울시 00구 00로 00길 00",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaUserTie color="#8da7d9" />,
     title: "대표 이사",
     text: "이 순신",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaPhone color="#8da7d9" />,
     title: "전화번호",
     text: "02-0000-0001",
   },
   {
-    icon: <FaBookmark color="#8da7d9" />,
+    icon: <FaUser color="#8da7d9" />,
     title: "실무 담당자",
     text: "권물 | 010-4369-8745",
   },
@@ -224,7 +233,7 @@ function StationDetail() {
                 color={`${navitem === "equipments" ? "#fff" : "#5e76ba"}`}
                 size={24}
               />
-              <span>시설물</span>
+              <span  className="info-nav-item">시설물</span>
             </div>
             <span className="item-quantity">5</span>
           </div>
@@ -237,7 +246,7 @@ function StationDetail() {
                 color={`${navitem === "materials" ? "#fff" : "#5e76ba"}`}
                 size={24}
               />
-              <span>자재</span>
+              <span  className="info-nav-item">자재</span>
             </div>
             <span className="item-quantity">200</span>
           </div>
@@ -252,7 +261,7 @@ function StationDetail() {
                 color={`${navitem === "alarm-list" ? "#fff" : "#5e76ba"}`}
                 size={24}
               />
-              <span>알람 내역</span>
+              <span  className="info-nav-item">알람 내역</span>
             </div>
             <span className="item-quantity">50</span>
           </div>
@@ -267,7 +276,7 @@ function StationDetail() {
                 color={`${navitem === "break-list" ? "#fff" : "#5e76ba"}`}
                 size={24}
               />
-              <span>고장 내역</span>
+              <span  className="info-nav-item">고장 내역</span>
             </div>
             <span className="item-quantity">9</span>
           </div>
@@ -280,7 +289,7 @@ function StationDetail() {
                 color={`${navitem === "task-list" ? "#fff" : "#5e76ba"}`}
                 size={24}
               />
-              <span>작업 내역</span>
+              <span  className="info-nav-item">작업 내역</span>
             </div>
             <span className="item-quantity">26</span>
           </div>
@@ -293,7 +302,7 @@ function StationDetail() {
                 color={`${navitem === "user" ? "#fff" : "#5e76ba"}`}
                 size={24}
               />
-              <span>사용자</span>
+              <span className="info-nav-item">사용자</span>
             </div>
             <span className="item-quantity">4</span>
           </div>

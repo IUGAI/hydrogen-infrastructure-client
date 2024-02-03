@@ -1,4 +1,5 @@
 import DatePicker from "react-datepicker";
+import ko from "date-fns/locale/ko";
 import { DataGrid } from "@mui/x-data-grid";
 import { useState } from "react";
 
@@ -81,7 +82,8 @@ function UserEquipments() {
         <div className="search-input-item">
           <label>설치일</label>
           <DatePicker
-            //   locale={ko}
+          locale={ko}
+          dateFormat="yyyy-MM-dd"
             selected={startDate}
             placeholderText="선택"
             onChange={(date) => setStartDate(date)}

@@ -8,152 +8,142 @@ import { CiSearch } from "react-icons/ci";
 import { GrPowerReset } from "react-icons/gr";
 import DatePicker from "react-datepicker";
 import { DataGrid } from "@mui/x-data-grid";
-
+import ko from "date-fns/locale/ko";
+import "../../../components/StationDetail/StationDetailEquipments/StationDetailEquipments.scss";
 
 const columns = [
-    {
-      field: "id",
-      headerName: "아이디",
-      width: 150,
-      sortable: false,
-      headerAlign: "center",
-      align: "center",
-    },
-    {
-      field: "regist_date",
-      headerName: "등록일",
-      width: 150,
-      sortable: false,
-      headerAlign: "center",
-      align: "center",
-    },
-    {
-      field: "materials_name",
-      headerName: "자재명",
-      width: 150,
-      sortable: false,
-      headerClassName: "super-app-theme--header",
-      headerAlign: "center",
-      align: "center",
-    },
-    {
-      field: "major_cls",
-      headerName: "대분류",
-      width: 150,
-      headerAlign: "center",
-      align: "center",
-    },
-    {
-      field: "middle_cls",
-      headerName: "중분류",
-      width: 150,
-      align: "center",
-      headerAlign: "center",
-    },
-    {
-      field: "sub_cls",
-      headerName: "소분류",
-      description: "This column has a value getter and is not sortable.",
-      align: "center",
-      headerAlign: "center",
-      width: 200,
-    },
-    {
-      field: "lot_number",
-      headerName: "LOT번호",
-      width: 150,
-      align: "center",
-      headerAlign: "center",
+  {
+    field: "id",
+    headerName: "아이디",
+    width: 150,
+    sortable: false,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    field: "regist_date",
+    headerName: "등록일",
+    width: 150,
+    sortable: false,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    field: "materials_name",
+    headerName: "자재명",
+    width: 150,
+    sortable: false,
+    headerClassName: "super-app-theme--header",
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    field: "major_cls",
+    headerName: "대분류",
+    width: 150,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    field: "middle_cls",
+    headerName: "중분류",
+    width: 150,
+    align: "center",
+    headerAlign: "center",
+  },
+  {
+    field: "sub_cls",
+    headerName: "소분류",
+    description: "This column has a value getter and is not sortable.",
+    align: "center",
+    headerAlign: "center",
+    width: 200,
+  },
+  {
+    field: "lot_number",
+    headerName: "LOT번호",
+    width: 150,
+    align: "center",
+    headerAlign: "center",
+  },
+  {
+    field: "storage_area",
+    headerName: "보관장소",
+    align: "center",
+    headerAlign: "center",
+    width: 200,
+  },
+  {
+    field: "quantity",
+    headerName: "수량",
+    align: "center",
+    headerAlign: "center",
+    width: 200,
+  },
+];
 
-        
-    },
-    {
-      field: "storage_area",
-      headerName: "보관장소",
-      align: "center",
-      headerAlign: "center",
-      width: 200,
-    },
-    {
-      field: "quantity",
-      headerName: "수량",
-      align: "center",
-      headerAlign: "center",
-      width: 200,
-    },
-  ];
-  
- const rows = [];
-
+const rows = [];
 
 function StationDetailMaterial() {
-    const [startDate, setStartDate] = useState(null);
-    return (
-        <>
-        <div className="station-detail-equipments">
-          <div className="search-input-item">
-            <label>자재명</label>
-            <input type="text" className="custom-input-default "></input>
-          </div>
-          <div className="search-input-item">
-            <label>대분류</label>
-            <select className="custom-select">
-              <option selected disabled>
-                선택
-              </option>
-              <option>생산</option>
-              <option>저장</option>
-              <option>충전</option>
-            </select>
-          </div>
-          <div className="search-input-item">
-            <label>중분류</label>
-            <select className="custom-select">
-              <option selected disabled>
-                선택
-              </option>
-              <option>생산</option>
-              <option>저장</option>
-              <option>충전</option>
-            </select>
-          </div>
-          <div className="search-input-item">
-            <label>소분류</label>
-            <select className="custom-select">
-              <option selected disabled>
-                선택
-              </option>
-              <option>서울</option>
-              <option>부산</option>
-              <option>제주</option>
-              <option>광주</option>
-            </select>
-          </div>
-  
-          <div className="search-input-item">
-            <label>등록일</label>
-            <DatePicker
-              //   locale={ko}
-              selected={startDate}
-              placeholderText="선택"
-              onChange={(date) => setStartDate(date)}
-              className="custom-datepicker"
-            />
-          </div>
-          <div className="search-input-item">
-            <button className="button-search">
-              <CiSearch size={24} />
-              검색
-            </button>
-          </div>
-          <div className="search-input-item">
-            <button className="button-search">
-              <GrPowerReset size={24} />
-              초기화
-            </button>
-          </div>
+  const [startDate, setStartDate] = useState(null);
+  return (
+    <>
+      <div className="station-detail-equipments">
+        <div className="search-input-item">
+          <label>자재명</label>
+          <input type="text" className="custom-input-default "></input>
         </div>
-        <div className="station-list equipments">
+        <div className="search-input-item">
+          <label>대분류</label>
+          <select className="custom-select">
+            <option selected disabled>
+              선택
+            </option>
+          </select>
+        </div>
+        <div className="search-input-item">
+          <label>중분류</label>
+          <select className="custom-select">
+            <option selected disabled>
+              선택
+            </option>
+
+          </select>
+        </div>
+        <div className="search-input-item">
+          <label>소분류</label>
+          <select className="custom-select">
+            <option selected disabled>
+              선택
+            </option>
+
+          </select>
+        </div>
+        <div className="search-input-item">
+          <label>등록일</label>
+          <DatePicker
+            locale={ko}
+            dateFormat="yyyy-MM-dd"
+            selected={startDate}
+            placeholderText="선택"
+            onChange={(date) => setStartDate(date)}
+            className="custom-datepicker"
+          />
+        </div>
+        <div className="search-input-item">
+          <button className="button-search">
+            <CiSearch size={24} />
+            검색
+          </button>
+        </div>
+        <div className="search-input-item">
+          <button className="button-search">
+            <GrPowerReset size={24} />
+            초기화
+          </button>
+        </div>
+      </div>
+      <div className="station-list equipments">
         <div className="header-table">
           <div className="left">
             <div className="icon-header">
@@ -198,8 +188,8 @@ function StationDetailMaterial() {
           />
         </div>
       </div>
-      </>
-    )
+    </>
+  );
 }
 
-export default StationDetailMaterial
+export default StationDetailMaterial;

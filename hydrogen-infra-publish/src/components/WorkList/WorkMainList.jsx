@@ -85,6 +85,7 @@ const columns = [
 
 function WorkMainList() {
   const [selectedItems, setSelectedItems] = useState([]);
+  const [hoveredIcon, setHoveredIcon] = useState(null);
   const [open, setOpen] = useState(false);
   const [rows, setRows] = useState([
     {
@@ -101,7 +102,9 @@ function WorkMainList() {
   ]);
 
   const navigate = useNavigate();
-
+  const handleHover = (index) => {
+    setHoveredIcon(index);
+  };
   const handleItemSelection = (selectionModel) => {
     setSelectedItems(selectionModel);
   };
@@ -124,7 +127,7 @@ function WorkMainList() {
     }
   };
 
-  const handleEditReport= () =>{
+  const handleEditReport = () => {
     if (selectedItems.length > 1) {
       alert("한개 만 선택해주세요!");
     } else if (selectedItems.length === 0) {
@@ -132,17 +135,76 @@ function WorkMainList() {
     } else {
       navigate(`/work-report-edit/${selectedItems[0]}`);
     }
-  }
+  };
 
   const handleNavigatetoReportRegist = () => {
     if (selectedItems.length > 1) {
       alert("한개 만 선택해주세요!");
     } else if (selectedItems.length === 0) {
-      alert("사업소 선택해 주세요");
+      alert("작업 선택해 주세요");
     } else {
       setOpen(true);
     }
   };
+
+  const iconData = [
+    {
+      icon: (
+        <IoMdSearch
+          size={24}
+          color={hoveredIcon === 0 ? "#fff" : "#576dad"}
+          style={{ cursor: "pointer" }}
+        />
+      ),
+      text: "작업 조회",
+      onClick: handleNavigatetoDetail,
+    },
+    {
+      icon: (
+        <IoSaveOutline
+          size={24}
+          style={{ cursor: "pointer" }}
+          color={hoveredIcon === 1 ? "#fff" : "#576dad"}
+        />
+      ),
+      text: "저장",
+      // onClick: handleGrEditClick,
+    },
+    {
+      icon: (
+        <RiDeleteBin6Line
+          size={24}
+          style={{ cursor: "pointer" }}
+          color={hoveredIcon === 2 ? "#fff" : "#576dad"}
+        />
+      ),
+      text: "삭제",
+      // onClick: handleClickGotoEditPAge,
+    },
+    {
+      icon: (
+        <IoPencilSharp
+          size={24}
+          style={{ cursor: "pointer" }}
+          color={hoveredIcon === 3 ? "#fff" : "#576dad"}
+        />
+      ),
+      text: "작업 결과 등록",
+      onClick: handleNavigatetoReportRegist,
+    },
+    {
+      icon: (
+        <FaRegPenToSquare
+          size={24}
+          style={{ cursor: "pointer" }}
+          color={hoveredIcon === 4 ? "#fff" : "#576dad"}
+        />
+      ),
+      text: "결과 수정",
+      onClick: handleEditReport,
+    },
+  ];
+
   return (
     <div className="station-list">
       <ModalDefault
@@ -160,26 +222,20 @@ function WorkMainList() {
       />
       <div className="header-table">
         <div className="left">
-          <div className="icon-header">
-            <IoMdSearch
-              size={24}
-              color="#576dad"
-              onClick={handleNavigatetoDetail}
-              style={{ cursor: "pointer" }}
-            />
-          </div>
-          <div className="icon-header">
-            <IoSaveOutline size={24} color="#576dad" />
-          </div>
-          <div className="icon-header">
-            <RiDeleteBin6Line size={24} color="#576dad" />
-          </div>
-          <div className="icon-header">
-            <IoPencilSharp size={24}  style={{ cursor: "pointer" }} color="#576dad" onClick={handleNavigatetoReportRegist} />
-          </div>
-          <div className="icon-header">
-            <FaRegPenToSquare size={24} style={{ cursor: "pointer" }} color="#576dad" onClick={handleEditReport}/>
-          </div>
+          {iconData.map((data, index) => (
+            <div
+              key={index}
+              className="icon-header"
+              onMouseEnter={() => handleHover(index)}
+              onMouseLeave={() => handleHover(null)}
+              onClick={data.onClick}
+            >
+              {hoveredIcon === index && (
+                <span className="tooltip">{data.text}</span>
+              )}
+              {data.icon}
+            </div>
+          ))}
         </div>
         <div className="right">
           <div className="icon-header">

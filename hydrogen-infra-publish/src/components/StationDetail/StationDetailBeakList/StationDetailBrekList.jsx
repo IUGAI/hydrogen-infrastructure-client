@@ -8,6 +8,7 @@ import { CiSearch } from "react-icons/ci";
 import { GrPowerReset } from "react-icons/gr";
 import DatePicker from "react-datepicker";
 import { DataGrid } from "@mui/x-data-grid";
+import ko from "date-fns/locale/ko";
 
 const columns = [
   {
@@ -94,10 +95,7 @@ function StationDetailBrekList() {
             <option selected disabled>
               선택
             </option>
-            <option>서울</option>
-            <option>부산</option>
-            <option>제주</option>
-            <option>광주</option>
+
           </select>
         </div>
 
@@ -111,7 +109,8 @@ function StationDetailBrekList() {
         <div className="search-input-item">
           <label>등록일</label>
           <DatePicker
-            //   locale={ko}
+            locale={ko}
+            dateFormat="yyyy-MM-dd"
             selected={startDate}
             placeholderText="선택"
             onChange={(date) => setStartDate(date)}
