@@ -37,7 +37,6 @@
       margin: 10px 0;
       display: flex;
       width: 50%;
-      height: 840px;
       background-color: #1c2641;
       @media (max-width: 1200px){
         width: 100%;
@@ -51,9 +50,8 @@
       .station-regist-buissness-add {
         position: relative;
         border-right: 1px solid #253255;
-        height: 100%;
         width: 100%;
-
+     
         
 
         
@@ -160,6 +158,10 @@
               font-size: 14px;
               border-radius: 5px;
               background-color: #212c4b;
+
+              &.reqired{
+                border:  1px solid #ff3333;
+              }
 
               &:focus {
                 outline: none;
@@ -310,7 +312,7 @@
               width: 104%;
               border: 1px solid #2b3a63;
               padding: 10px;
-              color: #5e76ba;
+              color: #fff;
               font-size: 13px;
               border-radius: 5px;
               background-color: #212c4b;
@@ -558,6 +560,7 @@
             color: #fff;
             font-family: "gothic 12";
             padding: 10px 0;
+            margin: 10px 0px;
             background-color: #3c4d7c;
 
             &.add-material {

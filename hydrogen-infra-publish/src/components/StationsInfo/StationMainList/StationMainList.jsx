@@ -8,7 +8,12 @@ import { DataGrid } from "@mui/x-data-grid";
 import { stations } from "../../../data/Mapdata";
 import { useNavigate } from "react-router-dom";
 import { handleItemSelection } from "@mui/base/useList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { deleteStation, getStations } from '../../../services/apiStations'
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import ModalDefault from "../../Modal/ModalDefault";
+
+
 
 const columns = [
   {
@@ -26,6 +31,15 @@ const columns = [
     sortable: false,
     headerAlign: "center",
     align: "center",
+    renderCell: (params) => {
+      // Format the date as needed
+      var formattedDate = null
+      if (params.value !== null){
+       formattedDate = new Date(params.value).toLocaleDateString();
+      } 
+      // Return the formatted date for rendering
+      return <span className="custom-datagrid ">{formattedDate}</span>;
+    },
   },
   {
     field: "district",
@@ -61,6 +75,15 @@ const columns = [
     align: "center",
     headerAlign: "center",
     width: 200,
+    renderCell: (params) => {
+      // Format the date as needed
+      var formattedDate = null
+      if (params.value !== null){
+       formattedDate = new Date(params.value).toLocaleDateString();
+      } 
+      // Return the formatted date for rendering
+      return <span className="custom-datagrid ">{formattedDate}</span>;
+    },
   },
   {
     field: "station_type",
@@ -83,44 +106,73 @@ const columns = [
     headerName: "생상시설",
     align: "center",
     headerAlign: "center",
-    width: 200,
+    width: 120,
   },
   {
     field: "storage_cnt",
     headerName: "저장시설",
     align: "center",
     headerAlign: "center",
-    width: 200,
+    width: 120,
   },
   {
     field: "charging_cnt",
     headerName: "충전시설",
     align: "center",
     headerAlign: "center",
-    width: 200,
+    width: 120,
   },
 ];
 
-const rows = stations.map((item) => ({
-  id: item.id,
-  regist_date: item.regist_date,
-  business: item.buisness_no,
-  district: item.district,
-  station_name: item.name,
-  commencement_date: item.commencement_date,
-  station_type: item.type,
-  production_cnt: item.equipments.filter((equipments) => equipments.type === 1)
-    .length,
-  storage_cnt: item.equipments.filter((equipments) => equipments.type === 2)
-    .length,
-  charging_cnt: item.equipments.filter((equipments) => equipments.type === 3)
-    .length,
-}));
 
 function StationMainList() {
   const [selectedItems, setSelectedItems] = useState([]);
   const [hoveredIcon, setHoveredIcon] = useState(null);
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  
+
+
+  const {isLoading,error,data } = useQuery({
+    queryKey:['stations'],
+    queryFn: () => getStations()
+  });
+
+  const mutation = useMutation({
+    mutationFn: deleteStation,
+    onSuccess: () => {
+      console.log("delete successfuly")
+      queryClient.invalidateQueries({
+        queryKey: ['stations'],
+      });
+    }
+  })
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error loading data</div>;
+  }
+
+  // console.log("datas : ", data);
+
+
+  const rows =  data &&  Array.isArray(data) ?  data.map((item) => ({
+    id: item.id,
+    regist_date: item.autharization_date,
+    // business: item.buisness_no,
+    district: item.district,
+    station_name: item.name,
+    commencement_date: item.start_date,
+    station_type: item.group,
+    production_cnt: item.equipmentsProduction,
+    storage_cnt: item.equipmentsStrorage,
+    charging_cnt: item.equipmentsCharging,
+  })) : [];
+  
 
 
   const handleItemSelection = (selectionModel) => {
@@ -128,6 +180,9 @@ function StationMainList() {
   };
   const handleHover = (index) => {
     setHoveredIcon(index);
+  };
+  const handleClose = () => {
+    setOpen(false);
   };
 
   const handleNavigatetoDetail = () => {
@@ -139,6 +194,21 @@ function StationMainList() {
       navigate(`/stations/${selectedItems[0]}`);
     }
   };
+
+  const handleClickDelete = () => {
+      mutation.mutate(selectedItems[0]);
+      setOpen(false)
+  }
+
+  const handleClickGotoEditPAge = () => {
+    if (selectedItems.length > 1) {
+      alert("한개 만 선택해주세요!");
+    } else if (selectedItems.length === 0) {
+      alert("사업소 선택해 주세요");
+    } else {
+      setOpen(true);
+    }
+  }
 
   const iconDataRight = [
     {
@@ -184,12 +254,22 @@ function StationMainList() {
         />
       ),
       text: "삭제",
-      // onClick: handleClickGotoEditPAge,
+      onClick: handleClickGotoEditPAge,
     },
   ];
 
   return (
     <div className="station-list">
+    <ModalDefault
+        open={open}
+        state="delete"
+        handleClose={handleClose}
+        modalTitle={'사업소 삭제'}
+        modalDsecriptions={
+          <div dangerouslySetInnerHTML={{ __html: "선택한 사업소  </p> 삭제하시겠습니까?" }} />
+        }
+        handleClickGoToLogin={handleClickDelete}
+      />
       <div className="header-table">
         <div className="left">
           {iconData.map((data, index) => (
@@ -209,20 +289,20 @@ function StationMainList() {
         </div>
         <div className="right">
           <div className="icon-header">
-          {iconDataRight.map((data, index) => (
-            <div
-              key={4}
-              className="icon-header"
-              onMouseEnter={() => handleHover(4)}
-              onMouseLeave={() => handleHover(null)}
-              onClick={data.onClick}
-            >
-              {hoveredIcon === 4 && (
-                <span className="tooltip">{data.text}</span>
-              )}
-              {data.icon}
-            </div>
-          ))}
+            {iconDataRight.map((data, index) => (
+              <div
+                key={4}
+                className="icon-header"
+                onMouseEnter={() => handleHover(4)}
+                onMouseLeave={() => handleHover(null)}
+                onClick={data.onClick}
+              >
+                {hoveredIcon === 4 && (
+                  <span className="tooltip">{data.text}</span>
+                )}
+                {data.icon}
+              </div>
+            ))}
           </div>
         </div>
       </div>

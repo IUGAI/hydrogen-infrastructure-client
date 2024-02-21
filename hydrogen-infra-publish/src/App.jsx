@@ -33,8 +33,12 @@ import EquipmentEdit from "./Pages/FacilityRegister/EquipmentRegist/EquipmentEdi
 import MaterialEdit from "./Pages/FacilityRegister/MaterialRegist/MaterialEdit";
 import WorkEdit from "./Pages/Maintenance/WorkRegister/WorkEdit";
 import WorkReportEdit from "./Pages/Maintenance/WorkReportRegister/WorkReportEdit";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 
-
+const queryClient = new QueryClient()
 export default function App() {
   const router = createBrowserRouter([
     {
@@ -51,128 +55,131 @@ export default function App() {
         },
         {
           path: "/stations",
-          element: <Stations/>
-        },{
+          element: <Stations />
+        }, {
           path: "/stations/:id?",
-          element: <StationDetail/>,
+          element: <StationDetail />,
         },
         {
           path: "/equipments",
-          element: <EquipmentsList/>
+          element: <EquipmentsList />
         }, {
           path: "/equipments/:id?",
-          element: <EquipmentsDetail/>
+          element: <EquipmentsDetail />
         },
         {
           path: "/materials",
-          element: <MaterialList/>
+          element: <MaterialList />
         },
         {
           path: "/materials/:id?",
-          element: <MaterialsDetail/>
+          element: <MaterialsDetail />
         },
         {
           path: "/station-regist",
-          element: <StationRegist/>
+          element: <StationRegist />
         },
         {
           path: "/station-edit/:id?",
-          element: <StationEdit/>
+          element: <StationEdit />
         },
-        
+
         {
           path: "/equipment-regist",
-          element: <EquipmentRegist/>
+          element: <EquipmentRegist />
         },
         {
           path: "/equipment-edit/:id?",
-          element: <EquipmentEdit/>
+          element: <EquipmentEdit />
         },
         {
           path: "/material-regist",
-          element: <MaterialRegist/>
+          element: <MaterialRegist />
         },
         {
           path: "/material-edit/:id?",
-          element: <MaterialEdit/>
+          element: <MaterialEdit />
         },
         {
           path: "/failure-list",
-          element:  <FailureList/>
+          element: <FailureList />
         },
         {
           path: "/work-register/:id?",
-          element:  <WorkRegist/>
+          element: <WorkRegist />
         },
         {
           path: "/work-edit/:id?",
-          element: <WorkEdit/>
+          element: <WorkEdit />
         },
         {
           path: "/work-list",
-          element:  <WorkList/>
+          element: <WorkList />
         },
         {
           path: "/work-list/:id?",
-          element: <WorkListDetail/>
+          element: <WorkListDetail />
         },
         {
           path: "/work-report-register/:id?",
-          element: <WorkReportRegister/>
+          element: <WorkReportRegister />
         },
         {
           path: "/work-report-edit/:id?",
-          element: <WorkReportEdit/>
+          element: <WorkReportEdit />
         },
         {
           path: "/station-statistic",
-          element: <StationStatistics/>
+          element: <StationStatistics />
         },
         {
           path: "/equipment-statistic",
-          element: <EquipmentStatistics/>
+          element: <EquipmentStatistics />
         },
         {
           path: "/user-list",
-          element: <UserList/>
+          element: <UserList />
         },
         {
           path: "/user-accept",
-          element: <UserRegisterAccept/>
+          element: <UserRegisterAccept />
         },
         {
           path: "/user-info/:id?",
-          element: <UserInfo/>
+          element: <UserInfo />
         },
         {
           path: "/common-setting",
-          element: <CommonSetting/>
+          element: <CommonSetting />
         },
         {
           path: "/premissions-setting",
-          element: <PremissionsSetting/>
+          element: <PremissionsSetting />
         },
-   
+
       ],
     },
     {
-      path:"/login",
-      element: <Login/>
+      path: "/login",
+      element: <Login />
     }
     ,
     {
       path: "/register",
-      element: <Register/>
+      element: <Register />
     }
   ]);
 
   return (
     <div>
-      <MyProvider>
-        <MyequipmentContext>
-          <RouterProvider router={router} />
-        </MyequipmentContext>
-      </MyProvider>
+
+      <QueryClientProvider client={queryClient}>
+        <MyProvider>
+          <MyequipmentContext>
+            <RouterProvider router={router} />
+          </MyequipmentContext>
+        </MyProvider>
+      </QueryClientProvider>
     </div>
   );
 }

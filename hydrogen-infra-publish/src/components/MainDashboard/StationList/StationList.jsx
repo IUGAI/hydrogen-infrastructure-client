@@ -20,7 +20,7 @@ function createData(name, calories, fat, carbs, protein) {
 }
 
 
-console.log(stations);
+// console.log(stations);
 
 
 const StyledTableHeader = styled(TableRow)`

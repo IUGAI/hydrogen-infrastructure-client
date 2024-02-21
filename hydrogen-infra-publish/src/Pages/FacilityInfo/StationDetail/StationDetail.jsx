@@ -22,6 +22,9 @@ import { BiSolidBusiness } from "react-icons/bi";
 import { MdOutlineNumbers } from "react-icons/md";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+
+import { getStationsDetail } from "../../../services/apiStations";
 import StationDetailMainInfo from "../../../components/StationDetail/StationDetailMainInfo/StationDetailMainInfo";
 import StationDetailEquipments from "../../../components/StationDetail/StationDetailEquipments/StationDetailEquipments";
 import StationDetailMaterial from "../../../components/StationDetail/StationDetailMaterial/StationDetailMaterial";
@@ -31,48 +34,6 @@ import StationDetailTaskList from "../../../components/StationDetail/StationDeta
 import StationDetailUsers from "../../../components/StationDetail/StationDetailUsers/StationDetailUsers";
 import ModalBuisnessEdit from "../../../components/Modal/ModalBuisnessEdit";
 
-const item_info = [
-  {
-    icon: <FaBookmark color="#8da7d9" />,
-    title: "사업소명",
-    text: "서울 A 사업소",
-  },
-  {
-    icon: <FaLocationArrow color="#8da7d9" />,
-    title: "주소",
-    text: "서울특별시 금천구 시흥대로 321",
-  },
-  {
-    icon: <FaLocationDot color="#8da7d9" />,
-    title: "위도/경도",
-    text: "123.00 / 245.00",
-  },
-  {
-    icon: <FaPhone color="#8da7d9" />,
-    title: "전화번호",
-    text: "02-0000-0000",
-  },
-  {
-    icon: <GrUserWorker color="#8da7d9" />,
-    title: "관리자(정)",
-    text: "홍길동 | 010-9632-2158",
-  },
-  {
-    icon: <FaUserTie color="#8da7d9" />,
-    title: "관리자(부)",
-    text: "이몽룡 | 010-1258-7526",
-  },
-  {
-    icon: <TbCertificate color="#8da7d9" />,
-    title: "인가일",
-    text: "2022.12.20",
-  },
-  {
-    icon: <FaCertificate color="#8da7d9" />,
-    title: "개시일",
-    text: "2023.01.01",
-  },
-];
 
 const item_info_mid = [
   {
@@ -122,7 +83,69 @@ function StationDetail() {
   const [hoveredIcon, setHoveredIcon] = useState(null);
   const navigate = useNavigate();
   const path = useLocation();
-  const id = path.pathname.slice(10, 15)
+  const id = path.pathname.slice(10, 18)
+
+  const {isLoading,error,data} = useQuery({
+    queryKey:['stations'],
+    queryFn: () => getStationsDetail(id)
+  });
+
+
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error loading data</div>;
+  }
+
+    // console.log("datas : ", data);
+  
+
+  const item_info = [
+    {
+      icon: <FaBookmark color="#8da7d9" />,
+      title: "사업소명",
+      text: data.name,
+    },
+    {
+      icon: <FaLocationArrow color="#8da7d9" />,
+      title: "주소",
+      text: data.address
+    },
+    {
+      icon: <FaLocationDot color="#8da7d9" />,
+      title: "위도/경도",
+      text: `${data.address_lat} / ${data.address_lng}`,
+    },
+    {
+      icon: <FaPhone color="#8da7d9" />,
+      title: "전화번호",
+      text: data.phoneNumber,
+    },
+    {
+      icon: <GrUserWorker color="#8da7d9" />,
+      title: "관리자(정)",
+      text: "홍길동 | 010-9632-2158",
+    },
+    {
+      icon: <FaUserTie color="#8da7d9" />,
+      title: "관리자(부)",
+      text: "이몽룡 | 010-1258-7526",
+    },
+    {
+      icon: <TbCertificate color="#8da7d9" />,
+      title: "인가일",
+      text: new Date(data.autharization_date).toLocaleDateString()
+    },
+    {
+      icon: <FaCertificate color="#8da7d9" />,
+      title: "개시일",
+      text: new Date(data.start_date).toLocaleDateString(),
+    },
+  ];
+
   const handleHover = (index) => {
     setHoveredIcon(index);
   };
@@ -180,7 +203,7 @@ function StationDetail() {
           <div className="icon-circle-background">
             <img src="/img/logo.png" alt="logo" />
           </div>
-          <span className="station-detail-name">서울 A 사업소</span>
+          <span className="station-detail-name">{data.name}</span>
           <div className="station-business-name">
             <div className="vertical-line"></div>
             <span className="station-buisness-name">수소솔루션(주)</span>
@@ -235,7 +258,7 @@ function StationDetail() {
               />
               <span  className="info-nav-item">시설물</span>
             </div>
-            <span className="item-quantity">5</span>
+            <span className="item-quantity">{data.equipments ? data.equipments.length : "0"}</span>
           </div>
           <div
             className={`navbar-item ${navitem === "materials" ? "active" : ""}`}
@@ -316,7 +339,7 @@ function StationDetail() {
             buisness_st={buisness_st}
           />
         ) : navitem === "equipments" ? (
-          <StationDetailEquipments />
+          <StationDetailEquipments equipments ={data.equipments} />
         ) : navitem === "materials" ? (
           <StationDetailMaterial />
         ) : navitem === "alarm-list" ? (

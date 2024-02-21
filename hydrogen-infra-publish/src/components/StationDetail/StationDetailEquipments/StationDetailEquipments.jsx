@@ -29,7 +29,7 @@ const columns = [
       align: "center",
     },
     {
-      field: "district",
+      field: "name",
       headerName: "시설물명",
       width: 150,
       sortable: false,
@@ -93,7 +93,7 @@ const columns = [
     },
   ];
   
- const rows = [];
+
 
 //   const rows = stations.map((item) => ({
 //     id: item.id,
@@ -112,8 +112,14 @@ const columns = [
 //   }));
   
 
-function StationDetailEquipments() {
+function StationDetailEquipments({equipments}) {
   const [startDate, setStartDate] = useState(null);
+  console.log(equipments);
+
+  const rows = equipments.map((item) => ({
+    id: item.id,
+    name: item.name
+  }))
   return (
     <>
       <div className="station-detail-equipments">

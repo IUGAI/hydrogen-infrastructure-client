@@ -65,7 +65,7 @@ function SearchContainer() {
           </option>
           {
             stations.map((item, index) => (
-              <option>{item.name}</option>
+              <option key={index}>{item.name}</option>
             ))
           }
  

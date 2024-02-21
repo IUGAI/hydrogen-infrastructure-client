@@ -16,7 +16,7 @@ function ModalDefault({
         <img src="/img/marker.png" className="img-marker" />
         <div
           className={
-            state === "success" ? "modal-header success" : "modal-header"
+            state === "success" ? "modal-header success" : state === "delete" ? "modal-header delete" : "modal-header"
           }
         >
           <span className="modal-title-text">{modalTitle}</span>
